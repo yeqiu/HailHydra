@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setHomeData() {
+
+
+
         datas = new ArrayList<>();
         datas.add(new DomeData("沉浸式状态", ImmersivetestActivity.class));
         datas.add(new DomeData("键盘监听", SoftKeyListenerActivity.class));
