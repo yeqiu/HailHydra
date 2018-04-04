@@ -19,6 +19,7 @@
         <activity android:name=".activity.ImmersivetestActivity"/>
         <activity android:name=".activity.SoftKeyListenerActivity"/>
         <activity android:name=".activity.NumberkeyActivity"/>
+        <activity android:name=".activity.NumberkeyActivity2"/>
     </application>
 
 </manifest>

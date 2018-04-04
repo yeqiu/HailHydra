@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.widget.EditText;
 
-import com.yeqiu.androiddome.Numberkeyboard;
+import com.yeqiu.androiddome.widget.Numberkeyboard;
 import com.yeqiu.androiddome.R;
+import com.yeqiu.androiddome.widget.OnKeyboardListener;
 
 /**
  * @author ye
@@ -26,7 +27,7 @@ public class NumberkeyActivity extends AppCompatActivity {
         et.setInputType(InputType.TYPE_NULL);
         Numberkeyboard keyboard = (Numberkeyboard) findViewById(R.id.keyboard);
 
-        keyboard.setIOnKeyboardListener(new Numberkeyboard.IOnKeyboardListener() {
+        keyboard.setIOnKeyboardListener(new OnKeyboardListener() {
             @Override
             public void onInsertKeyEvent(String text) {
                 et.append(text);

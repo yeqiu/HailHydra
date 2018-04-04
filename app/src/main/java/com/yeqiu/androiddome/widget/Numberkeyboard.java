@@ -1,4 +1,4 @@
-package com.yeqiu.androiddome;
+package com.yeqiu.androiddome.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,6 +10,8 @@ import android.graphics.drawable.Drawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.util.AttributeSet;
+
+import com.yeqiu.androiddome.R;
 
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class Numberkeyboard extends KeyboardView implements KeyboardView
     private int mDeleteBackgroundColor;
     private Drawable mDeleteDrawable;
     private Rect mDeleteDrawRect;
-    private IOnKeyboardListener mOnKeyboardListener;
+    private OnKeyboardListener mOnKeyboardListener;
 
     public Numberkeyboard(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -234,25 +236,9 @@ public class Numberkeyboard extends KeyboardView implements KeyboardView
      *
      * @param listener 监听事件
      */
-    public void setIOnKeyboardListener(IOnKeyboardListener listener) {
+    public void setIOnKeyboardListener(OnKeyboardListener listener) {
         this.mOnKeyboardListener = listener;
     }
 
-    /**
-     * 键盘的监听事件。
-     */
-    public interface IOnKeyboardListener {
 
-        /**
-         * 点击数字按键。
-         *
-         * @param text 输入的数字
-         */
-        void onInsertKeyEvent(String text);
-
-        /**
-         * 点击了删除按键。
-         */
-        void onDeleteKeyEvent();
-    }
 }
