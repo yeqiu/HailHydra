@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         datas.add(new DomeData("自定义数字键盘 1", NumberkeyActivity.class));
         datas.add(new DomeData("自定义数字键盘 2", NumberkeyActivity2.class));
         datas.add(new DomeData("密码框 ", PasswordViewActivity.class));
+        datas.add(new DomeData("EditText ", EditTextActivity.class));
 
 
     }

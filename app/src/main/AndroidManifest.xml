@@ -16,11 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.yeqiu.android_tools.activity.ImmersivetestActivity"/>
-        <activity android:name="com.yeqiu.android_tools.activity.SoftKeyListenerActivity"/>
-        <activity android:name="com.yeqiu.android_tools.activity.NumberkeyActivity"/>
-        <activity android:name="com.yeqiu.android_tools.activity.NumberkeyActivity2"/>
-        <activity android:name="com.yeqiu.android_tools.activity.PasswordViewActivity"/>
+        <activity
+            android:name="com.yeqiu.android_tools.activity.ImmersivetestActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.android_tools.activity.SoftKeyListenerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.android_tools.activity.NumberkeyActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.android_tools.activity.NumberkeyActivity2"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.android_tools.activity.PasswordViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.android_tools.activity.EditTextActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
