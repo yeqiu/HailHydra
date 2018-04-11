@@ -1,4 +1,4 @@
-package com.yeqiu.androiddome.widget;
+package com.yeqiu.android_tools.widget;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -204,7 +204,7 @@ public class NumberKeyBoardView extends RelativeLayout {
      *
      * @param listener 监听事件
      */
-    public void setIOnKeyboardListener(OnKeyboardListener listener) {
+    public void setOnKeyboardListener(OnKeyboardListener listener) {
         this.onKeyboardListener = listener;
     }
 
@@ -241,8 +241,6 @@ public class NumberKeyBoardView extends RelativeLayout {
         if (keyBoardAdapter != null) {
             keyBoardAdapter.ShowPoit(isShowPoit);
         }
-
-
     }
 
 

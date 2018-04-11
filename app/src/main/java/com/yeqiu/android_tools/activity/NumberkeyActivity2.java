@@ -1,4 +1,4 @@
-package com.yeqiu.androiddome.activity;
+package com.yeqiu.android_tools.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,9 +8,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.yeqiu.android_tools.widget.NumberKeyBoardView;
+import com.yeqiu.android_tools.widget.OnKeyboardListener;
 import com.yeqiu.androiddome.R;
-import com.yeqiu.androiddome.widget.NumberKeyBoardView;
-import com.yeqiu.androiddome.widget.OnKeyboardListener;
 
 /**
  * @author ye
@@ -44,7 +44,7 @@ public class NumberkeyActivity2 extends AppCompatActivity {
         //显示小数点 默认不显示
         keyboardview.showPoit(true);
 
-        keyboardview.setIOnKeyboardListener(new OnKeyboardListener() {
+        keyboardview.setOnKeyboardListener(new OnKeyboardListener() {
             @Override
             public void onInsertKeyEvent(String text) {
 

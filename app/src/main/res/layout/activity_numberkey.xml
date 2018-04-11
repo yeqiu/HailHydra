@@ -23,7 +23,7 @@
             android:layout_height="1dp"
             android:background="#e5e5e5"/>
 
-        <com.yeqiu.androiddome.widget.Numberkeyboard
+        <com.yeqiu.android_tools.widget.Numberkeyboard
             android:id="@+id/keyboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

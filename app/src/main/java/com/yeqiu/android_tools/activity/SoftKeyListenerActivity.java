@@ -1,13 +1,13 @@
-package com.yeqiu.androiddome.activity;
+package com.yeqiu.android_tools.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
+import com.yeqiu.android_tools.utils.SoftKeyBroadManager;
+import com.yeqiu.android_tools.utils.ToastUtils;
 import com.yeqiu.androiddome.R;
-import com.yeqiu.androiddome.utils.SoftKeyBroadManager;
-import com.yeqiu.androiddome.utils.ToastUtils;
 
 /**
  * @author ye

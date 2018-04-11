@@ -1,4 +1,4 @@
-package com.yeqiu.androiddome.data;
+package com.yeqiu.android_tools.data;
 
 import java.io.Serializable;
 

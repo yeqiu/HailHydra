@@ -9,17 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="com.yeqiu.android_tools.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ImmersivetestActivity"/>
-        <activity android:name=".activity.SoftKeyListenerActivity"/>
-        <activity android:name=".activity.NumberkeyActivity"/>
-        <activity android:name=".activity.NumberkeyActivity2"/>
+        <activity android:name="com.yeqiu.android_tools.activity.ImmersivetestActivity"/>
+        <activity android:name="com.yeqiu.android_tools.activity.SoftKeyListenerActivity"/>
+        <activity android:name="com.yeqiu.android_tools.activity.NumberkeyActivity"/>
+        <activity android:name="com.yeqiu.android_tools.activity.NumberkeyActivity2"/>
+        <activity android:name="com.yeqiu.android_tools.activity.PasswordViewActivity"/>
     </application>
 
 </manifest>

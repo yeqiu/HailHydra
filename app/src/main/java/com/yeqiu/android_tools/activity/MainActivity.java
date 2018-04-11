@@ -1,4 +1,4 @@
-package com.yeqiu.androiddome.activity;
+package com.yeqiu.android_tools.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.yeqiu.android_tools.adapter.SimpleAdapter;
 import com.yeqiu.androiddome.R;
-import com.yeqiu.androiddome.adapter.SimpleAdapter;
-import com.yeqiu.androiddome.data.DomeData;
+import com.yeqiu.android_tools.data.DomeData;
 
 import java.util.ArrayList;
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         datas.add(new DomeData("键盘监听", SoftKeyListenerActivity.class));
         datas.add(new DomeData("自定义数字键盘 1", NumberkeyActivity.class));
         datas.add(new DomeData("自定义数字键盘 2", NumberkeyActivity2.class));
+        datas.add(new DomeData("密码框 ", PasswordViewActivity.class));
 
 
     }

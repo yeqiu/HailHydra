@@ -1,4 +1,4 @@
-package com.yeqiu.androiddome.activity;
+package com.yeqiu.android_tools.activity;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.yeqiu.androiddome.R;
-import com.yeqiu.androiddome.utils.StatusBarUtil;
+import com.yeqiu.android_tools.utils.StatusBarUtil;
 
 /**
  * @author ye

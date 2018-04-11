@@ -1,4 +1,4 @@
-package com.yeqiu.androiddome.adapter;
+package com.yeqiu.android_tools.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.yeqiu.androiddome.data.DomeData;
+import com.yeqiu.android_tools.data.DomeData;
 
 import java.util.ArrayList;
 

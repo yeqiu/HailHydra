@@ -1,4 +1,4 @@
-package com.yeqiu.androiddome.utils;
+package com.yeqiu.android_tools.utils;
 
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -25,7 +25,7 @@ public class StringUtils {
 
 
     /**
-     * 是否有系哦啊书
+     * 是否有小数
      */
     public static boolean isHaveDecimal(String string) {
         if (string.contains(".")) {
@@ -66,7 +66,6 @@ public class StringUtils {
             return number.matches(num);
         }
     }
-
     /**
      * 身份证号格式
      */
@@ -81,6 +80,21 @@ public class StringUtils {
             return idCard.matches(regx) || idCard.matches(reg1) || idCard.matches(regex);
         }
     }
+    /**
+     * 身份证号格式
+     */
+    public static boolean isNumber(String text) {
+
+        String regx = "^-?[0-9]\\d*$";
+
+        if (isEmpty(text)) {
+            return false;
+        } else {
+            //matches():字符串是否在给定的正则表达式匹配
+            return text.matches(regx);
+        }
+    }
+
 
     /**
      * 邮箱验证格式
