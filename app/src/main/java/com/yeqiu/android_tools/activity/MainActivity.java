@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.orhanobut.logger.LogLevel;
+import com.orhanobut.logger.Logger;
 import com.yeqiu.android_tools.adapter.SimpleAdapter;
-import com.yeqiu.androiddome.R;
 import com.yeqiu.android_tools.data.DomeData;
+import com.yeqiu.androiddome.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
         initData();
 
+        testLog();
+
     }
 
     private void setHomeData() {
-
 
 
         datas = new ArrayList<>();
@@ -61,6 +65,42 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+
+    private void testLog() {
+        Logger.init("test")              //设置tag
+                .logLevel(LogLevel.FULL) //显示全部日志，LogLevel.NONE不显示日志，默认是Full
+                .methodCount(1)          //方法栈打印的个数，默认是2
+                .methodOffset(0);        //设置调用堆栈的函数偏移值，0的话则从打印该Log的函数开始输出堆栈信息，默认是0
+
+
+        Logger.i("测试数据1");
+
+
+        String json = "{\n" +
+                "    \"code\": 401,\n" +
+                "    \"message\": \"用户尚未登录\",\n" +
+                "    \"data\": {\n" +
+                "        \"audit_amount\": 10000\n" +
+                "    }\n" +
+                "}";
+
+
+        Logger.json(json);
+
+
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+
+
+
+        Logger.d(list);  //只能使用d  不要用 d(String message, Object... args) 没卵用
+
 
     }
 }
