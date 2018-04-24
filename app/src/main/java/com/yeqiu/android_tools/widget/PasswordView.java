@@ -288,6 +288,7 @@ public class PasswordView extends View {
             password[cursorPosition] = null;
         }
         isInputComplete = false;
+        postInvalidate();
         return deleteText;
     }
 

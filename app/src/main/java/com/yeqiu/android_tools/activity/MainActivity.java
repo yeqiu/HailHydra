@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.lzy.okgo.model.Response;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 import com.yeqiu.android_tools.adapter.SimpleAdapter;
 import com.yeqiu.android_tools.data.DomeData;
+import com.yeqiu.android_tools.net.BIManager;
+import com.yeqiu.android_tools.net.bean.bean.TestData;
+import com.yeqiu.android_tools.net.bean.callback.JsonCallback;
 import com.yeqiu.androiddome.R;
 
 import java.util.ArrayList;
@@ -98,8 +102,17 @@ public class MainActivity extends AppCompatActivity {
         list.add("4");
 
 
-
         Logger.d(list);  //只能使用d  不要用 d(String message, Object... args) 没卵用
+
+
+        new BIManager<TestData>()
+                .get("http://test.api.xmfenqi.cn:7881/cash_show_nologin", new
+                        JsonCallback<TestData>() {
+                            @Override
+                            public void onSuccess(Response<TestData> response) {
+
+                            }
+                        });
 
 
     }

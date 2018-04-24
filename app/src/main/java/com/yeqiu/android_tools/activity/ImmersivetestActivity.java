@@ -8,8 +8,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.yeqiu.androiddome.R;
 import com.yeqiu.android_tools.utils.StatusBarUtil;
+import com.yeqiu.androiddome.R;
+
+import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
 
 /**
  * @author ye
@@ -31,12 +33,13 @@ public class ImmersivetestActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
+
+
         //6.0以支持 设置让应用的主体内容占用系统状态栏的空间
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    //   | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+                    | SYSTEM_UI_FLAG_HIDE_NAVIGATION;
             decorView.setSystemUiVisibility(option);
             //状态栏设置成透明的
             getWindow().setStatusBarColor(Color.TRANSPARENT);
@@ -48,5 +51,11 @@ public class ImmersivetestActivity extends AppCompatActivity {
         StatusBarUtil statusBarUtil = new StatusBarUtil();
         statusBarUtil.setStatusBarMode(this, true);
 
+
+
+
     }
+
+
+
 }

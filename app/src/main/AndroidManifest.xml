@@ -3,6 +3,7 @@
           package="com.yeqiu.androiddome">
 
     <application
+        android:name="com.yeqiu.android_tools.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
