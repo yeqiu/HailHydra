@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         datas.add(new DomeData("密码框 ", PasswordViewActivity.class));
         datas.add(new DomeData("EditText ", EditTextActivity.class));
         datas.add(new DomeData("仿ios的Diaog ", DialogActivity.class));
+        datas.add(new DomeData("网络监听 ", NetworkListenerActivity.class));
 
 
     }
