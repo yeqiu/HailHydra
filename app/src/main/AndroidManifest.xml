@@ -35,6 +35,7 @@
         <activity
             android:name="com.yeqiu.android_tools.activity.EditTextActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="com.yeqiu.android_tools.activity.DialogActivity"/>
     </application>
 
 </manifest>

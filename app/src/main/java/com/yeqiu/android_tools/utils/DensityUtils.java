@@ -7,7 +7,7 @@ import android.content.Context;
  * @date 2018/4/3
  * @desc 各种尺寸单位的转换
  */
-public class DisplayUtils {
+public class DensityUtils {
 
     /**
      * 将px转换为与之相等的dp

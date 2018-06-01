@@ -95,7 +95,7 @@ public class Numberkeyboard extends KeyboardView implements KeyboardView
                 drawDeleteButton(key, canvas);
             }
 
-            //this.setPadding(0, DisplayUtils.dp2px(getContext(), 1), 0, 0);
+            //this.setPadding(0, DensityUtils.dp2px(getContext(), 1), 0, 0);
 
         }
 
