@@ -38,5 +38,11 @@
         android:textAllCaps="false"
         />
 
+    <Button
+        android:id="@+id/tipDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="等待框"/>
+
 
 </LinearLayout>

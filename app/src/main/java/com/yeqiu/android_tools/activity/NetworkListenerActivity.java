@@ -59,7 +59,7 @@ public class NetworkListenerActivity extends AppCompatActivity {
 
     protected void onDestroy() {
         super.onDestroy();
-        NetWorkUtils.turnOffListner(getApplicationContext());
+        NetWorkUtils.turnOffListner();
 
     }
 

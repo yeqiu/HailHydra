@@ -15,6 +15,7 @@ import com.yeqiu.android_tools.receiver.NetWorkStateReceiver;
 public class NetWorkUtils {
 
     private static NetWorkStateReceiver networkChangeReceiver;
+    private static Context context;
 
 
     /**
@@ -44,6 +45,7 @@ public class NetWorkUtils {
      */
     public static void turnOnListnerWithoutState(Context context, NetWorkStateReceiver
             .OnNetWorkConnectChangeListener onNetWorkConnectChangeListener) {
+        NetWorkUtils.context = context;
         if (context != null) {
             IntentFilter intentFilter = new IntentFilter();
             intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
@@ -56,10 +58,8 @@ public class NetWorkUtils {
 
     /**
      * 注销网络监听
-     *
-     * @param context
      */
-    public static void turnOffListner(Context context) {
+    public static void turnOffListner() {
         if (context != null) {
             context.unregisterReceiver(networkChangeReceiver);
         }

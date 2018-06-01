@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.yeqiu.android_tools.view.dialog.CommonDialog;
 import com.yeqiu.android_tools.view.dialog.EditDialog;
 import com.yeqiu.android_tools.view.dialog.SheetDialog;
+import com.yeqiu.android_tools.view.dialog.TipDialog;
 import com.yeqiu.androiddome.R;
 
 import java.util.ArrayList;
@@ -23,11 +24,20 @@ import java.util.List;
  * @fix：
  */
 public class DialogActivity extends AppCompatActivity {
+
+    private TipDialog tipDialog;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
         initView();
+
+        tipDialog = new TipDialog.Builder(DialogActivity.this)
+                .setIconType(TipDialog.Builder.ICON_TYPE_LOADING)
+                .setTipWord("正在加载")
+                .create();
+
     }
 
     private void initView() {
@@ -35,11 +45,13 @@ public class DialogActivity extends AppCompatActivity {
         Button CommonDialog_2 = (Button) findViewById(R.id.CommonDialog_2);
         Button EditDialog = (Button) findViewById(R.id.EditDialog);
         Button SheetDialog = (Button) findViewById(R.id.SheetDialog);
+        Button tipDialog = (Button) findViewById(R.id.tipDialog);
 
         CommonDialog_1.setOnClickListener(onClickListener);
         CommonDialog_2.setOnClickListener(onClickListener);
         EditDialog.setOnClickListener(onClickListener);
         SheetDialog.setOnClickListener(onClickListener);
+        tipDialog.setOnClickListener(onClickListener);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -106,6 +118,16 @@ public class DialogActivity extends AppCompatActivity {
                                 }
                             })
                             .show();
+                    break;
+
+
+                case R.id.tipDialog:
+
+
+                    tipDialog.show();
+
+
+
                     break;
 
 

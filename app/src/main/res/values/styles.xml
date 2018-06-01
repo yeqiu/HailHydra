@@ -52,4 +52,14 @@
         <item name="@android:windowExitAnimation">@anim/sheet_dialog_exit</item>
     </style>
 
+
+    <attr name="LoadingStyle" format="reference"/>
+
+    <!--等待框-->
+    <declare-styleable name="LoadingView">
+        <attr name="loading_view_size" format="dimension"/>
+        <attr name="android:color"/>
+    </declare-styleable>
+
+
 </resources>
