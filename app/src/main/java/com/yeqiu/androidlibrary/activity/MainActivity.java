@@ -8,15 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.lzy.okgo.model.Response;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
+import com.yeqiu.androiddome.R;
 import com.yeqiu.androidlibrary.adapter.SimpleAdapter;
 import com.yeqiu.androidlibrary.data.DomeData;
-import com.yeqiu.androidlibrary.net.BIManager;
-import com.yeqiu.androidlibrary.net.bean.bean.TestData;
-import com.yeqiu.androidlibrary.net.bean.callback.JsonCallback;
-import com.yeqiu.androiddome.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         datas.add(new DomeData("EditText ", EditTextActivity.class));
         datas.add(new DomeData("ios风格的Diaog ", DialogActivity.class));
         datas.add(new DomeData("网络监听 ", NetworkListenerActivity.class));
+        datas.add(new DomeData("RecyclerView Demo ", RecyclerViewDomeActivity.class));
 
 
     }
@@ -106,15 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
         Logger.d(list);  //只能使用d  不要用 d(String message, Object... args) 没卵用
 
-
-        new BIManager<TestData>()
-                .get("http://test.api.xmfenqi.cn:7881/cash_show_nologin", new
-                        JsonCallback<TestData>() {
-                            @Override
-                            public void onSuccess(Response<TestData> response) {
-
-                            }
-                        });
 
 
     }

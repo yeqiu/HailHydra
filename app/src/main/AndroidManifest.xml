@@ -8,12 +8,6 @@
 
 
 
-
-
-
-
-
-
     <application
         android:name="com.yeqiu.androidlibrary.app.App"
         android:allowBackup="true"
@@ -49,6 +43,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.yeqiu.androidlibrary.activity.DialogActivity"/>
         <activity android:name="com.yeqiu.androidlibrary.activity.NetworkListenerActivity"/>
+        <activity android:name="com.yeqiu.androidlibrary.activity.RecyclerViewDomeActivity"/>
     </application>
 
 </manifest>
