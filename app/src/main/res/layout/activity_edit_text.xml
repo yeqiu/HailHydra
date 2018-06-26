@@ -17,7 +17,7 @@
             android:text="每个四位加入空格"
             android:textSize="14sp"/>
 
-        <com.yeqiu.android_tools.widget.SpaceEditText
+        <com.yeqiu.androidlibrary.widget.SpaceEditText
             android:id="@+id/et_bank_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:textSize="14sp"/>
 
 
-        <com.yeqiu.android_tools.widget.PhoneEditText
+        <com.yeqiu.androidlibrary.widget.PhoneEditText
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

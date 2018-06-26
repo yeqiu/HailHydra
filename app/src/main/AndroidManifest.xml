@@ -15,14 +15,14 @@
 
 
     <application
-        android:name="com.yeqiu.android_tools.app.App"
+        android:name="com.yeqiu.androidlibrary.app.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.yeqiu.android_tools.activity.MainActivity">
+        <activity android:name="com.yeqiu.androidlibrary.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -30,25 +30,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.yeqiu.android_tools.activity.ImmersivetestActivity"
+            android:name="com.yeqiu.androidlibrary.activity.ImmersivetestActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.android_tools.activity.SoftKeyListenerActivity"
+            android:name="com.yeqiu.androidlibrary.activity.SoftKeyListenerActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.android_tools.activity.NumberkeyActivity"
+            android:name="com.yeqiu.androidlibrary.activity.NumberkeyActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.android_tools.activity.NumberkeyActivity2"
+            android:name="com.yeqiu.androidlibrary.activity.NumberkeyActivity2"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.android_tools.activity.PasswordViewActivity"
+            android:name="com.yeqiu.androidlibrary.activity.PasswordViewActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.android_tools.activity.EditTextActivity"
+            android:name="com.yeqiu.androidlibrary.activity.EditTextActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.yeqiu.android_tools.activity.DialogActivity"/>
-        <activity android:name="com.yeqiu.android_tools.activity.NetworkListenerActivity"/>
+        <activity android:name="com.yeqiu.androidlibrary.activity.DialogActivity"/>
+        <activity android:name="com.yeqiu.androidlibrary.activity.NetworkListenerActivity"/>
     </application>
 
 </manifest>
