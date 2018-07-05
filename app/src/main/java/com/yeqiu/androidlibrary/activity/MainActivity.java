@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         datas.add(new DomeData("ios风格的Diaog ", DialogActivity.class));
         datas.add(new DomeData("网络监听 ", NetworkListenerActivity.class));
         datas.add(new DomeData("RecyclerView Demo ", RecyclerViewDomeActivity.class));
+        datas.add(new DomeData("OKGo的封装", OKGoActivity.class));
 
 
     }
