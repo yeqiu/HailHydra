@@ -9,38 +9,12 @@ import com.yeqiu.androidlibrary.app.App;
 
 public class SharedUtils {
 
-    public static final String TOKEN = "Token";
-    public static final String MEMBER_ID = "MemberId";
-    public static final String NIMACC_ID= "NIMAccId";
-    public static final String USER_FACE = "UserFace";
-    public static final String NICK_NAME = "NickName";
-    public static final String SPLASH = "Splash";
-    public static final String MESSAGE_TIMER = "MESSAGE_TIMER";
-    public static final String LATITUDE = "Latitude";
-    public static final String LONGITUDE= "Longitude";
-    private static final String SP_NAME = "YJ";
-    public static final String LEARN_SEARCH_HOT_KEY = "HotSearchKey";
-    public static final String COURSE_SEARCH_HISTORY = "CourseSearchHistory";
+
+    private static final String SP_NAME = "app";
 
 
-    public static final String SP_EMPTY = "";
-    public static final String IS_TEACHER = "is_teacher";
-    public static final String IS_Liveing = "is_liveing";
-    public static final String IsInAnchor = "isinanchor";
-    public static final String LIVEID = "liveid";
-    public static final String COURSE_PLAY_VIDEO_TYPE_STATUS = "VideoType";
-    public static final String COURSE_LIMIT_FREE = "LimitFree";
-    public static final String MESSAGE_SETTING_CLOSE = "message_setting_close";
-    public static final String MESSAGE_SETTING_DISTURBING = "message_setting_disturbing";
-    public static final String MESSAGE_SHADOW= "MESSAGE_SHADOW";
-    public static final String VIPCARDCANUSECOUNT = "VIPCardCanUseCount";
-    public static final String SINGDATE = "singDate";
-    public static final String LIBRARY_SEARCH_HISTORY = "library_search_history";
-    public static final String TEACHER_LEARN_TIMES = "TEACHER_LEARN_TIMES";
-    public static final String TOPIC_MY_LIKE_ID = "TOPIC_MY_LIKE_ID";
-    public static final String REPLY_MY_LIKE_ID = "REPLY_MY_LIKE_ID";
 
-    public static final String LOGIN_AWARD_GOLD = "LOGIN_AWARD_GOLD";
+
     private static SharedUtils instance = new SharedUtils();
 
     public SharedUtils() {

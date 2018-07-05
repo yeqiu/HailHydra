@@ -26,18 +26,18 @@ public class EtUtils {
      * 当EditText输入满11位时view亮色显示
      *
      * @param view
-     * @param phoneET
+     * @param phoneEt
      */
-    public void sendCodeCheck(TextView view, EditText phoneET) {
+    public void sendCodeCheck(TextView view, EditText phoneEt) {
 
-        if (view == null || phoneET == null) {
+        if (view == null || phoneEt == null) {
             return;
         }
         this.codeView = view;
         view.setTextColor(view.getContext().getResources().getColor(R.color
                 .color_b9b9b9));
 
-        phoneET.addTextChangedListener(phoneWatcher);
+        phoneEt.addTextChangedListener(phoneWatcher);
 
     }
 
@@ -72,6 +72,8 @@ public class EtUtils {
     };
 
 
+
+
     private View connectView;
     private EditText[] editTexts;
 
@@ -100,6 +102,8 @@ public class EtUtils {
             editTexts[i].addTextChangedListener(connectWatcher);
         }
     }
+
+
 
 
     /**
