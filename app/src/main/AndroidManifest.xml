@@ -25,6 +25,7 @@
         </activity>
         <activity
             android:name="com.yeqiu.androidlibrary.activity.ImmersivetestActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.yeqiu.androidlibrary.activity.SoftKeyListenerActivity"
@@ -46,6 +47,9 @@
         <activity android:name="com.yeqiu.androidlibrary.activity.RecyclerViewDomeActivity"/>
         <activity android:name="com.yeqiu.androidlibrary.activity.OKGoActivity"/>
         <activity android:name="com.yeqiu.androidlibrary.activity.WebViewActivity"/>
+        <activity android:name="com.yeqiu.androidlibrary.activity.ProgressBarActivity"/>
+        <activity android:name="com.yeqiu.androidlibrary.activity.ImmersionImageActivity"/>
+        <activity android:name="com.yeqiu.androidlibrary.activity.ImmersionBarActivity"/>
     </application>
 
 </manifest>

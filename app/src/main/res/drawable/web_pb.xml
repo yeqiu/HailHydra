@@ -1,5 +1,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <!--背景-->
     <item android:id="@android:id/background">
         <shape>
             <corners android:radius="2dp" />
@@ -10,6 +11,8 @@
                 android:startColor="#C8C8C8" />
         </shape>
     </item>
+
+    <!--进度-->
     <item android:id="@android:id/progress">
         <clip>
             <shape>

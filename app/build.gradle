@@ -27,15 +27,16 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-
     //log
     compile 'com.orhanobut:logger:1.15'
-
     //okgo
     compile 'com.lzy.net:okgo:3.0.4'
+    //gson
     compile 'com.google.code.gson:gson:2.2.4'
-
+    //状态栏工具
     compile 'com.jaeger.statusbarutil:library:1.5.0'
-
+    //butterknife
     compile 'com.jakewharton:butterknife:8.8.1'
+    //数字进度条
+    compile 'com.daimajia.numberprogressbar:library:1.4@aar'
 }
