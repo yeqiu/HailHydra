@@ -311,7 +311,7 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
     }
 
 
-    /**
+       /**
      * 通过id构建view
      *
      * @param layoutId

@@ -1,10 +1,8 @@
 package com.yeqiu.androidlibrary.view.dialog;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -12,8 +10,8 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.yeqiu.androidlibrary.utils.DensityUtils;
 import com.yeqiu.androiddome.R;
+import com.yeqiu.androidlibrary.utils.DensityUtils;
 
 import java.util.List;
 
@@ -24,23 +22,16 @@ import java.util.List;
  * @describe：仿ios底部弹出dialog
  * @fix：
  */
-public class SheetDialog {
+public class SheetDialog extends BaseDialog {
 
-    private final Activity context;
-    private String titleText;
-    private List<String> datas;
 
-    private boolean CanceledOnTouchOutside = true;
-    private boolean isBackCancel = true;
-    private DialogClickListener dialogClickListener;
-    private static Dialog dialog;
-    private int titleColor = R.color.color_1a1a1a;
-    private int cancelColor = R.color.color_1a1a1a;
-    private int itemColor = R.color.color_1a1a1a;
+    public SheetDialog(Activity context) {
+        super(context);
+    }
 
-    public static SheetDialog build(Activity context) {
+    @Override
+    protected void setWindow() {
 
-        dialog = new Dialog(context, R.style.sheet_dialog);
         Window window = dialog.getWindow();
         window.getDecorView().setPadding(DensityUtils.dp2px(context, 10), 0, DensityUtils.dp2px
                 (context, 10), DensityUtils.dp2px(context, 10));
@@ -50,146 +41,61 @@ public class SheetDialog {
         lp.alpha = 0.98f;
         window.setAttributes(lp);
         window.setGravity(Gravity.BOTTOM);
-        return new SheetDialog(context);
+
     }
 
-    public SheetDialog(Activity mContext) {
-        this.context = mContext;
+    @Override
+    public Object getDiaologlayoutIdOrView() {
+        return R.layout.layout_sheet_dialog;
     }
 
-    /**
-     * 设置标题栏
-     *
-     * @param titleText
-     * @return
-     */
-    public SheetDialog setTitleText(String titleText) {
-        this.titleText = titleText;
-        return this;
-    }
-
-
-    /**
-     * 设置item
-     *
-     * @return
-     */
-    public SheetDialog setItem(List<String> datas) {
-        this.datas = datas;
-        return this;
-    }
-
-
-    /**
-     * 点击外部是否消失
-     *
-     * @param isTouch
-     * @return
-     */
-    public SheetDialog setCanceledOnTouchOutside(boolean isTouch) {
-        this.CanceledOnTouchOutside = isTouch;
-        return this;
-    }
-
-    /**
-     * 点击返回是否消失
-     *
-     * @param isBackCancel
-     * @return
-     */
-    public SheetDialog setBackCancelable(boolean isBackCancel) {
-        this.isBackCancel = isBackCancel;
-        return this;
-    }
-
-    /**
-     * 设置确认按钮颜色
-     *
-     * @param colorId
-     * @return
-     */
-    public SheetDialog setTitleColor(int colorId) {
-        this.titleColor = colorId;
-        return this;
-    }
-
-    /**
-     * 设置取消按钮颜色
-     *
-     * @param colorId
-     * @return
-     */
-    public SheetDialog setCancelColor(int colorId) {
-        this.cancelColor = colorId;
-        return this;
-    }
-
-    /**
-     * 设置item颜色
-     *
-     * @param colorId
-     * @return
-     */
-    public SheetDialog setItemColor(int colorId) {
-        this.itemColor = colorId;
-        return this;
-    }
-
-
-    /**
-     * 回调点击监听
-     *
-     * @param dialogClickListener
-     * @return
-     */
-    public SheetDialog setDialogClickListener(DialogClickListener dialogClickListener) {
-        this.dialogClickListener = dialogClickListener;
-        return this;
-    }
-
-
-    public void show() {
-        if (context == null) {
-            return;
-        }
-
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_sheet_dialog, null);
+    @Override
+    public void initViewEvent(View view) {
 
         TextView title = (TextView) view.findViewById(R.id.tv_sheet_dialog_title);
         LinearLayout list = (LinearLayout) view.findViewById(R.id.ll_sheet_dialog_list);
         TextView cancel = (TextView) view.findViewById(R.id.tv_sheet_dialog_cancel);
 
+        List<String> datas = dialogBuilder.getSheetDatas();
 
         if (datas == null || datas.size() == 0) {
             return;
         }
 
-        if (TextUtils.isEmpty(titleText)) {
+        if (TextUtils.isEmpty(dialogBuilder.getTitleText())) {
             //不显示标题
             title.setVisibility(View.GONE);
         } else {
-            title.setText(titleText);
-            title.setTextColor(context.getResources().getColor(titleColor));
+            title.setText(dialogBuilder.getTitleText());
+            title.setTextColor(context.getResources().getColor(dialogBuilder.getTitleColor()));
         }
 
-        cancel.setTextColor(context.getResources().getColor(cancelColor));
+        cancel.setTextColor(context.getResources().getColor(dialogBuilder.getCancelColor()));
+
+        setItem(datas, list, cancel);
+
+
+    }
+
+    private void setItem(final List<String> datas, LinearLayout list, TextView cancel) {
 
         for (int i = 0; i < datas.size(); i++) {
             final int position = i;
-            TextView tv = new TextView(context);
-            tv.setText(datas.get(i));
+            final String text = datas.get(i);
+            final TextView tv = new TextView(context);
+            tv.setText(text);
             tv.setTag(i);
 
             int padding = DensityUtils.dp2px(context, 10);
             tv.setPadding(padding, padding, padding, padding);
             tv.setGravity(Gravity.CENTER);
-            tv.setTextSize(18);
-            tv.setTextColor(context.getResources().getColor(itemColor));
+            tv.setTextSize(dialogBuilder.getItemlSize());
+            tv.setTextColor(context.getResources().getColor(dialogBuilder.getItemColor()));
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (dialogClickListener != null) {
-                        dialogClickListener.onItemClick(position);
+                    if (dialogBuilder.getDialogListener() != null) {
+                        dialogBuilder.getDialogListener().onItemClick(position, text);
                     }
                     //关闭弹窗
                     if (dialog != null && dialog.isShowing()) {
@@ -212,8 +118,8 @@ public class SheetDialog {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dialogClickListener != null) {
-                    dialogClickListener.onCanceclClick();
+                if (dialogBuilder.getDialogListener() != null) {
+                    dialogBuilder.getDialogListener().onCanceclClick();
                 }
                 //关闭弹窗
                 if (dialog != null && dialog.isShowing()) {
@@ -221,26 +127,5 @@ public class SheetDialog {
                 }
             }
         });
-
-
-        dialog.setCancelable(isBackCancel);
-        dialog.setCanceledOnTouchOutside(CanceledOnTouchOutside);
-        dialog.setContentView(view);
-
-        if (!context.isFinishing()) {
-            if (!dialog.isShowing()) {
-                dialog.show();
-            }
-        }
-
     }
-
-
-    public interface DialogClickListener {
-        void onItemClick(int position);
-
-        void onCanceclClick();
-    }
-
-
 }
