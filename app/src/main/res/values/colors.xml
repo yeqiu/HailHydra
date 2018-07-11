@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="color_6eee">#000000</color>
+    <color name="color_f1f1f1">#f1f1f1</color>
+
+    <color name="color_b78934">#b78934</color>
+    <color name="color_a67637">#a67637</color>
+    <color name="color_29c485">#29c485</color>
+    <color name="color_3fcb91">#3fcb91</color>
+    <color name="color_fabe89">#fabe89</color>
+    <color name="color_f6943d">#f6943d</color>
+    <color name="color_8b989f">#8b989f</color>
+    <color name="color_E5E0E0">#e5e0e0</color>
+    <color name="color_30d491">#30d491</color>
+    <color name="color_28cd8a">#28cd8a</color>
+    <color name="color_2dd18a">#2dd18a</color>
+    <color name="color_fea54f">#fea54f</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_333333">#323232</color>
+    <color name="color_99000000">#99000000</color>
+    <color name="color_eeeeee">#eeeeee</color>
+    <color name="color_ff4800">#ff4800</color>
+    <color name="color_434343">#434343</color>
+    <color name="color_34d493">#34d493</color>
+    <color name="color_ebebeb">#EBEBEB</color>
+    <color name="color_0c000000">#0c000000</color>
+    <color name="color_0cffffff">#0cffffff</color>
+    <color name="color_b1b1b1">#b1b1b1</color>
+    <color name="color_444444">#444444</color>
+    <color name="color_fc4f4f">#FC4F4F</color>
+    <color name="color_d8d8d8">#D8D8D8</color>
+    <color name="color_c5ffe7">#c5ffe7</color>
+    <color name="color_4fd497">#4fd497</color>
+    <color name="color_0c4fd497">#0c4fd497</color>
+    <color name="color_77ffb1">#77ffb1</color>
+    <!--半透明灰色-->
+
+    <color name="color_ccffffff">#ccffffff</color>
+    <color name="color_6628cd8a">#6628cd8a</color>
+    <color name="color_f5f5f5">#f5f5f5</color>
+
+    <color name="color_c9c9c9">#c9c9c9</color>
 
 
+    <!--系统配色-->
+    <color name="colorPrimary">#0d95ff</color>
+    <color name="colorPrimaryDark">#0d95ff</color>
+    <color name="colorAccent">#b9b9b9</color>
 
+    <!--小白账单-->
     <color name="color_0d95ff">#0d95ff</color>
     <color name="color_3988ff">#3988ff</color>
     <color name="color_3e95fd">#3e95fd</color>
@@ -35,6 +77,12 @@
     <color name="color_c8c8c8">#c8c8c8</color>
     <color name="color_40d2ebff">#40d2ebff</color>
     <color name="color_1a1a1a">#1a1a1a</color>
+    <color name="color_f0f0f0">#f0f0f0</color>
+    <color name="color_ececec">#ececec</color>
+    <color name="color_646464">#646464</color>
+    <color name="color_b3ffffff">#b3ffffff</color>
+
+
 
 
 </resources>

@@ -37,6 +37,7 @@ dependencies {
     compile 'com.jaeger.statusbarutil:library:1.5.0'
     //butterknife
     compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //数字进度条
     compile 'com.daimajia.numberprogressbar:library:1.4@aar'
 }

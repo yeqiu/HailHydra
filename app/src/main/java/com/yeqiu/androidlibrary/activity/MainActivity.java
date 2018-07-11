@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         datas.add(new DomeData("OKGo的封装", OKGoActivity.class));
         datas.add(new DomeData("WebView的使用", WebViewActivity.class));
         datas.add(new DomeData("ProgressBar", ProgressBarActivity.class));
+        datas.add(new DomeData("StatusLayout", StatusLayoutActivity.class));
 
 
     }

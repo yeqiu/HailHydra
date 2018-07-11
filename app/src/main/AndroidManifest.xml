@@ -11,7 +11,7 @@
     <application
         android:name="com.yeqiu.androidlibrary.app.App"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/hydra"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
@@ -50,6 +50,7 @@
         <activity android:name="com.yeqiu.androidlibrary.activity.ProgressBarActivity"/>
         <activity android:name="com.yeqiu.androidlibrary.activity.ImmersionImageActivity"/>
         <activity android:name="com.yeqiu.androidlibrary.activity.ImmersionBarActivity"/>
+        <activity android:name="com.yeqiu.androidlibrary.activity.StatusLayoutActivity"/>
     </application>
 
 </manifest>
