@@ -1,6 +1,7 @@
 package com.yeqiu.androidlibrary.utils;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 /**
@@ -14,6 +15,12 @@ public class ToastUtils {
     private static long time;
 
     public static void showToast(Context context, String msg) {
+
+
+        if (TextUtils.isEmpty(msg)){
+            return;
+        }
+
         if (!msg.equals(oldMsg)) { // 当显示的内容不一样时，即断定为不是同一个Toast
             Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
             time = System.currentTimeMillis();

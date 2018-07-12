@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.Settings;
 import com.yeqiu.androiddome.R;
 import com.yeqiu.androidlibrary.adapter.SimpleAdapter;
 import com.yeqiu.androidlibrary.data.DomeData;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         datas.add(new DomeData("WebView的使用", WebViewActivity.class));
         datas.add(new DomeData("ProgressBar", ProgressBarActivity.class));
         datas.add(new DomeData("StatusLayout", StatusLayoutActivity.class));
+        datas.add(new DomeData("BaseActivity", SampleActivity.class));
 
 
     }
@@ -77,11 +79,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void testLog() {
-        Logger.init("test")              //设置tag
-                .logLevel(LogLevel.FULL) //显示全部日志，LogLevel.NONE不显示日志，默认是Full
-                .methodCount(1)          //方法栈打印的个数，默认是2
-                .methodOffset(0);        //设置调用堆栈的函数偏移值，0的话则从打印该Log的函数开始输出堆栈信息，默认是0
 
+
+
+
+        Settings setting = Logger.init("app_log");
+        setting.logLevel(LogLevel.FULL) //  显示全部日志，LogLevel.NONE不显示日志，默认是Full
+                .methodCount(5)         //  方法栈打印的个数，默认是2
+                .methodOffset(0)        //  设置调用堆栈的函数偏移值，0的话则从打印该Log的函数开始输出堆栈信息，默认是0
+                .hideThreadInfo();      //  隐藏线程信息
 
         Logger.i("测试数据1");
 

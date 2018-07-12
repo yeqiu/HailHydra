@@ -40,4 +40,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //数字进度条
     compile 'com.daimajia.numberprogressbar:library:1.4@aar'
+    //eventbus
+    compile 'org.greenrobot:eventbus:3.1.1'
 }

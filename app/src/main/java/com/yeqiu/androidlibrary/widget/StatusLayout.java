@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yeqiu.androiddome.R;
+import com.yeqiu.androidlibrary.utils.LogUtils;
 
 /**
  * @project：AndroidLbrary
@@ -44,7 +45,7 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
     private ImageView errorImg;
     private TextView errorTitle;
     private TextView errorText;
-    private TextView errorReload;
+    private TextView errorButton;
     private OnStatusLayoutClickListener onStatusLayoutClickListener;
 
 
@@ -79,7 +80,7 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
         errorImg = (ImageView) errorView.findViewById(R.id.iv_error_img);
         errorTitle = (TextView) errorView.findViewById(R.id.tv_error_title);
         errorText = (TextView) errorView.findViewById(R.id.tv_error_text);
-        errorReload = (TextView) errorView.findViewById(R.id.tv_error_reload);
+        errorButton = (TextView) errorView.findViewById(R.id.tv_error_reload);
 
 
         addViewToStatusLayout(emptyView);
@@ -88,7 +89,7 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
 
 
         emptyButton.setOnClickListener(this);
-        errorReload.setOnClickListener(this);
+        errorButton.setOnClickListener(this);
 
         emptyView.setVisibility(GONE);
         errorView.setVisibility(GONE);
@@ -252,14 +253,15 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
      */
     public void showErrorView(int picId, String title, String desc, String buttonDesc) {
 
-        emptyPic.setImageResource(picId);
-        emptyTitle.setText(title);
-        errorText.setText(desc);
-        emptyButton.setText(buttonDesc);
+        errorImg.setImageResource(picId);
 
-        emptyTitle.setVisibility(TextUtils.isEmpty(title) ? GONE : VISIBLE);
+        errorTitle.setText(title);
+        errorText.setText(desc);
+        errorButton .setText(buttonDesc);
+
+        errorTitle.setVisibility(TextUtils.isEmpty(title) ? GONE : VISIBLE);
         errorText.setVisibility(TextUtils.isEmpty(desc) ? GONE : VISIBLE);
-        emptyButton.setVisibility(TextUtils.isEmpty(buttonDesc) ? GONE : VISIBLE);
+        errorButton.setVisibility(TextUtils.isEmpty(buttonDesc) ? GONE : VISIBLE);
 
         showView(errorView);
         currentViewId = errorViewId;
@@ -381,11 +383,13 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.tv_empty_button:
+                LogUtils.i("tv_empty_button");
                 onStatusLayoutClickListener.onEmptyButtonClick();
                 break;
 
             case R.id.tv_error_reload:
-                onStatusLayoutClickListener.onReloadClick();
+                LogUtils.i("tv_error_reload");
+                onStatusLayoutClickListener.onErrorButtonClick();
                 break;
         }
 
@@ -400,7 +404,7 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
 
     public interface OnStatusLayoutClickListener {
 
-        void onReloadClick();
+        void onErrorButtonClick();
 
         void onEmptyButtonClick();
 
