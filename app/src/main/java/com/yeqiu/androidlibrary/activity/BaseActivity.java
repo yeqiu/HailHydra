@@ -34,7 +34,6 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-
     private StatusLayout statusLayout;
     private LinearLayout headLayout;
     public ImageView headBack;
@@ -106,7 +105,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void initStatusBar() {
 
         StatusBarUtils.with(this)
-                .setColor(getResources().getColor(R.color.color_white))
+                .setColor(getResources().getColor(R.color.color_ff2600))
                 .init();
     }
 
@@ -153,6 +152,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     //    --------- 以下方法供子类使用  ---------
 
+    /**
+     * 设置head的标题
+     * 自动显示标题栏
+     */
+    public void setHeaderTitle(String title) {
+        headLayout.setVisibility(View.VISIBLE);
+        headerTitle.setText(title);
+    }
     /**
      * 设置左上角返回图片
      *

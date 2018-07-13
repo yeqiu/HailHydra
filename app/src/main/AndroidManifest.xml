@@ -52,6 +52,7 @@
         <activity android:name="com.yeqiu.androidlibrary.activity.ImmersionBarActivity"/>
         <activity android:name="com.yeqiu.androidlibrary.activity.StatusLayoutActivity"/>
         <activity android:name="com.yeqiu.androidlibrary.activity.SampleActivity"/>
+        <activity android:name="com.yeqiu.androidlibrary.activity.TestActivity"/>
     </application>
 
 </manifest>

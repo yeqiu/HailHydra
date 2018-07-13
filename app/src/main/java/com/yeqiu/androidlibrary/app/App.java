@@ -21,4 +21,19 @@ public class App extends Application {
         return app;
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        init();
+    }
+
+
+    private void init() {
+
+        // TODO: 2018/7/12 初始化第三方的配置
+
+
+    }
+
 }
