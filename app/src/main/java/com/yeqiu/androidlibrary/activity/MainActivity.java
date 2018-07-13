@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
         domeList = (ListView) findViewById(R.id.dome_list);
         setHomeData();
 
-        //startActivity(new Intent(this,TestActivity.class));
+        startActivity(new Intent(this,TestActivity.class));
     }
 
     private void setHomeData() {

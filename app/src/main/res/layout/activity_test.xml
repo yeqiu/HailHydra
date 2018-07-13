@@ -5,24 +5,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/color_0d95ff"
-        android:text="aaaaa"/>
-
-
     <Button
+        android:id="@+id/tv_test"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="black"
-        android:text="黑色"/>
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="加载图片"/>
 
-    <Button
+    <ImageView
+        android:id="@+id/iv_test"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="baise"
-        android:text="白色"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        />
 
 
 </LinearLayout>
