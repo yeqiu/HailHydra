@@ -1,7 +1,7 @@
 package com.yeqiu.androidlibrary.utils;
 
 import android.content.Context;
-import android.widget.EditText;
+import android.view.View;
 
 /**
  * @project：AndroidLbrary
@@ -24,11 +24,10 @@ public class UIHelper {
 
     /**
      * 关闭键盘
-     * @param editText
-     * @param context
+     * @param view
      */
-    public static void closeKeybord(EditText editText, Context context) {
-        KeybordUtils.closeKeybord(editText,context);
+    public static void closeKeybord(View view) {
+        KeybordUtils.closeKeybord(view);
 
     }
 

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 /**
  * @project：Xbzd
@@ -18,29 +17,24 @@ public class KeybordUtils {
     /**
      * 打开软键盘
      *
-     * @param mEditText
-     * @param mContext
+     * @param view
      */
-    public static void openKeybord(EditText mEditText, Context mContext) {
-        InputMethodManager imm = (InputMethodManager) mContext
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(mEditText, InputMethodManager.RESULT_SHOWN);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
-                InputMethodManager.HIDE_IMPLICIT_ONLY);
+    public static void openKeybord(View view) {
+        ((InputMethodManager) view.getContext().getSystemService(
+                Context.INPUT_METHOD_SERVICE)).toggleSoftInput(0, InputMethodManager.RESULT_SHOWN);
     }
 
     /**
      * 关闭软键盘
      *
-     * @param mEditText
-     * @param mContext
-
+     * @param view
      */
-    public static void closeKeybord(EditText mEditText, Context mContext) {
-        InputMethodManager imm = (InputMethodManager) mContext
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
+    public static void closeKeybord(View view) {
+        ((InputMethodManager) view.getContext().getSystemService(
+                Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                view.getWindowToken(), 0);
     }
+
 
     /**
      * 判断当前软键盘是否打开
