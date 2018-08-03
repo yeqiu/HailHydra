@@ -6,17 +6,20 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
 
     <application
-        android:name="com.yeqiu.androidlibrary.app.App"
+        android:name="com.yeqiu.hailhydra.app.App"
         android:allowBackup="true"
         android:icon="@drawable/hydra"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.yeqiu.androidlibrary.activity.MainActivity">
+        <activity android:name="com.yeqiu.hailhydra.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -24,36 +27,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.yeqiu.androidlibrary.activity.ImmersivetestActivity"
+            android:name="com.yeqiu.hailhydra.activity.ImmersivetestActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.androidlibrary.activity.SoftKeyListenerActivity"
+            android:name="com.yeqiu.hailhydra.activity.SoftKeyListenerActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.androidlibrary.activity.NumberkeyActivity"
+            android:name="com.yeqiu.hailhydra.activity.NumberkeyActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.androidlibrary.activity.NumberkeyActivity2"
+            android:name="com.yeqiu.hailhydra.activity.NumberkeyActivity2"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.androidlibrary.activity.PasswordViewActivity"
+            android:name="com.yeqiu.hailhydra.activity.PasswordViewActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.yeqiu.androidlibrary.activity.EditTextActivity"
+            android:name="com.yeqiu.hailhydra.activity.EditTextActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.DialogActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.NetworkListenerActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.RecyclerViewDomeActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.OKGoActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.WebViewActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.ProgressBarActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.ImmersionImageActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.ImmersionBarActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.StatusLayoutActivity"/>
-        <activity android:name="com.yeqiu.androidlibrary.activity.SampleActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.DialogActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.NetworkListenerActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.RecyclerViewDomeActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.OKGoActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.WebViewActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.ProgressBarActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.ImmersionImageActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.ImmersionBarActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.StatusLayoutActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.SampleActivity"/>
 
-        <activity android:name="com.yeqiu.androidlibrary.activity.TestActivity"/>
+        <activity android:name="com.yeqiu.hailhydra.activity.WebViewScreenshotActivity"
+                  android:windowSoftInputMode="adjustResize"
+
+            />
 
     </application>
 

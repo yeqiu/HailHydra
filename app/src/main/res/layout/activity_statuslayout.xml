@@ -7,7 +7,7 @@
 
 
 
-    <com.yeqiu.androidlibrary.widget.StatusLayout
+    <com.yeqiu.hailhydra.widget.StatusLayout
         android:id="@+id/sl_status"
         android:layout_width="match_parent"
         android:layout_height="0dp"
