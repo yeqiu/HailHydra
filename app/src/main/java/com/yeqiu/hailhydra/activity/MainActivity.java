@@ -52,6 +52,7 @@ public class MainActivity extends BaseActivity {
         datas.add(new DomeData("WebView的使用", WebViewActivity.class));
         datas.add(new DomeData("ProgressBar", ProgressBarActivity.class));
         datas.add(new DomeData("webview截长图", WebViewScreenshotActivity.class));
+        datas.add(new DomeData("切换主线程", ThreadActivity.class));
 
 
     }

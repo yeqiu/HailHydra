@@ -60,6 +60,7 @@
                   android:windowSoftInputMode="adjustResize"
 
             />
+        <activity android:name="com.yeqiu.hailhydra.activity.ThreadActivity"/>
 
     </application>
 

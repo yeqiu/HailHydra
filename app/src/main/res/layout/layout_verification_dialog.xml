@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_8_0_0_ffffff"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_edit_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="短信验证码"
+        android:textColor="@color/color_323232"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+
+    <com.yeqiu.hailhydra.widget.PasswordView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        app:borderColor="@color/color_646464"
+        app:borderWidth="3dp"
+        app:mode="underline"
+        app:passwordLength="6"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="34dp"
+        android:text="没收到验证码？"
+        android:textColor="@color/color_0d95ff"
+        />
+
+
+</LinearLayout>
