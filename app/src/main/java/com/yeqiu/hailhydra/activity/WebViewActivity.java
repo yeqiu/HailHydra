@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 import static android.view.KeyEvent.KEYCODE_BACK;
 

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.utils.UIHelper;
 import com.yeqiu.hailhydra.view.dialog.CommonDialog;
 import com.yeqiu.hailhydra.view.dialog.EditDialog;

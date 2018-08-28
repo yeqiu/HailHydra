@@ -6,11 +6,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.adapter.SimpleAdapter;
 import com.yeqiu.hailhydra.data.DomeData;
 
 import java.util.ArrayList;
+
+
 
 public class MainActivity extends BaseActivity {
 
@@ -53,6 +55,7 @@ public class MainActivity extends BaseActivity {
         datas.add(new DomeData("ProgressBar", ProgressBarActivity.class));
         datas.add(new DomeData("webview截长图", WebViewScreenshotActivity.class));
         datas.add(new DomeData("切换主线程", ThreadActivity.class));
+        datas.add(new DomeData("LitePal数据库",LitePalActivity.class));
 
 
     }

@@ -8,9 +8,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.widget.NumberKeyBoardView;
 import com.yeqiu.hailhydra.widget.OnKeyboardListener;
-import com.yeqiu.androiddome.R;
+
 
 /**
  * @author ye

@@ -5,9 +5,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.utils.SoftKeyBroadManager;
 import com.yeqiu.hailhydra.utils.ToastUtils;
-import com.yeqiu.androiddome.R;
+
 
 /**
  * @author ye

@@ -3,7 +3,7 @@ package com.yeqiu.hailhydra.view.dialog;
 import android.app.Activity;
 import android.view.View;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 /**
  * @project：HailHydra

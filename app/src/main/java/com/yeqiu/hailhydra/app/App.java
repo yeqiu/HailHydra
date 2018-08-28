@@ -1,6 +1,6 @@
 package com.yeqiu.hailhydra.app;
 
-import android.app.Application;
+import org.litepal.LitePalApplication;
 
 /**
  * @project：android_tools
@@ -9,7 +9,7 @@ import android.app.Application;
  * @describe：
  * @fix：
  */
-public class App extends Application {
+public class App extends LitePalApplication {
 
     private static App app;
 

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
-import com.yeqiu.androiddome.BuildConfig;
+import com.yeqiu.hailhydra.BuildConfig;
 import com.yeqiu.hailhydra.activity.MainActivity;
 
 import java.util.Iterator;

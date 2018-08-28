@@ -3,7 +3,7 @@ package com.yeqiu.hailhydra.net;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.yeqiu.androiddome.BuildConfig;
+import com.yeqiu.hailhydra.BuildConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;

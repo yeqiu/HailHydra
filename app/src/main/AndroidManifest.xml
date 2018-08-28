@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.yeqiu.androiddome">
+          package="com.yeqiu.hailhydra">
 
 
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
 
 
     <application
@@ -28,8 +26,8 @@
         </activity>
         <activity
             android:name="com.yeqiu.hailhydra.activity.ImmersivetestActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name="com.yeqiu.hailhydra.activity.SoftKeyListenerActivity"
             android:screenOrientation="portrait"/>
@@ -45,22 +43,50 @@
         <activity
             android:name="com.yeqiu.hailhydra.activity.EditTextActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.DialogActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.NetworkListenerActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.RecyclerViewDomeActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.OKGoActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.WebViewActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.ProgressBarActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.ImmersionImageActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.ImmersionBarActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.StatusLayoutActivity"/>
-        <activity android:name="com.yeqiu.hailhydra.activity.SampleActivity"/>
 
-        <activity android:name="com.yeqiu.hailhydra.activity.WebViewScreenshotActivity"
-                  android:windowSoftInputMode="adjustResize"
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.DialogActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.NetworkListenerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.RecyclerViewDomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.OKGoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.WebViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.ProgressBarActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.ImmersionImageActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.ImmersionBarActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.StatusLayoutActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.SampleActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.WebViewScreenshotActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
 
             />
-        <activity android:name="com.yeqiu.hailhydra.activity.ThreadActivity"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.ThreadActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yeqiu.hailhydra.activity.LitePalActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

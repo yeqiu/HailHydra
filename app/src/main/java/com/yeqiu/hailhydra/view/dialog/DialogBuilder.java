@@ -2,7 +2,7 @@ package com.yeqiu.hailhydra.view.dialog;
 
 import android.text.InputType;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.view.dialog.dialoglistener.BaseDialogListener;
 
 import java.util.ArrayList;

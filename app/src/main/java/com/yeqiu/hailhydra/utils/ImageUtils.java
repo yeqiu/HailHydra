@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestOptions;
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 import java.io.File;
 import java.io.FileOutputStream;

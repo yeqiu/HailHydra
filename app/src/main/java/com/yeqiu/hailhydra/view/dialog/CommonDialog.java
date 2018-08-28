@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 /**
  * @project：Xbzd

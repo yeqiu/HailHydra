@@ -2,7 +2,8 @@ package com.yeqiu.hailhydra.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import com.yeqiu.androiddome.R;
+
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.utils.StatusBarUtils;
 
 public class ImmersionBarActivity extends AppCompatActivity {

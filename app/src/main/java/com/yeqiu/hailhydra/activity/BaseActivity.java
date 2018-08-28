@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.utils.AppManager;
 import com.yeqiu.hailhydra.utils.ClickUtils;
 import com.yeqiu.hailhydra.utils.LogUtils;

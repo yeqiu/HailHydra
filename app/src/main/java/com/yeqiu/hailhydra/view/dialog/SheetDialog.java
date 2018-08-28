@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.utils.DensityUtils;
 
 import java.util.List;

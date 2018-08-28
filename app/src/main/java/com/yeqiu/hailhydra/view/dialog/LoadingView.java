@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 
 /**

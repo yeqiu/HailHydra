@@ -11,7 +11,7 @@ import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.util.AttributeSet;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 import java.util.List;
 

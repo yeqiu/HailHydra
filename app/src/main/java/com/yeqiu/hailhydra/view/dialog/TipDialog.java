@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

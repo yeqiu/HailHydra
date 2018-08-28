@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 /**
  * @author ye

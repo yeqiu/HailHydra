@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.yeqiu.hailhydra.widget.NumberKeyBoardView;
 import com.yeqiu.hailhydra.widget.OnKeyboardListener;
 import com.yeqiu.hailhydra.widget.PasswordView;
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 /**
  * @author ye

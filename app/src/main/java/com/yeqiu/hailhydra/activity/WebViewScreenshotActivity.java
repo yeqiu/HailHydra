@@ -15,7 +15,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.utils.ImageUtils;
 
 import butterknife.BindView;

@@ -5,9 +5,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.receiver.NetWorkStateReceiver;
 import com.yeqiu.hailhydra.utils.NetWorkUtils;
-import com.yeqiu.androiddome.R;
+
 
 /**
  * @project：android_tools

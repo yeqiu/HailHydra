@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.net.OkManager;
 import com.yeqiu.hailhydra.net.callback.dialogcallback.DialogCallback;
 

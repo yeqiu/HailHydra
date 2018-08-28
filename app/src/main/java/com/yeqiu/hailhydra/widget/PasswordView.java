@@ -19,7 +19,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 
-import com.yeqiu.androiddome.R;
+import com.yeqiu.hailhydra.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
