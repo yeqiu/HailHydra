@@ -13,7 +13,6 @@ import com.yeqiu.hailhydra.data.DomeData;
 import java.util.ArrayList;
 
 
-
 public class MainActivity extends BaseActivity {
 
     private ListView domeList;
@@ -29,7 +28,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        setHeaderTitle("MainActivity");
+        showHeadLayout(false);
         domeList = (ListView) findViewById(R.id.dome_list);
         setHomeData();
 
@@ -55,7 +54,9 @@ public class MainActivity extends BaseActivity {
         datas.add(new DomeData("ProgressBar", ProgressBarActivity.class));
         datas.add(new DomeData("webview截长图", WebViewScreenshotActivity.class));
         datas.add(new DomeData("切换主线程", ThreadActivity.class));
-        datas.add(new DomeData("LitePal数据库",LitePalActivity.class));
+        datas.add(new DomeData("LitePal数据库", LitePalActivity.class));
+        datas.add(new DomeData("上滑渐变显示标题栏", TitlebarGradientActivity.class));
+
 
 
     }

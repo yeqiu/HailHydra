@@ -87,6 +87,7 @@
         <activity
             android:name="com.yeqiu.hailhydra.activity.LitePalActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.TitlebarGradientActivity"/>
 
     </application>
 

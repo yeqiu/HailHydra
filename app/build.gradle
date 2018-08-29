@@ -47,4 +47,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     //litepal数据库
     compile 'org.litepal.android:core:2.0.0'
+
+    compile 'com.google.code.gson:gson:2.8.5'
 }

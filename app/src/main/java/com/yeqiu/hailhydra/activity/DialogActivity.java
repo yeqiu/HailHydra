@@ -53,6 +53,7 @@ public class DialogActivity extends AppCompatActivity {
         EditDialog.setOnClickListener(onClickListener);
         SheetDialog.setOnClickListener(onClickListener);
         tipDialog.setOnClickListener(onClickListener);
+
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {

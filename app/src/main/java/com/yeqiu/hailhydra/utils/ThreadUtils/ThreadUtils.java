@@ -8,6 +8,8 @@ import android.os.Looper;
  * @date 2018/8/15
  * @describe：
  * @fix：
+ * 参考资料
+ * https://blog.csdn.net/qiujuer/article/details/41900879
  */
 public class ThreadUtils {
 
