@@ -80,7 +80,6 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
                 .HORIZONTAL, false);
 
 
-
         switch (type) {
 
             case 1:

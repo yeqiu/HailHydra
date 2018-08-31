@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yeqiu.hailhydra.R;
-import com.yeqiu.hailhydra.utils.LogUtils;
 
 import java.util.ArrayList;
 
@@ -33,8 +32,9 @@ public class TitlebarGradientActivity extends AppCompatActivity {
     private ListView list;
     private LinearLayout head;
 
+    // 滑动到什么地方开始变色
     private int height = 200;
-    // 滑动到什么地方完全变色
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,23 +77,20 @@ public class TitlebarGradientActivity extends AppCompatActivity {
                 //计算滑动距离
                 int scrollY = getScrollY(list);
 
-                LogUtils.i("scrollY = "+scrollY);
-                if (scrollY<=0){
-                    //在顶部时完全透明
+
+                if (scrollY <= 0) {
+                    //当前没有滑动，head全透明
                     head.setAlpha(0f);
-                }else if (scrollY>0&&scrollY<=height){
+                } else if (scrollY > 0 && scrollY <= height) {
                     //在滑动高度中时，设置透明度百分比（当前高度/总高度）
                     float d = (float) scrollY / height;
                     head.setAlpha(d);
-                    LogUtils.i("d = "+d);
-                }else{
+                } else {
                     //滑出总高度 完全不透明
                     head.setAlpha(1f);
                 }
 
             }
-
-
         });
     }
 

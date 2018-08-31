@@ -56,6 +56,7 @@ public class MainActivity extends BaseActivity {
         datas.add(new DomeData("切换主线程", ThreadActivity.class));
         datas.add(new DomeData("LitePal数据库", LitePalActivity.class));
         datas.add(new DomeData("上滑渐变显示标题栏", TitlebarGradientActivity.class));
+        datas.add(new DomeData("折叠悬浮头", CoordinatorLayoutActivity.class));
 
 
 

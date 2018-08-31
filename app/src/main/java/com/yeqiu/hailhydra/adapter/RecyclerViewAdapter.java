@@ -41,7 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.item_recyclerview_1, null);
+        View view = View.inflate(context, R.layout.item_recyclerview, null);
 
         ViewHolder viewHolder = new ViewHolder(view);
 
@@ -80,7 +80,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.type = type;
         notifyDataSetChanged();
     }
-
 
 
 
