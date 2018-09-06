@@ -45,7 +45,7 @@
     <!--系统配色-->
     <color name="colorPrimary">#0d95ff</color>
     <color name="colorPrimaryDark">#0d95ff</color>
-    <color name="colorAccent">#b9b9b9</color>
+    <color name="colorAccent">#ff2f00</color>
 
 
     <color name="color_0d95ff">#0d95ff</color>

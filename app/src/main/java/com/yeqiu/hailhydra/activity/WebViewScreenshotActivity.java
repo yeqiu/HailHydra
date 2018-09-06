@@ -49,7 +49,7 @@ public class WebViewScreenshotActivity extends AppCompatActivity {
             WebView.enableSlowWholeDocumentDraw();
         }
 
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_webview_screenshot);
 
         ButterKnife.bind(this);
 
