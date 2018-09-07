@@ -193,7 +193,7 @@ public class EtUtils {
 
             for (TextView textView : inputViews) {
                 String text = textView.getText().toString().trim();
-                Log.i("test", "EtUtils:afterTextChanged, " + text);
+                Log.i("test", "EtUtil:afterTextChanged, " + text);
 
                 if (TextUtils.isEmpty(text)) {
                     inputDone = false;

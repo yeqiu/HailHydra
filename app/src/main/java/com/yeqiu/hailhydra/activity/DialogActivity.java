@@ -87,6 +87,7 @@ public class DialogActivity extends AppCompatActivity {
 
                 case R.id.CommonDialog_2:
 
+
                     new CommonDialog(DialogActivity.this)
                             .build()
                             .setTitleText("测试标题")
