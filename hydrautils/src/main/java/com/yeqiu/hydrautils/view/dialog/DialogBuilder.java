@@ -1,9 +1,10 @@
-package com.yeqiu.hailhydra.view.dialog;
+package com.yeqiu.hydrautils.view.dialog;
 
 import android.text.InputType;
 
-import com.yeqiu.hailhydra.R;
-import com.yeqiu.hailhydra.view.dialog.dialoglistener.BaseDialogListener;
+import com.yeqiu.hydrautils.R;
+import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
+import com.yeqiu.hydrautils.view.dialog.base.BaseDialogListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,95 +20,109 @@ public class DialogBuilder {
 
 
     /**
-     *点击外部是否消失
+     * 点击外部是否消失
      */
     private boolean canceledOnTouchOutside = false;
     /**
-     *点击返回是否消失
+     * 点击返回是否消失
      */
     private boolean isBackCancel = true;
     /**
-     *设置仅仅只有确认键
+     * 设置仅仅只有确认键
      */
     private boolean justConfirm = false;
     /**
-     *标题文字
+     * 标题文字
      */
     private String titleText = "标题";
     /**
-     *确认键文字
+     * 确认键文字
      */
     private String confirmText = "确定";
     /**
-     *取消键文字
+     * 取消键文字
      */
     private String cancelText = "取消";
     /**
-     *内容文字
+     * 内容文字
      */
     private String descText = "内容";
     /**
-     *确认的颜色
+     * 确认的颜色
      */
     private int confirmColor = R.color.color_808080;
     /**
-     *取消的颜色
+     * 取消的颜色
      */
     private int cancelColor = R.color.color_808080;
     /**
-     *标题的颜色
+     * 标题的颜色
      */
     private int titleColor = R.color.color_808080;
     /**
-     *内容的颜色
+     * 内容的颜色
      */
     private int descColor = R.color.color_808080;
     /**
-     *sheet item的颜色
+     * sheet item的颜色
      */
     private int itemColor = R.color.color_1a1a1a;
     /**
-     *标题的文字大小
+     * 标题的文字大小
      */
     private int titleSize = 15;
     /**
-     *内容的文字大小
+     * 内容的文字大小
      */
     private int descSize = 15;
     /**
-     *确认的文字大小
+     * 确认的文字大小
      */
     private int confirmSizer = 15;
     /**
-     *取消的文字大小
+     * 取消的文字大小
      */
     private int cancelSize = 15;
     /**
-     *sheet item的文字大小
+     * sheet item的文字大小
      */
     private int itemlSize = 15;
     /**
-     *输入框的输入类型
+     * 输入框的输入类型
      */
     private int inputType = InputType.TYPE_CLASS_TEXT;
     /**
-     *输入框的提示文字
+     * 输入框的提示文字
      */
     private String hintText = "hint提示";
     /**
-     *输入框的文字
+     * 输入框的文字
      */
     private int inputSize = 15;
     /**
-     *Sheet的Item数据
+     * Sheet的Item数据
      */
     private List<String> sheetDatas;
 
+    /**
+     * 是否是加载框 仅对TipDialog有效
+     */
+    public boolean isLoading = false;
+    /**
+     * 图片id 仅对TipDialog有效
+     */
+    private int iconId = -999;
+    /**
+     * tip的提示文字 仅对TipDialog有效
+     */
+    private String tipText;
+
+    private boolean orientationHorizontal = true;
 
 
     private BaseDialog baseDialog;
     /**
-     *dialog监听
+     * dialog监听
      */
     private BaseDialogListener dialogListener;
 
@@ -234,6 +249,27 @@ public class DialogBuilder {
         return this;
     }
 
+    public DialogBuilder setLoading(boolean loading) {
+        isLoading = loading;
+        return this;
+    }
+
+    public DialogBuilder setIconId(int iconId) {
+        this.iconId = iconId;
+        return this;
+    }
+
+    public DialogBuilder setTipText(String tipText) {
+        this.tipText = tipText;
+        return this;
+    }
+
+    public DialogBuilder setOrientationHorizontal(boolean orientationHorizontal) {
+        this.orientationHorizontal = orientationHorizontal;
+        return this;
+    }
+
+
     //----------get()-----------
 
     public boolean getCanceledOnTouchOutside() {
@@ -325,5 +361,21 @@ public class DialogBuilder {
 
     public int getItemlSize() {
         return itemlSize;
+    }
+
+    public boolean isLoading() {
+        return isLoading;
+    }
+
+    public int getIconId() {
+        return iconId;
+    }
+
+    public String getTipText() {
+        return tipText == null ? "" : tipText;
+    }
+
+    public boolean getOrientationHorizontal() {
+        return orientationHorizontal;
     }
 }

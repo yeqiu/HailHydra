@@ -1,11 +1,11 @@
-package com.yeqiu.hailhydra.view.dialog;
+package com.yeqiu.hydrautils.view.dialog;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.yeqiu.hailhydra.R;
+import com.yeqiu.hydrautils.R;
+import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 
 import static android.R.attr.inputType;
 
@@ -74,29 +74,26 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-            case R.id.tv_edit_dialog_confirm:
-                if (dialogBuilder.getDialogListener() != null) {
-                    dialogBuilder.getDialogListener().onConfirmClick(edit.getText().toString());
-                }
-                //关闭弹窗
-                if (dialog != null && dialog.isShowing()) {
-                    dialog.dismiss();
-                }
-                break;
+        int i = v.getId();
+        if (i == R.id.tv_edit_dialog_confirm) {
+            if (dialogBuilder.getDialogListener() != null) {
+                dialogBuilder.getDialogListener().onConfirmClick(edit.getText().toString());
+            }
+            //关闭弹窗
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
 
-            case R.id.tv_edit_dialog_cancel:
-                if (dialogBuilder.getDialogListener() != null) {
-                    dialogBuilder.getDialogListener().onCanceclClick(edit.getText().toString());
-                }
-                //关闭弹窗
-                if (dialog != null && dialog.isShowing()) {
-                    dialog.dismiss();
-                }
-                break;
+        } else if (i == R.id.tv_edit_dialog_cancel) {
+            if (dialogBuilder.getDialogListener() != null) {
+                dialogBuilder.getDialogListener().onCanceclClick(edit.getText().toString());
+            }
+            //关闭弹窗
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
 
-            default:
-                break;
+        } else {
         }
     }
 }

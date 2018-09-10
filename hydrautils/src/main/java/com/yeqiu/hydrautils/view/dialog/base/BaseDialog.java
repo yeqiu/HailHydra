@@ -1,4 +1,4 @@
-package com.yeqiu.hailhydra.view.dialog;
+package com.yeqiu.hydrautils.view.dialog.base;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.yeqiu.hailhydra.R;
-import com.yeqiu.hailhydra.utils.DensityUtils;
+import com.yeqiu.hydrautils.R;
+import com.yeqiu.hydrautils.common.DensityUtils;
+import com.yeqiu.hydrautils.view.dialog.DialogBuilder;
 
 /**
  * @project：AndroidLbrary

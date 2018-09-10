@@ -8,11 +8,11 @@ import android.widget.Button;
 
 import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.utils.UIHelper;
-import com.yeqiu.hailhydra.view.dialog.CommonDialog;
-import com.yeqiu.hailhydra.view.dialog.EditDialog;
-import com.yeqiu.hailhydra.view.dialog.SheetDialog;
-import com.yeqiu.hailhydra.view.dialog.TipDialog;
-import com.yeqiu.hailhydra.view.dialog.dialoglistener.DialogListener;
+import com.yeqiu.hydrautils.view.dialog.CommonDialog;
+import com.yeqiu.hydrautils.view.dialog.DialogListener;
+import com.yeqiu.hydrautils.view.dialog.EditDialog;
+import com.yeqiu.hydrautils.view.dialog.SheetDialog;
+import com.yeqiu.hydrautils.view.dialog.TipDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,6 @@ import java.util.List;
  */
 public class DialogActivity extends AppCompatActivity {
 
-    private TipDialog tipDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,10 +33,6 @@ public class DialogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dialog);
         initView();
 
-        tipDialog = new TipDialog.Builder(DialogActivity.this)
-                .setIconType(TipDialog.Builder.ICON_TYPE_LOADING)
-                .setTipWord("正在加载")
-                .create();
 
     }
 
@@ -140,7 +135,7 @@ public class DialogActivity extends AppCompatActivity {
                             .build()
                             .setSheetDatas(items)
                             .setTitleText("标题")
-                            .setOnDialogListener(new DialogListener(){
+                            .setOnDialogListener(new DialogListener() {
                                 @Override
                                 public void onItemClick(int position, String text) {
                                     UIHelper.showToast(getApplicationContext(), text);
@@ -154,8 +149,18 @@ public class DialogActivity extends AppCompatActivity {
 
                 case R.id.tipDialog:
 
+//
+//                    tipDialog.show();
+//
+//                    tipDialog.setDismissTime(1500);
 
-                    tipDialog.show();
+
+                    new TipDialog(DialogActivity.this)
+                            .build()
+                            .setIconId(R.drawable.icon_done)
+                            .setTipText("test")
+                            .setOrientationHorizontal(true)
+                            .show();
 
 
                     break;

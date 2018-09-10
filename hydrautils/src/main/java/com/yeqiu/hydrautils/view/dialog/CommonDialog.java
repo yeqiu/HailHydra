@@ -1,10 +1,11 @@
-package com.yeqiu.hailhydra.view.dialog;
+package com.yeqiu.hydrautils.view.dialog;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yeqiu.hailhydra.R;
+import com.yeqiu.hydrautils.R;
+import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 
 /**
  * @project：Xbzd
@@ -71,26 +72,25 @@ public class CommonDialog extends BaseDialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-            case R.id.tv_common_dialog_confirm:
-                if (dialogBuilder.getDialogListener() != null) {
-                    dialogBuilder.getDialogListener().onConfirmClick();
-                }
-                //关闭弹窗
-                if (dialog != null && dialog.isShowing()) {
-                    dialog.dismiss();
-                }
-                break;
+        int i = v.getId();
+        if (i == R.id.tv_common_dialog_confirm) {
+            if (dialogBuilder.getDialogListener() != null) {
+                dialogBuilder.getDialogListener().onConfirmClick();
+            }
+            //关闭弹窗
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
 
-            case R.id.tv_common_dialog_cancel:
-                if (dialogBuilder.getDialogListener() != null) {
-                    dialogBuilder.getDialogListener().onCanceclClick();
-                }
-                //关闭弹窗
-                if (dialog != null && dialog.isShowing()) {
-                    dialog.dismiss();
-                }
-                break;
+        } else if (i == R.id.tv_common_dialog_cancel) {
+            if (dialogBuilder.getDialogListener() != null) {
+                dialogBuilder.getDialogListener().onCanceclClick();
+            }
+            //关闭弹窗
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
+
         }
 
     }

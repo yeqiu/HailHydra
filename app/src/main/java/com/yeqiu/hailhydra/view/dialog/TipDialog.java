@@ -160,10 +160,10 @@ public class TipDialog extends Dialog {
 
                 if (mCurrentIconType == ICON_TYPE_SUCCESS) {
                     imageView.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable
-                            .qmui_icon_notify_done));
+                            .icon_done));
                 } else if (mCurrentIconType == ICON_TYPE_FAIL) {
                     imageView.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable
-                            .qmui_icon_notify_error));
+                            .icon_error));
                 } else {
                     imageView.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable
                             .qmui_icon_notify_info));

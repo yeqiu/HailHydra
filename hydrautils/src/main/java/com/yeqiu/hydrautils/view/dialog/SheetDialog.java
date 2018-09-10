@@ -1,4 +1,4 @@
-package com.yeqiu.hailhydra.view.dialog;
+package com.yeqiu.hydrautils.view.dialog;
 
 import android.app.Activity;
 import android.text.TextUtils;
@@ -10,10 +10,13 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.yeqiu.hailhydra.R;
-import com.yeqiu.hailhydra.utils.DensityUtils;
+import com.yeqiu.hydrautils.R;
+import com.yeqiu.hydrautils.common.DensityUtils;
+import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 
 import java.util.List;
+
+;
 
 /**
  * @project：Xbzd
