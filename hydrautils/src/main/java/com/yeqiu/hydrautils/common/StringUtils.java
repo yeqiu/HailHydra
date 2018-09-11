@@ -1,13 +1,8 @@
 package com.yeqiu.hydrautils.common;
 
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
 /**
  * @author ye
@@ -16,6 +11,10 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
  */
 public class StringUtils {
 
+    /**
+     * 金额 格式化
+     */
+    private static final DecimalFormat AMOUNT_FORMAT = new DecimalFormat("###,###,###,##0.00");
 
     /**
      * 字符串判空
@@ -33,20 +32,6 @@ public class StringUtils {
             return true;
         }
         return false;
-    }
-
-
-    /**
-     * 关键字变色
-     */
-    public static CharSequence matcherSearchText(int color, String string, String keyWord) {
-        SpannableStringBuilder builder = new SpannableStringBuilder(string);
-        int indexOf = string.indexOf(keyWord);
-        if (indexOf != -1) {
-            builder.setSpan(new ForegroundColorSpan(color), indexOf, indexOf + keyWord.length(),
-                    SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        return builder;
     }
 
 
@@ -157,7 +142,128 @@ public class StringUtils {
 
         String format = df.format(number);
         return format;
-
-
     }
+
+
+    /**
+     * 判断字符串是否是整数
+     */
+    public static boolean isInteger(String value) {
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /**
+     * 判断字符串是否是双精度浮点数
+     */
+    public static boolean isDouble(String value) {
+        try {
+            Double.parseDouble(value);
+            return value.contains(".");
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * 隐藏手机中间4位号码
+     * 130****0000
+     *
+     * @param mobile_phone 手机号码
+     * @return 130****0000
+     */
+    public static String hideMobilePhone(String mobile_phone) {
+        if (mobile_phone.length() != 11) {
+            return "手机号码不正确";
+        }
+        return mobile_phone.substring(0, 3) + "****" + mobile_phone.substring(7, 11);
+    }
+
+    /**
+     * 格式化银行卡 加*
+     * 3749 **** **** 330
+     *
+     * @param cardNo 银行卡
+     * @return 3749 **** **** 330
+     */
+    public static String formatCard(String cardNo) {
+        if (cardNo.length() < 8) {
+            return "银行卡号有误";
+        }
+        String card = "";
+        card = cardNo.substring(0, 4) + " **** **** ";
+        card += cardNo.substring(cardNo.length() - 4);
+        return card;
+    }
+
+    /**
+     * 获取银行卡后四位
+     *
+     * @param cardNo
+     * @return
+     */
+    public static String getCardEnd(String cardNo) {
+        if (cardNo.length() < 8) {
+            return "银行卡号有误";
+        }
+        String card = "";
+        card += cardNo.substring(cardNo.length() - 4);
+        return card;
+    }
+
+    /**
+     * 金额格式化
+     *
+     * @param value 数值
+     * @return
+     */
+    public static String getAmountValue(String value) {
+        if (isEmpty(value)) {
+            return "0";
+        }
+        return AMOUNT_FORMAT.format(Double.parseDouble(value));
+    }
+
+    /**
+     * 首字母大写
+     *
+     * @param s 待转字符串
+     * @return 首字母大写字符串
+     */
+    public static String upperFirstLetter(String s) {
+        if (isEmpty(s) || !Character.isLowerCase(s.charAt(0))) {
+            return s;
+        }
+        return String.valueOf((char) (s.charAt(0) - 32)) + s.substring(1);
+    }
+
+
+    /**
+     * 反转字符串 倒序
+     *
+     * @param s 待反转字符串
+     * @return 反转字符串
+     */
+    public static String reverse(String s) {
+        int len = s.length();
+        if (len <= 1) {
+            return s;
+        }
+        int mid = len >> 1;
+        char[] chars = s.toCharArray();
+        char c;
+        for (int i = 0; i < mid; ++i) {
+            c = chars[i];
+            chars[i] = chars[len - i - 1];
+            chars[len - i - 1] = c;
+        }
+        return new String(chars);
+    }
+
+
 }
