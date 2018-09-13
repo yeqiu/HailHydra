@@ -35,8 +35,8 @@ public class SheetDialog extends BaseDialog {
     @Override
     protected void setWindow() {
         Window window = dialog.getWindow();
-        window.getDecorView().setPadding(DensityUtils.dp2px(context, 10), 0, DensityUtils.dp2px
-                (context, 10), DensityUtils.dp2px(context, 10));
+        window.getDecorView().setPadding(DensityUtils.dp2px( 10), 0, DensityUtils.dp2px
+                (10), DensityUtils.dp2px(10));
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -88,7 +88,7 @@ public class SheetDialog extends BaseDialog {
             tv.setText(text);
             tv.setTag(i);
 
-            int padding = DensityUtils.dp2px(context, 10);
+            int padding = DensityUtils.dp2px(10);
             tv.setPadding(padding, padding, padding, padding);
             tv.setGravity(Gravity.CENTER);
             tv.setTextSize(dialogBuilder.getItemlSize());

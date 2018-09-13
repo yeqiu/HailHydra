@@ -62,15 +62,15 @@ public class TipDialog extends BaseDialog {
             llRoot.setOrientation(LinearLayout.VERTICAL);
             RelativeLayout.LayoutParams rootLayoutParams = (RelativeLayout.LayoutParams) llRoot
                     .getLayoutParams();
-            rootLayoutParams.width = DensityUtils.dp2px(context, 100);
-            rootLayoutParams.height = DensityUtils.dp2px(context, 100);
+            rootLayoutParams.width = DensityUtils.dp2px(100);
+            rootLayoutParams.height = DensityUtils.dp2px(100);
             llRoot.setLayoutParams(rootLayoutParams);
         }
 
         if (dialogBuilder.getIconId() != -999) {
             ImageView imageView = new ImageView(context);
             LinearLayout.LayoutParams imageViewLP = new LinearLayout.LayoutParams(DensityUtils
-                    .dp2px(context, 28), DensityUtils.dp2px(context, 28));
+                    .dp2px(28), DensityUtils.dp2px(28));
             imageView.setLayoutParams(imageViewLP);
             imageView.setImageResource(dialogBuilder.getIconId());
             llRoot.addView(imageView);
@@ -82,13 +82,13 @@ public class TipDialog extends BaseDialog {
                     .LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             //垂直布局
-            tipViewLP.topMargin = DensityUtils.dp2px(context, 12);
+            tipViewLP.topMargin = DensityUtils.dp2px(12);
             tipViewLP.topMargin = dialogBuilder.getOrientationHorizontal() ? 0 : DensityUtils
-                    .dp2px(context, 12);
+                    .dp2px(12);
 
             //水平布局
             tipViewLP.leftMargin = dialogBuilder.getOrientationHorizontal() ? DensityUtils.dp2px
-                    (context, 12) : 0;
+                    (12) : 0;
 
             tipView.setLayoutParams(tipViewLP);
 

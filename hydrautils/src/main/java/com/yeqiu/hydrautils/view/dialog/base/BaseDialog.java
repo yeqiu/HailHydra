@@ -53,8 +53,7 @@ public abstract class BaseDialog {
      */
     protected void setWindow() {
         Window window = dialog.getWindow();
-        window.getDecorView().setPadding(DensityUtils.dp2px(context, 30), 0, DensityUtils.dp2px
-                (context, 30), 0);
+        window.getDecorView().setPadding(DensityUtils.dp2px(30), 0, DensityUtils.dp2px(30), 0);
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;

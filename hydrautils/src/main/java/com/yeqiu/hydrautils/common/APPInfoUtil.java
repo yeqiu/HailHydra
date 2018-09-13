@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.TextUtils;
 
 import com.yeqiu.hydrautils.HydraUtilsManager;
@@ -381,6 +382,33 @@ public class APPInfoUtil {
         Context context = HydraUtilsManager.getInstance().getContext();
         context.startActivity(new Intent(context.getPackageManager().getLaunchIntentForPackage
                 (packagename)));
+    }
+
+    /**
+     * 检查权限
+     *
+     * @param context
+     * @param permission 例如 Manifest.permission.READ_PHONE_STATE
+     * @return
+     */
+    public static boolean checkPermission(Context context, String permission) {
+        boolean result = false;
+        if (Build.VERSION.SDK_INT >= 23) {
+            try {
+                Class clazz = Class.forName("android.content.Context");
+                Method method = clazz.getMethod("checkSelfPermission", String.class);
+                int rest = (Integer) method.invoke(context, permission);
+                result = rest == PackageManager.PERMISSION_GRANTED;
+            } catch (Exception e) {
+                result = false;
+            }
+        } else {
+            PackageManager pm = context.getPackageManager();
+            if (pm.checkPermission(permission, context.getPackageName()) == PackageManager.PERMISSION_GRANTED) {
+                result = true;
+            }
+        }
+        return result;
     }
 
 }

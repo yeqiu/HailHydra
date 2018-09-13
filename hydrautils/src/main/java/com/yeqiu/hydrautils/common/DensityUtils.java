@@ -2,6 +2,8 @@ package com.yeqiu.hydrautils.common;
 
 import android.content.Context;
 
+import com.yeqiu.hydrautils.HydraUtilsManager;
+
 /**
  * @project：HailHydra
  * @author：小卷子
@@ -14,7 +16,9 @@ public class DensityUtils {
     /**
      * 将px转换为与之相等的dp
      */
-    public static int px2dp(Context context, float pxValue) {
+    public static int px2dp(float pxValue) {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
@@ -23,7 +27,9 @@ public class DensityUtils {
     /**
      * 将dp转换为与之相等的px
      */
-    public static int dp2px(Context context, float dipValue) {
+    public static int dp2px(float dipValue) {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
@@ -32,7 +38,9 @@ public class DensityUtils {
     /**
      * 将px转换为sp
      */
-    public static int px2sp(Context context, float pxValue) {
+    public static int px2sp(float pxValue) {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
@@ -41,7 +49,9 @@ public class DensityUtils {
     /**
      * 将sp转换为px
      */
-    public static int sp2px(Context context, float spValue) {
+    public static int sp2px(float spValue) {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }

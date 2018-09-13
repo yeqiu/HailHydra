@@ -40,7 +40,7 @@ public class HydraUtilsManager {
 
         this.context = context;
         if (context == null) {
-            throw new NullPointerException("context must not null");
+            throw new NullPointerException("context must not null,Please check init()");
         }
 
 
@@ -58,7 +58,7 @@ public class HydraUtilsManager {
 
 
         if (context == null) {
-            throw new NullPointerException("context must not null");
+            throw new NullPointerException("context must not null,Please check init()");
         }
 
 

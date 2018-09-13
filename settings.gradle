@@ -1,1 +1,1 @@
-include ':app', ':hydrautils'
+include ':app', ':hydrautils', ':hailhaydra'

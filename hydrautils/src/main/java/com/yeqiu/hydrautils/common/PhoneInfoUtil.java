@@ -6,9 +6,12 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 import android.telephony.TelephonyManager;
+
+import com.yeqiu.hydrautils.HydraUtilsManager;
 
 import java.io.File;
 import java.util.List;
@@ -48,11 +51,14 @@ public class PhoneInfoUtil {
 
 
     /**
-     * 获取手机imei串号 ,GSM手机的 IMEI 和 CDMA手机的 MEID.
+     * 获取手机imei串号
+     * 需要权限  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
      *
-     * @param context
+     * @return
      */
-    public static String getPhoneImei(Context context) {
+    public static String getPhoneImei() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
         if (tm != null) {
@@ -66,13 +72,16 @@ public class PhoneInfoUtil {
     /**
      * 获取手机号
      *
-     * @param context
+     * @return
      */
-    public static String getPhoneNum(Context context) {
+    public static String getPhoneNum() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
-        if (tm == null)
+        if (tm == null) {
             return null;
+        }
         return tm.getLine1Number();
     }
 
@@ -114,7 +123,9 @@ public class PhoneInfoUtil {
     /**
      * 判断是否是平板
      */
-    public static boolean isTablet(Context context) {
+    public static boolean isTablet() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         return (context.getResources().getConfiguration().screenLayout & Configuration
                 .SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
@@ -123,10 +134,11 @@ public class PhoneInfoUtil {
     /**
      * Gps是否打开
      *
-     * @param context
      * @return
      */
-    public static boolean isGpsEnabled(Context context) {
+    public static boolean isGpsEnabled() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         LocationManager locationManager = ((LocationManager) context
                 .getSystemService(Context.LOCATION_SERVICE));
         List<String> accessibleProviders = locationManager.getProviders(true);
@@ -136,14 +148,16 @@ public class PhoneInfoUtil {
 
     /**
      * 是否是手机
-     * @param context
+     *
      * @return
      */
-    public static boolean isPhone(Context context) {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+    public static boolean isPhone() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context
+                .TELEPHONY_SERVICE);
         return tm.getPhoneType() != TelephonyManager.PHONE_TYPE_NONE;
     }
-
 
 
     /**
@@ -172,33 +186,81 @@ public class PhoneInfoUtil {
     /**
      * 判断是否横屏
      *
-     * @param context 上下文
      * @return {@code true}: 是<br>{@code false}: 否
      */
-    public static boolean isLandscape(Context context) {
-        return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+    public static boolean isLandscape() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+        return context.getResources().getConfiguration().orientation == Configuration
+                .ORIENTATION_LANDSCAPE;
     }
 
     /**
      * 判断是否竖屏
      *
-     * @param context 上下文
      * @return {@code true}: 是<br>{@code false}: 否
      */
-    public static boolean isPortrait(Context context) {
-        return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+    public static boolean isPortrait() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+        return context.getResources().getConfiguration().orientation == Configuration
+                .ORIENTATION_PORTRAIT;
     }
 
     /**
      * 判断是否锁屏
      *
-     * @param context 上下文
-     * @return {@code true}: 是<br>{@code false}: 否
+     * @return {@code true}:
      */
-    public static boolean isScreenLock(Context context) {
+    public static boolean isScreenLock() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         KeyguardManager km = (KeyguardManager) context
                 .getSystemService(Context.KEYGUARD_SERVICE);
         return km.inKeyguardRestrictedInputMode();
+    }
+
+
+    /**
+     * 获取当前使用的网络类型
+     *
+     * @return
+     * <p>
+     * 0 = "无网络";
+     * 1 = "网络断开";
+     * 2 = "wifi";
+     * 3 = "wifi";
+     * 4 = "移动数据";
+     * </p>
+     */
+    public static int getNetworkType() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context
+                .TELEPHONY_SERVICE);
+        return tm.getNetworkType();
+    }
+
+    /**
+     * 获取运营商名称
+     *
+     * @return
+     */
+    public static String getSimOperatorName() {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        return tm.getSimOperatorName();
+    }
+
+
+    /**
+     * 获取设备厂商，如Xiaomi
+     *
+     * @return 设备厂商
+     */
+    public static String getManufacturer() {
+        return Build.MANUFACTURER;
     }
 
 }
