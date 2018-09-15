@@ -1,8 +1,15 @@
 package com.yeqiu.hydrautils.common;
 
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+
+import com.yeqiu.hydrautils.HydraUtilsManager;
+
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
 /**
  * @author ye
@@ -86,8 +93,30 @@ public class StringUtils {
 
 
     /**
+     * 关键字变色
+     */
+    public static CharSequence discoloration(int colorId, String string, String keyWord) {
+
+
+        int color1 = HydraUtilsManager.getInstance().getContext().getResources().getColor(colorId);
+
+        SpannableStringBuilder builder = new SpannableStringBuilder(string);
+        int indexOf = string.indexOf(keyWord);
+        if (indexOf != -1) {
+            builder.setSpan(new ForegroundColorSpan(color1), indexOf, indexOf + keyWord.length(),
+                    SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+
+        LogUtils.i("keyWord=" + keyWord);
+        LogUtils.i("indexOf=" + indexOf);
+        return builder;
+    }
+
+    /**
      * 验证是否是邮箱
      */
+
     public static boolean isEmailMobile(String idCard) {
         String email = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(" +
                 "([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
@@ -101,7 +130,7 @@ public class StringUtils {
     /**
      * 验证是否是数字+字母
      */
-    public static boolean isPassWord(String passWord) {
+    public static boolean isNumberAndLetter(String passWord) {
         String isPassWord = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$";
 
         if (isEmpty(passWord)) {

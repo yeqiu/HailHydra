@@ -56,11 +56,9 @@ public class HydraUtilsManager {
 
     public Context getContext() {
 
-
         if (context == null) {
             throw new NullPointerException("context must not null,Please check init()");
         }
-
 
         return context;
     }

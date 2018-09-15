@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydrautils.common.LogUtils;
 
 
 /**
@@ -126,6 +126,7 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
      * @param layoutIdOrView
      */
     public void setContentView(Object layoutIdOrView) {
+
 
         if (contentView != null) {
             throw new IllegalArgumentException("已经设置过ContentView,请勿重复添加");

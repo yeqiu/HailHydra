@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
 
 
         datas = new ArrayList<>();
-        datas.add(new DomeData("BaseActivity", SampleActivity.class));
+        datas.add(new DomeData("HydraBaseActivity", SampleActivity.class));
         datas.add(new DomeData("StatusLayout", StatusLayoutActivity.class));
         datas.add(new DomeData("沉浸式状态", ImmersivetestActivity.class));
         datas.add(new DomeData("键盘监听", SoftKeyListenerActivity.class));

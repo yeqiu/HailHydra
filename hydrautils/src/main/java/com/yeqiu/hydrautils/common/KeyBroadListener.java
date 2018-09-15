@@ -12,23 +12,23 @@ import java.util.List;
  * @date 2018/4/2
  * @desc 键盘监听
  */
-public class SoftKeyBroadListener implements ViewTreeObserver.OnGlobalLayoutListener{
+public class KeyBroadListener implements ViewTreeObserver.OnGlobalLayoutListener{
 
-    public interface SoftKeyboardStateListener {
-        void onSoftKeyboardOpened(int keyboardHeightInPx);
-        void onSoftKeyboardClosed();
+    public interface KeyboardStateListener {
+        void onKeyboardOpened(int keyboardHeightInPx);
+        void onKeyboardClosed();
     }
 
-    private final List<SoftKeyboardStateListener> listeners = new LinkedList<SoftKeyboardStateListener>();
+    private final List<KeyboardStateListener> listeners = new LinkedList<KeyboardStateListener>();
     private final View activityRootView;
     private int lastSoftKeyboardHeightInPx;
     private boolean isSoftKeyboardOpened;
 
-    public SoftKeyBroadListener(View activityRootView) {
+    public KeyBroadListener(View activityRootView) {
         this(activityRootView,false);
     }
 
-    public SoftKeyBroadListener(View activityRootView, boolean isSoftKeyboardOpened) {
+    public KeyBroadListener(View activityRootView, boolean isSoftKeyboardOpened) {
         this.activityRootView = activityRootView;
         this.isSoftKeyboardOpened = isSoftKeyboardOpened;
         activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
@@ -64,28 +64,28 @@ public class SoftKeyBroadListener implements ViewTreeObserver.OnGlobalLayoutList
         return lastSoftKeyboardHeightInPx;
     }
 
-    public void addSoftKeyboardStateListener(SoftKeyboardStateListener listener) {
+    public void addKeyboardStateListener(KeyboardStateListener listener) {
         listeners.add(listener);
     }
 
-    public void removeSoftKeyboardStateListener(SoftKeyboardStateListener listener) {
+    public void removeSoftKeyboardStateListener(KeyboardStateListener listener) {
         listeners.remove(listener);
     }
 
     private void notifyOnSoftKeyboardOpened(int keyboardHeightInPx) {
         this.lastSoftKeyboardHeightInPx = keyboardHeightInPx;
 
-        for (SoftKeyboardStateListener listener : listeners) {
+        for (KeyboardStateListener listener : listeners) {
             if (listener != null) {
-                listener.onSoftKeyboardOpened(keyboardHeightInPx);
+                listener.onKeyboardOpened(keyboardHeightInPx);
             }
         }
     }
 
     private void notifyOnSoftKeyboardClosed() {
-        for (SoftKeyboardStateListener listener : listeners) {
+        for (KeyboardStateListener listener : listeners) {
             if (listener != null) {
-                listener.onSoftKeyboardClosed();
+                listener.onKeyboardClosed();
             }
         }
     }

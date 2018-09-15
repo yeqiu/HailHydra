@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.bean.Model.ModelHaydraItem;
+import com.yeqiu.hydrautils.common.ImageUtils;
 
 import java.util.List;
 
@@ -53,7 +54,9 @@ public class HailHaydraAdapter extends RecyclerView.Adapter<HailHaydraAdapter.Vi
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final ModelHaydraItem modelHaydraItem = data.get(position);
 
-        holder.ivIcon.setImageResource(modelHaydraItem.getImage());
+
+        ImageUtils.setImageWithCenerCrop(modelHaydraItem.getImage(), holder.ivIcon);
+
         holder.tvName.setText(modelHaydraItem.getName());
 
         holder.llRoot.setOnClickListener(new View.OnClickListener() {

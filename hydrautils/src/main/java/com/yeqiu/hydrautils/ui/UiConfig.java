@@ -40,6 +40,16 @@ public class UiConfig {
     private int limitBg = R.drawable.shape_40_0_0_0d95ff;
 
 
+    /**
+     * 图片加载占位图
+     */
+    private int imgPlaceholder = R.drawable.hydra;
+    /**
+     * 图片错误占位图
+     */
+    private int imgError = R.drawable.hydra;
+
+
     private UiConfig() {
         instance = this;
     }
@@ -93,8 +103,17 @@ public class UiConfig {
     }
 
 
-// ---------------------------------
+    // ---------------------------------
 
+
+
+    public int getImgPlaceholder() {
+        return imgPlaceholder;
+    }
+
+    public int getImgError() {
+        return imgError;
+    }
 
     public int getDefColor() {
         return defColor;

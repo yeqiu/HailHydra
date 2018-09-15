@@ -2,7 +2,12 @@ package com.yeqiu.hydrautils.common;
 
 import android.app.Activity;
 
+import com.yeqiu.hydrautils.BuildConfig;
+
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Stack;
 
 /**
@@ -17,8 +22,7 @@ public class ActivityManager {
 
     private static ActivityManager instance;
 
-    // Activity栈
-    private Stack<Activity> activityStack = new Stack<>();
+    private List<Activity> activityStack = new ArrayList<>();
 
     private ActivityManager() {
     }
@@ -49,7 +53,6 @@ public class ActivityManager {
         if (index < 0 || index >= activityStack.size()) {
             //抛出异常
             LogUtils.e("请检查传入的index是否合法");
-
             throw new IndexOutOfBoundsException("请检查传入的index是否合法,详细内容请打开log查看");
         }
 
@@ -57,18 +60,18 @@ public class ActivityManager {
         return activity;
     }
 
-
     /**
      * 获取栈
      *
      * @return
      */
-    public Stack<Activity> getActivityStack() {
+    public List<Activity> getActivityStack() {
         if (activityStack == null) {
-            return new Stack<>();
+            return new ArrayList<>();
         }
         return activityStack;
     }
+
 
     /**
      * 根据类名获取指定的acitvity
@@ -87,8 +90,11 @@ public class ActivityManager {
         }
 
         LogUtils.e("请检查传入clazz");
-
-        throw new NoClassDefFoundError("请检查传入clazz，详细内容请打开log查看");
+        if (BuildConfig.DEBUG) {
+            throw new NoClassDefFoundError("请检查传入clazz，详细内容请打开log查看");
+        } else {
+            return null;
+        }
 
     }
 
@@ -100,7 +106,7 @@ public class ActivityManager {
         if (activityStack == null) {
             activityStack = new Stack<>();
         }
-        activityStack.push(activity);
+        activityStack.add(activity);
     }
 
     /**
@@ -108,37 +114,36 @@ public class ActivityManager {
      */
     public Activity getCurrentActivity() {
 
-        return activityStack.lastElement();
+        return activityStack.get(activityStack.size() - 1);
     }
+
 
     /**
      * 结束当前Activity（堆栈中最后一个压入的）
      */
     public void finishActivity() {
 
-        Activity activity = activityStack.lastElement();
+        Activity activity = activityStack.get(activityStack.size() - 1);
         finishActivity(activity);
     }
-
 
     /**
      * 结束指定的Activity
      */
     public void finishActivity(Activity activity) {
 
+        activity.finish();
         if (!activityStack.isEmpty()) {
             if (activity != null) {
-                activity.finish();
                 activityStack.remove(activity);
             }
         }
     }
 
-
     /**
      * 结束指定类名的Activity
      */
-    public void finishActivity(Class<?> cls) {
+    public void finishActivity(Class<? extends Activity> cls) {
 
         Iterator<Activity> iterator = activityStack.iterator();
         while (iterator.hasNext()) {
@@ -149,8 +154,8 @@ public class ActivityManager {
             }
         }
 
-
     }
+
 
     /**
      * 结束所有Activity
@@ -166,26 +171,46 @@ public class ActivityManager {
         activityStack.clear();
     }
 
-
-
     /**
      * 关闭除了传入以外的所有activity
      */
-    public void finishAllActivityButThis(Class clazz) {
+    public void finishAllActivityButThis(Class<? extends Activity> cls) {
 
         Iterator<Activity> iterator = activityStack.iterator();
 
         while (iterator.hasNext()) {
 
             Activity activity = iterator.next();
-            if (activity.getClass().equals(clazz)) {
+            if (activity.getClass().equals(cls)) {
                 continue;
             }
             activity.finish();
             iterator.remove();
         }
-
     }
 
+
+    /**
+     * 回到指定页面，关闭指定页面之后的所有页面
+     */
+    public void popToAtivity(Class<? extends Activity> activity) {
+
+        ListIterator<Activity> listIterator;
+
+        for (listIterator = activityStack.listIterator(); listIterator.hasNext(); ) {
+            // 将游标定位到列表结尾
+            listIterator.next();
+        }
+
+        while (listIterator.hasPrevious()) {
+            Activity previous = listIterator.previous();
+            if (previous.getClass().equals(activity)) {
+                break;
+            }
+            previous.finish();
+            listIterator.remove();
+        }
+
+    }
 
 }

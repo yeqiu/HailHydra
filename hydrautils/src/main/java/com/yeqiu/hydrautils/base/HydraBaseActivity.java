@@ -1,4 +1,4 @@
-package com.yeqiu.hailhydra.activity;
+package com.yeqiu.hydrautils.base;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,77 +10,63 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.yeqiu.hailhydra.R;
-import com.yeqiu.hailhydra.utils.AppManager;
-import com.yeqiu.hailhydra.utils.ClickUtils;
-import com.yeqiu.hailhydra.utils.LogUtils;
-import com.yeqiu.hailhydra.utils.NetUtils;
-import com.yeqiu.hailhydra.utils.StatusBarUtils;
-import com.yeqiu.hailhydra.utils.UIHelper;
-import com.yeqiu.hailhydra.utils.eventbus.EventBusUtils;
-import com.yeqiu.hailhydra.widget.StatusLayout;
-
-import butterknife.ButterKnife;
+import com.yeqiu.hydrautils.R;
+import com.yeqiu.hydrautils.common.ActivityManager;
+import com.yeqiu.hydrautils.common.UIHelper;
+import com.yeqiu.hydrautils.net.NetWorkUtils;
+import com.yeqiu.hydrautils.ui.widget.StatusLayout;
 
 /**
- * @project：AndroidLbrary
+ * @project：HailHydra
  * @author：小卷子
- * @date 2018/7/12
+ * @date 2018/9/15
  * @describe：
  * @fix：
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class HydraBaseActivity extends AppCompatActivity {
 
-    private StatusLayout statusLayout;
-    private LinearLayout headLayout;
-    public ImageView headBack;
-    public TextView headerTitle;
-    public TextView tvheaderRight;
-    public ImageView ivheaderRight;
-    private View headLine;
-
-    public Activity context;
-
+    protected StatusLayout statusLayout;
+    protected LinearLayout headLayout;
+    protected Activity context;
+    protected ImageView ivHeadBack;
+    protected TextView headerTitle;
+    protected TextView tvheaderRight;
+    protected ImageView ivheaderRight;
+    protected View headLine;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-
-        statusLayout = (StatusLayout) findViewById(R.id.base_status_layout);
-        statusLayout.setContentView(getContentView());
-        statusLayout.showContentView();
-
+        ///隐藏ActionBar
+        removeActionBar(true);
+        init();
         context = this;
         //添加到activity管理器
-        AppManager.getAppManager().addActivity(this);
-        //统一处理 ButterKnife
-        ButterKnife.bind(this);
-        //子类可能需要进行的操作
-        init();
-
+        ActivityManager.getAppManager().addActivity(this);
         statusLayout.setOnStatusLayoutClickListener(onStatusLayoutClickListener);
-
     }
 
 
     private void init() {
+        statusLayout = (StatusLayout) findViewById(R.id.base_status_layout);
+        statusLayout.setContentView(getContentView());
+        statusLayout.showContentView();
         initHead();
-        initStatusBar();
+        // TODO: 2018/9/15 沉浸式
         initView();
         initData();
         initListener();
-        registerEventBus();
     }
 
 
     /**
      * 初始化head标题栏
-     * 标题栏中包括 返回 标题 右侧文字 图片1  图片2
+     * 标题栏中包括 返回 标题 右侧文字
      */
     private void initHead() {
         headLayout = (LinearLayout) findViewById(R.id.ll_common_header_layout);
-        headBack = (ImageView) findViewById(R.id.iv_common_head_back);
+        ivHeadBack = (ImageView) findViewById(R.id.iv_common_head_back);
         headerTitle = (TextView) findViewById(R.id.tv_common_head_title);
         tvheaderRight = (TextView) findViewById(R.id.tv_common_head_title_right);
         ivheaderRight = (ImageView) findViewById(R.id.iv_common_head_title_right);
@@ -90,64 +76,80 @@ public abstract class BaseActivity extends AppCompatActivity {
         tvheaderRight.setVisibility(View.GONE);
         ivheaderRight.setVisibility(View.GONE);
 
-        headBack.setOnClickListener(onClickListener);
+        ivHeadBack.setOnClickListener(onClickListener);
         tvheaderRight.setOnClickListener(onClickListener);
         ivheaderRight.setOnClickListener(onClickListener);
 
+
+        ivHeadBack.setBackgroundResource( getDefHeadBackImgId());
     }
 
+
     /**
-     * 沉浸式处理
+     * 获取当前网络状态
+     * 0:无网络
+     * 1:网络断开或关闭
+     * 2:以太网网络
+     * 3:wifi网络
+     * 4:移动数据连接
      */
-    private void initStatusBar() {
-
-        StatusBarUtils.with(this)
-                .setColor(getResources().getColor(R.color.color_white))
-                .setStatusBarColor(2)
-                .init();
-
-
+    private int getNetStatus() {
+        return NetWorkUtils.getNetworkType();
     }
 
-    /**
-     * 注册EventBus
-     */
-    private void registerEventBus() {
-        EventBusUtils.register(this);
-    }
 
-    /**
-     * 取消当前页面的网络请求
-     * activity从管理者中删除
-     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppManager.getAppManager().finishActivity(this);
+        ActivityManager.getAppManager().finishActivity(this);
 
         // TODO: 2018/7/12 取消当前页面的网络请求
     }
 
 
-    //----------- 抽象方法 ---------------
+    //    --------- 抽象方法  ---------
+
 
     /**
-     * 获取子类的正常view
+     * 获取view
+     *
+     * @return
      */
-    protected abstract int getContentView();
+    protected abstract Object getContentView();
 
+
+    /**
+     * 初始化view
+     */
+    protected abstract void initView();
 
     /**
      * 获取数据
      */
     protected abstract void initData();
 
-
-
-
+    /**
+     * 设置返回键图片
+     */
+    protected abstract int getDefHeadBackImgId();
 
 
     //    --------- 以下方法供子类使用  ---------
+
+    /**
+     * 删除ActionBar
+     *
+     * @param isRemove
+     */
+    protected void removeActionBar(boolean isRemove) {
+        if (isRemove) {
+            getSupportActionBar().hide();
+        } else {
+            getSupportActionBar().show();
+        }
+
+    }
+
 
     /**
      * 设置head的标题
@@ -157,6 +159,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         headLayout.setVisibility(View.VISIBLE);
         headerTitle.setText(title);
     }
+
     /**
      * 设置左上角返回图片
      *
@@ -164,7 +167,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void setHeadBackImg(int bakImg) {
 
-        headBack.setImageResource(bakImg);
+        ivHeadBack.setImageResource(bakImg);
     }
 
     /**
@@ -251,22 +254,13 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 是否有网络
      */
     public boolean hasNet() {
-        return NetUtils.hasNetwork(this);
+        return NetWorkUtils.hasNetwork(this);
     }
+
 
     /**
-     * 获取当前网络状态
-     * 0:无网络
-     * 1:网络断开或关闭
-     * 2:以太网网络
-     * 3:wifi网络
-     * 4:移动数据连接
+     * 显示网络提示
      */
-    public int getNetStatus() {
-        return NetUtils.getNetworkType(this);
-    }
-
-
     public void showNetTip() {
         int netStatus = getNetStatus();
 
@@ -289,31 +283,17 @@ public abstract class BaseActivity extends AppCompatActivity {
                 netTip = "移动数据";
                 break;
 
+            default:
+                break;
+
         }
 
-        UIHelper.showToast(context, netTip);
+        UIHelper.showToast(netTip);
 
-    }
-
-
-    /**
-     * 点击事件是否有效，防止重复点击
-     */
-    public boolean isClickValid() {
-
-        return ClickUtils.isValid();
     }
 
 
     //    --------- 以下是空方法 子类选择实现  ---------
-
-
-    /**
-     * 初始化view
-     */
-    protected void initView() {
-    }
-
 
     /**
      * 初始化监听器
@@ -324,13 +304,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 重新加载网页，子类实现
      */
-    public void onErrorButtonClick() {
+    public void onStatusErrorButtonClick() {
     }
 
     /**
      * 空白页面的按钮，子类实现
      */
-    public void onEmptyButtonClick() {
+    public void onStatusEmptyButtonClick() {
     }
 
 
@@ -347,18 +327,20 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    // --------- 监听  ---------
+
     private StatusLayout.OnStatusLayoutClickListener onStatusLayoutClickListener = new
             StatusLayout.OnStatusLayoutClickListener() {
 
                 @Override
                 public void onErrorButtonClick() {
-                    BaseActivity.this.onErrorButtonClick();
+                    onStatusErrorButtonClick();
                 }
 
                 @Override
                 public void onEmptyButtonClick() {
-                    LogUtils.i("onEmptyButtonClick");
-                    BaseActivity.this.onEmptyButtonClick();
+
+                    onStatusEmptyButtonClick();
                 }
             };
 
@@ -366,17 +348,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.iv_common_head_back:
-                    //左上角返回按钮统一处理
-                    finish();
-                    break;
-                case R.id.tv_common_head_title_right:
-                    onTvRightClick();
-                    break;
-                case R.id.iv_common_head_title_right:
-                    onIvRightClick();
-                    break;
+            int i = v.getId();
+            if (i == R.id.iv_common_head_back) {
+                //左上角返回按钮统一处理
+                finish();
+
+            } else if (i == R.id.tv_common_head_title_right) {
+                onTvRightClick();
+
+            } else if (i == R.id.iv_common_head_title_right) {
+                onIvRightClick();
 
             }
         }

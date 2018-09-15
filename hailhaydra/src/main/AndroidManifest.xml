@@ -21,6 +21,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.PhoneInfoActivity"/>
+        <activity android:name=".activity.StringUtilsActivity"/>
+        <activity android:name=".activity.KeyBordListenerActivity"/>
+        <activity android:name=".activity.LitePalActivity"/>
+        <activity android:name=".activity.DialogActivity"/>
+        <activity android:name=".activity.WebViewActivity"/>
+        <activity android:name=".activity.WebViewScreenshotActivity"/>
+        <activity android:name=".activity.OtherActivity"/>
+        <activity android:name=".activity.ConstraintLayoutActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.yeqiu.hailhydra.base;
+package com.yeqiu.hydrautils.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -63,7 +63,7 @@ public abstract class LifeCycleFragment extends Fragment {
     /**
      * fragment不可见
      */
-    public  void onInvisible(){};
+    protected  void onInvisible(){};
 
     @Nullable
     @Override
