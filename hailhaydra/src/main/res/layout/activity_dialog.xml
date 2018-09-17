@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="20dp"
+              android:paddingTop="50dp">
+
+    <Button
+        android:id="@+id/bt_cmmon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CommonDialog(确认取消)"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/bt_cmmon_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CommonDialog(仅确认)"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/bt_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EditDialog"
+        android:textAllCaps="false"
+        />
+
+
+    <Button
+        android:id="@+id/bt_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SheetDialog"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/bt_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提示框"/>
 
 </LinearLayout>

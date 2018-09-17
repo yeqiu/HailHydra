@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.HailHaydraActivity">
+        <activity android:name=".activity.HaydraMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -26,9 +26,15 @@
         <activity android:name=".activity.LitePalActivity"/>
         <activity android:name=".activity.DialogActivity"/>
         <activity android:name=".activity.WebViewActivity"/>
-        <activity android:name=".activity.WebViewScreenshotActivity"/>
+        <activity android:name=".activity.ViewScreenshotActivity"/>
         <activity android:name=".activity.OtherActivity"/>
         <activity android:name=".activity.ConstraintLayoutActivity"/>
+        <activity android:name=".activity.ImmersionBarActivity"/>
+        <activity android:name=".activity.AllPicActivity"/>
+        <activity android:name=".activity.UpdateActivity"/>
+        <activity android:name=".activity.ToastActivity"/>
+        <activity android:name=".activity.MarqueeTextViewActivity"/>
+        <activity android:name=".activity.TextToolActivity"/>
     </application>
 
 </manifest>

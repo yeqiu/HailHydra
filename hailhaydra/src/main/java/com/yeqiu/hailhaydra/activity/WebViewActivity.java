@@ -1,5 +1,7 @@
 package com.yeqiu.hailhaydra.activity;
 
+import android.view.View;
+
 import com.yeqiu.hailhaydra.R;
 
 /**
@@ -17,11 +19,16 @@ public class WebViewActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        setHeaderTitle("WebView的封装");
     }
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

@@ -1,5 +1,7 @@
 package com.yeqiu.hailhaydra.activity;
 
+import android.view.View;
+
 import com.yeqiu.hailhaydra.R;
 
 /**
@@ -9,19 +11,25 @@ import com.yeqiu.hailhaydra.R;
  * @describe：
  * @fix：
  */
-public class WebViewScreenshotActivity extends BaseActivity {
+public class ViewScreenshotActivity extends BaseActivity {
     @Override
     protected Object getContentView() {
-        return R.layout.activity_webview_screen;
+        return R.layout.activity_view_screen;
     }
 
     @Override
     protected void initView() {
+        setHeaderTitle("View的截图");
 
     }
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

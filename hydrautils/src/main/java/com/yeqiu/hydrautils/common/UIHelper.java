@@ -1,6 +1,7 @@
 package com.yeqiu.hydrautils.common;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.yeqiu.hydrautils.HydraUtilsManager;
@@ -19,7 +20,7 @@ public class UIHelper {
 
     public static void showToast(String msg) {
 
-        if (msg == null ) {
+        if (TextUtils.isEmpty(msg)) {
             return;
         }
         Context context = HydraUtilsManager.getInstance().getContext();

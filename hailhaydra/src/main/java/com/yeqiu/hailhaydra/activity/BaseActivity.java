@@ -1,7 +1,7 @@
 package com.yeqiu.hailhaydra.activity;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.base.HydraBaseActivity;
+import com.yeqiu.hydrautils.basecontroller.HydraBaseActivity;
 
 /**
  * @project：HailHydra
@@ -10,11 +10,23 @@ import com.yeqiu.hydrautils.base.HydraBaseActivity;
  * @describe：
  * @fix：
  */
-public abstract  class BaseActivity extends HydraBaseActivity{
+public abstract class BaseActivity extends HydraBaseActivity {
 
 
     @Override
     protected int getDefHeadBackImgId() {
+
         return R.drawable.icon_back;
     }
+
+    @Override
+    protected void initImmersionBar() {
+        super.initImmersionBar();
+        setStatusBarDarkFont(true);
+    }
+
+
+
+
+
 }

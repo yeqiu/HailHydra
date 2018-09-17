@@ -1,20 +1,26 @@
-package com.yeqiu.hydrautils.base;
+package com.yeqiu.hydrautils.basecontroller;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydrautils.common.ActivityManager;
+import com.yeqiu.hydrautils.common.KeybordUtils;
+import com.yeqiu.hydrautils.common.LogUtils;
+import com.yeqiu.hydrautils.common.ScreenUtils;
 import com.yeqiu.hydrautils.common.UIHelper;
 import com.yeqiu.hydrautils.net.NetWorkUtils;
 import com.yeqiu.hydrautils.ui.widget.StatusLayout;
+
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
  * @project：HailHydra
@@ -23,7 +29,7 @@ import com.yeqiu.hydrautils.ui.widget.StatusLayout;
  * @describe：
  * @fix：
  */
-public abstract class HydraBaseActivity extends AppCompatActivity {
+public abstract class HydraBaseActivity extends SwipeBackActivity implements View.OnClickListener {
 
     protected StatusLayout statusLayout;
     protected LinearLayout headLayout;
@@ -33,6 +39,8 @@ public abstract class HydraBaseActivity extends AppCompatActivity {
     protected TextView tvheaderRight;
     protected ImageView ivheaderRight;
     protected View headLine;
+    protected ImmersionBar imersionBar;
+    private RelativeLayout rlCommonHeadRoot;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,15 +53,17 @@ public abstract class HydraBaseActivity extends AppCompatActivity {
         //添加到activity管理器
         ActivityManager.getAppManager().addActivity(this);
         statusLayout.setOnStatusLayoutClickListener(onStatusLayoutClickListener);
+        setSwipeBackEnable(isSwipeBack());
     }
+
 
 
     private void init() {
         statusLayout = (StatusLayout) findViewById(R.id.base_status_layout);
         statusLayout.setContentView(getContentView());
         statusLayout.showContentView();
+        initImmersionBar();
         initHead();
-        // TODO: 2018/9/15 沉浸式
         initView();
         initData();
         initListener();
@@ -70,31 +80,41 @@ public abstract class HydraBaseActivity extends AppCompatActivity {
         headerTitle = (TextView) findViewById(R.id.tv_common_head_title);
         tvheaderRight = (TextView) findViewById(R.id.tv_common_head_title_right);
         ivheaderRight = (ImageView) findViewById(R.id.iv_common_head_title_right);
+        rlCommonHeadRoot = (RelativeLayout) findViewById(R.id.rl_common_head_root);
         headLine = findViewById(R.id.head_lien);
-
         //默认隐藏右侧的图片和文字
         tvheaderRight.setVisibility(View.GONE);
         ivheaderRight.setVisibility(View.GONE);
-
         ivHeadBack.setOnClickListener(onClickListener);
         tvheaderRight.setOnClickListener(onClickListener);
         ivheaderRight.setOnClickListener(onClickListener);
+        ivHeadBack.setBackgroundResource(getDefHeadBackImgId());
 
-
-        ivHeadBack.setBackgroundResource( getDefHeadBackImgId());
+        setHeadRootMarginTop();
     }
 
+    /**
+     * 设置标题栏距离顶部的距离，让布局定在状态栏下面
+     * 当顶部是图片的时候建议重写此方法让图片顶在屏幕下面
+     */
+    private void setHeadRootMarginTop() {
+
+        int statusHeight = ScreenUtils.getStatusHeight();
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) rlCommonHeadRoot.getLayoutParams();
+        layoutParams.setMargins(0, statusHeight, 0, 0);
+        rlCommonHeadRoot.setLayoutParams(layoutParams);
+
+    }
 
     /**
-     * 获取当前网络状态
-     * 0:无网络
-     * 1:网络断开或关闭
-     * 2:以太网网络
-     * 3:wifi网络
-     * 4:移动数据连接
+     * 初始化沉浸式
      */
-    private int getNetStatus() {
-        return NetWorkUtils.getNetworkType();
+    protected void initImmersionBar() {
+
+        if (isImmersionBarEnabled()) {
+            imersionBar = ImmersionBar.with(this);
+            imersionBar.init();
+        }
     }
 
 
@@ -149,6 +169,55 @@ public abstract class HydraBaseActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * 状态栏字体颜色 亮色或深色，默认亮色
+     */
+    protected void setStatusBarDarkFont(boolean isrDark) {
+
+        if (isrDark) {
+            if (ImmersionBar.isSupportStatusBarDarkFont()) {
+                imersionBar.statusBarDarkFont(true).init();
+            } else {
+                LogUtils.i("当前设备不支持状态栏字体变色");
+            }
+        } else {
+            imersionBar.statusBarDarkFont(false).init();
+        }
+
+    }
+
+
+    /**
+     * 获取当前网络状态
+     * 0:无网络
+     * 1:网络断开或关闭
+     * 2:以太网网络
+     * 3:wifi网络
+     * 4:移动数据连接
+     */
+    private int getNetStatus() {
+        return NetWorkUtils.getNetworkType();
+    }
+
+    /**
+     * 是否可以使用沉浸式
+     *
+     * @return
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
+
+
+    /**
+     * 是否使用侧滑返回
+     * @return
+     */
+    protected boolean isSwipeBack() {
+        return true;
+    }
+
 
 
     /**
@@ -290,6 +359,14 @@ public abstract class HydraBaseActivity extends AppCompatActivity {
 
         UIHelper.showToast(netTip);
 
+    }
+
+
+    /**
+     * 隐藏状态栏
+     */
+    protected void hideKeyBoard() {
+        KeybordUtils.closeKeybord(context);
     }
 
 

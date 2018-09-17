@@ -105,7 +105,7 @@ public class DialogBuilder {
     private List<String> sheetDatas;
 
     /**
-     * 是否是加载框 仅对TipDialog有效
+     * 是否是加载框 加载框会执行旋转动画 仅对TipDialog有效
      */
     public boolean isLoading = false;
     /**
@@ -117,7 +117,15 @@ public class DialogBuilder {
      */
     private String tipText;
 
+    /**
+     * 加载框的方向 仅对TipDialog有效
+     */
     private boolean orientationHorizontal = true;
+
+    /**
+     *加载框的消失的时间，默认不消失，
+     */
+    private int dismissTime = 0;
 
 
     private BaseDialog baseDialog;
@@ -249,7 +257,7 @@ public class DialogBuilder {
         return this;
     }
 
-    public DialogBuilder setLoading(boolean loading) {
+    public DialogBuilder setIsLoading(boolean loading) {
         isLoading = loading;
         return this;
     }
@@ -259,6 +267,12 @@ public class DialogBuilder {
         return this;
     }
 
+
+    /**
+     * 建议设置少于4个字的提示，超过4个字会以跑马灯形式展示
+     * @param tipText
+     * @return
+     */
     public DialogBuilder setTipText(String tipText) {
         this.tipText = tipText;
         return this;
@@ -269,6 +283,10 @@ public class DialogBuilder {
         return this;
     }
 
+    public DialogBuilder setDismissTime(int dismissTime) {
+        this.dismissTime = dismissTime;
+        return this;
+    }
 
     //----------get()-----------
 
@@ -377,5 +395,9 @@ public class DialogBuilder {
 
     public boolean getOrientationHorizontal() {
         return orientationHorizontal;
+    }
+
+    public int getDismissTime() {
+        return dismissTime;
     }
 }

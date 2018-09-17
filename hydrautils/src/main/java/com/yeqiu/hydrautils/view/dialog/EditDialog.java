@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.yeqiu.hydrautils.R;
+import com.yeqiu.hydrautils.common.KeybordUtils;
+import com.yeqiu.hydrautils.common.LogUtils;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 
 import static android.R.attr.inputType;
@@ -92,8 +95,15 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
             if (dialog != null && dialog.isShowing()) {
                 dialog.dismiss();
             }
-
-        } else {
         }
+    }
+
+    @Override
+    protected void onDialogDismiss() {
+        super.onDialogDismiss();
+
+        LogUtils.i("onDialogDismiss");
+        KeybordUtils.closeKeybord(context);
+
     }
 }

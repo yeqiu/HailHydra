@@ -1,18 +1,21 @@
 package com.yeqiu.hydrautils.view.dialog;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydrautils.common.DensityUtils;
+import com.yeqiu.hydrautils.ui.widget.marquee.MarqueeTextView;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 
 /**
@@ -24,6 +27,9 @@ import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
  */
 public class TipDialog extends BaseDialog {
 
+    private ObjectAnimator animator;
+    private ImageView imageView;
+    private LinearLayout llRoot;
 
     public TipDialog(Activity context) {
         super(context);
@@ -46,12 +52,11 @@ public class TipDialog extends BaseDialog {
     @Override
     protected void initView(View view) {
 
-        LinearLayout llRoot = (LinearLayout) view.findViewById(R.id.ll_tip_dialog_root);
+        llRoot = (LinearLayout) view.findViewById(R.id.ll_tip_dialog_root);
 
 
         if (dialogBuilder.getOrientationHorizontal()) {
             llRoot.setOrientation(LinearLayout.HORIZONTAL);
-
             RelativeLayout.LayoutParams rootLayoutParams = (RelativeLayout.LayoutParams) llRoot
                     .getLayoutParams();
             rootLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -67,40 +72,98 @@ public class TipDialog extends BaseDialog {
             llRoot.setLayoutParams(rootLayoutParams);
         }
 
+
         if (dialogBuilder.getIconId() != -999) {
-            ImageView imageView = new ImageView(context);
+            imageView = new ImageView(context);
             LinearLayout.LayoutParams imageViewLP = new LinearLayout.LayoutParams(DensityUtils
-                    .dp2px(28), DensityUtils.dp2px(28));
+                    .dp2px(30), DensityUtils.dp2px(30));
             imageView.setLayoutParams(imageViewLP);
             imageView.setImageResource(dialogBuilder.getIconId());
             llRoot.addView(imageView);
         }
 
+
         if (!TextUtils.isEmpty(dialogBuilder.getTipText())) {
-            TextView tipView = new TextView(context);
+            MarqueeTextView textView = new MarqueeTextView(context);
             LinearLayout.LayoutParams tipViewLP = new LinearLayout.LayoutParams(LinearLayout
                     .LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             //垂直布局
-            tipViewLP.topMargin = DensityUtils.dp2px(12);
-            tipViewLP.topMargin = dialogBuilder.getOrientationHorizontal() ? 0 : DensityUtils
-                    .dp2px(12);
+            tipViewLP.topMargin = dialogBuilder.getOrientationHorizontal() ? 0 : DensityUtils.dp2px(10);
 
             //水平布局
-            tipViewLP.leftMargin = dialogBuilder.getOrientationHorizontal() ? DensityUtils.dp2px
-                    (12) : 0;
+            tipViewLP.leftMargin = dialogBuilder.getOrientationHorizontal() ? DensityUtils.dp2px(10) : 0;
 
-            tipView.setLayoutParams(tipViewLP);
+            textView.setLayoutParams(tipViewLP);
+            textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            textView.setSingleLine();
+            textView.setGravity(Gravity.CENTER);
+            textView.setTextColor(ContextCompat.getColor(context, R.color.color_white));
+            textView.setTextSize(14);
+            textView.setText(dialogBuilder.getTipText());
 
-            tipView.setEllipsize(TextUtils.TruncateAt.END);
-            tipView.setGravity(Gravity.CENTER);
-            tipView.setTextColor(ContextCompat.getColor(context, R.color.color_white));
-            tipView.setTextSize(18);
-            tipView.setText(dialogBuilder.getTipText());
-
-            llRoot.addView(tipView);
+            llRoot.addView(textView);
         }
 
+
+    }
+
+
+    public void startAnimate() {
+
+        if (imageView != null) {
+            animator = ObjectAnimator.ofFloat(imageView, "rotation",
+                    0f, 360f);
+            animator.setDuration(800);
+            animator.setInterpolator(new LinearInterpolator());
+            animator.setRepeatCount(ObjectAnimator.INFINITE);
+            animator.setRepeatMode(ObjectAnimator.RESTART);
+        }
+        animator.start();
+
+
+    }
+
+
+    @Override
+    public void show() {
+        super.show();
+        if (dialogBuilder.isLoading()) {
+            startAnimate();
+        }
+
+
+        int dismissTime = dialogBuilder.getDismissTime();
+
+        if (dismissTime != 0 && llRoot != null) {
+            llRoot.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    dismiss();
+                }
+            },dismissTime);
+
+        }
+
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                if (animator != null) {
+                    animator.end();
+                }
+            }
+        });
+
+
+    }
+
+
+    public void dismiss() {
+
+        if (dialog != null) {
+            dialog.dismiss();
+        }
     }
 
 

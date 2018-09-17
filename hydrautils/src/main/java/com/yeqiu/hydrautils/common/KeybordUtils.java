@@ -2,6 +2,7 @@ package com.yeqiu.hydrautils.common;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -27,12 +28,32 @@ public class KeybordUtils {
     /**
      * 关闭软键盘
      *
-     * @param view
+     * @param activity
      */
-    public static void closeKeybord(View view) {
-        ((InputMethodManager) view.getContext().getSystemService(
-                Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
-                view.getWindowToken(), 0);
+    public static void closeKeybord(Activity activity) {
+
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if (imm == null || activity == null || activity.isFinishing()) {
+            return;
+        }
+
+        boolean softShowing = isKeyBordOpen(activity);
+
+        LogUtils.i("softShowing == "+softShowing);
+
+        if (softShowing) {
+            if (activity.getCurrentFocus() != null) {
+                //有焦点关闭
+                imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager
+                        .HIDE_NOT_ALWAYS);
+            } else {
+                //无焦点关闭
+                imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+            }
+        }
+
+
     }
 
 
@@ -42,23 +63,19 @@ public class KeybordUtils {
      * @param activity
      * @return
      */
-    public static boolean isSoftInputShow(Activity activity) {
+    public static boolean isKeyBordOpen(Activity activity) {
 
-        // 虚拟键盘隐藏 判断view是否为空
-        View view = activity.getWindow().peekDecorView();
-        if (view != null) {
-            // 隐藏虚拟键盘
-            InputMethodManager inputmanger = (InputMethodManager) activity
-                    .getSystemService(Activity.INPUT_METHOD_SERVICE);
-
-            return inputmanger.isActive() && activity.getWindow().getCurrentFocus() != null;
+        if (activity == null || activity.isFinishing()) {
+            return false;
         }
-        return false;
+        //获取当前屏幕内容的高度
+        int screenHeight = activity.getWindow().getDecorView().getHeight();
+        //获取View可见区域的bottom
+        Rect rect = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+
+        return screenHeight - rect.bottom != 0;
     }
-
-
-
-
 
 
 }

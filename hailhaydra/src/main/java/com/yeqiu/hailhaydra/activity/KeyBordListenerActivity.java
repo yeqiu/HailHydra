@@ -1,5 +1,7 @@
 package com.yeqiu.hailhaydra.activity;
 
+import android.view.View;
+
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hydrautils.common.KeyBroadListener;
 import com.yeqiu.hydrautils.common.UIHelper;
@@ -39,6 +41,11 @@ public class KeyBordListenerActivity extends BaseActivity {
                 UIHelper.showToast("键盘关闭");
             }
         });
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

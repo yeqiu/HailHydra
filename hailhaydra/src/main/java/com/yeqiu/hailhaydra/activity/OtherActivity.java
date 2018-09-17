@@ -1,5 +1,7 @@
 package com.yeqiu.hailhaydra.activity;
 
+import android.view.View;
+
 import com.yeqiu.hailhaydra.R;
 
 /**
@@ -17,11 +19,17 @@ public class OtherActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        setHeaderTitle("常用工具");
 
     }
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

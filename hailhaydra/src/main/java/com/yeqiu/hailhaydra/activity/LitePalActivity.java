@@ -1,5 +1,7 @@
 package com.yeqiu.hailhaydra.activity;
 
+import android.view.View;
+
 import com.yeqiu.hailhaydra.R;
 
 /**
@@ -17,11 +19,16 @@ public class LitePalActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        setTitle("LitePal数据库的使用");
     }
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

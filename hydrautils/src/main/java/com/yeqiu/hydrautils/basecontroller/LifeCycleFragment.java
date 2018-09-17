@@ -1,4 +1,4 @@
-package com.yeqiu.hydrautils.base;
+package com.yeqiu.hydrautils.basecontroller;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

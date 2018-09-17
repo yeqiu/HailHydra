@@ -7,20 +7,21 @@ import com.yeqiu.hailhaydra.R;
 /**
  * @project：HailHydra
  * @author：小卷子
- * @date 2018/9/15
+ * @date 2018/9/17
  * @describe：
  * @fix：
  */
-public class ConstraintLayoutActivity extends BaseActivity {
+public class AllPicActivity extends BaseActivity {
+
+
     @Override
     protected Object getContentView() {
-        return R.layout.activity_constraint_layout;
+        return R.layout.activity_all_pic;
     }
 
     @Override
     protected void initView() {
-        setHeaderTitle("ConstraintLayout的炫酷效果");
-
+        showHeadLayout(false);
     }
 
     @Override
