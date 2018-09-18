@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
+import com.yeqiu.hailhaydra.app.Url;
 import com.yeqiu.hydrautils.common.JumpUtils;
 
 /**
@@ -62,7 +63,7 @@ public class ImmersionBarActivity extends BaseActivity {
             default:
                 break;
             case R.id.tv_immersion_bar:
-                JumpUtils.getInstance().jumpToBrowserActivity("https://www.jianshu.com/p/2a884e211a62");
+                JumpUtils.getInstance().jumpToBrowserActivity(Url.immersion);
                 break;
             case R.id.bt_all_pic:
                 JumpUtils.getInstance().jumpToActivityByClass(AllPicActivity.class);
@@ -75,8 +76,7 @@ public class ImmersionBarActivity extends BaseActivity {
                 setStatusBarDarkFont(true);
                 break;
             case R.id.bt_more:
-                JumpUtils.getInstance().jumpToBrowserActivity("http://pbe2lewbl.bkt.clouddn" +
-                        ".com/immersionBar-2.3.2-beta01.apk");
+                JumpUtils.getInstance().jumpToBrowserActivity(Url.immersion_apk);
                 break;
         }
     }

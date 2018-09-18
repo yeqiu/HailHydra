@@ -1,8 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_text_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:textColor="@color/color_black"
+            android:textSize="22dp"/>
+
+        <TextView
+            android:id="@+id/tv_text_click"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:textColor="@color/color_black"
+            android:textSize="22dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_text_underline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:textColor="@color/color_black"
+            android:textSize="22dp"/>
+
+        <TextView
+            android:id="@+id/tv_text_delline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:textColor="@color/color_black"
+            android:textSize="22dp"/>
+
+
+
+
+
+        <Button
+            android:id="@+id/bt_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="全部用法"/>
+
+
+        <TextView
+            android:id="@+id/tv_text_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:textColor="@color/color_black"
+            android:textSize="22dp"/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

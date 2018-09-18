@@ -3,6 +3,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
+
+
+    <com.yeqiu.hydrautils.ui.widget.marquee.MarqueeTextView
+        android:id="@+id/mtv_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="凤兮凤兮归故乡，遨游四海求其凰。 三尺长剑，斩不尽相思情缠。 邂逅你，是生生世世的宿命。 逆了苍天，踏破碧落黄泉。 直至地老天荒，独剩你我。 剑之所至，心之所往。单身又活的太久是最大的痛，我来替你解脱！ 长歌当哭，为君仗剑弑天下！ 永生不过是场幻梦，唯吾所爱不朽。 何以缘起？何以缘灭？当以剑歌问之。"
+        android:textColor="@color/color_black"/>
+
+
+    <com.yeqiu.hydrautils.ui.widget.marquee.MarqueeVerticalView
+        android:id="@+id/marqueeverticalview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
+
+    <com.yeqiu.hydrautils.ui.widget.marquee.MarqueeVerticalWhitIcon
+        android:id="@+id/marqueeverticalwhiticon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="待改进：
+         MarqueeVerticalView:实现与页面绑定 自动调用startAutoScroll 实现滚动
+
+        MarqueeVerticalWhitIcon：优化 使用adapter模式"
+        />
+
 
 </LinearLayout>

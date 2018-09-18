@@ -9,7 +9,7 @@ import android.view.View;
  * @date 2016/11/13
  */
 
-public class HaydraRecyclerViewDivider extends RecyclerView.ItemDecoration {
+public class HydraRecyclerViewDivider extends RecyclerView.ItemDecoration {
 
     private int space = 0;
     private int leftSpace = 0;
@@ -18,14 +18,14 @@ public class HaydraRecyclerViewDivider extends RecyclerView.ItemDecoration {
     private int bottomSpace = 0;
     private boolean isTop = false;
 
-    public HaydraRecyclerViewDivider(int leftSpace, int rightSpace, int topSpace, int bottomSpace) {
+    public HydraRecyclerViewDivider(int leftSpace, int rightSpace, int topSpace, int bottomSpace) {
         this.leftSpace = leftSpace;
         this.rightSpace = rightSpace;
         this.topSpace = topSpace;
         this.bottomSpace = bottomSpace;
     }
 
-    public HaydraRecyclerViewDivider(int leftSpace, int rightSpace, int topSpace, int bottomSpace, boolean isTop) {
+    public HydraRecyclerViewDivider(int leftSpace, int rightSpace, int topSpace, int bottomSpace, boolean isTop) {
         this.leftSpace = leftSpace;
         this.rightSpace = rightSpace;
         this.topSpace = topSpace;
@@ -33,12 +33,12 @@ public class HaydraRecyclerViewDivider extends RecyclerView.ItemDecoration {
         this.isTop = isTop;
     }
 
-    public HaydraRecyclerViewDivider(int space, boolean isTop) {
+    public HydraRecyclerViewDivider(int space, boolean isTop) {
         this.space = space;
         this.isTop = isTop;
     }
 
-    public HaydraRecyclerViewDivider(int space) {
+    public HydraRecyclerViewDivider(int space) {
         this.space = space;
     }
 

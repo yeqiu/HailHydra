@@ -9,7 +9,7 @@ import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.adapter.HailHaydraAdapter;
 import com.yeqiu.hailhaydra.bean.Model.ModelHaydraItem;
 import com.yeqiu.hydrautils.common.DensityUtils;
-import com.yeqiu.hydrautils.ui.widget.HaydraRecyclerViewDivider;
+import com.yeqiu.hydrautils.ui.widget.HydraRecyclerViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class HaydraMainActivity extends AppCompatActivity {
 
     private void initView() {
         mRvHaydra.setLayoutManager(new GridLayoutManager(this, 3));
-        mRvHaydra.addItemDecoration(new HaydraRecyclerViewDivider(DensityUtils.dp2px(5f)));
+        mRvHaydra.addItemDecoration(new HydraRecyclerViewDivider(DensityUtils.dp2px(5f)));
         HailHaydraAdapter hailHaydraAdapter = new HailHaydraAdapter(this, data);
         mRvHaydra.setAdapter(hailHaydraAdapter);
 
@@ -52,12 +52,13 @@ public class HaydraMainActivity extends AppCompatActivity {
 
         data = new ArrayList<>();
 
+
+
         data.add(new ModelHaydraItem("获取设备信息", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("StringUtils的使用", getRandomId(), StringUtilsActivity.class));
         data.add(new ModelHaydraItem("键盘开启关闭的监听", getRandomId(), KeyBordListenerActivity.class));
         data.add(new ModelHaydraItem("沉浸式状态栏", getRandomId(), ImmersionBarActivity.class));
         data.add(new ModelHaydraItem("仿ios弹窗", getRandomId(), DialogActivity.class));
-
         data.add(new ModelHaydraItem("跑马灯TextView", getRandomId(), MarqueeTextViewActivity.class));
         data.add(new ModelHaydraItem("TextTool的使用", getRandomId(),TextToolActivity.class));
         data.add(new ModelHaydraItem("带图标的Toast", getRandomId(), ToastActivity.class));

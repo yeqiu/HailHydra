@@ -5,4 +5,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+
+    <Button
+        android:id="@+id/button_success_toast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:text="蓝色背景"/>
+
+    <Button
+        android:id="@+id/button_info_toast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:text="绿色背景"/>
+
+    <Button
+        android:id="@+id/button_warning_toast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:text="黄色背景"/>
+
+    <Button
+        android:id="@+id/button_normal_toast_wo_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:text="普通的提示（没有ICON）"/>
+
+    <Button
+        android:id="@+id/button_normal_toast_w_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp"
+        android:text="普通的提示（有ICON）"/>
 </LinearLayout>

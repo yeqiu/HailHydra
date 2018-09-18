@@ -98,12 +98,12 @@ public class StringUtils {
     public static CharSequence discoloration(int colorId, String string, String keyWord) {
 
 
-        int color1 = HydraUtilsManager.getInstance().getContext().getResources().getColor(colorId);
+        int color = HydraUtilsManager.getInstance().getContext().getResources().getColor(colorId);
 
         SpannableStringBuilder builder = new SpannableStringBuilder(string);
         int indexOf = string.indexOf(keyWord);
         if (indexOf != -1) {
-            builder.setSpan(new ForegroundColorSpan(color1), indexOf, indexOf + keyWord.length(),
+            builder.setSpan(new ForegroundColorSpan(color), indexOf, indexOf + keyWord.length(),
                     SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
