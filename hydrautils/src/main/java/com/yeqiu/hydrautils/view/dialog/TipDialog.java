@@ -114,7 +114,7 @@ public class TipDialog extends BaseDialog {
         if (imageView != null) {
             animator = ObjectAnimator.ofFloat(imageView, "rotation",
                     0f, 360f);
-            animator.setDuration(800);
+            animator.setDuration(1000);
             animator.setInterpolator(new LinearInterpolator());
             animator.setRepeatCount(ObjectAnimator.INFINITE);
             animator.setRepeatMode(ObjectAnimator.RESTART);

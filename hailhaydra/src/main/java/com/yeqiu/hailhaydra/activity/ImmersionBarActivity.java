@@ -63,10 +63,10 @@ public class ImmersionBarActivity extends BaseActivity {
             default:
                 break;
             case R.id.tv_immersion_bar:
-                JumpUtils.getInstance().jumpToBrowserActivity(Url.immersion);
+                JumpUtils.jumpToBrowserActivity(Url.immersion);
                 break;
             case R.id.bt_all_pic:
-                JumpUtils.getInstance().jumpToActivityByClass(AllPicActivity.class);
+                JumpUtils.jumpToActivityByClass(AllPicActivity.class);
                 break;
 
             case R.id.bt_set_light:
@@ -76,7 +76,7 @@ public class ImmersionBarActivity extends BaseActivity {
                 setStatusBarDarkFont(true);
                 break;
             case R.id.bt_more:
-                JumpUtils.getInstance().jumpToBrowserActivity(Url.immersion_apk);
+                JumpUtils.jumpToBrowserActivity(Url.immersion_apk);
                 break;
         }
     }

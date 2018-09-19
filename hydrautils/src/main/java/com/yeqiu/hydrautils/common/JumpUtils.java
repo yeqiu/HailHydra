@@ -18,29 +18,10 @@ import com.yeqiu.hydrautils.HydraUtilsManager;
 public class JumpUtils {
 
 
-    private static JumpUtils instance;
-
-    private JumpUtils() {
-    }
-
-
-    public static JumpUtils getInstance() {
-
-        if (instance == null) {
-            synchronized (JumpUtils.class) {
-                if (instance == null) {
-                    instance = new JumpUtils();
-                }
-            }
-        }
-        return instance;
-    }
-
-
     /**
      * 打开手机默认浏览器
      */
-    public void jumpToBrowserActivity(String url) {
+    public static void jumpToBrowserActivity(String url) {
 
         Context context = HydraUtilsManager.getInstance().getContext();
         try {
@@ -57,7 +38,7 @@ public class JumpUtils {
      *
      * @param number
      */
-    public void jumpToDialActivity(String number) {
+    public static void jumpToDialActivity(String number) {
 
         if (TextUtils.isEmpty(number)) {
             return;
@@ -73,12 +54,25 @@ public class JumpUtils {
      *
      * @param clazz
      */
-    public void jumpToActivityByClass(Class<? extends Activity> clazz) {
+    public static void jumpToActivityByClass(Class<? extends Activity> clazz) {
         Context context = HydraUtilsManager.getInstance().getContext();
         Intent intent = new Intent(context, clazz);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
 
     }
+
+    /**
+     * 跳转到指定Intent页面
+     *
+     * @param intent
+     */
+    public static void jumpToActivityByIntent(Intent intent) {
+        Context context = HydraUtilsManager.getInstance().getContext();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+
+    }
+
 
 }

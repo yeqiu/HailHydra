@@ -52,8 +52,6 @@ public class HaydraMainActivity extends AppCompatActivity {
 
         data = new ArrayList<>();
 
-
-
         data.add(new ModelHaydraItem("获取设备信息", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("StringUtils的使用", getRandomId(), StringUtilsActivity.class));
         data.add(new ModelHaydraItem("键盘开启关闭的监听", getRandomId(), KeyBordListenerActivity.class));

@@ -4,6 +4,7 @@
 
     <!--权限-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".app.HailHaydraApp"
@@ -35,6 +36,8 @@
         <activity android:name=".activity.ToastActivity"/>
         <activity android:name=".activity.MarqueeTextViewActivity"/>
         <activity android:name=".activity.TextToolActivity"/>
+        <activity android:name=".activity.WebViewScreenShotActivity"/>
+        <activity android:name=".activity.BigPicActivity"/>
     </application>
 
 </manifest>

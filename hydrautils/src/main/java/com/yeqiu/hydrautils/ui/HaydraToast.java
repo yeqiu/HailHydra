@@ -238,7 +238,7 @@ public class HaydraToast {
      * @param yOffset
      * @return
      */
-    public static Toast setGravity(int gravity, int xOffset, int yOffset) {
+    public static Toast setGravityAndShow(int gravity, int xOffset, int yOffset) {
 
         if (currentToast == null) {
             throw new NullPointerException("Toast is null,Please check make() ");
