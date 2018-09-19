@@ -1,20 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="demo来自  https://github.com/Justson/AgentWeb"
-        android:textColor="@color/color_0d95ff"/>
+        android:background="#fff"
+        android:orientation="vertical">
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_white"
+            >
+
+            <!--左侧返回键-->
+
+            <ImageView
+                android:id="@+id/iv_web_head_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_back"/>
 
 
+            <TextView
+                android:id="@+id/tv_web_head_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/iv_web_head_back"
+                android:text="关闭"
+                />
+
+
+            <!--标题-->
+            <TextView
+                android:id="@+id/tv_web_head_title"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:singleLine="true"
+                android:gravity="center"
+                android:text="标题"
+                android:textColor="@color/color_1a1a1a"
+                android:textSize="17sp"/>
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/v_web_head_lien"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#0c000000"/>
+
+        <ProgressBar
+            android:id="@+id/pb_web_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:progressDrawable="@drawable/web_pb"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+
+    <WebView
+        android:id="@+id/ev_web"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 
 </LinearLayout>

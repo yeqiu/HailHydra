@@ -30,7 +30,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     //log
-    compile 'com.orhanobut:logger:1.15'
+    compile 'com.orhanobut:logger:2.2.0'
     //gson
     compile 'com.google.code.gson:gson:2.2.4'
     //recyclerview

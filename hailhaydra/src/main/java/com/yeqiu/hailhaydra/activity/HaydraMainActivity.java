@@ -9,6 +9,7 @@ import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.adapter.HailHaydraAdapter;
 import com.yeqiu.hailhaydra.bean.Model.ModelHaydraItem;
 import com.yeqiu.hydrautils.common.DensityUtils;
+import com.yeqiu.hydrautils.common.LogUtils;
 import com.yeqiu.hydrautils.ui.widget.HydraRecyclerViewDivider;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class HaydraMainActivity extends AppCompatActivity {
         data.add(new ModelHaydraItem("WebView的封装", getRandomId(), WebViewActivity.class));
         data.add(new ModelHaydraItem("截图", getRandomId(), ViewScreenshotActivity.class));
         data.add(new ModelHaydraItem("ConstraintLayout的炫酷效果", getRandomId(), ConstraintLayoutActivity.class));
-        data.add(new ModelHaydraItem("LitePal数据库的使用", getRandomId(), LitePalActivity.class));
+        data.add(new ModelHaydraItem("视频播放", getRandomId(), VideoPlayActivity.class));
         data.add(new ModelHaydraItem("app升级和安装", getRandomId(), UpdateActivity.class));
         data.add(new ModelHaydraItem("常用工具", getRandomId(), OtherActivity.class));
 
@@ -73,14 +74,16 @@ public class HaydraMainActivity extends AppCompatActivity {
 
     private int getRandomId() {
 
-        int id = new Random().nextInt(95) + 1;
-        String idName = "icon_hydra_" + id;
+        int id = new Random().nextInt(30) + 1;
+        String idName = "icon_head_hydra_" + id;
+
         int resId = getResources().getIdentifier(idName, "drawable", getPackageName());
 
 
-        if (resId == 0){
-            resId = R.drawable.hydra;
-        }
+        LogUtils.i("idName = "+idName);
+//        if (resId == 0){
+//            resId = R.drawable.hydra;
+//        }
 
         return resId;
     }

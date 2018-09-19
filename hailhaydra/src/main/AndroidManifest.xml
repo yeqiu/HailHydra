@@ -24,9 +24,8 @@
         <activity android:name=".activity.PhoneInfoActivity"/>
         <activity android:name=".activity.StringUtilsActivity"/>
         <activity android:name=".activity.KeyBordListenerActivity"/>
-        <activity android:name=".activity.LitePalActivity"/>
+        <activity android:name=".activity.VideoPlayActivity"/>
         <activity android:name=".activity.DialogActivity"/>
-        <activity android:name=".activity.WebViewActivity"/>
         <activity android:name=".activity.ViewScreenshotActivity"/>
         <activity android:name=".activity.OtherActivity"/>
         <activity android:name=".activity.ConstraintLayoutActivity"/>
@@ -38,6 +37,7 @@
         <activity android:name=".activity.TextToolActivity"/>
         <activity android:name=".activity.WebViewScreenShotActivity"/>
         <activity android:name=".activity.BigPicActivity"/>
+        <activity android:name=".activity.WebViewActivity"/>
     </application>
 
 </manifest>

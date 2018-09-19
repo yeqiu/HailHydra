@@ -14,5 +14,6 @@ public interface Url {
     String immersion_apk = "http://pbe2lewbl.bkt.clouddn.com/immersionBar-2.3.2-beta01.apk";
     String SpannableString = "https://www.jianshu.com/p/509b0d2626f4";
     String ScreenShot = "https://www.jianshu.com/p/96c44dba1307";
+    String jianshu_web = "https://www.jianshu.com/p/6462d36d5ff6";
 
 }

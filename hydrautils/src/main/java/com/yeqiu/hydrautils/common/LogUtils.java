@@ -1,8 +1,11 @@
 package com.yeqiu.hydrautils.common;
 
-import com.orhanobut.logger.LogLevel;
+import android.util.Log;
+
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.LogStrategy;
 import com.orhanobut.logger.Logger;
-import com.orhanobut.logger.Settings;
+import com.orhanobut.logger.PrettyFormatStrategy;
 
 /**
  * @project：Xbzd
@@ -15,15 +18,19 @@ public class LogUtils {
 
     public static void init() {
 
-        Settings setting = Logger.init(APPInfoUtil.getAppName());
-        //  显示全部日志，LogLevel.NONE不显示日志，默认是Full
-        setting.logLevel(LogLevel.FULL)
-                //  方法栈打印的个数，默认是2
+        String tag = APPInfoUtil.getAppName();
+
+        PrettyFormatStrategy strategy = PrettyFormatStrategy.newBuilder()
+                .logStrategy(new LogCatStrategy())
+                .tag(tag)
                 .methodCount(5)
-                //  设置调用堆栈的函数偏移值，0的话则从打印该Log的函数开始输出堆栈信息，默认是0
                 .methodOffset(0)
-                //  隐藏线程信息
-                .hideThreadInfo();
+                .showThreadInfo(false)
+                .build();
+
+
+
+        Logger.addLogAdapter(new AndroidLogAdapter(strategy));
 
     }
 
@@ -31,7 +38,6 @@ public class LogUtils {
     public static void i(Object msg) {
         Logger.d(msg);
     }
-
 
 
     public static void json(String json) {
@@ -47,5 +53,26 @@ public class LogUtils {
     public static void e(String msg) {
         Logger.e(msg);
     }
+
+
+    public static class LogCatStrategy implements LogStrategy {
+
+        @Override
+        public void log(int priority, String tag, String message) {
+            Log.println(priority, randomKey() + tag, message);
+        }
+
+        private int last;
+
+        private String randomKey() {
+            int random = (int) (10 * Math.random());
+            if (random == last) {
+                random = (random + 1) % 10;
+            }
+            last = random;
+            return String.valueOf(random);
+        }
+    }
+
 
 }
