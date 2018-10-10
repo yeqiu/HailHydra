@@ -1,6 +1,7 @@
 package com.yeqiu.hydrautils.common;
 
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 
 import com.yeqiu.hydrautils.HydraUtilsManager;
@@ -293,6 +294,33 @@ public class StringUtils {
         }
         return new String(chars);
     }
+
+
+    /**
+     * 0 1 转boolean
+     *
+     * @param oneOrZero
+     * @return
+     */
+    public static boolean stringToBoolean(String oneOrZero) {
+
+        return TextUtils.equals("1", oneOrZero);
+
+    }
+
+
+    /**
+     * 0 1 转boolean
+     *
+     * @param oneOrZero
+     * @return
+     */
+    public static boolean intToBoolean(int oneOrZero) {
+
+        return 1 == oneOrZero;
+
+    }
+
 
 
 }

@@ -35,7 +35,7 @@
             android:shadowColor="@android:color/transparent"
             android:shadowRadius="0"
             app:nkv_deleteBackgroundColor="#fff"
-            app:nkv_deleteDrawable="@drawable/keyboard_backspace"
+            app:nkv_deleteDrawable="@drawable/keyboard_del"
             app:nkv_deleteWidth="22dp"/>
 
 

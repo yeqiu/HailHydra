@@ -27,7 +27,7 @@
         <activity android:name=".activity.VideoPlayActivity"/>
         <activity android:name=".activity.DialogActivity"/>
         <activity android:name=".activity.ViewScreenshotActivity"/>
-        <activity android:name=".activity.OtherActivity"/>
+        <activity android:name=".activity.WidgetActivity"/>
         <activity android:name=".activity.ConstraintLayoutActivity"/>
         <activity android:name=".activity.ImmersionBarActivity"/>
         <activity android:name=".activity.AllPicActivity"/>
@@ -38,6 +38,14 @@
         <activity android:name=".activity.WebViewScreenShotActivity"/>
         <activity android:name=".activity.BigPicActivity"/>
         <activity android:name=".activity.WebViewActivity"/>
+        <activity android:name=".activity.ThreadActivity"/>
+        <activity android:name=".activity.ProgressBarActivity"/>
+        <activity android:name=".activity.EditTextActivity"/>
+        <activity android:name=".activity.NetworkListenerActivity"/>
+        <activity android:name=".activity.NumberkeyActivity"/>
+        <activity android:name=".activity.RecyclerViewDomeActivity"/>
+        <activity android:name=".activity.PasswordViewActivity"/>
+        <activity android:name=".activity.DemoActivity"/>
     </application>
 
 </manifest>

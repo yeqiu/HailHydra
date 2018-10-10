@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--自定义键盘-->
+    <declare-styleable name="NumberKeyboardView">
+        <!-- 删除按键的图标 -->
+        <attr name="nkv_deleteDrawable" format="reference"/>
+        <!-- 删除按键图标的宽度 -->
+        <attr name="nkv_deleteWidth" format="dimension|reference"/>
+        <!-- 删除按键图标的高度 -->
+        <attr name="nkv_deleteHeight" format="dimension|reference"/>
+        <!-- 删除按键图标的颜色 -->
+        <attr name="nkv_deleteBackgroundColor" format="color|reference"/>
+
+    </declare-styleable>
+
+
+    <!--密码输入框-->
+    <declare-styleable name="PasswordView">
+        <attr name="passwordLength" format="integer"/>
+        <attr name="passwordPadding" format="dimension"/>
+        <attr name="borderColor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="cursorFlashTime" format="integer"/>
+        <attr name="isCursorEnable" format="boolean"/>
+        <attr name="cipherEnable" format="boolean"/>
+        <attr name="cursorColor" format="color"/>
+        <attr name="mode" format="enum">
+            <enum name="underline" value="0"/>
+            <enum name="rect" value="1"/>
+        </attr>
+    </declare-styleable>
+
+
+    <!--数字键盘-->
+    <declare-styleable name="NumberKeyBoardView">
+        <attr name="keyBoardBackSrc" format="reference"/>
+        <attr name="keyBoardDelSrc" format="reference"/>
+        <attr name="keyBoardShowPoint" format="boolean"/>
+    </declare-styleable>
+
+
+</resources>

@@ -23,6 +23,11 @@ public class ModelHaydraItem  implements Serializable{
         this.activity = activity;
     }
 
+    public ModelHaydraItem(String name, Class activity) {
+        this.name = name;
+        this.activity = activity;
+    }
+
     public String getName() {
         return name == null ? "" : name;
     }

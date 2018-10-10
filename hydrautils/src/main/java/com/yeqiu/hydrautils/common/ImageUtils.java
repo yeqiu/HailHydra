@@ -101,6 +101,30 @@ public class ImageUtils {
     }
 
 
+     /**
+     * 保持原图比例放大图片去填充View
+     *
+     * @param urlId
+     * @param imageView
+     */
+    public static void setImageWithfitCenter(int urlId, ImageView imageView) {
+
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+
+        RequestOptions options = getRequestOptions().fitCenter();
+
+        Glide.with(context)
+                .load(urlId)
+                .apply(options)
+                .into(imageView);
+    }
+
+
+
+
+
+
     /**
      * 裁剪成圆图
      *

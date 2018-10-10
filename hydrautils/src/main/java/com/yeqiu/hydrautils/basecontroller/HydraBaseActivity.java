@@ -47,7 +47,8 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         ///隐藏ActionBar
-        removeActionBar(true);
+        isShowActionBar();
+
         init();
         context = this;
         //添加到activity管理器
@@ -56,6 +57,21 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         setSwipeBackEnable(isSwipeBack());
     }
 
+
+    private void isShowActionBar() {
+
+        if (removeActionBar()) {
+            if (getSupportActionBar()!=null){
+                getSupportActionBar().hide();
+            }
+
+        } else {
+            if (getSupportActionBar()!=null){
+                getSupportActionBar().show();
+            }
+        }
+
+    }
 
 
     private void init() {
@@ -156,19 +172,16 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     //    --------- 以下方法供子类使用  ---------
 
+
     /**
      * 删除ActionBar
      *
-     * @param isRemove
      */
-    protected void removeActionBar(boolean isRemove) {
-        if (isRemove) {
-            getSupportActionBar().hide();
-        } else {
-            getSupportActionBar().show();
-        }
+    protected boolean removeActionBar(){
 
+        return true;
     }
+
 
     /**
      * 状态栏字体颜色 亮色或深色，默认亮色

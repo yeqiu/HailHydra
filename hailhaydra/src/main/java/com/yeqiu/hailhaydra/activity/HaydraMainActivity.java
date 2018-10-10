@@ -66,7 +66,8 @@ public class HaydraMainActivity extends AppCompatActivity {
         data.add(new ModelHaydraItem("ConstraintLayout的炫酷效果", getRandomId(), ConstraintLayoutActivity.class));
         data.add(new ModelHaydraItem("视频播放", getRandomId(), VideoPlayActivity.class));
         data.add(new ModelHaydraItem("app升级和安装", getRandomId(), UpdateActivity.class));
-        data.add(new ModelHaydraItem("常用工具", getRandomId(), OtherActivity.class));
+        data.add(new ModelHaydraItem("自定义控件", getRandomId(), WidgetActivity.class));
+        data.add(new ModelHaydraItem("一些Demo", getRandomId(),DemoActivity.class));
 
 
     }

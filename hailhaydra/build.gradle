@@ -37,5 +37,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:27.1.1'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //数字进度条
+    compile 'com.daimajia.numberprogressbar:library:1.4@aar'
     compile project(':hydrautils')
 }
