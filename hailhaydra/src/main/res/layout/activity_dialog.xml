@@ -39,10 +39,18 @@
         android:textAllCaps="false"
         />
 
+
+    <Button
+        android:id="@+id/loading"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="loading提示框"/>
+
     <Button
         android:id="@+id/bt_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="提示框"/>
+        android:text="普通提示框"/>
 
 </LinearLayout>

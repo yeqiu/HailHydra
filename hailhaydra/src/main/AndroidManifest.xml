@@ -13,7 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
         <activity android:name=".activity.HaydraMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,7 +25,7 @@
         <activity android:name=".activity.PhoneInfoActivity"/>
         <activity android:name=".activity.StringUtilsActivity"/>
         <activity android:name=".activity.KeyBordListenerActivity"/>
-        <activity android:name=".activity.VideoPlayActivity"/>
+        <activity android:name=".activity.MaterialDesignActivity"/>
         <activity android:name=".activity.DialogActivity"/>
         <activity android:name=".activity.ViewScreenshotActivity"/>
         <activity android:name=".activity.WidgetActivity"/>

@@ -123,9 +123,9 @@ public class DialogBuilder {
     private boolean orientationHorizontal = true;
 
     /**
-     *加载框的消失的时间，默认不消失，
+     *加载框的消失的时间，默认30000，
      */
-    private int dismissTime = 0;
+    private int dismissTime = 3000;
 
 
     private BaseDialog baseDialog;

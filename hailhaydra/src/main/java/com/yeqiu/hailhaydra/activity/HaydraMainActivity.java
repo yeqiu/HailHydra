@@ -59,15 +59,17 @@ public class HaydraMainActivity extends AppCompatActivity {
         data.add(new ModelHaydraItem("沉浸式状态栏", getRandomId(), ImmersionBarActivity.class));
         data.add(new ModelHaydraItem("仿ios弹窗", getRandomId(), DialogActivity.class));
         data.add(new ModelHaydraItem("跑马灯TextView", getRandomId(), MarqueeTextViewActivity.class));
-        data.add(new ModelHaydraItem("TextTool的使用", getRandomId(),TextToolActivity.class));
+        data.add(new ModelHaydraItem("TextTool的使用", getRandomId(), TextToolActivity.class));
         data.add(new ModelHaydraItem("带图标的Toast", getRandomId(), ToastActivity.class));
         data.add(new ModelHaydraItem("WebView的封装", getRandomId(), WebViewActivity.class));
         data.add(new ModelHaydraItem("截图", getRandomId(), ViewScreenshotActivity.class));
-        data.add(new ModelHaydraItem("ConstraintLayout的炫酷效果", getRandomId(), ConstraintLayoutActivity.class));
-        data.add(new ModelHaydraItem("视频播放", getRandomId(), VideoPlayActivity.class));
+        data.add(new ModelHaydraItem("ConstraintLayout的炫酷效果", getRandomId(),
+                ConstraintLayoutActivity.class));
+        data.add(new ModelHaydraItem("Material Design UI", getRandomId(), MaterialDesignActivity
+                .class));
         data.add(new ModelHaydraItem("app升级和安装", getRandomId(), UpdateActivity.class));
         data.add(new ModelHaydraItem("自定义控件", getRandomId(), WidgetActivity.class));
-        data.add(new ModelHaydraItem("一些Demo", getRandomId(),DemoActivity.class));
+        data.add(new ModelHaydraItem("Demo", getRandomId(), DemoActivity.class));
 
 
     }
@@ -81,7 +83,7 @@ public class HaydraMainActivity extends AppCompatActivity {
         int resId = getResources().getIdentifier(idName, "drawable", getPackageName());
 
 
-        LogUtils.i("idName = "+idName);
+        LogUtils.i("idName = " + idName);
 //        if (resId == 0){
 //            resId = R.drawable.hydra;
 //        }

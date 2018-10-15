@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/back"
+        android:icon="@drawable/icon_load"
+        android:title="back"
+        app:showAsAction="always"
+        />
+
+     <item
+        android:id="@+id/del"
+        android:icon="@drawable/icon_done"
+        android:title="back"
+        app:showAsAction="ifRoom"
+        />
+
+     <item
+        android:id="@+id/setting"
+        android:icon="@drawable/icon_done"
+        android:title="back"
+        app:showAsAction="never"
+        />
+
+
+
+</menu>

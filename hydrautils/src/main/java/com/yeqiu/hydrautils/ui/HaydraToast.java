@@ -139,6 +139,25 @@ public class HaydraToast {
     }
 
 
+
+    public static Toast showCustomColor(@NonNull String message, Drawable icon,int color){
+
+        Toast toast = make(message, icon, DEFAULT_TEXT_COLOR, color, defDuration);
+        toast.show();
+        return toast;
+    }
+
+     public static Toast showCustomColor(@NonNull String message, int color){
+
+        Toast toast = make(message, null ,DEFAULT_TEXT_COLOR, color, defDuration);
+        toast.show();
+        return toast;
+    }
+
+
+
+
+
     /**
      * 显示默认 灰色
      *

@@ -37,6 +37,7 @@ public class DialogActivity extends BaseActivity {
         findViewById(R.id.bt_edit).setOnClickListener(this);
         findViewById(R.id.bt_sheet).setOnClickListener(this);
         findViewById(R.id.bt_cmmon_1).setOnClickListener(this);
+        findViewById(R.id.loading).setOnClickListener(this);
         findViewById(R.id.bt_tip).setOnClickListener(this);
 
     }
@@ -142,7 +143,8 @@ public class DialogActivity extends BaseActivity {
 
                 break;
 
-            case R.id.bt_tip:
+
+            case R.id.loading:
 
                 new TipDialog(DialogActivity.this)
                         .build()
@@ -151,6 +153,19 @@ public class DialogActivity extends BaseActivity {
                         .setOrientationHorizontal(false)
                         .setIsLoading(true)
                         .setDismissTime(3000)
+                        .show();
+
+                break;
+
+
+            case R.id.bt_tip:
+
+                new TipDialog(DialogActivity.this)
+                        .build()
+                        .setTipText("提示")
+                        .setIconId(R.drawable.icon_done)
+                        .setOrientationHorizontal(false)
+                        .setIsLoading(false)
                         .show();
 
                 break;
