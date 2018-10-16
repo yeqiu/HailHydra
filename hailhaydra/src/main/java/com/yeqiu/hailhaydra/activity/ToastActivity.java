@@ -54,6 +54,8 @@ public class ToastActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
 
+        ///需要自定义布局 参考HaydraToast的make();
+
         Drawable icon = getResources().getDrawable(R.drawable.hydra);
 
         switch (view.getId()) {
