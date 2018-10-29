@@ -50,6 +50,11 @@ public class ToastActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
 
     @Override
     public void onClick(View view) {

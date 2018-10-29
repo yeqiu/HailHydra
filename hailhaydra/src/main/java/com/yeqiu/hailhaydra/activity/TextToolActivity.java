@@ -75,6 +75,11 @@ public class TextToolActivity extends BaseActivity {
     }
 
     @Override
+    protected void initListener() {
+
+    }
+
+    @Override
     public void onClick(View v) {
 
         JumpUtils.jumpToBrowserActivity(Url.SpannableString);

@@ -32,7 +32,7 @@ dependencies {
     //log
     compile 'com.orhanobut:logger:2.2.0'
     //gson
-    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.google.code.gson:gson:2.8.5'
     //recyclerview
     compile 'com.android.support:recyclerview-v7:27.1.1'
     //glide

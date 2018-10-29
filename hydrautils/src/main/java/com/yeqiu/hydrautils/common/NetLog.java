@@ -3,7 +3,7 @@ package com.yeqiu.hydrautils.common;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.yeqiu.hydrautils.BuildConfig;
+import com.yeqiu.hydrautils.HydraUtilsManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  */
 public class NetLog {
 
-    private static boolean openLog = BuildConfig.DEBUG;
+    private static boolean openLog = HydraUtilsManager.getInstance().isDebug();;
     private static String baseTab = "netlog_";
     private static String tagJson = baseTab + "json";
     private static String tagUrl = baseTab + "url";

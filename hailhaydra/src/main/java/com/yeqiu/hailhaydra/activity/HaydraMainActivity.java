@@ -9,7 +9,6 @@ import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.adapter.HailHaydraAdapter;
 import com.yeqiu.hailhaydra.bean.Model.ModelHaydraItem;
 import com.yeqiu.hydrautils.common.DensityUtils;
-import com.yeqiu.hydrautils.common.LogUtils;
 import com.yeqiu.hydrautils.ui.widget.HydraRecyclerViewDivider;
 
 import java.util.ArrayList;
@@ -70,6 +69,7 @@ public class HaydraMainActivity extends AppCompatActivity {
         data.add(new ModelHaydraItem("app升级和安装", getRandomId(), UpdateActivity.class));
         data.add(new ModelHaydraItem("自定义控件", getRandomId(), WidgetActivity.class));
         data.add(new ModelHaydraItem("Demo", getRandomId(), DemoActivity.class));
+        data.add(new ModelHaydraItem(" Gson使用详解", getRandomId(), GsonActivity.class));
 
 
     }
@@ -82,11 +82,9 @@ public class HaydraMainActivity extends AppCompatActivity {
 
         int resId = getResources().getIdentifier(idName, "drawable", getPackageName());
 
-
-        LogUtils.i("idName = " + idName);
-//        if (resId == 0){
-//            resId = R.drawable.hydra;
-//        }
+        if (resId == 0){
+            resId = R.drawable.hydra;
+        }
 
         return resId;
     }

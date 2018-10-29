@@ -47,6 +47,11 @@ public class ThreadActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
     private void thread() {
 
         new Thread(){

@@ -67,6 +67,11 @@ public class WebViewScreenShotActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
 
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {

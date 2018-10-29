@@ -13,7 +13,7 @@ import com.yeqiu.hydrautils.ui.UiConfig;
  * @project：HailHydra
  * @author：小卷子
  * @date 2018/9/7
- * @describe：检查所有的edittext是否输入完成
+ * @describe：检查所有的edittext是否输入完成 当所有输入框输入完成后 改变按钮背景变为可点击
  * @fix：
  */
 public class EditTextInputDone {

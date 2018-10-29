@@ -2,7 +2,7 @@ package com.yeqiu.hydrautils.common;
 
 import android.app.Activity;
 
-import com.yeqiu.hydrautils.BuildConfig;
+import com.yeqiu.hydrautils.HydraUtilsManager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -90,7 +90,7 @@ public class ActivityManager {
         }
 
         LogUtils.e("请检查传入clazz");
-        if (BuildConfig.DEBUG) {
+        if (HydraUtilsManager.getInstance().isDebug()) {
             throw new NoClassDefFoundError("请检查传入clazz，详细内容请打开log查看");
         } else {
             return null;

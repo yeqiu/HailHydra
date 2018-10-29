@@ -164,6 +164,12 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      */
     protected abstract void initData();
 
+
+    /**
+     * 初始化监听器
+     */
+    protected abstract void initListener() ;
+
     /**
      * 设置返回键图片
      */
@@ -385,11 +391,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     //    --------- 以下是空方法 子类选择实现  ---------
 
-    /**
-     * 初始化监听器
-     */
-    protected void initListener() {
-    }
 
     /**
      * 重新加载网页，子类实现

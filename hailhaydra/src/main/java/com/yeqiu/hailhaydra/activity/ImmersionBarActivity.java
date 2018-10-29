@@ -51,6 +51,11 @@ public class ImmersionBarActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
 
     @Override
     protected boolean isSwipeBack() {

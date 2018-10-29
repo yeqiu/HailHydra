@@ -45,6 +45,11 @@ public class KeyBordListenerActivity extends BaseActivity {
     }
 
     @Override
+    protected void initListener() {
+
+    }
+
+    @Override
     public void onClick(View v) {
 
     }

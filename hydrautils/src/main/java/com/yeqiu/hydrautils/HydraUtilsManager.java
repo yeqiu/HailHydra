@@ -14,10 +14,10 @@ import com.yeqiu.hydrautils.ui.UiConfig;
  */
 public class HydraUtilsManager {
 
-
     private static HydraUtilsManager instance;
-
     private Context context;
+    private boolean isDebug = true;
+
 
     private HydraUtilsManager() {
         instance = this;
@@ -36,16 +36,29 @@ public class HydraUtilsManager {
      *
      * @param context
      */
-    public void init(Context context) {
+    public HydraUtilsManager init(Context context) {
 
         this.context = context;
         if (context == null) {
             throw new NullPointerException("context must not null,Please check init()");
         }
 
-
         LogUtils.init();
 
+        return getInstance();
+
+    }
+
+
+    /**
+     * 设置当前环境
+     * @param isDebug
+     * @return
+     */
+    public HydraUtilsManager setCurrentEnvironment(boolean isDebug) {
+
+        this.isDebug = isDebug;
+        return getInstance();
     }
 
 
@@ -62,4 +75,10 @@ public class HydraUtilsManager {
 
         return context;
     }
+
+
+    public boolean isDebug(){
+        return isDebug;
+    }
+
 }

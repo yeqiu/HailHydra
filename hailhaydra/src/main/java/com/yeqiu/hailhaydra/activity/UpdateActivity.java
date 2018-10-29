@@ -25,10 +25,18 @@ public class UpdateActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+
+    }
+
+    @Override
+    protected void initListener() {
+
     }
 
     @Override
     public void onClick(View v) {
 
     }
+
+
 }

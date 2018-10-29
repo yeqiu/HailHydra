@@ -1,7 +1,5 @@
 package com.yeqiu.hailhaydra.bean.Model;
 
-import java.io.Serializable;
-
 /**
  * @project：HailHydra
  * @author：小卷子
@@ -9,7 +7,7 @@ import java.io.Serializable;
  * @describe：
  * @fix：
  */
-public class ModelHaydraItem  implements Serializable{
+public class ModelHaydraItem  {
 
     private String name;
 

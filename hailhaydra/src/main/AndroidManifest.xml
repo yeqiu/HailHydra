@@ -47,6 +47,7 @@
         <activity android:name=".activity.RecyclerViewDomeActivity"/>
         <activity android:name=".activity.PasswordViewActivity"/>
         <activity android:name=".activity.DemoActivity"/>
+        <activity android:name=".activity.GsonActivity"/>
     </application>
 
 </manifest>

@@ -103,6 +103,11 @@ public class MarqueeTextViewActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
 
     private void setUPMarqueeView(List<View> views, int size) {
         for (int i = 0; i < size; i = i + 2) {

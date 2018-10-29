@@ -12,7 +12,7 @@ import com.yeqiu.hydrautils.ui.UiConfig;
  * @project：HailHydra
  * @author：小卷子
  * @date 2018/9/7
- * @describe：输入框达到指定位数 view改变颜色
+ * @describe：输入框达到指定位数 TextView 改变颜色 变为可点击
  * @fix：
  */
 public class EtChangeColorByEtNmberUtil {

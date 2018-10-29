@@ -48,6 +48,11 @@ public class DialogActivity extends BaseActivity {
     }
 
     @Override
+    protected void initListener() {
+
+    }
+
+    @Override
     public void onClick(View v) {
 
         switch (v.getId()) {

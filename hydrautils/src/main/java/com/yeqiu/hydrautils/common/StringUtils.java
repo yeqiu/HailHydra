@@ -9,6 +9,7 @@ import com.yeqiu.hydrautils.HydraUtilsManager;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
@@ -321,6 +322,40 @@ public class StringUtils {
 
     }
 
+
+    /**
+     * 把list根据逗号分隔
+     *
+     * @param strings
+     * @return
+     */
+    public static String listToStringWithSeparator(List<String> strings) {
+
+        return listToStringWithSeparator(strings, ",");
+
+    }
+
+    /**
+     * 把list根据分隔符分隔
+     *
+     * @param strings
+     * @param separator
+     * @return
+     */
+    public static String listToStringWithSeparator(List<String> strings, String separator) {
+
+        StringBuffer sb = new StringBuffer();
+        for (String s : strings) {
+            sb.append("'").append(s).append("',");
+        }
+
+
+        for (int i = 0; i < strings.size(); i++) {
+            sb.append(strings.get(i)).append(i < strings.size() - 1 ? "," : "");
+        }
+
+        return sb.toString();
+    }
 
 
 }

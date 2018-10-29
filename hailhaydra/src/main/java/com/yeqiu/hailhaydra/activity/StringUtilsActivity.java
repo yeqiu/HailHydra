@@ -106,6 +106,11 @@ public class StringUtilsActivity extends BaseActivity implements View.OnClickLis
 
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
 
     @Override
     public void onClick(View v) {
