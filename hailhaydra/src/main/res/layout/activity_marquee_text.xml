@@ -7,7 +7,7 @@
     android:padding="20dp">
 
 
-    <com.yeqiu.hydrautils.ui.widget.marquee.MarqueeTextView
+    <com.yeqiu.hydrautils.widget.marquee.MarqueeTextView
         android:id="@+id/mtv_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,13 +20,13 @@
         android:textColor="@color/color_black"/>
 
 
-    <com.yeqiu.hydrautils.ui.widget.marquee.MarqueeVerticalView
+    <com.yeqiu.hydrautils.widget.marquee.MarqueeVerticalView
         android:id="@+id/marqueeverticalview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"/>
 
-    <com.yeqiu.hydrautils.ui.widget.marquee.MarqueeVerticalWhitIcon
+    <com.yeqiu.hydrautils.widget.marquee.MarqueeVerticalWhitIcon
         android:id="@+id/marqueeverticalwhiticon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

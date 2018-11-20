@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.yeqiu.hydrautils.common.UIHelper;
 import com.yeqiu.hydrautils.net.NetWorkUtils;
-import com.yeqiu.hydrautils.ui.widget.StatusLayout;
+import com.yeqiu.hydrautils.widget.StatusLayout;
 
 /**
  * @project：HailHydra

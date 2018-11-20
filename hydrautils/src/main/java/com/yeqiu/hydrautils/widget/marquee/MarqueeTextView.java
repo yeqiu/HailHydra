@@ -1,4 +1,4 @@
-package com.yeqiu.hydrautils.ui.widget.marquee;
+package com.yeqiu.hydrautils.widget.marquee;
 
 import android.content.Context;
 import android.graphics.Rect;

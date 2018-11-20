@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydrautils.common.DensityUtils;
-import com.yeqiu.hydrautils.ui.widget.marquee.MarqueeTextView;
+import com.yeqiu.hydrautils.widget.marquee.MarqueeTextView;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 
 /**
@@ -127,7 +127,13 @@ public class TipDialog extends BaseDialog {
 
     @Override
     public void show() {
+
+        if (context == null||context.isFinishing()){
+            return;
+        }
+
         super.show();
+
         if (dialogBuilder.isLoading()) {
             startAnimate();
         }

@@ -18,7 +18,7 @@ import com.yeqiu.hydrautils.common.LogUtils;
 import com.yeqiu.hydrautils.common.ScreenUtils;
 import com.yeqiu.hydrautils.common.UIHelper;
 import com.yeqiu.hydrautils.net.NetWorkUtils;
-import com.yeqiu.hydrautils.ui.widget.StatusLayout;
+import com.yeqiu.hydrautils.widget.StatusLayout;
 
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
@@ -27,7 +27,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  * @author：小卷子
  * @date 2018/9/15
  * @describe：
- * @fix：
+ * @fix：activity
  */
 public abstract class HydraBaseActivity extends SwipeBackActivity implements View.OnClickListener {
 
@@ -46,11 +46,10 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+        context = this;
         ///隐藏ActionBar
         isShowActionBar();
-
         init();
-        context = this;
         //添加到activity管理器
         ActivityManager.getAppManager().addActivity(this);
         statusLayout.setOnStatusLayoutClickListener(onStatusLayoutClickListener);
@@ -134,6 +133,14 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     }
 
 
+    /**
+     * 标题栏返回点击
+     */
+    protected void onBackClick() {
+        finish();
+    }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -142,6 +149,15 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         // TODO: 2018/7/12 取消当前页面的网络请求
     }
 
+
+
+
+    @Override
+    public void finish() {
+        //关闭本页的输入法
+        KeybordUtils.closeKeybord(this);
+        super.finish();
+    }
 
     //    --------- 抽象方法  ---------
 
@@ -188,6 +204,16 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         return true;
     }
 
+    /**
+     * 设置标题栏颜色
+     *
+     * @param colorId
+     * @param backSrcId
+     */
+    protected void setHeadLayoutColor(int colorId, int backSrcId) {
+        headLayout.setBackgroundColor(getResources().getColor(colorId));
+        ivHeadBack.setImageResource(backSrcId);
+    }
 
     /**
      * 状态栏字体颜色 亮色或深色，默认亮色
@@ -442,7 +468,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
             int i = v.getId();
             if (i == R.id.iv_common_head_back) {
                 //左上角返回按钮统一处理
-                finish();
+                onBackClick();
 
             } else if (i == R.id.tv_common_head_title_right) {
                 onTvRightClick();

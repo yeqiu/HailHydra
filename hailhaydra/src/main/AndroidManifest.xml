@@ -48,6 +48,7 @@
         <activity android:name=".activity.PasswordViewActivity"/>
         <activity android:name=".activity.DemoActivity"/>
         <activity android:name=".activity.GsonActivity"/>
+        <activity android:name=".activity.CheckboxListActivity"/>
     </application>
 
 </manifest>

@@ -46,7 +46,8 @@ public class DemoActivity extends BaseActivity {
         data.add(new ModelHaydraItem("RecyclerView Demo", RecyclerViewDomeActivity.class));
         data.add(new ModelHaydraItem("切换到主线程的工具", ThreadActivity.class));
         data.add(new ModelHaydraItem("当前网络的监听", NetworkListenerActivity.class));
-
+        data.add(new ModelHaydraItem("list中使用checkbox", CheckboxListActivity.class));
+        data.add(new ModelHaydraItem("list头部联动", NetworkListenerActivity.class));
 
 
         rlList.setLayoutManager(new LinearLayoutManager(this, LinearLayout

@@ -1,4 +1,4 @@
-package com.yeqiu.hydrautils.ui.widget;
+package com.yeqiu.hydrautils.widget;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

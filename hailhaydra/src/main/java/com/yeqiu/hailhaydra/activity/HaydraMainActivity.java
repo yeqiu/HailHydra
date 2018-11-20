@@ -9,7 +9,7 @@ import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.adapter.HailHaydraAdapter;
 import com.yeqiu.hailhaydra.bean.Model.ModelHaydraItem;
 import com.yeqiu.hydrautils.common.DensityUtils;
-import com.yeqiu.hydrautils.ui.widget.HydraRecyclerViewDivider;
+import com.yeqiu.hydrautils.widget.HydraRecyclerViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;

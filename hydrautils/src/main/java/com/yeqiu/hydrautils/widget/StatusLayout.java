@@ -1,4 +1,4 @@
-package com.yeqiu.hydrautils.ui.widget;
+package com.yeqiu.hydrautils.widget;
 
 import android.content.Context;
 import android.support.annotation.AttrRes;

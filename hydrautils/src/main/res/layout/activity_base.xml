@@ -9,7 +9,7 @@
         layout="@layout/base_header_layout"
         />
 
-    <com.yeqiu.hydrautils.ui.widget.StatusLayout
+    <com.yeqiu.hydrautils.widget.StatusLayout
         android:id="@+id/base_status_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

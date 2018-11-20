@@ -20,7 +20,6 @@
         app:keyBoardBackSrc="@drawable/keyboard_back_img"
         app:keyBoardDelSrc="@drawable/keyboard_del"
         app:keyBoardShowPoint="false"
-
         android:visibility="gone"/>
 
 </RelativeLayout>
