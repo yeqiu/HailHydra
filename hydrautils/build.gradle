@@ -35,4 +35,6 @@ dependencies {
     compile 'com.gyf.immersionbar:immersionbar:2.3.2-beta01'
     //侧滑返回
     compile 'me.imid.swipebacklayout.lib:library:1.1.0'
+    //okgo
+    compile 'com.lzy.net:okgo:3.0.4'
 }

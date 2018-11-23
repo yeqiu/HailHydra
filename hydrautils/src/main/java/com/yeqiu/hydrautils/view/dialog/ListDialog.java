@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydrautils.common.ImageUtils;
-import com.yeqiu.hydrautils.common.LogUtils;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 import com.yeqiu.hydrautils.view.dialog.model.ListData;
 
@@ -193,8 +192,6 @@ public class ListDialog extends BaseDialog implements AdapterView.OnItemClickLis
                 holder.ivIcon.setVisibility(View.GONE);
             } else {
                 ImageUtils.setSimpleImage(item.getIcon(), holder.ivIcon);
-
-                LogUtils.i("item.getIcon() = "+item.getIcon());
             }
 
             holder.tvTitle.setText(item.getTitle());

@@ -358,4 +358,23 @@ public class StringUtils {
     }
 
 
+    /**
+     * 获取包名最后一个节点名
+     *
+     * @return
+     */
+    public static String getPackageNameLast(String packageName) {
+
+        String[] split = packageName.split("\\.");
+
+        if (split.length > 0) {
+            String s = split[split.length - 1];
+            return s;
+        }
+
+        return "";
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.yeqiu.hydrautils.common;
 
 import android.app.ActivityManager;
+import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -14,6 +15,7 @@ import com.yeqiu.hydrautils.HydraUtilsManager;
 
 import java.io.DataOutputStream;
 import java.io.File;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -404,11 +406,65 @@ public class APPInfoUtil {
             }
         } else {
             PackageManager pm = context.getPackageManager();
-            if (pm.checkPermission(permission, context.getPackageName()) == PackageManager.PERMISSION_GRANTED) {
+            if (pm.checkPermission(permission, context.getPackageName()) == PackageManager
+                    .PERMISSION_GRANTED) {
                 result = true;
             }
         }
         return result;
     }
 
+
+    /**
+     * 是否开启通知权限
+     * 异常时返回有权限
+     *
+     * @param context
+     * @return
+     */
+    public static boolean isNotificationEnabled(Context context) {
+
+        String CHECK_OP_NO_THROW = "checkOpNoThrow";
+        String OP_POST_NOTIFICATION = "OP_POST_NOTIFICATION";
+        try {
+            AppOpsManager mAppOps = (AppOpsManager)
+                    context.getSystemService(Context.APP_OPS_SERVICE);
+            ApplicationInfo appInfo = context.getApplicationInfo();
+            String pkg = context.getApplicationContext().getPackageName();
+            int uid = appInfo.uid;
+            Class appOpsClass = null;
+            appOpsClass = Class.forName(AppOpsManager.class.getName());
+            Method checkOpNoThrowMethod = appOpsClass.getMethod(CHECK_OP_NO_THROW, Integer.TYPE,
+                    Integer.TYPE, String.class);
+            Field opPostNotificationValue = appOpsClass.getDeclaredField(OP_POST_NOTIFICATION);
+            int value = (int) opPostNotificationValue.get(Integer.class);
+            return ((int) checkOpNoThrowMethod.invoke(mAppOps, value, uid, pkg) == AppOpsManager
+                    .MODE_ALLOWED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+
+
+    /**
+     * 获取包名最后一个节点名
+     *
+     * @return
+     */
+    public static String getPackageNameLast() {
+
+        String packageName = HydraUtilsManager.getInstance().getContext().getPackageName();
+
+        String[] split = packageName.split("\\.");
+
+        if (split.length > 0) {
+            String s = split[split.length - 1];
+            return s;
+
+        }
+
+        return "";
+    }
 }
