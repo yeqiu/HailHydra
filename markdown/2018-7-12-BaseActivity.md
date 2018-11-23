@@ -119,7 +119,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         AppManager.getAppManager().finishActivity(this);
 
-        // TODO: 2018/7/12 取消当前页面的网络请求
+
     }
 
 

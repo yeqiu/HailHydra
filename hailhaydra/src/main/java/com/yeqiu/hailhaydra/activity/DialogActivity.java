@@ -7,8 +7,10 @@ import com.yeqiu.hydrautils.common.UIHelper;
 import com.yeqiu.hydrautils.view.dialog.CommonDialog;
 import com.yeqiu.hydrautils.view.dialog.DialogListener;
 import com.yeqiu.hydrautils.view.dialog.EditDialog;
+import com.yeqiu.hydrautils.view.dialog.ListDialog;
 import com.yeqiu.hydrautils.view.dialog.SheetDialog;
 import com.yeqiu.hydrautils.view.dialog.TipDialog;
+import com.yeqiu.hydrautils.view.dialog.model.ListData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,7 @@ public class DialogActivity extends BaseActivity {
         findViewById(R.id.bt_cmmon_1).setOnClickListener(this);
         findViewById(R.id.loading).setOnClickListener(this);
         findViewById(R.id.bt_tip).setOnClickListener(this);
+        findViewById(R.id.bt_list).setOnClickListener(this);
 
     }
 
@@ -173,6 +176,34 @@ public class DialogActivity extends BaseActivity {
                         .setIsLoading(false)
                         .show();
 
+
+                break;
+            case R.id.bt_list:
+
+
+                List<ListData> data = new ArrayList<>();
+                for (int i = 0; i < 20; i++) {
+                    ListData listData = new ListData("上单送人头 " + i,
+                            "");
+                    data.add(listData);
+                }
+
+
+                new ListDialog(DialogActivity.this)
+                        .build()
+                        .setTitleText("啦啦啦啦")
+                        .setListDatas(data)
+                        .setListMaxHeightWhitItem(5)
+                        .setOnDialogListener(new DialogListener() {
+                            @Override
+                            public void onItemClick(int position, String text) {
+                                super.onItemClick(position, text);
+                                UIHelper.showToast(text);
+                            }
+                        })
+                        .show();
+
+
                 break;
 
             default:
@@ -180,8 +211,6 @@ public class DialogActivity extends BaseActivity {
         }
 
     }
-
-
 
 
 }

@@ -5,6 +5,7 @@ import android.text.InputType;
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialogListener;
+import com.yeqiu.hydrautils.view.dialog.model.ListData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class DialogBuilder {
     /**
      * 标题文字
      */
-    private String titleText = "标题";
+    private String titleText = "";
     /**
      * 确认键文字
      */
@@ -46,7 +47,7 @@ public class DialogBuilder {
     /**
      * 内容文字
      */
-    private String descText = "内容";
+    private String descText = "";
     /**
      * 确认的颜色
      */
@@ -123,10 +124,28 @@ public class DialogBuilder {
     private boolean orientationHorizontal = true;
 
     /**
-     *加载框的消失的时间，默认30000，
+     * 加载框的消失的时间，默认30000，
      */
     private int dismissTime = 3000;
 
+    /**
+     * 列表弹框的返回键
+     */
+    private int backImg = R.drawable.head_back_gray;
+
+    /**
+     * 列表弹框的列表数据
+     */
+    private List<ListData> listDatas;
+
+    /**
+     * 列表弹框的列表高度
+     */
+    private int listHeight = -1;
+    /**
+     * 列表弹框的列表最多显示几个item 此属性优先于listHeight
+     */
+    private int listMaxHeightWhitItem = -1;
 
     private BaseDialog baseDialog;
     /**
@@ -270,6 +289,7 @@ public class DialogBuilder {
 
     /**
      * 建议设置少于4个字的提示，超过4个字会以跑马灯形式展示
+     *
      * @param tipText
      * @return
      */
@@ -288,7 +308,51 @@ public class DialogBuilder {
         return this;
     }
 
+
+    public DialogBuilder setBackImg(int backImg) {
+        this.backImg = backImg;
+        return this;
+    }
+
+
+    public DialogBuilder setListDatas(List<ListData> listDatas) {
+        this.listDatas = listDatas;
+        return this;
+    }
+
+
+    public DialogBuilder setListHeight(int listHeight) {
+        this.listHeight = listHeight;
+        return this;
+    }
+
+
+    public DialogBuilder setListMaxHeightWhitItem(int listMaxHeightWhitItem) {
+        this.listMaxHeightWhitItem = listMaxHeightWhitItem;
+        return this;
+    }
+
     //----------get()-----------
+
+
+    public int getListHeight() {
+        return listHeight;
+    }
+
+    public int getListMaxHeightWhitItem() {
+        return listMaxHeightWhitItem;
+    }
+
+    public int getBackImg() {
+        return backImg;
+    }
+
+    public List<ListData> getListDatas() {
+        if (listDatas == null) {
+            return new ArrayList<>();
+        }
+        return listDatas;
+    }
 
     public boolean getCanceledOnTouchOutside() {
         return canceledOnTouchOutside;

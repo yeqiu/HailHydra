@@ -200,4 +200,48 @@ public class ImageUtils {
     }
 
 
+
+    /**
+     * 根据图大小自动设置
+     *
+     * @param url
+     * @param imageView
+     */
+    public static void setSimpleImage(String url, final ImageView imageView) {
+
+        if (TextUtils.isEmpty(url)) {
+            return;
+        }
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+
+        RequestOptions options = getRequestOptions();
+
+        Glide.with(context)
+                .load(url)
+                .apply(options)
+                .into(imageView);
+
+    }
+
+    /**
+     * 根据图大小自动设置
+     *
+     * @param id
+     * @param imageView
+     */
+    public static void setSimpleImage(int id, final ImageView imageView) {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+
+        RequestOptions options = getRequestOptions();
+
+        Glide.with(context)
+                .load(id)
+                .apply(options)
+                .into(imageView);
+
+    }
+
+
 }

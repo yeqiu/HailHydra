@@ -163,6 +163,11 @@ public class DialogActivity extends AppCompatActivity {
                             .show();
 
 
+
+                    break;
+
+
+                default:
                     break;
 
 
