@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.common.UpdateUtil;
+import com.yeqiu.hydrautils.utils.UpdateUtil;
 import com.yeqiu.hydrautils.view.dialog.CommonDialog;
 import com.yeqiu.hydrautils.view.dialog.DialogListener;
 
@@ -52,8 +52,9 @@ public class UpdateActivity extends BaseActivity {
 
     }
 
-    
+
     private void update() {
+
         UpdateUtil updateUtil = new UpdateUtil();
         String s = "https://imtt.dd.qq.com/16891/FE7240E456F9594D2A534E2F2B86C595.apk?fsname=com" +
                 ".zhiqupk.ziti_6.2.6_6002006.apk&csr=1bbd";

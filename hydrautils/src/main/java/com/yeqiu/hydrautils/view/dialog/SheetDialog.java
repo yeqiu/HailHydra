@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydrautils.common.DensityUtils;
+import com.yeqiu.hydrautils.utils.DensityUtils;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 
 import java.util.List;

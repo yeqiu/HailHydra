@@ -6,7 +6,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yeqiu.hydrautils.common.ResourceUtil;
+import com.yeqiu.hydrautils.utils.ResourceUtil;
 import com.yeqiu.hydrautils.ui.UiConfig;
 
 /**

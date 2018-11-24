@@ -6,7 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydrautils.common.KeybordUtils;
+import com.yeqiu.hydrautils.utils.KeybordUtils;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 
 import static android.R.attr.inputType;

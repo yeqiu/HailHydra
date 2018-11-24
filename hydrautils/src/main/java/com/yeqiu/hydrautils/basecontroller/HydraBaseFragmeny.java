@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.yeqiu.hydrautils.common.UIHelper;
-import com.yeqiu.hydrautils.net.NetWorkUtils;
+import com.yeqiu.hydrautils.utils.UIHelper;
+import com.yeqiu.hydrautils.utils.net.NetWorkUtils;
 import com.yeqiu.hydrautils.widget.StatusLayout;
 
 /**

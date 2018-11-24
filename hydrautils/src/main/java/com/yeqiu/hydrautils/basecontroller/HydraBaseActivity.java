@@ -12,12 +12,12 @@ import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydrautils.common.ActivityManager;
-import com.yeqiu.hydrautils.common.KeybordUtils;
-import com.yeqiu.hydrautils.common.LogUtils;
-import com.yeqiu.hydrautils.common.ScreenUtils;
-import com.yeqiu.hydrautils.common.UIHelper;
-import com.yeqiu.hydrautils.net.NetWorkUtils;
+import com.yeqiu.hydrautils.manger.ActivityManager;
+import com.yeqiu.hydrautils.utils.KeybordUtils;
+import com.yeqiu.hydrautils.utils.LogUtils;
+import com.yeqiu.hydrautils.utils.ScreenUtils;
+import com.yeqiu.hydrautils.utils.UIHelper;
+import com.yeqiu.hydrautils.utils.net.NetWorkUtils;
 import com.yeqiu.hydrautils.widget.StatusLayout;
 
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;

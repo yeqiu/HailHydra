@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.common.UIHelper;
+import com.yeqiu.hydrautils.utils.UIHelper;
 
 /**
  * @project：HailHydra

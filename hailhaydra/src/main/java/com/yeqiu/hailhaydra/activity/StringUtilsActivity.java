@@ -6,7 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.common.StringUtils;
+import com.yeqiu.hydrautils.utils.StringUtils;
 
 /**
  * @project：HailHydra

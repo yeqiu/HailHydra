@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hydrautils.HydraUtilsManager;
-import com.yeqiu.hydrautils.common.UIHelper;
+import com.yeqiu.hydrautils.utils.UIHelper;
 import com.yeqiu.hydrautils.widget.marquee.MarqueeTextView;
 import com.yeqiu.hydrautils.widget.marquee.MarqueeVerticalView;
 import com.yeqiu.hydrautils.widget.marquee.MarqueeVerticalWhitIcon;

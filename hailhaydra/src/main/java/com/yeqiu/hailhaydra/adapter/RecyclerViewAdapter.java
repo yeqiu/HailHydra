@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.common.ImageUtils;
+import com.yeqiu.hydrautils.utils.ImageUtils;
 
 import java.util.ArrayList;
 

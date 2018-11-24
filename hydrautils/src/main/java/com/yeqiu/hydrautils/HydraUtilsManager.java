@@ -1,9 +1,11 @@
 package com.yeqiu.hydrautils;
 
+import android.app.Application;
 import android.content.Context;
 
-import com.yeqiu.hydrautils.common.LogUtils;
+import com.yeqiu.hydrautils.net.NetManager;
 import com.yeqiu.hydrautils.ui.UiConfig;
+import com.yeqiu.hydrautils.utils.LogUtils;
 
 /**
  * @project：HailHydra
@@ -36,7 +38,7 @@ public class HydraUtilsManager {
      *
      * @param context
      */
-    public HydraUtilsManager init(Context context) {
+    public HydraUtilsManager init(Application context) {
 
         this.context = context;
         if (context == null) {
@@ -44,6 +46,8 @@ public class HydraUtilsManager {
         }
 
         LogUtils.init();
+        NetManager.getInstance().init(context, null);
+
 
         return getInstance();
 
@@ -52,6 +56,7 @@ public class HydraUtilsManager {
 
     /**
      * 设置当前环境
+     *
      * @param isDebug
      * @return
      */
@@ -77,8 +82,9 @@ public class HydraUtilsManager {
     }
 
 
-    public boolean isDebug(){
+    public boolean isDebug() {
         return isDebug;
     }
+
 
 }

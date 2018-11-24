@@ -10,7 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydrautils.common.DensityUtils;
+import com.yeqiu.hydrautils.utils.DensityUtils;
 import com.yeqiu.hydrautils.view.dialog.DialogBuilder;
 
 /**

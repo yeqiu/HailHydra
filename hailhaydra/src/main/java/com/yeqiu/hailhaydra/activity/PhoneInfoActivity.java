@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.common.PhoneInfoUtil;
+import com.yeqiu.hydrautils.utils.PhoneInfoUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

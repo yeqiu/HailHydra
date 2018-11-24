@@ -3,7 +3,7 @@ package com.yeqiu.hailhaydra.activity;
 import android.view.View;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.common.UIHelper;
+import com.yeqiu.hydrautils.utils.UIHelper;
 import com.yeqiu.hydrautils.view.dialog.CommonDialog;
 import com.yeqiu.hydrautils.view.dialog.DialogListener;
 import com.yeqiu.hydrautils.view.dialog.EditDialog;

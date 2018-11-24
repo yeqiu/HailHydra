@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.app.Url;
-import com.yeqiu.hydrautils.common.JumpUtils;
-import com.yeqiu.hydrautils.common.SpanUtils;
-import com.yeqiu.hydrautils.common.UIHelper;
+import com.yeqiu.hydrautils.utils.JumpUtils;
+import com.yeqiu.hydrautils.utils.SpanUtils;
+import com.yeqiu.hydrautils.utils.UIHelper;
 
 /**
  * @project：HailHydra

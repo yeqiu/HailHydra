@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.app.Url;
-import com.yeqiu.hydrautils.common.JumpUtils;
+import com.yeqiu.hydrautils.utils.JumpUtils;
 
 /**
  * @project：HailHydra

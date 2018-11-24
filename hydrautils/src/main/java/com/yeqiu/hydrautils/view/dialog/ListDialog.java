@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydrautils.common.ImageUtils;
+import com.yeqiu.hydrautils.utils.ImageUtils;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
 import com.yeqiu.hydrautils.view.dialog.model.ListData;
 
