@@ -15,7 +15,7 @@
         >
         <!--左侧返回键-->
         <ImageView
-            android:id="@+id/iv_list_way_back"
+            android:id="@+id/iv_list_back"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_alignParentLeft="true"
@@ -27,7 +27,7 @@
 
         <!--标题-->
         <TextView
-            android:id="@+id/tv_list_way_title"
+            android:id="@+id/tv_list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

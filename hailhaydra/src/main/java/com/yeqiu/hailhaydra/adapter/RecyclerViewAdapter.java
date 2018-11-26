@@ -3,13 +3,13 @@ package com.yeqiu.hailhaydra.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.utils.ImageUtils;
+import com.yeqiu.hydrautils.utils.ScreenUtils;
 
 import java.util.ArrayList;
 
@@ -24,10 +24,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     private Context context;
-    private ArrayList<Integer> datas;
+    private ArrayList<String> datas;
     private int type = 1;
 
-    public RecyclerViewAdapter(Context context, ArrayList<Integer> datas) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> datas) {
 
         this.context = context;
         this.datas = datas;
@@ -42,9 +42,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.item_recyclerview, null);
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview,
+                parent, false);
+
 
         ViewHolder viewHolder = new ViewHolder(view);
+
+        RecyclerView.LayoutParams layoutParams = (RecyclerView
+                .LayoutParams) view.getLayoutParams();
+
+        int screenWidth = ScreenUtils.getScreenWidth();
+        layoutParams.width = screenWidth / 4;
 
 
         return viewHolder;
@@ -57,17 +66,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        int imgId = datas.get(position);
 
-
-        ImageUtils.setImageWithfitCenter(imgId, holder.iv);
-
-        holder.tv.setText("position " + position);
-
-        if (type == 4) {
-            holder.tv.setVisibility(View.GONE);
-
-        }
+        holder.tv.setText(datas.get(position));
 
 
     }
@@ -85,18 +85,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        private ImageView iv;
         private TextView tv;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            iv = (ImageView) itemView.findViewById(R.id.iv_item_recyclerview);
             tv = (TextView) itemView.findViewById(R.id.tv_item_recyclerview);
         }
     }

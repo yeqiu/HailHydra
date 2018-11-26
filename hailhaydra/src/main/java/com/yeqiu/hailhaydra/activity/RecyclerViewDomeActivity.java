@@ -9,10 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.adapter.RecyclerViewAdapter;
+import com.yeqiu.hailhaydra.view.GridDecoration;
+import com.yeqiu.hailhaydra.view.LinearDecoration;
 
 import java.util.ArrayList;
 
@@ -33,8 +34,13 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
     RecyclerView recyclerview;
 
 
-    private ArrayList<Integer> img = new ArrayList<>();
+    private ArrayList<String> datas = new ArrayList<>();
     private RecyclerViewAdapter recyclerViewAdapter;
+    private LinearLayoutManager linearLayoutManager;
+    private GridLayoutManager gridLayoutManager;
+    private LinearDecoration linearDecoration;
+    private GridDecoration gridDecoration;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,10 +67,16 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
 
     private void initData() {
 
-        for (int i = 0; i < 10; i++) {
-            img.add(R.drawable.icon_head_hydra_1);
-            img.add(R.drawable.icon_head_hydra_2);
+        for (int i = 'A'; i < 'z'; i++) {
+            datas.add("" + (char) i);
         }
+
+        linearLayoutManager = new LinearLayoutManager(this);
+        gridLayoutManager = new GridLayoutManager(this, 4);
+        linearDecoration = new LinearDecoration(this);
+        gridDecoration = new GridDecoration(this);
+
+
 
 
     }
@@ -75,65 +87,58 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
      */
     private void initRecyclerview(int type) {
 
-        //第一个参数为上下文环境，第二个参数为布局显示方式，第三个参数为布尔值是否反转 (即滑动的方向 多数情况使用false)
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayout
-                .HORIZONTAL, false);
+
+        recyclerview.removeItemDecoration(linearDecoration);
+        recyclerview.removeItemDecoration(gridDecoration);
 
 
         switch (type) {
 
             case 1:
 
-                recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayout
-                        .HORIZONTAL, false));
+                linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                linearDecoration.setOrientation(LinearDecoration.HORIZONTAL_LIST);
+                recyclerview.setLayoutManager(linearLayoutManager);
+                recyclerview.addItemDecoration(linearDecoration);
+
+
                 break;
             case 2:
 
-                recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayout
-                        .VERTICAL, false));
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                linearDecoration.setOrientation(LinearDecoration.VERTICAL_LIST);
+                recyclerview.setLayoutManager(linearLayoutManager);
+                recyclerview.addItemDecoration(linearDecoration);
+
+
                 break;
             case 3:
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
 
                 recyclerview.setLayoutManager(gridLayoutManager);
-
-
-                GridLayoutManager gridLayoutManager1 = new GridLayoutManager(this, 3,
-                        GridLayoutManager.VERTICAL, false);//设置为一个3列的纵向网格布局
-
-
+                recyclerview.addItemDecoration(gridDecoration);
 
                 break;
             case 4:
-
-                StaggeredGridLayoutManager staggeredGridLayoutManager = new
-                        StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager
+                        (1,StaggeredGridLayoutManager.HORIZONTAL);
 
                 recyclerview.setLayoutManager(staggeredGridLayoutManager);
-
-
+                recyclerview.addItemDecoration(gridDecoration);
                 break;
-
-
+            default:
+                break;
         }
 
 
-        if (recyclerViewAdapter==null){
-            recyclerViewAdapter  = new RecyclerViewAdapter(this,img);
-        }else{
+        if (recyclerViewAdapter == null) {
+            recyclerViewAdapter = new RecyclerViewAdapter(this, datas);
+            recyclerview.setAdapter(recyclerViewAdapter);
+        } else {
             recyclerViewAdapter.setType(type);
         }
 
 
-        recyclerview.setAdapter(recyclerViewAdapter);
-
-
-
     }
-
-
-
-
 
 
     @Override
@@ -141,15 +146,23 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
         switch (v.getId()) {
             case R.id.bt_recyclerview_dome_horizontal:
                 initRecyclerview(1);
+
+
                 break;
             case R.id.bt_recyclerview_dome_vertical:
-                initRecyclerview(2);
+                 initRecyclerview(2);
+
+
+
                 break;
             case R.id.bt_recyclerview_dome_grid:
                 initRecyclerview(3);
                 break;
             case R.id.bt_recyclerview_dome_pinterest:
                 initRecyclerview(4);
+                break;
+
+            default:
                 break;
         }
 

@@ -40,5 +40,10 @@ public class DialogListener implements BaseDialogListener {
 
     }
 
+    @Override
+    public void onFootClick() {
+
+    }
+
 
 }

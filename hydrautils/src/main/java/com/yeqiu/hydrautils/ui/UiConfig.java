@@ -43,11 +43,11 @@ public class UiConfig {
     /**
      * 图片加载占位图
      */
-    private int imgPlaceholder = R.drawable.hydra;
+    private int imgPlaceholder ;
     /**
      * 图片错误占位图
      */
-    private int imgError = R.drawable.hydra;
+    private int imgError ;
 
 
     private UiConfig() {

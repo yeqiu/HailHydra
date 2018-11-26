@@ -47,5 +47,9 @@ public interface BaseDialogListener {
      */
     void onItemClick(int position, String text);
 
+    /**
+     * list foot点击
+     */
+    void onFootClick();
 
 }

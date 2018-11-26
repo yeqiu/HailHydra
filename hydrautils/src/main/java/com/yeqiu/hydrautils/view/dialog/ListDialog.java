@@ -47,17 +47,21 @@ public class ListDialog extends BaseDialog implements AdapterView.OnItemClickLis
     @Override
     protected void initView(View view) {
 
-        ivBack = (ImageView) view.findViewById(R.id.iv_list_way_back);
-        tvTitle = (TextView) view.findViewById(R.id.tv_list_way_title);
+        ivBack = (ImageView) view.findViewById(R.id.iv_list_back);
+        tvTitle = (TextView) view.findViewById(R.id.tv_list_title);
         lvList = (ListView) view.findViewById(R.id.lv_list);
 
-
         initData();
-
 
     }
 
     private void initData() {
+
+        int listFootViewId = dialogBuilder.getListFootViewId();
+        if (listFootViewId != -1) {
+            View view = inflateView(dialogBuilder.getListFootViewId());
+            lvList.addFooterView(view);
+        }
 
         ImageUtils.setSimpleImage(dialogBuilder.getBackImg(), ivBack);
         tvTitle.setText(dialogBuilder.getTitleText());
@@ -129,7 +133,13 @@ public class ListDialog extends BaseDialog implements AdapterView.OnItemClickLis
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
         List<ListData> listDatas = dialogBuilder.getListDatas();
+
+
+        if (position == listDatas.size() &&  dialogBuilder.getDialogListener() != null) {
+            dialogBuilder.getDialogListener().onFootClick();
+        }
 
         if (listDatas.size() > position && dialogBuilder.getDialogListener() != null) {
             String title = listDatas.get(position).getTitle();

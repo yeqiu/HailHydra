@@ -147,6 +147,10 @@ public class DialogBuilder {
      */
     private int listMaxHeightWhitItem = -1;
 
+
+    private int listFootViewId = -1;
+
+
     private BaseDialog baseDialog;
     /**
      * dialog监听
@@ -332,8 +336,18 @@ public class DialogBuilder {
         return this;
     }
 
+
+    public DialogBuilder setListFootViewId(int listFootViewId) {
+        this.listFootViewId = listFootViewId;
+        return this;
+    }
+
     //----------get()-----------
 
+
+    public int getListFootViewId() {
+        return listFootViewId;
+    }
 
     public int getListHeight() {
         return listHeight;
