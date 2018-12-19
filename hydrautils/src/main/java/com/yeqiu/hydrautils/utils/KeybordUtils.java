@@ -73,8 +73,12 @@ public class KeybordUtils {
         //获取View可见区域的bottom
         Rect rect = new Rect();
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+        //屏幕高度 减去 view可见区域 大于500 认为打开键盘
+        // screenHeight - rect.bottom > 500;
 
-        return screenHeight - rect.bottom != 0;
+        //如果view的高度+导航栏高度 大于屏幕高度
+
+        return rect.bottom + ScreenUtils.getDaoHangHeight()<screenHeight;
     }
 
 
