@@ -38,8 +38,8 @@ public class UpdateUtil {
     private NotificationManager notificationManager;
     private NotificationCompat.Builder builder;
     private Context context = HydraUtilsManager.getInstance().getContext();
-    private static final String CHANNEL_ID = "panda_update_id";
-    private static final CharSequence CHANNEL_NAME = "panda_update_channel";
+    private static final String CHANNEL_ID = "app_update_id";
+    private static final CharSequence CHANNEL_NAME = "app_update_channel";
     private static final int NOTIFY_ID = 0;
     private OnDownloadProgress onDownloadProgress;
 
