@@ -64,6 +64,12 @@ public class SavaImgUtils {
 
     public static void savaImg(Bitmap bitmap, SavaListener savaListener) {
 
+        if (bitmap == null) {
+            if (savaListener != null) {
+                savaListener.onFail("bitmap can't be null !!!");
+            }
+            return;
+        }
 
         String name = System.currentTimeMillis() + ".jpg";
 
