@@ -2,8 +2,6 @@ package com.yeqiu.hydrautils;
 
 import android.app.Application;
 import android.content.Context;
-
-import com.yeqiu.hydrautils.net.NetManager;
 import com.yeqiu.hydrautils.ui.UiConfig;
 import com.yeqiu.hydrautils.utils.LogUtils;
 
@@ -46,7 +44,7 @@ public class HydraUtilsManager {
         }
 
         LogUtils.init();
-        NetManager.getInstance().init(context, null);
+
 
 
         return getInstance();
