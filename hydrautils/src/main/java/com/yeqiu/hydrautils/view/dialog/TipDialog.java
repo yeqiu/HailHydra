@@ -167,7 +167,8 @@ public class TipDialog extends BaseDialog {
 
     public void dismiss() {
 
-        if (dialog != null) {
+
+        if (dialog != null && context != null && !context.isFinishing()) {
             dialog.dismiss();
         }
     }
