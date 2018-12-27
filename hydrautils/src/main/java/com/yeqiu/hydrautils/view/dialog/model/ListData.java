@@ -36,6 +36,9 @@ public class ListData implements Serializable {
         this.icon = icon;
     }
 
-    public ListData() {
+    public ListData(String title) {
+        this.title = title;
     }
+
+
 }
