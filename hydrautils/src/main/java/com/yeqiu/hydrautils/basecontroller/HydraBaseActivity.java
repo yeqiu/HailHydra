@@ -146,7 +146,9 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         super.onDestroy();
         ActivityManager.getAppManager().finishActivity(this);
 
-        // TODO: 2018/7/12 取消当前页面的网络请求
+        if (isImmersionBarEnabled()) {
+            ImmersionBar.with(this).destroy();
+        }
     }
 
 

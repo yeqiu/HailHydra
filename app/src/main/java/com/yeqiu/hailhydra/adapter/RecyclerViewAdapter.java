@@ -3,6 +3,7 @@ package com.yeqiu.hailhydra.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -41,7 +42,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.item_recyclerview, null);
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview,
+                parent, false);
 
         ViewHolder viewHolder = new ViewHolder(view);
 

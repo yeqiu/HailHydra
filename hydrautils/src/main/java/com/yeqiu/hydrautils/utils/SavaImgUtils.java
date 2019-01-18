@@ -24,7 +24,7 @@ import java.io.FileOutputStream;
 public class SavaImgUtils {
 
 
-    public static void savaImg(final String url, final SavaListener savaListener) {
+    public static void saveBitmapToGallery(final String url, final SavaListener savaListener) {
 
 
         if (TextUtils.isEmpty(url)) {
@@ -49,7 +49,7 @@ public class SavaImgUtils {
                     ThreadUtils.runOnMainThread(new Runnable() {
                         @Override
                         public void run() {
-                            savaImg(bitmap, savaListener);
+                            saveBitmapToGallery(bitmap, savaListener);
                         }
                     });
 
@@ -62,14 +62,8 @@ public class SavaImgUtils {
     }
 
 
-    public static void savaImg(Bitmap bitmap, SavaListener savaListener) {
+    public static void saveBitmapToGallery(Bitmap bitmap, SavaListener savaListener) {
 
-        if (bitmap == null) {
-            if (savaListener != null) {
-                savaListener.onFail("bitmap can't be null !!!");
-            }
-            return;
-        }
 
         String name = System.currentTimeMillis() + ".jpg";
 

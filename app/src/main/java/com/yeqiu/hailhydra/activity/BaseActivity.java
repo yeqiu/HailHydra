@@ -17,7 +17,6 @@ import com.yeqiu.hailhydra.utils.LogUtils;
 import com.yeqiu.hailhydra.utils.NetUtils;
 import com.yeqiu.hailhydra.utils.StatusBarUtils;
 import com.yeqiu.hailhydra.utils.UIHelper;
-import com.yeqiu.hailhydra.utils.eventbus.EventBusUtils;
 import com.yeqiu.hailhydra.widget.StatusLayout;
 
 import butterknife.ButterKnife;
@@ -113,7 +112,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 注册EventBus
      */
     private void registerEventBus() {
-        EventBusUtils.register(this);
+        //EventBusUtils.register(this);
     }
 
     /**

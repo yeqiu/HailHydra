@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -14,7 +15,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.yeqiu.hydrautils.HydraUtilsManager;
-import com.yeqiu.hydrautils.ui.UiConfig;
 
 /**
  * @project：Xbzd
@@ -25,11 +25,12 @@ import com.yeqiu.hydrautils.ui.UiConfig;
  */
 public class ImageUtils {
 
+
     private static RequestOptions getRequestOptions() {
 
         return new RequestOptions()
-                .placeholder(UiConfig.getInstance().getImgPlaceholder())
-                .error(UiConfig.getInstance().getImgError())
+                //  .placeholder(UiConfig.getInstance().getImgPlaceholder())
+                //  .error(UiConfig.getInstance().getImgError())
                 .diskCacheStrategy(DiskCacheStrategy.ALL);
     }
 
@@ -41,13 +42,11 @@ public class ImageUtils {
      * @param url
      * @param imageView
      */
-    public static void setImageWithCenerCrop(String url, ImageView imageView) {
+    public static void setImageWithCenerCrop(Context context, String url, ImageView imageView) {
 
-        if (TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(url) || context == null) {
             return;
         }
-
-        Context context = HydraUtilsManager.getInstance().getContext();
 
         RequestOptions options = getRequestOptions().centerCrop();
 
@@ -64,10 +63,11 @@ public class ImageUtils {
      * @param ImgId
      * @param imageView
      */
-    public static void setImageWithCenerCrop(int ImgId, ImageView imageView) {
+    public static void setImageWithCenerCrop(Context context, int ImgId, ImageView imageView) {
 
-
-        Context context = HydraUtilsManager.getInstance().getContext();
+        if (context == null) {
+            return;
+        }
 
         RequestOptions options = getRequestOptions().centerCrop();
 
@@ -84,13 +84,12 @@ public class ImageUtils {
      * @param url
      * @param imageView
      */
-    public static void setImageWithfitCenter(String url, ImageView imageView) {
+    public static void setImageWithfitCenter(Context context, String url, ImageView imageView) {
 
-        if (TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(url) || context == null) {
             return;
         }
 
-        Context context = HydraUtilsManager.getInstance().getContext();
 
         RequestOptions options = getRequestOptions().fitCenter();
 
@@ -101,16 +100,18 @@ public class ImageUtils {
     }
 
 
-     /**
+    /**
      * 保持原图比例放大图片去填充View
      *
      * @param urlId
      * @param imageView
      */
-    public static void setImageWithfitCenter(int urlId, ImageView imageView) {
+    public static void setImageWithfitCenter(Context context, int urlId, ImageView imageView) {
 
 
-        Context context = HydraUtilsManager.getInstance().getContext();
+        if (context == null) {
+            return;
+        }
 
         RequestOptions options = getRequestOptions().fitCenter();
 
@@ -121,24 +122,18 @@ public class ImageUtils {
     }
 
 
-
-
-
-
     /**
      * 裁剪成圆图
      *
      * @param url
      * @param imageView
      */
-    public static void setCircleImage(String url, final ImageView
+    public static void setCircleImage(Context context, String url, final ImageView
             imageView) {
 
-        if (TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(url) || context == null) {
             return;
         }
-
-        Context context = HydraUtilsManager.getInstance().getContext();
 
         RequestOptions options = getRequestOptions().circleCrop();
 
@@ -152,68 +147,76 @@ public class ImageUtils {
 
     /**
      * 设置背景
-     * @param url
-     * @param imageView
-     */
-    public static void setBg(String url, final ImageView imageView) {
-
-        Glide.with(HydraUtilsManager.getInstance().getContext())
-                .load(url)
-                .apply(getRequestOptions())
-                .into(new SimpleTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition
-                            <? super Drawable> transition) {
-
-                        if (Build.VERSION.SDK_INT >= 16) {
-                            imageView.setBackground(resource);
-                        } else {
-                            imageView.setBackgroundDrawable(resource);
-                        }
-
-                    }
-                });
-    }
-    /**
-     * 设置背景
-     * @param id
-     * @param imageView
-     */
-    public static void setBg(int id, final ImageView imageView) {
-
-        Glide.with(HydraUtilsManager.getInstance().getContext())
-                .load(id)
-                .apply(getRequestOptions())
-                .into(new SimpleTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition
-                            <? super Drawable> transition) {
-
-                        if (Build.VERSION.SDK_INT >= 16) {
-                            imageView.setBackground(resource);
-                        } else {
-                            imageView.setBackgroundDrawable(resource);
-                        }
-
-                    }
-                });
-    }
-
-
-
-    /**
-     * 根据图大小自动设置
      *
      * @param url
-     * @param imageView
+     * @param view
      */
-    public static void setSimpleImage(String url, final ImageView imageView) {
+    public static void setBg(Context context, String url, final View view) {
 
-        if (TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(url) || context == null) {
             return;
         }
 
-        Context context = HydraUtilsManager.getInstance().getContext();
+        Glide.with(HydraUtilsManager.getInstance().getContext())
+                .load(url)
+                .apply(getRequestOptions())
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition
+                            <? super Drawable> transition) {
+
+                        if (Build.VERSION.SDK_INT >= 16) {
+                            view.setBackground(resource);
+                        } else {
+                            view.setBackgroundDrawable(resource);
+                        }
+
+                    }
+                });
+    }
+
+    /**
+     * 设置背景
+     *
+     * @param id
+     * @param imageView
+     */
+    public static void setBg(Context context, int id, final ImageView imageView) {
+
+        if (context == null) {
+            return;
+        }
+
+        Glide.with(context)
+                .load(id)
+                .apply(getRequestOptions())
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+
+                        if (Build.VERSION.SDK_INT >= 16) {
+                            imageView.setBackground(resource);
+                        } else {
+                            imageView.setBackgroundDrawable(resource);
+                        }
+
+                    }
+                });
+    }
+
+
+    /**
+     * 根据图大小自动设置
+     *
+     * @param url
+     * @param imageView
+     */
+    public static void setSimpleImage(Context context, String url, final ImageView imageView) {
+
+        if (TextUtils.isEmpty(url) || context == null) {
+            return;
+        }
+
 
         RequestOptions options = getRequestOptions();
 
@@ -230,9 +233,12 @@ public class ImageUtils {
      * @param id
      * @param imageView
      */
-    public static void setSimpleImage(int id, final ImageView imageView) {
+    public static void setSimpleImage(Context context, int id, final ImageView imageView) {
 
-        Context context = HydraUtilsManager.getInstance().getContext();
+
+        if ( context == null) {
+            return;
+        }
 
         RequestOptions options = getRequestOptions();
 
@@ -242,6 +248,5 @@ public class ImageUtils {
                 .into(imageView);
 
     }
-
 
 }

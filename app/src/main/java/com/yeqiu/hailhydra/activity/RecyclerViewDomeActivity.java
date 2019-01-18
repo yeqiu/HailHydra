@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.yeqiu.hailhydra.GridLayoutDecoration;
+import com.yeqiu.hailhydra.LinearLayoutDecoration;
 import com.yeqiu.hailhydra.R;
 import com.yeqiu.hailhydra.adapter.RecyclerViewAdapter;
 
@@ -54,7 +56,7 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
         btRecyclerviewDomePinterest.setOnClickListener(this);
 
         initData();
-        initRecyclerview(1);
+        initRecyclerview(3);
 
     }
 
@@ -80,27 +82,34 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
                 .HORIZONTAL, false);
 
 
+        // recyclerview.addItemDecoration(new Decoration(this));
+
+        LinearLayoutDecoration linearLayoutDecoration = new LinearLayoutDecoration();
+
+
+        GridLayoutDecoration gridLayoutDecoration = new GridLayoutDecoration();
+
+
         switch (type) {
 
             case 1:
-
+                linearLayoutDecoration.setOrientation(LinearLayoutDecoration.HORIZONTAL);
                 recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayout
                         .HORIZONTAL, false));
                 break;
             case 2:
-
+                linearLayoutDecoration.setOrientation(LinearLayoutDecoration.VERTICAL);
                 recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayout
                         .VERTICAL, false));
                 break;
             case 3:
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
 
                 recyclerview.setLayoutManager(gridLayoutManager);
 
 
                 GridLayoutManager gridLayoutManager1 = new GridLayoutManager(this, 3,
                         GridLayoutManager.VERTICAL, false);//设置为一个3列的纵向网格布局
-
 
 
                 break;
@@ -116,11 +125,11 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
 
 
         }
+        recyclerview.addItemDecoration(gridLayoutDecoration);
 
-
-        if (recyclerViewAdapter==null){
-            recyclerViewAdapter  = new RecyclerViewAdapter(this,img);
-        }else{
+        if (recyclerViewAdapter == null) {
+            recyclerViewAdapter = new RecyclerViewAdapter(this, img);
+        } else {
             recyclerViewAdapter.setType(type);
         }
 
@@ -128,12 +137,7 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
         recyclerview.setAdapter(recyclerViewAdapter);
 
 
-
     }
-
-
-
-
 
 
     @Override

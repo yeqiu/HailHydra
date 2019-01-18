@@ -120,7 +120,7 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
                 break;
             case 4:
                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager
-                        (1,StaggeredGridLayoutManager.HORIZONTAL);
+                        (1,StaggeredGridLayoutManager.VERTICAL);
 
                 recyclerview.setLayoutManager(staggeredGridLayoutManager);
                 recyclerview.addItemDecoration(gridDecoration);
@@ -151,8 +151,6 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
                 break;
             case R.id.bt_recyclerview_dome_vertical:
                  initRecyclerview(2);
-
-
 
                 break;
             case R.id.bt_recyclerview_dome_grid:

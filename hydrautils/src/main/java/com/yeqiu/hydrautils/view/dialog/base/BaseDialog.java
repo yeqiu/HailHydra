@@ -23,8 +23,8 @@ import com.yeqiu.hydrautils.view.dialog.DialogBuilder;
 public abstract class BaseDialog {
 
     protected Dialog dialog;
-    protected Activity context;
-    protected DialogBuilder dialogBuilder;
+    protected static Activity context;
+    protected static DialogBuilder dialogBuilder;
 
     public BaseDialog(Activity context) {
         this.context = context;
@@ -115,21 +115,28 @@ public abstract class BaseDialog {
         dialog.setContentView(dialogView);
         dialog.show();
 
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                onDialogDismiss();
-            }
-        });
+        dialog.setOnDismissListener(onDismissListener);
 
     }
 
 
-    protected void onDialogDismiss() {
+    private static DialogInterface.OnDismissListener onDismissListener = new DialogInterface
+            .OnDismissListener() {
+
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+
+            onDialogDismiss();
+        }
+    };
+
+
+    protected static void onDialogDismiss() {
         if (dialogBuilder.getDialogListener() != null) {
             dialogBuilder.getDialogListener().onDialogDismiss();
         }
     }
+
 
 
     /**

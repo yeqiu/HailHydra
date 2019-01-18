@@ -1,6 +1,7 @@
 package com.yeqiu.hydrautils.view.dialog;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,7 +36,6 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
     @Override
     protected void initView(View view) {
 
-
         TextView title = (TextView) view.findViewById(R.id.tv_edit_dialog_title);
         edit = (EditText) view.findViewById(R.id.et_edit_dialog_edit);
         View line = view.findViewById(R.id.v_edit_dialog_line);
@@ -64,13 +64,13 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
         cancel.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
         line.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
 
-
         //设置点击外面 返回是否可以隐藏
         dialog.setCancelable(dialogBuilder.getIsBackCancel());
         dialog.setCanceledOnTouchOutside(dialogBuilder.getCanceledOnTouchOutside());
 
         confirm.setOnClickListener(this);
         cancel.setOnClickListener(this);
+        dialog.setOnDismissListener(onDismissListener);
     }
 
     @Override
@@ -97,11 +97,17 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
         }
     }
 
-    @Override
-    protected void onDialogDismiss() {
-        super.onDialogDismiss();
 
-        KeybordUtils.closeKeybord(context);
+    private static DialogInterface.OnDismissListener onDismissListener = new DialogInterface
+            .OnDismissListener() {
 
-    }
+
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+
+            KeybordUtils.closeKeybord(context);
+        }
+    };
+
+
 }
