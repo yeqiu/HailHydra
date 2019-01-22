@@ -115,7 +115,6 @@ public abstract class BaseDialog {
         dialog.setContentView(dialogView);
         dialog.show();
 
-        dialog.setOnDismissListener(onDismissListener);
 
     }
 

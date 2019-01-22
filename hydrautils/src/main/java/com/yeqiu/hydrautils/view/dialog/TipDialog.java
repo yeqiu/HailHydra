@@ -2,7 +2,6 @@ package com.yeqiu.hydrautils.view.dialog;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -15,8 +14,8 @@ import android.widget.RelativeLayout;
 
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydrautils.utils.DensityUtils;
-import com.yeqiu.hydrautils.widget.marquee.MarqueeTextView;
 import com.yeqiu.hydrautils.view.dialog.base.BaseDialog;
+import com.yeqiu.hydrautils.widget.marquee.MarqueeTextView;
 
 /**
  * @project：HailHydra
@@ -74,7 +73,7 @@ public class TipDialog extends BaseDialog {
 
 
         if (dialogBuilder.getIconId() != -999) {
-            imageView = new ImageView(context);
+            imageView = new ImageView(getContext());
             LinearLayout.LayoutParams imageViewLP = new LinearLayout.LayoutParams(DensityUtils
                     .dp2px(30), DensityUtils.dp2px(30));
             imageView.setLayoutParams(imageViewLP);
@@ -84,21 +83,23 @@ public class TipDialog extends BaseDialog {
 
 
         if (!TextUtils.isEmpty(dialogBuilder.getTipText())) {
-            MarqueeTextView textView = new MarqueeTextView(context);
+            MarqueeTextView textView = new MarqueeTextView(getContext());
             LinearLayout.LayoutParams tipViewLP = new LinearLayout.LayoutParams(LinearLayout
                     .LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             //垂直布局
-            tipViewLP.topMargin = dialogBuilder.getOrientationHorizontal() ? 0 : DensityUtils.dp2px(10);
+            tipViewLP.topMargin = dialogBuilder.getOrientationHorizontal() ? 0 : DensityUtils
+                    .dp2px(10);
 
             //水平布局
-            tipViewLP.leftMargin = dialogBuilder.getOrientationHorizontal() ? DensityUtils.dp2px(10) : 0;
+            tipViewLP.leftMargin = dialogBuilder.getOrientationHorizontal() ? DensityUtils.dp2px
+                    (10) : 0;
 
             textView.setLayoutParams(tipViewLP);
             textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
             textView.setSingleLine();
             textView.setGravity(Gravity.CENTER);
-            textView.setTextColor(ContextCompat.getColor(context, R.color.color_white));
+            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.color_white));
             textView.setTextSize(14);
             textView.setText(dialogBuilder.getTipText());
 
@@ -128,7 +129,7 @@ public class TipDialog extends BaseDialog {
     @Override
     public void show() {
 
-        if (context == null||context.isFinishing()){
+        if (getContext() == null || getContext().isFinishing()) {
             return;
         }
 
@@ -138,38 +139,27 @@ public class TipDialog extends BaseDialog {
             startAnimate();
         }
 
-
         int dismissTime = dialogBuilder.getDismissTime();
 
         if (dismissTime != 0 && llRoot != null) {
             llRoot.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    dismiss();
+                    dismissDialog();
                 }
-            },dismissTime);
+            }, dismissTime);
 
         }
-
-
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                if (animator != null) {
-                    animator.end();
-                }
-            }
-        });
 
 
     }
 
 
-    public void dismiss() {
-
-
-        if (dialog != null && context != null && !context.isFinishing()) {
-            dialog.dismiss();
+    @Override
+    protected void onDialogDismiss() {
+        super.onDialogDismiss();
+        if (animator != null) {
+            animator.end();
         }
     }
 

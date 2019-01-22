@@ -1,7 +1,6 @@
 package com.yeqiu.hydrautils.view.dialog;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,9 +49,9 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
         edit.setInputType(inputType);
 
         //设置颜色
-        confirm.setTextColor(context.getResources().getColor(dialogBuilder.getConfirmColor()));
-        cancel.setTextColor(context.getResources().getColor(dialogBuilder.getCancelColor()));
-        title.setTextColor(context.getResources().getColor(dialogBuilder.getTitleColor()));
+        confirm.setTextColor(getContext().getResources().getColor(dialogBuilder.getConfirmColor()));
+        cancel.setTextColor(getContext().getResources().getColor(dialogBuilder.getCancelColor()));
+        title.setTextColor(getContext().getResources().getColor(dialogBuilder.getTitleColor()));
 
         //设置文字大小
         title.setTextSize(dialogBuilder.getTitleSize());
@@ -70,7 +69,6 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
 
         confirm.setOnClickListener(this);
         cancel.setOnClickListener(this);
-        dialog.setOnDismissListener(onDismissListener);
     }
 
     @Override
@@ -98,16 +96,11 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
     }
 
 
-    private static DialogInterface.OnDismissListener onDismissListener = new DialogInterface
-            .OnDismissListener() {
-
-
-        @Override
-        public void onDismiss(DialogInterface dialog) {
-
-            KeybordUtils.closeKeybord(context);
-        }
-    };
+    @Override
+    protected void onDialogDismiss() {
+        super.onDialogDismiss();
+        KeybordUtils.closeKeybord(getContext());
+    }
 
 
 }

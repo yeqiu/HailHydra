@@ -2,16 +2,19 @@ package com.yeqiu.hydrautils.view.dialog.base;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydrautils.utils.DensityUtils;
 import com.yeqiu.hydrautils.view.dialog.DialogBuilder;
+
+import java.lang.ref.WeakReference;
 
 /**
  * @project：AndroidLbrary
@@ -23,11 +26,11 @@ import com.yeqiu.hydrautils.view.dialog.DialogBuilder;
 public abstract class BaseDialog {
 
     protected Dialog dialog;
-    protected static Activity context;
-    protected static DialogBuilder dialogBuilder;
+    private WeakReference<Activity> context;
+    protected DialogBuilder dialogBuilder;
 
     public BaseDialog(Activity context) {
-        this.context = context;
+        this.context = new WeakReference<>(context);
         dialog = new Dialog(context, getstyle());
         dialogBuilder = new DialogBuilder(this);
 
@@ -105,8 +108,8 @@ public abstract class BaseDialog {
             dialogView = inflateView(layoutId);
         }
 
-        if (dialogView == null || dialog == null || dialogBuilder == null || context == null ||
-                context.isFinishing()) {
+        if (dialogView == null || dialog == null || dialogBuilder == null || getContext() == null ||
+                getContext().isFinishing()) {
             //不符合现实弹窗的条件
             return;
         }
@@ -115,28 +118,40 @@ public abstract class BaseDialog {
         dialog.setContentView(dialogView);
         dialog.show();
 
-        dialog.setOnDismissListener(onDismissListener);
+        clearOnDetach(dialog);
+
 
     }
 
 
-    private static DialogInterface.OnDismissListener onDismissListener = new DialogInterface
-            .OnDismissListener() {
-
-        @Override
-        public void onDismiss(DialogInterface dialog) {
-
-            onDialogDismiss();
-        }
-    };
-
-
-    protected static void onDialogDismiss() {
+    protected void onDialogDismiss() {
         if (dialogBuilder.getDialogListener() != null) {
             dialogBuilder.getDialogListener().onDialogDismiss();
         }
     }
 
+
+    public void clearOnDetach(final Dialog dialog) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            dialog.getWindow()
+                    .getDecorView()
+                    .getViewTreeObserver()
+                    .addOnWindowAttachListener(new ViewTreeObserver.OnWindowAttachListener() {
+                        @Override
+                        public void onWindowAttached() {
+                        }
+
+                        @Override
+                        public void onWindowDetached() {
+
+                            onDialogDismiss();
+
+                        }
+                    });
+        }
+
+    }
 
 
     /**
@@ -151,7 +166,7 @@ public abstract class BaseDialog {
             return null;
         }
 
-        View view = LayoutInflater.from(context).inflate(layoutId, null);
+        View view = LayoutInflater.from(getContext()).inflate(layoutId, null);
 
         return view;
     }
@@ -171,5 +186,18 @@ public abstract class BaseDialog {
      */
     protected abstract void initView(View view);
 
+
+    protected void dismissDialog() {
+
+        if (dialog != null) {
+            dialog.dismiss();
+        }
+    }
+
+
+    protected Activity getContext() {
+
+        return context.get();
+    }
 
 }

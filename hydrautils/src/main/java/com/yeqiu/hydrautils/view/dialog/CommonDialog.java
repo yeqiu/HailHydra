@@ -43,10 +43,10 @@ public class CommonDialog extends BaseDialog implements View.OnClickListener {
         confirm.setText(dialogBuilder.getConfirmText());
 
         //设置颜色
-        confirm.setTextColor(context.getResources().getColor(dialogBuilder.getConfirmColor()));
-        cancel.setTextColor(context.getResources().getColor(dialogBuilder.getCancelColor()));
-        title.setTextColor(context.getResources().getColor(dialogBuilder.getTitleColor()));
-        content.setTextColor(context.getResources().getColor(dialogBuilder.getDescColor()));
+        confirm.setTextColor(getContext().getResources().getColor(dialogBuilder.getConfirmColor()));
+        cancel.setTextColor(getContext().getResources().getColor(dialogBuilder.getCancelColor()));
+        title.setTextColor(getContext().getResources().getColor(dialogBuilder.getTitleColor()));
+        content.setTextColor(getContext().getResources().getColor(dialogBuilder.getDescColor()));
 
         //设置文字大小
         title.setTextSize(dialogBuilder.getTitleSize());

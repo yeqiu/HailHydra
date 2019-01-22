@@ -220,8 +220,6 @@ public class UpdateUtil {
         builder.setContentTitle("开始下载")
                 .setContentText("正在连接服务器")
                 .setSmallIcon(R.drawable.hydra)
-                //  .setLargeIcon(AppUpdateUtils.drawableToBitmap(AppUpdateUtils.getAppIcon
-                // (DownloadService.this)))
                 .setOngoing(true)
                 .setAutoCancel(true)
                 .setWhen(System.currentTimeMillis());

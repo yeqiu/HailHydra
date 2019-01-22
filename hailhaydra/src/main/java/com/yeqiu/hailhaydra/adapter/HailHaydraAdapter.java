@@ -55,7 +55,7 @@ public class HailHaydraAdapter extends RecyclerView.Adapter<HailHaydraAdapter.Vi
         final ModelHaydraItem modelHaydraItem = data.get(position);
 
 
-        ImageUtils.setImageWithCenerCrop(modelHaydraItem.getImage(), holder.ivIcon);
+        ImageUtils.setImageWithCenerCrop(context,modelHaydraItem.getImage(), holder.ivIcon);
 
         holder.tvName.setText(modelHaydraItem.getName());
 

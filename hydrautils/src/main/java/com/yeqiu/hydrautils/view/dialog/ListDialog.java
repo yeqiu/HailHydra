@@ -63,7 +63,7 @@ public class ListDialog extends BaseDialog implements AdapterView.OnItemClickLis
             lvList.addFooterView(view);
         }
 
-        ImageUtils.setSimpleImage(context,dialogBuilder.getBackImg(), ivBack);
+        ImageUtils.setSimpleImage(getContext(),dialogBuilder.getBackImg(), ivBack);
         tvTitle.setText(dialogBuilder.getTitleText());
         ListAdapter listAdapter = new ListAdapter(dialogBuilder.getListDatas());
         lvList.setAdapter(listAdapter);
@@ -189,7 +189,7 @@ public class ListDialog extends BaseDialog implements AdapterView.OnItemClickLis
             ViewHolder holder;
 
             if (convertView == null) {
-                convertView = View.inflate(context, R.layout.item_dialog_list, null);
+                convertView = View.inflate(getContext(), R.layout.item_dialog_list, null);
                 holder = new ViewHolder(convertView);
                 convertView.setTag(holder);
             } else {
@@ -201,7 +201,7 @@ public class ListDialog extends BaseDialog implements AdapterView.OnItemClickLis
             if (TextUtils.isEmpty(item.getIcon())) {
                 holder.ivIcon.setVisibility(View.GONE);
             } else {
-                ImageUtils.setSimpleImage(context,item.getIcon(), holder.ivIcon);
+                ImageUtils.setSimpleImage(getContext(),item.getIcon(), holder.ivIcon);
             }
 
             holder.tvTitle.setText(item.getTitle());

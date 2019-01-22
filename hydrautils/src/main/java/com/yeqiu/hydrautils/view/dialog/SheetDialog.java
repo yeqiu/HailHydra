@@ -69,10 +69,10 @@ public class SheetDialog extends BaseDialog {
             title.setVisibility(View.GONE);
         } else {
             title.setText(dialogBuilder.getTitleText());
-            title.setTextColor(context.getResources().getColor(dialogBuilder.getTitleColor()));
+            title.setTextColor(getContext().getResources().getColor(dialogBuilder.getTitleColor()));
         }
 
-        cancel.setTextColor(context.getResources().getColor(dialogBuilder.getCancelColor()));
+        cancel.setTextColor(getContext().getResources().getColor(dialogBuilder.getCancelColor()));
 
         setItem(datas, list, cancel);
 
@@ -84,7 +84,7 @@ public class SheetDialog extends BaseDialog {
         for (int i = 0; i < datas.size(); i++) {
             final int position = i;
             final String text = datas.get(i);
-            final TextView tv = new TextView(context);
+            final TextView tv = new TextView(getContext());
             tv.setText(text);
             tv.setTag(i);
 
@@ -92,7 +92,7 @@ public class SheetDialog extends BaseDialog {
             tv.setPadding(padding, padding, padding, padding);
             tv.setGravity(Gravity.CENTER);
             tv.setTextSize(dialogBuilder.getItemlSize());
-            tv.setTextColor(context.getResources().getColor(dialogBuilder.getItemColor()));
+            tv.setTextColor(getContext().getResources().getColor(dialogBuilder.getItemColor()));
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -108,7 +108,7 @@ public class SheetDialog extends BaseDialog {
 
             list.addView(tv);
             if (i != datas.size() - 1) {
-                View divider = new View(context);
+                View divider = new View(getContext());
                 divider.setBackgroundResource(R.color.color_e1e1e1);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup
                         .LayoutParams.MATCH_PARENT, 3);
