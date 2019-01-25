@@ -187,7 +187,7 @@ public abstract class BaseDialog {
     protected abstract void initView(View view);
 
 
-    protected void dismissDialog() {
+    public void dismissDialog() {
 
         if (dialog != null) {
             dialog.dismiss();
