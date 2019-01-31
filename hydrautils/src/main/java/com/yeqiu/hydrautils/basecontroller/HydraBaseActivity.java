@@ -127,7 +127,9 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected void initImmersionBar() {
 
         if (isImmersionBarEnabled()) {
-            imersionBar = ImmersionBar.with(this);
+            imersionBar = ImmersionBar.with(this)
+                    .keyboardEnable(true)
+                    .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION);
             imersionBar.init();
         }
     }

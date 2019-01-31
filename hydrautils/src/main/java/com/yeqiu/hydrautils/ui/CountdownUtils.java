@@ -1,6 +1,7 @@
 package com.yeqiu.hydrautils.ui;
 
 import android.os.CountDownTimer;
+import android.support.annotation.CheckResult;
 import android.widget.TextView;
 
 import com.yeqiu.hydrautils.utils.ResourceUtil;
@@ -77,7 +78,14 @@ public class CountdownUtils {
         return this;
     }
 
-    public void countDown(final TextView tv, final String endText) {
+    /**
+     * 页面结束时请务必取消  countDownTimer.cancel();
+     * @param tv
+     * @param endText
+     * @return
+     */
+    @CheckResult
+    public CountDownTimer countDown(final TextView tv, final String endText) {
 
         CountDownTimer countDownTimer = new CountDownTimer(alltime * 1000,
                 timeInterval * 1000) {
@@ -100,6 +108,9 @@ public class CountdownUtils {
 
 
         countDownTimer.start();
+
+
+        return countDownTimer;
     }
 
 

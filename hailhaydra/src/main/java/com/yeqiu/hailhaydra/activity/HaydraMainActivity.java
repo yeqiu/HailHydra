@@ -15,12 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class HaydraMainActivity extends AppCompatActivity {
 
-    @BindView(R.id.rv_haydra)
+
     RecyclerView mRvHaydra;
 
     private List<ModelHaydraItem> data;
@@ -30,7 +27,7 @@ public class HaydraMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hailhaydra);
-        ButterKnife.bind(this);
+        mRvHaydra = (RecyclerView)findViewById(R.id.rv_haydra);
 
 
         initData();
