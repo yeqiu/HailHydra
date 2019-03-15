@@ -313,6 +313,21 @@ public class PasswordView extends View {
     }
 
     /**
+     * 清空密码
+     */
+    public void cleanPwd() {
+
+        for (int i = 0; i < password.length; i++) {
+            password[i] = null;
+        }
+
+        cursorPosition = 0;
+        isInputComplete = false;
+
+    }
+
+
+    /**
      * 获取密码
      */
     public String getPassword() {

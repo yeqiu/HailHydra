@@ -179,9 +179,9 @@ public class ImageUtils {
      * 设置背景
      *
      * @param id
-     * @param imageView
+     * @param view
      */
-    public static void setBg(Context context, int id, final ImageView imageView) {
+    public static void setBg(Context context, int id, final View view) {
 
         if (context == null) {
             return;
@@ -195,9 +195,9 @@ public class ImageUtils {
                     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
 
                         if (Build.VERSION.SDK_INT >= 16) {
-                            imageView.setBackground(resource);
+                            view.setBackground(resource);
                         } else {
-                            imageView.setBackgroundDrawable(resource);
+                            view.setBackgroundDrawable(resource);
                         }
 
                     }
