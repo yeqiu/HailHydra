@@ -2,94 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.yeqiu.hailhydra">
 
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-
     <application
-        android:name="com.yeqiu.hailhydra.app.App"
         android:allowBackup="true"
-        android:icon="@drawable/hydra"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.yeqiu.hailhydra.activity.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.ImmersivetestActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.SoftKeyListenerActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.NumberkeyActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.NumberkeyActivity2"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.PasswordViewActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.EditTextActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.DialogActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.NetworkListenerActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.RecyclerViewDomeActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.OKGoActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.WebViewActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.ProgressBarActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.ImmersionImageActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.ImmersionBarActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.StatusLayoutActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.SampleActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.WebViewScreenshotActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-
-            />
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.ThreadActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.yeqiu.hailhydra.activity.LitePalActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.TitlebarGradientActivity"/>
-        <activity android:name=".activity.CoordinatorLayoutActivity"/>
-
     </application>
 
 </manifest>

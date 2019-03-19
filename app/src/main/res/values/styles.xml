@@ -1,79 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-
-    <style name="TipDialog" parent="android:Theme.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
-
-    <style name="common_dialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:background">@null</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimAmount">0.7</item>
-    </style>
-
-
-    <style name="sheet_dialog" parent="android:style/Theme.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowFrame">@null</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowAnimationStyle">@style/sheet_dialog_anim</item>
-    </style>
-
-
-    <style name="sheet_dialog_anim" parent="@android:style/Animation.Dialog">
-        <!-- 进入时的动画 -->
-        <item name="@android:windowEnterAnimation">@anim/sheet_dialog_enter</item>
-        <!-- 退出时的动画 -->
-        <item name="@android:windowExitAnimation">@anim/sheet_dialog_exit</item>
-    </style>
-
-
-    <attr name="LoadingStyle" format="reference"/>
-
-    <!--等待框-->
-    <declare-styleable name="LoadingView">
-        <attr name="loading_view_size" format="dimension"/>
-        <attr name="android:color"/>
-    </declare-styleable>
-
-
-    <!--进度条-->
-    <style name="NumberProgressBar_Update">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="progress_max">100</item>
-        <item name="progress_current">0</item>
-        <item name="progress_unreached_color">#f9f9f9</item>
-        <item name="progress_reached_color">#0d95ff</item>
-        <item name="progress_text_size">10sp</item>
-        <item name="progress_text_color">#0d95ff</item>
-        <item name="progress_reached_bar_height">3dp</item>
-        <item name="progress_unreached_bar_height">3.5dp</item>
-    </style>
-
-
 
 </resources>

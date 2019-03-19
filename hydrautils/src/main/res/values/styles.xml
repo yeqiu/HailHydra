@@ -38,9 +38,9 @@
 
     <style name="sheet_dialog_anim" parent="@android:style/Animation.Dialog">
         <!-- 进入时的动画 -->
-        <item name="@android:windowEnterAnimation">@anim/sheet_dialog_enter</item>
+        <item name="android:windowEnterAnimation">@anim/sheet_dialog_enter</item>
         <!-- 退出时的动画 -->
-        <item name="@android:windowExitAnimation">@anim/sheet_dialog_exit</item>
+        <item name="android:windowExitAnimation">@anim/sheet_dialog_exit</item>
     </style>
 
 
