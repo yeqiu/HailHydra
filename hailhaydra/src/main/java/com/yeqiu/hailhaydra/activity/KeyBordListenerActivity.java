@@ -3,8 +3,8 @@ package com.yeqiu.hailhaydra.activity;
 import android.view.View;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.utils.KeyBroadListener;
-import com.yeqiu.hydrautils.utils.UIHelper;
+import com.yeqiu.hydra.utils.KeyBroadListener;
+import com.yeqiu.hydra.utils.UIHelper;
 
 /**
  * @project：HailHydra

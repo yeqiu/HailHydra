@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.utils.net.NetWorkStateReceiver;
-import com.yeqiu.hydrautils.utils.net.NetWorkUtils;
+import com.yeqiu.hydra.utils.net.NetWorkStateReceiver;
+import com.yeqiu.hydra.utils.net.NetWorkUtils;
 
 
 /**

@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.bean.Model.ModelHaydraItem;
-import com.yeqiu.hydrautils.utils.JumpUtils;
+import com.yeqiu.hydra.utils.JumpUtils;
 
 import java.util.List;
 

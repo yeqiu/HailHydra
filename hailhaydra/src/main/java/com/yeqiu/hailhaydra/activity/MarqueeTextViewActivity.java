@@ -6,11 +6,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.HydraUtilsManager;
-import com.yeqiu.hydrautils.utils.UIHelper;
-import com.yeqiu.hydrautils.widget.marquee.MarqueeTextView;
-import com.yeqiu.hydrautils.widget.marquee.MarqueeVerticalView;
-import com.yeqiu.hydrautils.widget.marquee.MarqueeVerticalWhitIcon;
+import com.yeqiu.hydra.HydraUtilsManager;
+import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.widget.marquee.MarqueeTextView;
+import com.yeqiu.hydra.widget.marquee.MarqueeVerticalView;
+import com.yeqiu.hydra.widget.marquee.MarqueeVerticalWhitIcon;
 
 import java.util.ArrayList;
 import java.util.List;

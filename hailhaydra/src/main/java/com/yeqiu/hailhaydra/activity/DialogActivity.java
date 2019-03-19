@@ -3,14 +3,14 @@ package com.yeqiu.hailhaydra.activity;
 import android.view.View;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.utils.UIHelper;
-import com.yeqiu.hydrautils.view.dialog.CommonDialog;
-import com.yeqiu.hydrautils.view.dialog.DialogListener;
-import com.yeqiu.hydrautils.view.dialog.EditDialog;
-import com.yeqiu.hydrautils.view.dialog.ListDialog;
-import com.yeqiu.hydrautils.view.dialog.SheetDialog;
-import com.yeqiu.hydrautils.view.dialog.TipDialog;
-import com.yeqiu.hydrautils.view.dialog.model.ListData;
+import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.view.dialog.CommonDialog;
+import com.yeqiu.hydra.view.dialog.DialogListener;
+import com.yeqiu.hydra.view.dialog.EditDialog;
+import com.yeqiu.hydra.view.dialog.ListDialog;
+import com.yeqiu.hydra.view.dialog.SheetDialog;
+import com.yeqiu.hydra.view.dialog.TipDialog;
+import com.yeqiu.hydra.view.dialog.model.ListData;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.ScrollView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.utils.JumpUtils;
-import com.yeqiu.hydrautils.utils.ScreenUtils;
+import com.yeqiu.hydra.utils.JumpUtils;
+import com.yeqiu.hydra.utils.ScreenUtils;
 
 import java.io.ByteArrayOutputStream;
 

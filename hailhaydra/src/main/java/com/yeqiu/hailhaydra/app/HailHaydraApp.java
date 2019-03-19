@@ -4,7 +4,8 @@ import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-import com.yeqiu.hydrautils.HydraUtilsManager;
+import com.yeqiu.hailhaydra.BuildConfig;
+import com.yeqiu.hydra.HydraUtilsManager;
 
 /**
  * @project：HailHydra
@@ -34,7 +35,7 @@ public class HailHaydraApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        HydraUtilsManager.getInstance().init(this);
+        HydraUtilsManager.getInstance().init(this).setCurrentEnvironment(BuildConfig.DEBUG);
 
         refWatcher = LeakCanary.install(this);
     }

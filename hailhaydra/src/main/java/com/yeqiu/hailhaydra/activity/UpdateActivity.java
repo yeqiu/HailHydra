@@ -4,9 +4,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.utils.UpdateUtil;
-import com.yeqiu.hydrautils.view.dialog.CommonDialog;
-import com.yeqiu.hydrautils.view.dialog.DialogListener;
+import com.yeqiu.hydra.utils.UpdateUtil;
+import com.yeqiu.hydra.view.dialog.CommonDialog;
+import com.yeqiu.hydra.view.dialog.DialogListener;
 
 import java.io.File;
 

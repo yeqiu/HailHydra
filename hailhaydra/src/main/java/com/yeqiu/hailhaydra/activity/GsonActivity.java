@@ -10,8 +10,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.utils.LogUtils;
-import com.yeqiu.hydrautils.utils.StringUtils;
+import com.yeqiu.hydra.utils.LogUtils;
+import com.yeqiu.hydra.utils.StringUtils;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.yeqiu.hailhaydra.activity;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.basecontroller.HydraBaseActivity;
+import com.yeqiu.hydra.basecontroller.HydraBaseActivity;
 
 /**
  * @project：HailHydra

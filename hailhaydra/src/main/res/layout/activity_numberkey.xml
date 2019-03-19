@@ -12,7 +12,7 @@
         android:layout_height="50dp"/>
 
 
-    <com.yeqiu.hydrautils.widget.keyboard.NumberKeyBoardView
+    <com.yeqiu.hydra.widget.keyboard.NumberKeyBoardView
         android:id="@+id/number_key_board_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

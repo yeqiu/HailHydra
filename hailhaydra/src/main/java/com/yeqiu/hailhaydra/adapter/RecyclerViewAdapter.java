@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydrautils.utils.ScreenUtils;
+import com.yeqiu.hydra.utils.ScreenUtils;
 
 import java.util.ArrayList;
 

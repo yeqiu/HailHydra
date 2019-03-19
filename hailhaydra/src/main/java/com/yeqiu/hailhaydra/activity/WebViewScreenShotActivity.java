@@ -16,7 +16,7 @@ import android.widget.Button;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.app.Url;
-import com.yeqiu.hydrautils.utils.JumpUtils;
+import com.yeqiu.hydra.utils.JumpUtils;
 
 import java.io.ByteArrayOutputStream;
 
