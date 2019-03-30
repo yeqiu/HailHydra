@@ -53,7 +53,26 @@
     </declare-styleable>
 
 
-
+    <declare-styleable name="RatingBar">
+        <!--未选中-->
+        <attr name="starEmptyRes" format="reference" />
+        <!--选中半个-->
+        <attr name="starHalfRes" format="reference" />
+        <!--选中全部-->
+        <attr name="starSelectedRes" format="reference" />
+        <!--星星的总数-->
+        <attr name="startTotalNumber" format="integer" />
+        <!--默认选中的数量 -->
+        <attr name="selectedNumber" format="float" />
+        <!--星星的间距-->
+        <attr name="starDistance" format="dimension" />
+        <!--星星的宽度-->
+        <attr name="starWidth" format="dimension" />
+        <!--星星的高度-->
+        <attr name="starHeight" format="dimension" />
+        <!--是不是只画整个星星，不画半个-->
+        <attr name="starIsFull" format="boolean" />
+    </declare-styleable>
 
 
 

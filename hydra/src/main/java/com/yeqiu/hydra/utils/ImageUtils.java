@@ -1,5 +1,6 @@
 package com.yeqiu.hydra.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -14,7 +15,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.yeqiu.hydra.HydraUtilsManager;
 
 /**
  * @project：Xbzd
@@ -44,7 +44,7 @@ public class ImageUtils {
      */
     public static void setImageWithCenerCrop(Context context, String url, ImageView imageView) {
 
-        if (TextUtils.isEmpty(url) || context == null) {
+        if (TextUtils.isEmpty(url) || !checkContext(context)) {
             return;
         }
 
@@ -65,7 +65,7 @@ public class ImageUtils {
      */
     public static void setImageWithCenerCrop(Context context, int ImgId, ImageView imageView) {
 
-        if (context == null) {
+        if (!checkContext(context)) {
             return;
         }
 
@@ -86,7 +86,7 @@ public class ImageUtils {
      */
     public static void setImageWithfitCenter(Context context, String url, ImageView imageView) {
 
-        if (TextUtils.isEmpty(url) || context == null) {
+        if (TextUtils.isEmpty(url) || !checkContext(context)) {
             return;
         }
 
@@ -109,7 +109,7 @@ public class ImageUtils {
     public static void setImageWithfitCenter(Context context, int urlId, ImageView imageView) {
 
 
-        if (context == null) {
+        if (!checkContext(context)) {
             return;
         }
 
@@ -131,7 +131,7 @@ public class ImageUtils {
     public static void setCircleImage(Context context, String url, final ImageView
             imageView) {
 
-        if (TextUtils.isEmpty(url) || context == null) {
+        if (TextUtils.isEmpty(url) || !checkContext(context)) {
             return;
         }
 
@@ -146,6 +146,30 @@ public class ImageUtils {
 
 
     /**
+     * 裁剪成圆图
+     *
+     * @param context
+     * @param imgId
+     * @param imageView
+     */
+    public static void setCircleImage(Context context, int imgId, final ImageView
+            imageView) {
+
+        if (!checkContext(context)) {
+            return;
+        }
+
+        RequestOptions options = getRequestOptions().circleCrop();
+
+        Glide.with(context)
+                .load(imgId)
+                .apply(options)
+                .into(imageView);
+
+    }
+
+
+    /**
      * 设置背景
      *
      * @param url
@@ -153,11 +177,11 @@ public class ImageUtils {
      */
     public static void setBg(Context context, String url, final View view) {
 
-        if (TextUtils.isEmpty(url) || context == null) {
+        if (TextUtils.isEmpty(url) || !checkContext(context)) {
             return;
         }
 
-        Glide.with(HydraUtilsManager.getInstance().getContext())
+        Glide.with(context)
                 .load(url)
                 .apply(getRequestOptions())
                 .into(new SimpleTarget<Drawable>() {
@@ -183,16 +207,19 @@ public class ImageUtils {
      */
     public static void setBg(Context context, int id, final View view) {
 
-        if (context == null) {
+        if (view == null || !checkContext(context)) {
+
             return;
         }
+
 
         Glide.with(context)
                 .load(id)
                 .apply(getRequestOptions())
                 .into(new SimpleTarget<Drawable>() {
                     @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable
+                            Transition<? super Drawable> transition) {
 
                         if (Build.VERSION.SDK_INT >= 16) {
                             view.setBackground(resource);
@@ -202,6 +229,8 @@ public class ImageUtils {
 
                     }
                 });
+
+
     }
 
 
@@ -213,7 +242,7 @@ public class ImageUtils {
      */
     public static void setSimpleImage(Context context, String url, final ImageView imageView) {
 
-        if (TextUtils.isEmpty(url) || context == null) {
+        if (TextUtils.isEmpty(url) || !checkContext(context)) {
             return;
         }
 
@@ -236,7 +265,7 @@ public class ImageUtils {
     public static void setSimpleImage(Context context, int id, final ImageView imageView) {
 
 
-        if ( context == null) {
+        if (!checkContext(context)) {
             return;
         }
 
@@ -247,6 +276,21 @@ public class ImageUtils {
                 .apply(options)
                 .into(imageView);
 
+    }
+
+
+    private static boolean checkContext(Context context) {
+
+        if (context instanceof Activity) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                return !((Activity) context).isDestroyed();
+            }
+
+            return !((Activity) context).isFinishing();
+        } else {
+            return context != null;
+        }
     }
 
 }
