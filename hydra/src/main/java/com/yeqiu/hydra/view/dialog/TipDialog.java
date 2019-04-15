@@ -120,7 +120,11 @@ public class TipDialog extends BaseDialog {
             animator.setRepeatCount(ObjectAnimator.INFINITE);
             animator.setRepeatMode(ObjectAnimator.RESTART);
         }
-        animator.start();
+
+        if (animator !=null){
+            animator.start();
+        }
+
 
 
     }

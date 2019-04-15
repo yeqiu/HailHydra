@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.ui.EditTextUtils;
+package com.yeqiu.hydra.utils.ui.EditTextUtils;
 
 import android.text.Editable;
 import android.text.TextUtils;

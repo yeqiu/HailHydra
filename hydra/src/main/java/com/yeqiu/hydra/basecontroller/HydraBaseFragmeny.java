@@ -55,6 +55,17 @@ public abstract class HydraBaseFragmeny extends LifeCycleFragment {
     //    --------- 以下方法供子类使用  ---------
 
     /**
+     * 查找控件
+     *
+     * @param id
+     * @return
+     */
+    public View findViewById(int id) {
+        return contentView.findViewById(id);
+
+    }
+
+    /**
      * 显示正常数据页面
      */
     public void showContentView() {

@@ -5,11 +5,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.yeqiu.hydra.utils.KeybordUtils;
 import com.yeqiu.hydra.view.dialog.base.BaseDialog;
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydra.utils.KeybordUtils;
-
-import static android.R.attr.inputType;
 
 /**
  * @project：Xbzd
@@ -46,7 +44,7 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
         edit.setHint(dialogBuilder.getHintText());
         cancel.setText(dialogBuilder.getCancelText());
         confirm.setText(dialogBuilder.getConfirmText());
-        edit.setInputType(inputType);
+        edit.setInputType(dialogBuilder.getInputType());
 
         //设置颜色
         confirm.setTextColor(getContext().getResources().getColor(dialogBuilder.getConfirmColor()));

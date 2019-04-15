@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.ui;
+package com.yeqiu.hydra.utils.ui;
 
 import com.yeqiu.hydrautils.R;
 

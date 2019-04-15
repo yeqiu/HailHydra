@@ -1,10 +1,15 @@
 package com.yeqiu.hydra.utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 
 import com.yeqiu.hydra.HydraUtilsManager;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * @project：HailHydra
@@ -48,4 +53,29 @@ public class ResourceUtil {
         Context context = HydraUtilsManager.getInstance().getContext();
         return ContextCompat.getDrawable(context, drawableId);
     }
+
+    /**
+     * 从Assets里读取字符串
+     * @param fileName
+     * @return
+     */
+    public static String getStringFromAssets(String fileName) {
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            Context context = HydraUtilsManager.getInstance().getContext();
+            AssetManager assetManager = context.getAssets();
+            BufferedReader bf = new BufferedReader(new InputStreamReader(
+                    assetManager.open(fileName)));
+            String line;
+            while ((line = bf.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
+    }
+
+
+
 }
