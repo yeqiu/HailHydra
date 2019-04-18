@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.yeqiu.hydra.utils.ImageUtils;
+import com.yeqiu.hydra.utils.image.ImageUtils;
 import com.yeqiu.hydra.view.dialog.base.BaseDialog;
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydra.view.dialog.model.ListData;

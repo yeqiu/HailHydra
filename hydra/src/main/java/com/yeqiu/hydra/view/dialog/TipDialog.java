@@ -126,18 +126,12 @@ public class TipDialog extends BaseDialog {
         }
 
 
-
     }
 
 
     @Override
-    public void show() {
+    public BaseDialog show() {
 
-        if (getContext() == null || getContext().isFinishing()) {
-            return;
-        }
-
-        super.show();
 
         if (dialogBuilder.isLoading()) {
             startAnimate();
@@ -155,9 +149,9 @@ public class TipDialog extends BaseDialog {
 
         }
 
+        return super.show();
 
     }
-
 
     @Override
     protected void onDialogDismiss() {

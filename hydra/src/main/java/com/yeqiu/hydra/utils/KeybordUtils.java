@@ -20,9 +20,15 @@ public class KeybordUtils {
      *
      * @param view
      */
-    public static void openKeybord(View view) {
-        ((InputMethodManager) view.getContext().getSystemService(
-                Context.INPUT_METHOD_SERVICE)).toggleSoftInput(0, InputMethodManager.RESULT_SHOWN);
+    public static void openKeybord(final View view) {
+
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ((InputMethodManager) view.getContext().getSystemService(
+                        Context.INPUT_METHOD_SERVICE)).toggleSoftInput(0, InputMethodManager.RESULT_SHOWN);
+            }
+        },100);
     }
 
     /**

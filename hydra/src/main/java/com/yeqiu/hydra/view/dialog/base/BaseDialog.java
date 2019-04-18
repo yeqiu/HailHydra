@@ -38,6 +38,11 @@ public abstract class BaseDialog {
     }
 
 
+    public BaseDialog getDialog(){
+
+        return this;
+    }
+
     /**
      * 获取 dialog的style
      * 默认 R.style.common_dialog
@@ -91,7 +96,7 @@ public abstract class BaseDialog {
     /**
      * 显示 dialog
      */
-    public void show() {
+    public BaseDialog show() {
 
         Object layoutIdOrView = getDiaologlayoutIdOrView();
 
@@ -111,7 +116,7 @@ public abstract class BaseDialog {
         if (dialogView == null || dialog == null || dialogBuilder == null || getContext() == null ||
                 getContext().isFinishing()) {
             //不符合现实弹窗的条件
-            return;
+            return this;
         }
 
         initView(dialogView);
@@ -120,6 +125,7 @@ public abstract class BaseDialog {
 
         clearOnDetach(dialog);
 
+        return this;
 
     }
 

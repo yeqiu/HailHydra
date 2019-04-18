@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.utils;
+package com.yeqiu.hydra.utils.image;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -274,6 +276,60 @@ public class ImageUtils {
         Glide.with(context)
                 .load(id)
                 .apply(options)
+                .into(imageView);
+
+    }
+
+
+    /**
+     * 圆角图片
+     *
+     * @param context
+     * @param id
+     * @param imageView
+     * @param round
+     */
+    public static void setImageWithRound(Context context, int id, final ImageView
+            imageView, int round) {
+
+
+        if (!checkContext(context)) {
+            return;
+        }
+
+        RequestOptions requestOptions = getRequestOptions().transforms(new CenterCrop(), new
+                RoundedCorners(round));
+
+        Glide.with(context)
+                .load(id)
+                .apply(requestOptions)
+                .into(imageView);
+
+    }
+
+    /**
+     * 圆角图片
+     *
+     * @param context
+     * @param url
+     * @param imageView
+     * @param round
+     */
+    public static void setImageWithRound(Context context, String url, final ImageView
+            imageView, int round) {
+
+
+        if (!checkContext(context) || TextUtils.isEmpty(url)) {
+            return;
+        }
+
+        RequestOptions requestOptions = getRequestOptions().transforms(new CenterCrop(), new
+                RoundedCorners(round));
+
+
+        Glide.with(context)
+                .load(url)
+                .apply(requestOptions)
                 .into(imageView);
 
     }

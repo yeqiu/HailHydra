@@ -53,7 +53,35 @@ public class ThreadUtils {
         SyncPost poster = new SyncPost(runnable);
         getThreadHandler().sync(poster);
         poster.waitRun();
+
+
     }
+
+
+
+    public static void runOnChildThread(Runnable runnable){
+
+        //当前在主线程
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+            runnable.run();
+            return;
+        }
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
 
     public static void dispose() {
         if (threadHandler != null) {

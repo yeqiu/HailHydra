@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.bean.Model.ModelHaydraItem;
-import com.yeqiu.hydra.utils.ImageUtils;
+import com.yeqiu.hydra.utils.image.ImageUtils;
 
 import java.util.List;
 
