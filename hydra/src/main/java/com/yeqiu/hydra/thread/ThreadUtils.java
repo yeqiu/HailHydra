@@ -11,7 +11,7 @@ import android.os.Looper;
  * 参考资料
  * https://blog.csdn.net/qiujuer/article/details/41900879
  */
-public class ThreadUtils {
+   class ThreadUtils {
 
 
     private static ThreadHandler threadHandler = null;
@@ -56,27 +56,6 @@ public class ThreadUtils {
 
 
     }
-
-
-
-    public static void runOnChildThread(Runnable runnable){
-
-        //当前在主线程
-        if (Looper.myLooper() != Looper.getMainLooper()) {
-            runnable.run();
-            return;
-        }
-
-
-
-
-
-
-
-    }
-
-
-
 
 
 
