@@ -26,10 +26,10 @@ public abstract class HydraBaseFragment extends LifeCycleFragment {
     @Override
     protected View getContentView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        contentView = new StatusLayout(getActivity());
+        context = getActivity();
+        contentView = new StatusLayout(context);
         contentView.setContentView(getContentView());
         contentView.showContentView();
-        context = getActivity();
         init();
         return contentView;
     }
@@ -67,7 +67,6 @@ public abstract class HydraBaseFragment extends LifeCycleFragment {
         return contentView.findViewById(id);
 
     }
-
 
 
     /**
@@ -128,6 +127,48 @@ public abstract class HydraBaseFragment extends LifeCycleFragment {
 
 
 
+    /**
+     * 显示正常数据页面
+     */
+    protected void showContentView() {
+        contentView.showContentView();
+
+    }
+
+
+    /**
+     * 显示错误数据页面
+     */
+    protected void showErrorView() {
+        contentView.showErrorView();
+
+    }
+
+
+    /**
+     * 显示空数据页面
+     */
+    protected void showEmptyView() {
+        contentView.showEmptyView();
+
+    }
+
+
+    /**
+     * 显示加载数据页面
+     */
+    protected void showLoadingView() {
+        contentView.showLoadingView();
+
+    }
+
+    /**
+     * 显示自定义数据页面
+     */
+    protected void showCustomView() {
+        contentView.showCustomView();
+
+    }
 
 
 

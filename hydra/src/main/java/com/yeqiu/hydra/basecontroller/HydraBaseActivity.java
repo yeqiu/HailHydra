@@ -313,15 +313,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     }
 
     /**
-     * 显示正常数据页面
-     */
-    public void showContentView() {
-        statusLayout.showContentView();
-
-    }
-
-
-    /**
      * 是否显示标题栏
      *
      * @param show
@@ -387,10 +378,54 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
 
     /**
-     * 隐藏状态栏
+     * 隐藏键盘
      */
     protected void hideKeyBoard() {
         KeybordUtils.closeKeybord(context);
+    }
+
+
+    /**
+     * 显示正常数据页面
+     */
+    protected void showContentView() {
+        statusLayout.showContentView();
+
+    }
+
+
+    /**
+     * 显示错误数据页面
+     */
+    protected void showErrorView() {
+        statusLayout.showErrorView();
+
+    }
+
+
+    /**
+     * 显示空数据页面
+     */
+    protected void showEmptyView() {
+        statusLayout.showEmptyView();
+
+    }
+
+
+    /**
+     * 显示加载数据页面
+     */
+    protected void showLoadingView() {
+        statusLayout.showLoadingView();
+
+    }
+
+    /**
+     * 显示自定义数据页面
+     */
+    protected void showCustomView() {
+        statusLayout.showCustomView();
+
     }
 
 
@@ -421,9 +456,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      */
     protected void onIvRightClick() {
     }
-
-
-    // --------- 监听  ---------
 
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
