@@ -108,7 +108,7 @@ public class DialogBuilder {
     /**
      * 是否是加载框 加载框会执行旋转动画 仅对TipDialog有效
      */
-    public boolean isLoading = false;
+    private boolean isLoading = false;
     /**
      * 图片id 仅对TipDialog有效
      */

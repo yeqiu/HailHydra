@@ -12,10 +12,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.yeqiu.hydra.view.dialog.base.BaseDialog;
-import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydra.utils.DensityUtils;
+import com.yeqiu.hydra.view.dialog.base.BaseDialog;
 import com.yeqiu.hydra.widget.marquee.MarqueeTextView;
+import com.yeqiu.hydrautils.R;
 
 /**
  * @project：HailHydra
@@ -107,21 +107,21 @@ public class TipDialog extends BaseDialog {
         }
 
 
+        startAnimate();
+
+
     }
 
 
     public void startAnimate() {
 
-        if (imageView != null) {
+        if (imageView != null && dialogBuilder.isLoading()) {
             animator = ObjectAnimator.ofFloat(imageView, "rotation",
                     0f, 360f);
             animator.setDuration(1000);
             animator.setInterpolator(new LinearInterpolator());
             animator.setRepeatCount(ObjectAnimator.INFINITE);
             animator.setRepeatMode(ObjectAnimator.RESTART);
-        }
-
-        if (animator !=null){
             animator.start();
         }
 
@@ -132,10 +132,6 @@ public class TipDialog extends BaseDialog {
     @Override
     public BaseDialog show() {
 
-
-        if (dialogBuilder.isLoading()) {
-            startAnimate();
-        }
 
         int dismissTime = dialogBuilder.getDismissTime();
 

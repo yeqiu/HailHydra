@@ -1,5 +1,7 @@
 package com.yeqiu.hailhaydra.activity;
 
+import android.view.View;
+
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hydra.basecontroller.HydraBaseActivity;
 
@@ -26,6 +28,10 @@ public abstract class BaseActivity extends HydraBaseActivity {
     }
 
 
+    @Override
+    public void onStatusClick(View view) {
+
+    }
 
 
 

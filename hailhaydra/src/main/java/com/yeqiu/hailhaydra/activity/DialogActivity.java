@@ -213,4 +213,8 @@ public class DialogActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onStatusClick(View view) {
+
+    }
 }
