@@ -12,13 +12,14 @@ import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.yeqiu.hydra.manger.ActivityManager;
-import com.yeqiu.hydra.utils.ScreenUtils;
-import com.yeqiu.hydra.utils.net.NetWorkUtils;
-import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydra.utils.KeybordUtils;
 import com.yeqiu.hydra.utils.LogUtils;
+import com.yeqiu.hydra.utils.ScreenUtils;
 import com.yeqiu.hydra.utils.UIHelper;
-import com.yeqiu.hydra.widget.StatusLayout;
+import com.yeqiu.hydra.utils.net.NetWorkUtils;
+import com.yeqiu.hydra.widget.StatusLayout.OnStatusClickListener;
+import com.yeqiu.hydra.widget.StatusLayout.StatusLayout;
+import com.yeqiu.hydrautils.R;
 
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
@@ -29,7 +30,8 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  * @describe：
  * @fix：activity
  */
-public abstract class HydraBaseActivity extends SwipeBackActivity implements View.OnClickListener {
+public abstract class HydraBaseActivity extends SwipeBackActivity implements View
+        .OnClickListener, OnStatusClickListener {
 
     protected StatusLayout statusLayout;
     protected LinearLayout headLayout;
@@ -52,7 +54,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         init();
         //添加到activity管理器
         ActivityManager.getAppManager().addActivity(this);
-        statusLayout.setOnStatusLayoutClickListener(onStatusLayoutClickListener);
         setSwipeBackEnable(isSwipeBack());
     }
 
@@ -60,12 +61,12 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     private void isShowActionBar() {
 
         if (removeActionBar()) {
-            if (getSupportActionBar()!=null){
+            if (getSupportActionBar() != null) {
                 getSupportActionBar().hide();
             }
 
         } else {
-            if (getSupportActionBar()!=null){
+            if (getSupportActionBar() != null) {
                 getSupportActionBar().show();
             }
         }
@@ -77,6 +78,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         statusLayout = (StatusLayout) findViewById(R.id.base_status_layout);
         statusLayout.setContentView(getContentView());
         statusLayout.showContentView();
+        statusLayout.setOnStatusClickListener(this);
         initImmersionBar();
         initHead();
         initView();
@@ -115,7 +117,8 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     private void setHeadRootMarginTop() {
 
         int statusHeight = ScreenUtils.getStatusHeight();
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) rlCommonHeadRoot.getLayoutParams();
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) rlCommonHeadRoot
+                .getLayoutParams();
         layoutParams.setMargins(0, statusHeight, 0, 0);
         rlCommonHeadRoot.setLayoutParams(layoutParams);
 
@@ -154,8 +157,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     }
 
 
-
-
     @Override
     public void finish() {
         //关闭本页的输入法
@@ -188,7 +189,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     /**
      * 初始化监听器
      */
-    protected abstract void initListener() ;
+    protected abstract void initListener();
 
     /**
      * 设置返回键图片
@@ -201,9 +202,8 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     /**
      * 删除ActionBar
-     *
      */
-    protected boolean removeActionBar(){
+    protected boolean removeActionBar() {
 
         return true;
     }
@@ -261,12 +261,12 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     /**
      * 是否使用侧滑返回
+     *
      * @return
      */
     protected boolean isSwipeBack() {
         return true;
     }
-
 
 
     /**
@@ -320,31 +320,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     }
 
-    /**
-     * 显示空数据页面
-     *
-     * @param picId           图片id
-     * @param title           标题
-     * @param emptyButtonText 按钮文字
-     *                        传 "" 不显示该控件
-     */
-    public void showEmptyView(int picId, String title, String emptyButtonText) {
-        statusLayout.showEmptyView(picId, title, emptyButtonText);
-    }
-
-    /**
-     * 显示网络加载失败页面
-     *
-     * @param picId           图片id
-     * @param title           标题
-     * @param text            描述
-     * @param errorButtonText 按钮文字
-     *                        传 "" 不显示该控件
-     */
-    public void showErrorView(int picId, String title, String text, String errorButtonText) {
-        statusLayout.showErrorView(picId, title, text, errorButtonText);
-
-    }
 
     /**
      * 是否显示标题栏
@@ -450,21 +425,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     // --------- 监听  ---------
 
-    private StatusLayout.OnStatusLayoutClickListener onStatusLayoutClickListener = new
-            StatusLayout.OnStatusLayoutClickListener() {
-
-                @Override
-                public void onErrorButtonClick() {
-                    onStatusErrorButtonClick();
-                }
-
-                @Override
-                public void onEmptyButtonClick() {
-
-                    onStatusEmptyButtonClick();
-                }
-            };
-
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -483,4 +443,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
             }
         }
     };
+
+
 }

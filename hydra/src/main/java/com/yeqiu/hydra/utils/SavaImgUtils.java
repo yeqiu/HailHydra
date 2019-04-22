@@ -8,8 +8,8 @@ import android.text.TextUtils;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
-import com.yeqiu.hydra.thread.ThreadUtils;
 import com.yeqiu.hydra.HydraUtilsManager;
+import com.yeqiu.hydra.thread.ThreadUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,7 +34,8 @@ public class SavaImgUtils {
             return;
         }
 
-        new Thread(new Runnable() {
+
+        ThreadUtil.runOnChildThread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -46,18 +47,14 @@ public class SavaImgUtils {
 
                     final Bitmap bitmap = submit.get();
 
-                    ThreadUtils.runOnMainThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            saveBitmapToGallery(bitmap, savaListener);
-                        }
-                    });
+                    saveBitmapToGallery(bitmap, savaListener);
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
 
     }
 

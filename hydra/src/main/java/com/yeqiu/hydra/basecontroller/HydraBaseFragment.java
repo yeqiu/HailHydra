@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.yeqiu.hydra.utils.net.NetWorkUtils;
 import com.yeqiu.hydra.utils.UIHelper;
-import com.yeqiu.hydra.widget.StatusLayout;
+import com.yeqiu.hydra.utils.net.NetWorkUtils;
+import com.yeqiu.hydra.widget.StatusLayout.StatusLayout;
 
 /**
  * @project：HailHydra
@@ -17,7 +17,7 @@ import com.yeqiu.hydra.widget.StatusLayout;
  * @describe：
  * @fix：
  */
-public abstract class HydraBaseFragmeny extends LifeCycleFragment {
+public abstract class HydraBaseFragment extends LifeCycleFragment {
 
     protected StatusLayout contentView;
     protected Activity context;
@@ -29,7 +29,6 @@ public abstract class HydraBaseFragmeny extends LifeCycleFragment {
         contentView = new StatusLayout(getActivity());
         contentView.setContentView(getContentView());
         contentView.showContentView();
-        contentView.setOnStatusLayoutClickListener(onStatusLayoutClickListener);
         context = getActivity();
         init();
         return contentView;
@@ -41,9 +40,13 @@ public abstract class HydraBaseFragmeny extends LifeCycleFragment {
         initListener();
     }
 
-    //    --------- 抽象方法  ---------
 
-    protected abstract int getContentView();
+    /**
+     * 获取view
+     *
+     * @return
+     */
+    protected abstract Object getContentView();
 
     protected abstract void initView();
 
@@ -65,39 +68,7 @@ public abstract class HydraBaseFragmeny extends LifeCycleFragment {
 
     }
 
-    /**
-     * 显示正常数据页面
-     */
-    public void showContentView() {
-        contentView.showContentView();
 
-    }
-
-    /**
-     * 显示空数据页面
-     *
-     * @param picId           图片id
-     * @param title           标题
-     * @param emptyButtonText 按钮文字
-     *                        传 "" 不显示该控件
-     */
-    public void showEmptyView(int picId, String title, String emptyButtonText) {
-        contentView.showEmptyView(picId, title, emptyButtonText);
-    }
-
-    /**
-     * 显示网络加载失败页面
-     *
-     * @param picId           图片id
-     * @param title           标题
-     * @param text            描述
-     * @param errorButtonText 按钮文字
-     *                        传 "" 不显示该控件
-     */
-    public void showErrorView(int picId, String title, String text, String errorButtonText) {
-        contentView.showErrorView(picId, title, text, errorButtonText);
-
-    }
 
     /**
      * 是否有网络
@@ -154,36 +125,11 @@ public abstract class HydraBaseFragmeny extends LifeCycleFragment {
     }
 
 
-    //-------  以下是空方法 子类选择实现  ----------
-
-    /**
-     * 重新加载网页，子类实现
-     */
-    public void onStatusErrorButtonClick() {
-    }
-
-    /**
-     * 空白页面的按钮，子类实现
-     */
-    public void onStatusEmptyButtonClick() {
-    }
 
 
-    // --------- 监听  ---------
 
-    private StatusLayout.OnStatusLayoutClickListener onStatusLayoutClickListener = new
-            StatusLayout.OnStatusLayoutClickListener() {
 
-                @Override
-                public void onErrorButtonClick() {
-                    onStatusErrorButtonClick();
-                }
 
-                @Override
-                public void onEmptyButtonClick() {
 
-                    onStatusEmptyButtonClick();
-                }
-            };
 
 }
