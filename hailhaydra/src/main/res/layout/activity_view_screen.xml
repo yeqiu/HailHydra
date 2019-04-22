@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="截取的整个屏幕"/>
+            android:text="截取的整个屏幕(无法获取状态栏)"/>
 
         <Button
             android:id="@+id/bt_ss_screen_no_statusbar"

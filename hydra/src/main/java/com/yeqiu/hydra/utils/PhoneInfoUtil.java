@@ -58,14 +58,19 @@ public class PhoneInfoUtil {
      */
     public static String getPhoneImei() {
 
-        Context context = HydraUtilsManager.getInstance().getContext();
-        TelephonyManager tm = (TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE);
-        if (tm != null) {
-            return tm.getDeviceId();
-        }
-        return null;
+        try {
+            Context context = HydraUtilsManager.getInstance().getContext();
+            TelephonyManager tm = (TelephonyManager) context
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            if (tm != null) {
+                return tm.getDeviceId();
+            }
 
+        } catch (Exception e) {
+
+        }
+
+        return "";
     }
 
 
@@ -76,13 +81,22 @@ public class PhoneInfoUtil {
      */
     public static String getPhoneNum() {
 
-        Context context = HydraUtilsManager.getInstance().getContext();
-        TelephonyManager tm = (TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE);
-        if (tm == null) {
-            return null;
+
+
+        try {
+            Context context = HydraUtilsManager.getInstance().getContext();
+            TelephonyManager tm = (TelephonyManager) context
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            if (tm == null) {
+                return null;
+            }
+            return tm.getLine1Number();
+
+        } catch (Exception e) {
+
         }
-        return tm.getLine1Number();
+
+        return "";
     }
 
 
@@ -224,8 +238,7 @@ public class PhoneInfoUtil {
     /**
      * 获取当前使用的网络类型
      *
-     * @return
-     * <p>
+     * @return <p>
      * 0 = "无网络";
      * 1 = "网络断开";
      * 2 = "wifi";
@@ -249,7 +262,8 @@ public class PhoneInfoUtil {
     public static String getSimOperatorName() {
 
         Context context = HydraUtilsManager.getInstance().getContext();
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context
+                .TELEPHONY_SERVICE);
         return tm.getSimOperatorName();
     }
 

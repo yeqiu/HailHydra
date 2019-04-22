@@ -48,6 +48,8 @@ public class DemoActivity extends BaseActivity {
         data.add(new ModelHaydraItem("当前网络的监听", NetworkListenerActivity.class));
         data.add(new ModelHaydraItem("list中使用checkbox", CheckboxListActivity.class));
         data.add(new ModelHaydraItem("list头部联动", NetworkListenerActivity.class));
+        data.add(new ModelHaydraItem("折叠悬浮头", CoordinatorLayoutActivity.class));
+        data.add(new ModelHaydraItem("上滑渐变显示标题栏", TitlebarGradientActivity.class));
 
 
         rlList.setLayoutManager(new LinearLayoutManager(this, LinearLayout

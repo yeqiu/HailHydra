@@ -73,7 +73,15 @@ public class ThreadActivity extends BaseActivity {
             LogUtils.i("当前在主线程");
         } else {
             LogUtils.i("当前在子线程");
-            thread.setText("当前在子线程");
+
+            ThreadUtil.runOnMainThread(new Runnable() {
+                @Override
+                public void run() {
+                    thread.setText("当前在子线程");
+                }
+            });
+
+
         }
     }
 

@@ -60,7 +60,7 @@ public class HaydraToast {
     @ColorInt
     private static final int YELLOW_COLOR = Color.parseColor("#FFA900");
 
-   /**
+    /**
      * 黄色
      */
     @ColorInt
@@ -139,23 +139,19 @@ public class HaydraToast {
     }
 
 
-
-    public static Toast showCustomColor(@NonNull String message, Drawable icon,int color){
+    public static Toast showCustomColor(@NonNull String message, Drawable icon, int color) {
 
         Toast toast = make(message, icon, DEFAULT_TEXT_COLOR, color, defDuration);
         toast.show();
         return toast;
     }
 
-     public static Toast showCustomColor(@NonNull String message, int color){
+    public static Toast showCustomColor(@NonNull String message, int color) {
 
-        Toast toast = make(message, null ,DEFAULT_TEXT_COLOR, color, defDuration);
+        Toast toast = make(message, null, DEFAULT_TEXT_COLOR, color, defDuration);
         toast.show();
         return toast;
     }
-
-
-
 
 
     /**
@@ -197,9 +193,7 @@ public class HaydraToast {
 
         Context context = HydraUtilsManager.getInstance().getContext();
 
-        if (currentToast == null) {
-            currentToast = new Toast(context);
-        }
+        currentToast = new Toast(context);
 
         final View toastLayout = ((LayoutInflater) context.getSystemService(Context
                 .LAYOUT_INFLATER_SERVICE)).inflate(R.layout.toast_layout, null);

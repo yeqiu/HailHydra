@@ -77,6 +77,8 @@
         <activity android:name=".activity.GsonActivity"/>
 
         <activity android:name=".activity.CheckboxListActivity"/>
+        <activity android:name=".activity.CoordinatorLayoutActivity"/>
+        <activity android:name=".activity.TitlebarGradientActivity"/>
 
     </application>
 
