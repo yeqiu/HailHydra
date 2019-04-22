@@ -1,6 +1,5 @@
 package com.yeqiu.hailhaydra.adapter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hydra.utils.ScreenUtils;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @project：AndroidLbrary
@@ -23,15 +22,13 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
 
-    private Context context;
-    private ArrayList<String> datas;
+    private List<String> datas;
     private int type = 1;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> datas) {
+    public RecyclerViewAdapter( List<String> datas) {
 
-        this.context = context;
+
         this.datas = datas;
-
     }
 
     /**

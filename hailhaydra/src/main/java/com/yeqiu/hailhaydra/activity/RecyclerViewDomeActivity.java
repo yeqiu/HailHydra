@@ -131,7 +131,7 @@ public class RecyclerViewDomeActivity extends AppCompatActivity implements View.
 
 
         if (recyclerViewAdapter == null) {
-            recyclerViewAdapter = new RecyclerViewAdapter(this, datas);
+            recyclerViewAdapter = new RecyclerViewAdapter( datas);
             recyclerview.setAdapter(recyclerViewAdapter);
         } else {
             recyclerViewAdapter.setType(type);
