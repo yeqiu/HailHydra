@@ -3,7 +3,7 @@ package com.yeqiu.hydra;
 import android.app.Application;
 import android.content.Context;
 
-import com.yeqiu.hydra.utils.ui.UiConfig;
+import com.yeqiu.hydra.ui.UiConfig;
 import com.yeqiu.hydra.utils.LogUtils;
 
 /**

@@ -17,6 +17,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.yeqiu.hydra.ui.UiConfig;
 
 /**
  * @project：Xbzd
@@ -30,10 +31,16 @@ public class ImageUtils {
 
     private static RequestOptions getRequestOptions() {
 
-        return new RequestOptions()
-                //  .placeholder(UiConfig.getInstance().getImgPlaceholder())
-                //  .error(UiConfig.getInstance().getImgError())
-                .diskCacheStrategy(DiskCacheStrategy.ALL);
+        RequestOptions requestOptions = new RequestOptions();
+        if (UiConfig.getInstance().getImgPlaceholder() != -1) {
+            requestOptions.placeholder(UiConfig.getInstance().getImgPlaceholder());
+        }
+        if (UiConfig.getInstance().getImgError() != -1) {
+            requestOptions.error(UiConfig.getInstance().getImgError());
+        }
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+        return requestOptions;
     }
 
 

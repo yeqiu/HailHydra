@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.utils.ui;
+package com.yeqiu.hydra.ui;
 
 import android.os.CountDownTimer;
 import android.support.annotation.CheckResult;

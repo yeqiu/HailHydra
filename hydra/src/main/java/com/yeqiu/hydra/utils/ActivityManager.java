@@ -1,9 +1,8 @@
-package com.yeqiu.hydra.manger;
+package com.yeqiu.hydra.utils;
 
 import android.app.Activity;
 
 import com.yeqiu.hydra.HydraUtilsManager;
-import com.yeqiu.hydra.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;

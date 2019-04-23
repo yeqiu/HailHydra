@@ -18,7 +18,7 @@ public abstract class BaseActivity extends HydraBaseActivity {
     @Override
     protected int getDefHeadBackImgId() {
 
-        return R.drawable.icon_back;
+        return R.drawable.icon_head_back;
     }
 
     @Override

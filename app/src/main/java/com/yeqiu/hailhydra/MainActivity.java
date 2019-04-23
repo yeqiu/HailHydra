@@ -24,8 +24,8 @@ public class MainActivity extends HydraBaseActivity {
         statusLayout.setErrorView(R.layout.activity_test_3, R.id.tv_3);
         statusLayout.setLoadingView(R.layout.activity_test_4, R.id.tv_4);
 
-
         statusLayout.showContentView();
+
 
 
 

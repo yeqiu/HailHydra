@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hydra.thread.ThreadUtil;
+import com.yeqiu.hydra.utils.thread.ThreadUtil;
 import com.yeqiu.hydra.utils.LogUtils;
 
 

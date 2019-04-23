@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.thread;
+package com.yeqiu.hydra.utils.thread;
 
 import android.os.Handler;
 import android.os.Looper;

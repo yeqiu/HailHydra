@@ -28,7 +28,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/icon_back"/>
+                android:src="@drawable/icon_head_back"/>
 
 
             <TextView

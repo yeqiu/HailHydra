@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.utils.ui;
+package com.yeqiu.hydra.ui;
 
 import android.content.Context;
 import android.graphics.Color;

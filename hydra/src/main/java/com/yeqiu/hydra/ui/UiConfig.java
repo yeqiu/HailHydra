@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.utils.ui;
+package com.yeqiu.hydra.ui;
 
 import com.yeqiu.hydrautils.R;
 
@@ -43,11 +43,11 @@ public class UiConfig {
     /**
      * 图片加载占位图
      */
-    private int imgPlaceholder ;
+    private int imgPlaceholder = -1 ;
     /**
      * 图片错误占位图
      */
-    private int imgError ;
+    private int imgError = -1;
 
 
     private UiConfig() {

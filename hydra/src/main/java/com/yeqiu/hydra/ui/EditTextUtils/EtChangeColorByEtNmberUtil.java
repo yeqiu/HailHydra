@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.utils.ui.EditTextUtils;
+package com.yeqiu.hydra.ui.EditTextUtils;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -6,7 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.HydraUtilsManager;
-import com.yeqiu.hydra.utils.ui.UiConfig;
+import com.yeqiu.hydra.ui.UiConfig;
 
 /**
  * @project：HailHydra

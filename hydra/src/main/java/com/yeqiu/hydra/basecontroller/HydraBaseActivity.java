@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
-import com.yeqiu.hydra.manger.ActivityManager;
+import com.yeqiu.hydra.utils.ActivityManager;
 import com.yeqiu.hydra.utils.KeybordUtils;
 import com.yeqiu.hydra.utils.LogUtils;
 import com.yeqiu.hydra.utils.ScreenUtils;

@@ -65,6 +65,7 @@ public class HaydraMainActivity extends AppCompatActivity {
         data.add(new ModelHaydraItem("自定义控件", getRandomId(), WidgetActivity.class));
         data.add(new ModelHaydraItem("Demo", getRandomId(), DemoActivity.class));
         data.add(new ModelHaydraItem(" Gson使用详解", getRandomId(), GsonActivity.class));
+        data.add(new ModelHaydraItem(" 网络请求", getRandomId(),NetActivity.class));
 
 
     }

@@ -1,10 +1,12 @@
 package com.yeqiu.hydra.utils;
 
 import android.content.Context;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.yeqiu.hydra.HydraUtilsManager;
+import com.yeqiu.hydra.utils.thread.ThreadUtil;
 
 /**
  * @project：Xbzd
@@ -23,23 +25,43 @@ public class UIHelper {
         if (TextUtils.isEmpty(msg)) {
             return;
         }
+
         Context context = HydraUtilsManager.getInstance().getContext();
         // 当显示的内容不一样时，即断定为不是同一个Toast
         if (!msg.equals(oldMsg)) {
             Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
             toast.setText(msg);
-            toast.show();
+            show(toast);
             time = System.currentTimeMillis();
         } else {
             // 显示内容一样时，只有间隔时间大于2秒时才显示
             if (System.currentTimeMillis() - time > 2000) {
                 Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
                 toast.setText(msg);
-                toast.show();
+                show(toast);
                 time = System.currentTimeMillis();
             }
         }
         oldMsg = msg;
     }
+
+
+    private static void show(final Toast toast) {
+
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            toast.show();
+
+        } else {
+            ThreadUtil.runOnMainThread(new Runnable() {
+                @Override
+                public void run() {
+                    toast.show();
+                }
+            });
+        }
+
+
+    }
+
 
 }

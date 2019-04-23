@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
 import com.yeqiu.hydra.HydraUtilsManager;
-import com.yeqiu.hydra.thread.ThreadUtil;
+import com.yeqiu.hydra.utils.thread.ThreadUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
