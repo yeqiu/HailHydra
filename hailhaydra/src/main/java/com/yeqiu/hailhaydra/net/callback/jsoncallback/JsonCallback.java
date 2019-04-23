@@ -23,9 +23,9 @@ import com.lzy.okgo.exception.StorageException;
 import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
 import com.lzy.okgo.request.base.Request;
-import com.yeqiu.hydra.utils.LogUtils;
 import com.yeqiu.hydra.utils.NetLog;
 import com.yeqiu.hydra.utils.UIHelper;
+
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.net.ConnectException;
@@ -177,7 +177,6 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
         super.onError(response);
         //okgo返回错误，可能是连接错误，可能是数据解析错误
         Throwable exception = response.getException();
-        LogUtils.e(exception.getMessage());
 
         if (exception instanceof ConnectException) {
             onNetError(-1000, "网络异常");
@@ -185,18 +184,15 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
             onNetError(-1001, "网络异常");
         } else if (exception instanceof SocketTimeoutException) {
             onNetError(-1002, "网络连接超时");
-            LogUtils.i("网络连接超时");
         } else if (exception instanceof StorageException) {
             onNetError(-1003, "sd卡不存在或者没有权限");
-            LogUtils.i("sd卡不存在或者没有权限");
         } else if (exception instanceof JsonSyntaxException) {
             onNetError(-1004, "数据异常");
         } else if (exception instanceof HttpException) {
             onNetError(404, "网络连接失败");
-            LogUtils.i("网络连接失败");
         } else {
             //其他异常
-            onNetError(-1005, "网络异常");
+            onNetError(-1005, "其他异常，请稍后重试");
         }
     }
 
@@ -227,8 +223,6 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
         }
 
     }
-
-
 
 
 

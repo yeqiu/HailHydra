@@ -15,8 +15,6 @@
  */
 package com.yeqiu.hailhaydra.net.callback.jsoncallback;
 
-import android.util.Log;
-
 import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.convert.Converter;
 import com.lzy.okgo.utils.IOUtils;
@@ -115,7 +113,6 @@ public class JsonConvert<T> implements Converter<T> {
             response.close();
 
             if (t == null) {
-                Log.e("log", "网络请求的数据是null");
                 throw new NullPointerException("网络请求的数据是null");
             }
             return t;
@@ -186,7 +183,6 @@ public class JsonConvert<T> implements Converter<T> {
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.i("test", "JsonConvert:checkLogin, "+e.toString());
         }
 
     }

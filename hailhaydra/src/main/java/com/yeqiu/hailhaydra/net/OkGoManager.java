@@ -1,7 +1,6 @@
 package com.yeqiu.hailhaydra.net;
 
 import android.app.Application;
-import android.support.annotation.NonNull;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpHeaders;
@@ -43,6 +42,7 @@ public class OkGoManager<T> {
         OkGo.getInstance()
                 .init(application);
 
+
     }
 
 
@@ -52,7 +52,7 @@ public class OkGoManager<T> {
      * @param application
      * @param params
      */
-    public void init(Application application, @NonNull HttpParams params) {
+    public void init(Application application, HttpParams params) {
 
         OkGo.getInstance()
                 .init(application)
