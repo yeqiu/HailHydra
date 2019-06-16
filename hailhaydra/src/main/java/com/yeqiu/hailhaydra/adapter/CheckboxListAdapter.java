@@ -73,7 +73,7 @@ public class CheckboxListAdapter extends BaseAdapter {
                     return;
                 }
 
-                item.setCheck(isChecked);
+               item.setCheck(isChecked);
 
                 if (onCheckedChangeListener != null) {
                     onCheckedChangeListener.onCheckedChange(position, isChecked, item);
