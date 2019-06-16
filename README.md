@@ -12,4 +12,4 @@
 
 扫码
 
-![image](http://upload-images.jianshu.io/upload_images/3212115-616b446295b30c72?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](https://github.com/yeqiu/HailHydra/blob/master/art/%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
