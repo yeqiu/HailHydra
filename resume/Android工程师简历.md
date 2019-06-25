@@ -41,7 +41,7 @@
 
 bug的收集与解决，提高app稳定性
 
-#### 2015/10-2019/11&ensp;&ensp;北京中宇华信科技有限公司&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;Android工程师
+#### 2015/10-2016/7&ensp;&ensp;北京中宇华信科技有限公司&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;Android工程师
 
 在项目团队资深工程师的指导下，完成相关项目的开发工作
 
