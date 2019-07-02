@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
+import com.yeqiu.hydra.net.OkGoManager;
 import com.yeqiu.hydra.utils.ActivityManager;
 import com.yeqiu.hydra.utils.KeybordUtils;
 import com.yeqiu.hydra.utils.LogUtils;
@@ -42,7 +43,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected ImageView ivheaderRight;
     protected View headLine;
     protected ImmersionBar imersionBar;
-    private RelativeLayout rlCommonHeadRoot;
+    protected RelativeLayout rlCommonHeadRoot;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -154,6 +155,9 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         if (isImmersionBarEnabled()) {
             ImmersionBar.with(this).destroy();
         }
+
+        //取消网络请求
+        OkGoManager.getInstance().cancelRequest(this);
     }
 
 
@@ -163,6 +167,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         KeybordUtils.closeKeybord(this);
         super.finish();
     }
+
 
     //    --------- 抽象方法  ---------
 
@@ -433,17 +438,13 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
 
     /**
-     * 重新加载网页，子类实现
+     * 状态布局的点击
+     * @param view
      */
-    public void onStatusErrorButtonClick() {
-    }
+    @Override
+    public void onStatusClick(View view) {
 
-    /**
-     * 空白页面的按钮，子类实现
-     */
-    public void onStatusEmptyButtonClick() {
     }
-
 
     /**
      * 标题右边的字点击事件

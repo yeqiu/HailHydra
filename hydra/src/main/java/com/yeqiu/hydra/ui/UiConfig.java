@@ -13,6 +13,20 @@ public class UiConfig {
 
     private static UiConfig instance;
 
+
+
+    private UiConfig() {
+        instance = this;
+    }
+
+    public static synchronized UiConfig getInstance() {
+        if (instance == null) {
+            instance = new UiConfig();
+        }
+        return instance;
+    }
+
+
     /**
      * 默认view的颜色
      */
@@ -48,18 +62,6 @@ public class UiConfig {
      * 图片错误占位图
      */
     private int imgError = -1;
-
-
-    private UiConfig() {
-        instance = this;
-    }
-
-    public static synchronized UiConfig getInstance() {
-        if (instance == null) {
-            instance = new UiConfig();
-        }
-        return instance;
-    }
 
 
     public UiConfig setDefColor(int defColor) {

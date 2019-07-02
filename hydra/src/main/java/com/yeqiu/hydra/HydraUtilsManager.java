@@ -3,6 +3,7 @@ package com.yeqiu.hydra;
 import android.app.Application;
 import android.content.Context;
 
+import com.yeqiu.hydra.net.NetConfig;
 import com.yeqiu.hydra.ui.UiConfig;
 import com.yeqiu.hydra.utils.LogUtils;
 
@@ -44,8 +45,10 @@ public class HydraUtilsManager {
             throw new NullPointerException("context must not null,Please check init()");
         }
 
+        //初始化日志库
         LogUtils.init();
-
+        //初始化网络请求
+        NetConfig.getInstance().init(context);
 
 
         return getInstance();
@@ -68,6 +71,10 @@ public class HydraUtilsManager {
 
     public UiConfig getUiConfig() {
         return UiConfig.getInstance();
+    }
+
+    public NetConfig getNetConfig(){
+        return NetConfig.getInstance();
     }
 
 

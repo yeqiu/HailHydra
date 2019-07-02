@@ -61,7 +61,7 @@ public class NetLog {
         // printLine(tagJson, false);
         Log.v(tagJson, "  ");
 
-
+        Log.v(tagUrl, " ═══════════════════华丽的分割线 ═══════════════════ ");
     }
 
 
@@ -86,7 +86,7 @@ public class NetLog {
             Log.v(tagUrl, "本次访问参数 " + params);
         }
 
-        Log.v(tagJson, "  ");
+        Log.v(tagUrl, " ═══════════════════华丽的分割线 ═══════════════════ ");
 
     }
 

@@ -376,5 +376,20 @@ public class StringUtils {
     }
 
 
+    /**
+     * 拼接字符串
+     * @param s
+     * @return
+     */
+    public static String append (String ...s){
+        StringBuffer sb = new StringBuffer();
+
+        for (int i = 0; i < s.length; i++) {
+            sb.append(s[i]);
+        }
+        return sb.toString();
+    }
+
+
 
 }
