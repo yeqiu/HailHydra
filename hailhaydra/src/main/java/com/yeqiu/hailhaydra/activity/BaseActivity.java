@@ -24,7 +24,6 @@ public abstract class BaseActivity extends HydraBaseActivity {
     @Override
     protected void initImmersionBar() {
         super.initImmersionBar();
-        setStatusBarDarkFont(true);
     }
 
 

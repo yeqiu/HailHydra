@@ -22,6 +22,8 @@ import com.yeqiu.hydra.widget.StatusLayout.OnStatusClickListener;
 import com.yeqiu.hydra.widget.StatusLayout.StatusLayout;
 import com.yeqiu.hydrautils.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
@@ -81,6 +83,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         statusLayout.showContentView();
         statusLayout.setOnStatusClickListener(this);
         initImmersionBar();
+        registerEventBus();
         initHead();
         initView();
         initData();
@@ -135,7 +138,22 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
                     .keyboardEnable(true)
                     .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION);
             imersionBar.init();
+
+            setStatusBarDarkFont(true);
         }
+    }
+
+
+    /**
+     * 注册EventBus
+     */
+    private void registerEventBus(){
+
+        if (isRegisterEventBus()){
+
+            EventBus.getDefault().register(this);
+        }
+
     }
 
 
@@ -154,6 +172,10 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
         if (isImmersionBarEnabled()) {
             ImmersionBar.with(this).destroy();
+        }
+
+        if (isRegisterEventBus()){
+            EventBus.getDefault().unregister(this);
         }
 
         //取消网络请求
@@ -225,7 +247,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     }
 
     /**
-     * 状态栏字体颜色 亮色或深色，默认亮色
+     * 状态栏字体颜色 亮色或深色，默认深色
      */
     protected void setStatusBarDarkFont(boolean isrDark) {
 
@@ -262,6 +284,17 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected boolean isImmersionBarEnabled() {
         return true;
     }
+
+    /**
+     * 是否注册EventBus
+     *
+     * @return
+     */
+    protected boolean isRegisterEventBus(){
+
+        return false;
+    }
+
 
 
     /**
@@ -326,6 +359,8 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         headLayout.setVisibility(show ? View.VISIBLE : View.GONE);
 
     }
+
+
 
     /**
      * 设置窗口透明度

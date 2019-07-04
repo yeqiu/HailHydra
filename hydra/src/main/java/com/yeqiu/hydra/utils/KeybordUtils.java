@@ -46,8 +46,6 @@ public class KeybordUtils {
 
         boolean softShowing = isKeyBordOpen(activity);
 
-        LogUtils.i("softShowing == "+softShowing);
-
         if (softShowing) {
             if (activity.getCurrentFocus() != null) {
                 //有焦点关闭

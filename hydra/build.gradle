@@ -22,7 +22,6 @@ android {
 }
 
 dependencies {
-
     //log
     api 'com.orhanobut:logger:2.2.0'
     //gson
@@ -37,4 +36,11 @@ dependencies {
     api 'me.imid.swipebacklayout.lib:library:1.1.0'
     //okgo
     api 'com.lzy.net:okgo:3.0.4'
+    //eventbus
+    api 'org.greenrobot:eventbus:3.1.1'
+    //支付宝支付
+    api files('libs/alipaySdk-20180601.jar')
+    //微信支付
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
 }
