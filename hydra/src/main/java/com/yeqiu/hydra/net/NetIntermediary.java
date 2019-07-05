@@ -2,8 +2,6 @@ package com.yeqiu.hydra.net;
 
 import com.lzy.okgo.request.base.Request;
 
-import java.util.Map;
-
 /**
  * @project：HailHydra
  * @author：小卷子
@@ -20,15 +18,18 @@ public interface NetIntermediary {
      * @param request
      * @return
      */
-    Map<String, String> afterStart(Request request);
-
+    Request beforeStart(Request request);
 
 
     /**
      * 网络请求结束后的请求结果会传递到此方法，请求结束后会打印请求结果
      * 可在此方法中判断业务是否成功
-     * @param netRestut
+     * 业务成功 return true; 失败return false;
+     * 注意：return false 会直接走到失败的回调
+     * 请谨慎操作
+     * @param netData
+     * @return
      */
-    void afterResult(String netRestut);
+    boolean beforeResult( String netData);
 
 }

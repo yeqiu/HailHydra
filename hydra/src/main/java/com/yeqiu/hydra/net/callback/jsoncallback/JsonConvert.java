@@ -20,7 +20,6 @@ import android.util.Log;
 import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.convert.Converter;
 import com.lzy.okgo.utils.IOUtils;
-import com.yeqiu.hydra.net.NetConfig;
 import com.yeqiu.hydra.utils.NetLog;
 
 import org.json.JSONArray;
@@ -159,10 +158,6 @@ public class JsonConvert<T> implements Converter<T> {
             byte[] bytes = IOUtils.toByteArray(responseBody.byteStream());
             MediaType contentType = responseBody.contentType();
             String json = new String(bytes, getCharset(contentType));
-            //根据约定格式检查返回的数据业务是否错误
-            if (NetConfig.getInstance().getNetIntermediary()!=null){
-                NetConfig.getInstance().getNetIntermediary().afterResult(json);
-            }
             NetLog.logJson(url, json);
 
             responseBody = ResponseBody.create(responseBody.contentType(), bytes);

@@ -40,6 +40,17 @@ public class ActivityManager {
     }
 
 
+    private void checkActivityManager (){
+
+
+        if (activityStack.size() == 0){
+
+            throw new NullPointerException("activityStack的size为0,请检查在base中是否启用ActivityManager");
+        }
+
+    }
+
+
     /**
      * 获取指定index的activity
      * 注：debug模式下如果index不合法会抛出异常
@@ -49,6 +60,8 @@ public class ActivityManager {
      * @return
      */
     public Activity getActivityWithIndex(int index) {
+
+        checkActivityManager();
 
         if (index < 0 || index >= activityStack.size()) {
             //抛出异常
@@ -83,6 +96,8 @@ public class ActivityManager {
      */
     public Activity getActivity(Class<?> clazz) {
 
+        checkActivityManager();
+
         for (Activity activity : activityStack) {
             if (activity.getClass().equals(clazz)) {
                 return activity;
@@ -103,6 +118,8 @@ public class ActivityManager {
      * 添加Activity到堆栈
      */
     public void addActivity(Activity activity) {
+
+
         if (activityStack == null) {
             activityStack = new Stack<>();
         }
@@ -114,6 +131,7 @@ public class ActivityManager {
      */
     public Activity getCurrentActivity() {
 
+        checkActivityManager();
         return activityStack.get(activityStack.size() - 1);
     }
 
@@ -123,6 +141,8 @@ public class ActivityManager {
      */
     public void finishActivity() {
 
+        checkActivityManager();
+
         Activity activity = activityStack.get(activityStack.size() - 1);
         finishActivity(activity);
     }
@@ -131,6 +151,8 @@ public class ActivityManager {
      * 结束指定的Activity
      */
     public void finishActivity(Activity activity) {
+
+        checkActivityManager();
 
         activity.finish();
         if (!activityStack.isEmpty()) {
@@ -144,6 +166,8 @@ public class ActivityManager {
      * 结束指定类名的Activity
      */
     public void finishActivity(Class<? extends Activity> cls) {
+
+        checkActivityManager();
 
         Iterator<Activity> iterator = activityStack.iterator();
         while (iterator.hasNext()) {
@@ -162,6 +186,8 @@ public class ActivityManager {
      */
     private void finishAllActivity() {
 
+        checkActivityManager();
+
         Iterator<Activity> iterator = activityStack.iterator();
         while (iterator.hasNext()) {
             Activity next = iterator.next();
@@ -175,6 +201,8 @@ public class ActivityManager {
      * 关闭除了传入以外的所有activity
      */
     public void finishAllActivityButThis(Class<? extends Activity> cls) {
+
+        checkActivityManager();
 
         Iterator<Activity> iterator = activityStack.iterator();
 
@@ -194,6 +222,8 @@ public class ActivityManager {
      * 回到指定页面，关闭指定页面之后的所有页面
      */
     public void popToAtivity(Class<? extends Activity> activity) {
+
+        checkActivityManager();
 
         ListIterator<Activity> listIterator;
 

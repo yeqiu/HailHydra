@@ -4,6 +4,7 @@ package com.yeqiu.hydra.net.callback.dialogcallback;
 import android.app.Activity;
 
 import com.yeqiu.hydra.net.callback.jsoncallback.JsonCallback;
+import com.yeqiu.hydra.utils.ActivityManager;
 import com.yeqiu.hydra.view.dialog.TipDialog;
 import com.yeqiu.hydrautils.R;
 
@@ -38,7 +39,13 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
         initDialog(activity);
     }
 
+    public DialogCallback() {
 
+        this.activity = ActivityManager.getAppManager().getCurrentActivity();
+
+        initDialog(activity);
+
+    }
 
 
     @Override

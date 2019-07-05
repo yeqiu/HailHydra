@@ -68,33 +68,60 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
     @Override
     public void onStart(Request<T, ? extends Request> request) {
         super.onStart(request);
+//
+//        Map<String, String> map;
+//
+//        if (NetConfig.getInstance().getNetIntermediary() == null || NetConfig.getInstance()
+//                .getNetIntermediary
+//                        ().beforeStart(request) == null || NetConfig.getInstance().getNetIntermediary
+//                ().beforeStart(request).size() == 0) {
+//            //自己处理参数 默认打印所有参数
+//            HttpParams params = request.getParams();
+//            map = new HashMap<>();
+//            LinkedHashMap<String, List<String>> urlParamsMap = params.urlParamsMap;
+//            Set<String> strings = urlParamsMap.keySet();
+//            Iterator<String> iterator = strings.iterator();
+//            while (iterator.hasNext()) {
+//                String next = iterator.next();
+//                List<String> strings1 = urlParamsMap.get(next);
+//                if (strings1 != null && strings1.size() > 0) {
+//                    //可以在这里替换决定是否需要添加到map中
+//                    map.put(next, strings1.get(0));
+//                }
+//            }
+//
+//        } else {
+//            map = NetConfig.getInstance().getNetIntermediary().beforeStart(request);
+//        }
+//
+//
+//        NetLog.logUrl(request.getUrl(), new Gson().toJson(map));
 
-        Map<String, String> map;
 
-        if (NetConfig.getInstance().getNetIntermediary()==null ||NetConfig.getInstance().getNetIntermediary
-                ().afterStart(request)==null||NetConfig.getInstance().getNetIntermediary
-                ().afterStart(request).size()==0){
-            //自己处理参数 默认打印所有参数
-            HttpParams params = request.getParams();
-            map = new HashMap<>();
-            LinkedHashMap<String, List<String>> urlParamsMap = params.urlParamsMap;
-            Set<String> strings = urlParamsMap.keySet();
-            Iterator<String> iterator = strings.iterator();
-            while (iterator.hasNext()) {
-                String next = iterator.next();
-                List<String> strings1 = urlParamsMap.get(next);
-                if (strings1 != null && strings1.size() > 0) {
-                    //可以在这里替换决定是否需要添加到map中
-                    map.put(next, strings1.get(0));
-                }
-            }
+        if (NetConfig.getInstance().getNetIntermediary()!=null ||NetConfig.getInstance()
+                .getNetIntermediary().beforeStart(request)!=null){
 
-        }else{
-          map=  NetConfig.getInstance().getNetIntermediary().afterStart(request);
+            request = NetConfig.getInstance().getNetIntermediary().beforeStart(request);
         }
 
 
+
+        Map<String, String> map= new HashMap<>();
+        HttpParams params = request.getParams();
+        LinkedHashMap<String, List<String>> urlParamsMap = params.urlParamsMap;
+        Set<String> strings = urlParamsMap.keySet();
+        Iterator<String> iterator = strings.iterator();
+        while (iterator.hasNext()) {
+            String next = iterator.next();
+            List<String> strings1 = urlParamsMap.get(next);
+            if (strings1 != null && strings1.size() > 0) {
+                //可以在这里替换决定是否需要添加到map中
+                map.put(next, strings1.get(0));
+            }
+        }
+
         NetLog.logUrl(request.getUrl(), new Gson().toJson(map));
+
     }
 
 
@@ -126,9 +153,25 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
         T data = response.body();
         if (data == null) {
             onNetError(-1004, "数据异常");
+            return;
+        }
+        
+        if (NetConfig.getInstance().getNetIntermediary() != null) {
+
+            boolean isSuccess = NetConfig.getInstance().getNetIntermediary().beforeResult((String) data);
+
+            if (isSuccess){
+                onNetSuccess(data);
+            }else{
+                onNetError(data);
+            }
+
+
         } else {
             onNetSuccess(data);
         }
+
+
     }
 
     @Override
@@ -168,7 +211,7 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
 
 
     /**
-     * 网络请求失败回调
+     * 网络请求失败回调 这里是指网络请求失败了，包括响应体解析失败
      *
      * @param msg
      * @param code -1000 无网络
@@ -181,24 +224,20 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
      */
     public void onNetError(int code, String msg) {
 
-        if (showErrorMsg()) {
-            UIHelper.showToast(msg);
-        }
+        UIHelper.showToast(msg);
 
     }
-
-
-
 
 
     /**
-     * 是否显示错误信息吐司
+     * 请求请求成功 但是业务失败，如登录失效等
      *
-     * @return
+     * @param data
      */
-    protected boolean showErrorMsg() {
+    public void onNetError(T data) {
 
-        return true;
+
     }
+
 
 }

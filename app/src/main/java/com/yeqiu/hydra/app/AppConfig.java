@@ -54,7 +54,8 @@ public class AppConfig {
         HydraUtilsManager.getInstance()
                 .init(app)
                 .setCurrentEnvironment(AppUtils.isDebug())
-                .getNetConfig().setNetIntermediary(new HailHaydraNetIntermediary());
+                .getNetConfig()
+                .setNetIntermediary(new HailHaydraNetIntermediary());
 
 
     }

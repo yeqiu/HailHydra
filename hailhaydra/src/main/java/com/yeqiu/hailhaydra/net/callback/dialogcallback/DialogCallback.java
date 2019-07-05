@@ -6,6 +6,7 @@ import android.app.Activity;
 import com.lzy.okgo.request.base.Request;
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.net.callback.jsoncallback.JsonCallback;
+import com.yeqiu.hydra.utils.ActivityManager;
 import com.yeqiu.hydra.view.dialog.TipDialog;
 
 
@@ -37,6 +38,14 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
         super();
         this.activity = activity;
         initDialog(activity);
+    }
+
+
+    public DialogCallback() {
+        this.activity = ActivityManager.getAppManager().getCurrentActivity();
+
+        initDialog(activity);
+
     }
 
 

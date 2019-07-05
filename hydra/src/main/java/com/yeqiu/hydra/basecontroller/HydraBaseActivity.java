@@ -54,10 +54,11 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         context = this;
         ///隐藏ActionBar
         isShowActionBar();
-        init();
         //添加到activity管理器
         ActivityManager.getAppManager().addActivity(this);
         setSwipeBackEnable(isSwipeBack());
+        init();
+
     }
 
 
