@@ -1,15 +1,25 @@
 package com.yeqiu.hydra.view.activity;
 
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.net.NetManager;
-import com.yeqiu.hydra.net.bean.BaseBean;
-import com.yeqiu.hydra.net.callback.dialogcallback.DialogCallback;
-import com.yeqiu.hydra.utils.LogUtils;
+import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
+import com.yeqiu.hydra.utils.DensityUtils;
+import com.yeqiu.hydra.view.adapter.HailHaydraAdapter;
+import com.yeqiu.hydra.widget.HydraRecyclerViewDivider;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity {
+
+    private RecyclerView rvHaydra;
+
+    private List<ModelHaydraItem> data;
 
 
     @Override
@@ -20,28 +30,54 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void initView() {
 
+        showHeadLayout(false);
+
+        rvHaydra = (RecyclerView) findViewById(R.id.rv_haydra);
     }
 
     @Override
     protected void initData() {
 
-
-        NetManager.getInstance().getAppUpgrade(context, new DialogCallback<String>() {
-            @Override
-            public void onNetSuccess(String data) {
-
-                LogUtils.i("data = "+data);
-            }
-        });
+        data = getData();
 
 
-        NetManager.getInstance().smsSend("111", "1", this, new DialogCallback<BaseBean>() {
-            @Override
-            public void onNetSuccess(BaseBean data) {
+        rvHaydra.setLayoutManager(new GridLayoutManager(this, 3));
+        rvHaydra.addItemDecoration(new HydraRecyclerViewDivider(DensityUtils.dp2px(5f)));
+        HailHaydraAdapter hailHaydraAdapter = new HailHaydraAdapter(this, data);
+        rvHaydra.setAdapter(hailHaydraAdapter);
 
-            }
-        });
+    }
 
+    private List<ModelHaydraItem> getData() {
+
+        List<ModelHaydraItem> data = new ArrayList<>();
+        data.add(new ModelHaydraItem("获取设备信息", getRandomId(), PhoneInfoActivity.class));
+
+//        data.add(new ModelHaydraItem("base的介绍", getRandomId(), KeyBordListenerActivity
+//                .class));
+//        data.add(new ModelHaydraItem("键盘开启关闭的监听", getRandomId(), KeyBordListenerActivity.class));
+//        data.add(new ModelHaydraItem("仿ios弹窗", getRandomId(), DialogActivity.class));
+//        data.add(new ModelHaydraItem("WebView的封装", getRandomId(), WebViewActivity.class));
+//        data.add(new ModelHaydraItem("app升级和安装", getRandomId(), UpdateActivity.class));
+//        data.add(new ModelHaydraItem("网络请求", getRandomId(),NetActivity.class));
+//        data.add(new ModelHaydraItem("常见工具类", getRandomId(),NetActivity.class));
+//
+
+//        data.add(new ModelHaydraItem("StringUtils的使用", getRandomId(), StringUtilsActivity.class));
+//        data.add(new ModelHaydraItem("沉浸式状态栏", getRandomId(), ImmersionBarActivity.class));
+//        data.add(new ModelHaydraItem("TextTool的使用", getRandomId(), TextToolActivity.class));
+//        data.add(new ModelHaydraItem("带图标的Toast", getRandomId(), ToastActivity.class));
+//        data.add(new ModelHaydraItem("截图", getRandomId(), ViewScreenshotActivity.class));
+//        data.add(new ModelHaydraItem("ConstraintLayout的炫酷效果", getRandomId(),
+// ConstraintLayoutActivity.class));
+//        data.add(new ModelHaydraItem("Material Design UI", getRandomId(),
+// MaterialDesignActivity.class));
+//        data.add(new ModelHaydraItem("自定义控件", getRandomId(), WidgetActivity.class));
+//        data.add(new ModelHaydraItem("Demo", getRandomId(), DemoActivity.class));
+//        data.add(new ModelHaydraItem(" Gson使用详解", getRandomId(), GsonActivity.class));
+//
+
+        return data;
     }
 
     @Override
@@ -53,4 +89,20 @@ public class MainActivity extends BaseActivity{
     public void onClick(View v) {
 
     }
+
+
+    private int getRandomId() {
+
+        int id = new Random().nextInt(30) + 1;
+        String idName = "icon_head_hydra_" + id;
+
+        int resId = getResources().getIdentifier(idName, "drawable", getPackageName());
+
+        if (resId == 0) {
+            resId = R.drawable.hydra;
+        }
+
+        return resId;
+    }
+
 }

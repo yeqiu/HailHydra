@@ -4,11 +4,11 @@ import android.view.View;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.view.dialog.BottomDialog;
 import com.yeqiu.hydra.view.dialog.CommonDialog;
 import com.yeqiu.hydra.view.dialog.DialogListener;
 import com.yeqiu.hydra.view.dialog.EditDialog;
 import com.yeqiu.hydra.view.dialog.ListDialog;
-import com.yeqiu.hydra.view.dialog.SheetDialog;
 import com.yeqiu.hydra.view.dialog.TipDialog;
 import com.yeqiu.hydra.view.dialog.model.ListData;
 
@@ -136,7 +136,20 @@ public class DialogActivity extends BaseActivity {
                 items.add("我打野");
                 items.add("我打ADC");
 
-                new SheetDialog(DialogActivity.this)
+//                new SheetDialog(DialogActivity.this)
+//                        .build()
+//                        .setSheetDatas(items)
+//                        .setTitleText("标题")
+//                        .setOnDialogListener(new DialogListener() {
+//                            @Override
+//                            public void onItemClick(int position, String text) {
+//                                UIHelper.showToast(text);
+//                            }
+//                        })
+//                        .show();
+
+
+                new BottomDialog(DialogActivity.this)
                         .build()
                         .setSheetDatas(items)
                         .setTitleText("标题")

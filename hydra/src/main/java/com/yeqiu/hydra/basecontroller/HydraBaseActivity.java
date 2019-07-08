@@ -37,7 +37,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         .OnClickListener, OnStatusClickListener {
 
     protected StatusLayout statusLayout;
-    protected LinearLayout headLayout;
+    protected LinearLayout headLayoutRoot;
     protected Activity context;
     protected ImageView ivHeadBack;
     protected TextView headerTitle;
@@ -45,7 +45,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected ImageView ivheaderRight;
     protected View headLine;
     protected ImmersionBar imersionBar;
-    protected RelativeLayout rlCommonHeadRoot;
+    protected RelativeLayout rlCommonHead;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,12 +97,12 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * 标题栏中包括 返回 标题 右侧文字
      */
     private void initHead() {
-        headLayout = (LinearLayout) findViewById(R.id.ll_common_header_layout);
+        headLayoutRoot = (LinearLayout) findViewById(R.id.ll_common_header_root);
         ivHeadBack = (ImageView) findViewById(R.id.iv_common_head_back);
         headerTitle = (TextView) findViewById(R.id.tv_common_head_title);
         tvheaderRight = (TextView) findViewById(R.id.tv_common_head_title_right);
         ivheaderRight = (ImageView) findViewById(R.id.iv_common_head_title_right);
-        rlCommonHeadRoot = (RelativeLayout) findViewById(R.id.rl_common_head_root);
+        rlCommonHead = (RelativeLayout) findViewById(R.id.rl_common_head);
         headLine = findViewById(R.id.head_lien);
         //默认隐藏右侧的图片和文字
         tvheaderRight.setVisibility(View.GONE);
@@ -122,10 +122,10 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     private void setHeadRootMarginTop() {
 
         int statusHeight = ScreenUtils.getStatusHeight();
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) rlCommonHeadRoot
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) rlCommonHead
                 .getLayoutParams();
         layoutParams.setMargins(0, statusHeight, 0, 0);
-        rlCommonHeadRoot.setLayoutParams(layoutParams);
+        rlCommonHead.setLayoutParams(layoutParams);
 
     }
 
@@ -243,7 +243,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * @param backSrcId
      */
     protected void setHeadLayoutColor(int colorId, int backSrcId) {
-        headLayout.setBackgroundColor(getResources().getColor(colorId));
+        headLayoutRoot.setBackgroundColor(getResources().getColor(colorId));
         ivHeadBack.setImageResource(backSrcId);
     }
 
@@ -313,7 +313,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * 自动显示标题栏
      */
     public void setHeaderTitle(String title) {
-        headLayout.setVisibility(View.VISIBLE);
+        headLayoutRoot.setVisibility(View.VISIBLE);
         headerTitle.setText(title);
     }
 
@@ -357,7 +357,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * @param show
      */
     public void showHeadLayout(boolean show) {
-        headLayout.setVisibility(show ? View.VISIBLE : View.GONE);
+        headLayoutRoot.setVisibility(show ? View.VISIBLE : View.GONE);
 
     }
 

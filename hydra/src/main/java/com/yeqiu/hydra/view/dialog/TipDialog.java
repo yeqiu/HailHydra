@@ -49,7 +49,7 @@ public class TipDialog extends BaseDialog {
 
 
     @Override
-    protected void initView(View view) {
+    protected void initDialog(View view) {
 
         llRoot = (LinearLayout) view.findViewById(R.id.ll_tip_dialog_root);
 

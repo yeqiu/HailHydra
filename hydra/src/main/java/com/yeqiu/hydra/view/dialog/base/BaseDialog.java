@@ -119,7 +119,7 @@ public abstract class BaseDialog {
             return this;
         }
 
-        initView(dialogView);
+        initDialog(dialogView);
         dialog.setContentView(dialogView);
         dialog.show();
 
@@ -190,7 +190,7 @@ public abstract class BaseDialog {
      *
      * @param view
      */
-    protected abstract void initView(View view);
+    protected abstract void initDialog(View view);
 
 
     public void dismissDialog() {

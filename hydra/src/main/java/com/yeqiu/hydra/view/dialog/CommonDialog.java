@@ -28,7 +28,7 @@ public class CommonDialog extends BaseDialog implements View.OnClickListener {
 
 
     @Override
-    protected void initView(View view) {
+    protected void initDialog(View view) {
 
         TextView title = (TextView) view.findViewById(R.id.tv_common_dialog_title);
         TextView content = (TextView) view.findViewById(R.id.tv_common_dialog_content);

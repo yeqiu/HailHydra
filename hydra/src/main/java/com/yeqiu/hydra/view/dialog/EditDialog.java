@@ -31,7 +31,7 @@ public class EditDialog extends BaseDialog implements View.OnClickListener {
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initDialog(View view) {
 
         TextView title = (TextView) view.findViewById(R.id.tv_edit_dialog_title);
         edit = (EditText) view.findViewById(R.id.et_edit_dialog_edit);

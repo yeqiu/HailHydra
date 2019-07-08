@@ -45,7 +45,7 @@ public class ListDialog extends BaseDialog implements AdapterView.OnItemClickLis
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initDialog(View view) {
 
         ivBack = (ImageView) view.findViewById(R.id.iv_list_back);
         tvTitle = (TextView) view.findViewById(R.id.tv_list_title);

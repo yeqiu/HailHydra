@@ -35,7 +35,7 @@ public class SheetDialog extends BaseDialog {
     @Override
     protected void setWindow() {
         Window window = dialog.getWindow();
-        window.getDecorView().setPadding(DensityUtils.dp2px( 10), 0, DensityUtils.dp2px
+        window.getDecorView().setPadding(DensityUtils.dp2px(10), 0, DensityUtils.dp2px
                 (10), DensityUtils.dp2px(10));
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
@@ -52,7 +52,7 @@ public class SheetDialog extends BaseDialog {
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initDialog(View view) {
 
         TextView title = (TextView) view.findViewById(R.id.tv_sheet_dialog_title);
         LinearLayout list = (LinearLayout) view.findViewById(R.id.ll_sheet_dialog_list);
@@ -70,6 +70,7 @@ public class SheetDialog extends BaseDialog {
         } else {
             title.setText(dialogBuilder.getTitleText());
             title.setTextColor(getContext().getResources().getColor(dialogBuilder.getTitleColor()));
+            title.setTextSize(dialogBuilder.getTitleSize());
         }
 
         cancel.setTextColor(getContext().getResources().getColor(dialogBuilder.getCancelColor()));
