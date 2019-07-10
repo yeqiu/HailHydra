@@ -8,10 +8,11 @@
 
 
     <ImageView
+        android:id="@+id/iv_splash"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_hydra_1"/>
+        android:src="@drawable/bg_hydra_4"/>
 
 
 

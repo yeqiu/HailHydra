@@ -8,5 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--进度条-->
+    <style name="numberProgressbarUpdate">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="progress_max">100</item>
+        <item name="progress_current">0</item>
+        <item name="progress_unreached_color">#f9f9f9</item>
+        <item name="progress_reached_color">#0d95ff</item>
+        <item name="progress_text_size">10sp</item>
+        <item name="progress_text_color">#0d95ff</item>
+        <item name="progress_reached_bar_height">3dp</item>
+        <item name="progress_unreached_bar_height">3.5dp</item>
+    </style>
+
 
 </resources>

@@ -50,13 +50,16 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.1'
     //权限
     implementation 'com.yanzhenjie.permission:support:2.0.1'
+    //权限
+    implementation 'com.android.support:cardview-v7:28.0.0'
     //eventbus
     implementation 'org.greenrobot:eventbus:3.1.1'
     //BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     //图片选择
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
-    //cardview
-    implementation 'com.android.support:cardview-v7:28.0.0'
+    //数字进度条
+    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
+
 
 }

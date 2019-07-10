@@ -52,16 +52,18 @@ public class MainActivity extends BaseActivity {
 
         List<ModelHaydraItem> data = new ArrayList<>();
         data.add(new ModelHaydraItem("获取设备信息", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("base的介绍", getRandomId(), BaseExplainActivity.class));
+        data.add(new ModelHaydraItem("app升级和安装", getRandomId(), UpdateActivity.class));
 
-//        data.add(new ModelHaydraItem("base的介绍", getRandomId(), KeyBordListenerActivity
-//                .class));
-//        data.add(new ModelHaydraItem("键盘开启关闭的监听", getRandomId(), KeyBordListenerActivity.class));
-//        data.add(new ModelHaydraItem("仿ios弹窗", getRandomId(), DialogActivity.class));
-//        data.add(new ModelHaydraItem("WebView的封装", getRandomId(), WebViewActivity.class));
-//        data.add(new ModelHaydraItem("app升级和安装", getRandomId(), UpdateActivity.class));
-//        data.add(new ModelHaydraItem("网络请求", getRandomId(),NetActivity.class));
-//        data.add(new ModelHaydraItem("常见工具类", getRandomId(),NetActivity.class));
-//
+        data.add(new ModelHaydraItem("键盘开启关闭的监听", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("仿ios弹窗", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("WebView的封装", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("网络请求", getRandomId(),PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("常见工具类", getRandomId(),PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("悬浮窗", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("自定义控件", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("其他一些功能", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("一些Demo", getRandomId(), PhoneInfoActivity.class));
 
 //        data.add(new ModelHaydraItem("StringUtils的使用", getRandomId(), StringUtilsActivity.class));
 //        data.add(new ModelHaydraItem("沉浸式状态栏", getRandomId(), ImmersionBarActivity.class));

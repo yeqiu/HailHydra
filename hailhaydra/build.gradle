@@ -38,7 +38,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //数字进度条
     implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
-    implementation 'com.android.support:cardview-v7:27.1.1'
     implementation project(':hydra')
     //leakcanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'

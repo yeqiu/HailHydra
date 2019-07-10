@@ -54,6 +54,7 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
     private Type type;
     private Class<T> clazz;
 
+
     public JsonCallback() {
     }
 
@@ -67,60 +68,30 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
 
     @Override
     public void onStart(Request<T, ? extends Request> request) {
-        super.onStart(request);
-//
-//        Map<String, String> map;
-//
-//        if (NetConfig.getInstance().getNetIntermediary() == null || NetConfig.getInstance()
-//                .getNetIntermediary
-//                        ().beforeStart(request) == null || NetConfig.getInstance().getNetIntermediary
-//                ().beforeStart(request).size() == 0) {
-//            //自己处理参数 默认打印所有参数
-//            HttpParams params = request.getParams();
-//            map = new HashMap<>();
-//            LinkedHashMap<String, List<String>> urlParamsMap = params.urlParamsMap;
-//            Set<String> strings = urlParamsMap.keySet();
-//            Iterator<String> iterator = strings.iterator();
-//            while (iterator.hasNext()) {
-//                String next = iterator.next();
-//                List<String> strings1 = urlParamsMap.get(next);
-//                if (strings1 != null && strings1.size() > 0) {
-//                    //可以在这里替换决定是否需要添加到map中
-//                    map.put(next, strings1.get(0));
-//                }
-//            }
-//
-//        } else {
-//            map = NetConfig.getInstance().getNetIntermediary().beforeStart(request);
-//        }
-//
-//
-//        NetLog.logUrl(request.getUrl(), new Gson().toJson(map));
 
+        boolean stopLog = false;
 
-        if (NetConfig.getInstance().getNetIntermediary()!=null ||NetConfig.getInstance()
-                .getNetIntermediary().beforeStart(request)!=null){
-
-            request = NetConfig.getInstance().getNetIntermediary().beforeStart(request);
+        if (NetConfig.getInstance().getNetIntermediary() != null) {
+            stopLog = NetConfig.getInstance().getNetIntermediary().beforeStart(request);
         }
 
+        if (!stopLog) {
+            HttpParams params = request.getParams();
+            Map<String, String> map = new HashMap<>();
+            LinkedHashMap<String, List<String>> urlParamsMap = params.urlParamsMap;
+            Set<String> strings = urlParamsMap.keySet();
+            Iterator<String> iterator = strings.iterator();
 
-
-        Map<String, String> map= new HashMap<>();
-        HttpParams params = request.getParams();
-        LinkedHashMap<String, List<String>> urlParamsMap = params.urlParamsMap;
-        Set<String> strings = urlParamsMap.keySet();
-        Iterator<String> iterator = strings.iterator();
-        while (iterator.hasNext()) {
-            String next = iterator.next();
-            List<String> strings1 = urlParamsMap.get(next);
-            if (strings1 != null && strings1.size() > 0) {
-                //可以在这里替换决定是否需要添加到map中
-                map.put(next, strings1.get(0));
+            while (iterator.hasNext()) {
+                String next = iterator.next();
+                List<String> strings1 = urlParamsMap.get(next);
+                if (strings1 != null && strings1.size() > 0) {
+                    map.put(next, strings1.get(0));
+                }
             }
+            NetLog.logUrl(request.getUrl(), new Gson().toJson(map));
         }
 
-        NetLog.logUrl(request.getUrl(), new Gson().toJson(map));
 
     }
 
@@ -155,14 +126,15 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
             onNetError(-1004, "数据异常");
             return;
         }
-        
+
+
         if (NetConfig.getInstance().getNetIntermediary() != null) {
 
-            boolean isSuccess = NetConfig.getInstance().getNetIntermediary().beforeResult((String) data);
+            boolean isSuccess = NetConfig.getInstance().getNetIntermediary().beforeResult(data);
 
-            if (isSuccess){
+            if (isSuccess) {
                 onNetSuccess(data);
-            }else{
+            } else {
                 onNetError(data);
             }
 

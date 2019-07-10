@@ -9,6 +9,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
 
 import com.yeqiu.hydra.HydraUtilsManager;
@@ -138,6 +139,17 @@ public class APPInfoUtil {
             e.printStackTrace();
         }
         return appIcon;
+    }
+
+    /**
+     * 获取应用图标
+     *
+     * @return
+     */
+    public static boolean isNotificationOpen() {
+        Context context = HydraUtilsManager.getInstance().getContext();
+        return NotificationManagerCompat.from(context).areNotificationsEnabled();
+
     }
 
 
@@ -412,38 +424,6 @@ public class APPInfoUtil {
             }
         }
         return result;
-    }
-
-
-    /**
-     * 是否开启通知权限
-     * 异常时返回有权限
-     *
-     * @param context
-     * @return
-     */
-    public static boolean isNotificationEnabled(Context context) {
-
-        String CHECK_OP_NO_THROW = "checkOpNoThrow";
-        String OP_POST_NOTIFICATION = "OP_POST_NOTIFICATION";
-        try {
-            AppOpsManager mAppOps = (AppOpsManager)
-                    context.getSystemService(Context.APP_OPS_SERVICE);
-            ApplicationInfo appInfo = context.getApplicationInfo();
-            String pkg = context.getApplicationContext().getPackageName();
-            int uid = appInfo.uid;
-            Class appOpsClass = null;
-            appOpsClass = Class.forName(AppOpsManager.class.getName());
-            Method checkOpNoThrowMethod = appOpsClass.getMethod(CHECK_OP_NO_THROW, Integer.TYPE,
-                    Integer.TYPE, String.class);
-            Field opPostNotificationValue = appOpsClass.getDeclaredField(OP_POST_NOTIFICATION);
-            int value = (int) opPostNotificationValue.get(Integer.class);
-            return ((int) checkOpNoThrowMethod.invoke(mAppOps, value, uid, pkg) == AppOpsManager
-                    .MODE_ALLOWED);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return true;
-        }
     }
 
 

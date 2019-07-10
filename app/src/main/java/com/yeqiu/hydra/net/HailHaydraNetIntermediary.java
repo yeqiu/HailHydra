@@ -1,13 +1,19 @@
 package com.yeqiu.hydra.net;
 
+import com.google.gson.Gson;
+import com.lzy.okgo.model.HttpHeaders;
+import com.lzy.okgo.model.HttpParams;
 import com.lzy.okgo.request.base.Request;
 import com.yeqiu.hydra.net.bean.BaseBean;
-import com.yeqiu.hydra.utils.GsonUtils;
-import com.yeqiu.hydra.utils.LogUtils;
+import com.yeqiu.hydra.utils.NetLog;
 import com.yeqiu.hydra.utils.UIHelper;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @project：HailHydra
@@ -20,48 +26,49 @@ public class HailHaydraNetIntermediary implements NetIntermediary {
 
 
     @Override
-        public Request beforeStart(Request request) {
+    public boolean beforeStart(Request request) {
 
+        HttpParams params = request.getParams();
+        Map<String, String> map = new HashMap<>();
+        LinkedHashMap<String, List<String>> urlParamsMap = params.urlParamsMap;
+        Set<String> strings = urlParamsMap.keySet();
+        Iterator<String> iterator = strings.iterator();
 
-        //示例 取出参数中mobile的值 修改为222
-        LinkedHashMap<String, List<String>> params = request.getParams().urlParamsMap;
-        List<String> strings = params.get("mobile");
-        if (strings==null||strings.size()==0){
-            return request;
+        while (iterator.hasNext()) {
+            String next = iterator.next();
+            List<String> strings1 = urlParamsMap.get(next);
+            if (strings1 != null && strings1.size() > 0) {
+                map.put(next, strings1.get(0));
+            }
         }
-        request.getParams().put("mobile","222");
 
-        return request;
+        HttpHeaders headers = request.getHeaders();
+        String authToken = headers.get("token");
+        map.put("token", authToken);
+        NetLog.logUrl(request.getUrl(), new Gson().toJson(map));
+
+        return true;
     }
 
+
     @Override
-    public boolean beforeResult( String netData) {
+    public boolean beforeResult(Object netData) {
 
+        BaseBean data = (BaseBean) netData;
 
-        BaseBean baseBean = GsonUtils.jsonTobean( netData,BaseBean.class);
-
-
-
-
-        switch (baseBean.getCode()) {
+        switch (data.getCode()) {
 
             case 200:
-                //请求成功
-                LogUtils.i("请求成功");
                 return true;
 
             case 401:
-                //登录失效
-                UIHelper.showToast("登录失效");
-                LogUtils.i("登录失效");
+                UIHelper.showToast("登录失效，请重新登录");
                 return false;
-
 
             default:
-                LogUtils.i("请求失败");
-                UIHelper.showToast(baseBean.getMessage());
+                UIHelper.showToast(data.getMessage());
                 return false;
         }
-
     }
+
 }

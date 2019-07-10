@@ -42,6 +42,18 @@ public class UpdateUtil {
     private static final CharSequence CHANNEL_NAME = "app_update_channel";
     private static final int NOTIFY_ID = 0;
     private OnDownloadProgress onDownloadProgress;
+    private int iconId = -1;
+    private boolean openNotification = false;
+
+    /**
+     * 开启通知栏
+     */
+    public void openNotification(int iconId) {
+
+        this.iconId = iconId;
+        openNotification = true;
+    }
+
 
     /**
      * 自动下载 apk
@@ -203,6 +215,10 @@ public class UpdateUtil {
      */
     private void setUpNotification() {
 
+        if (!openNotification){
+            return;
+        }
+
         notificationManager = (NotificationManager) context.getSystemService(android.content
                 .Context.NOTIFICATION_SERVICE);
 
@@ -219,7 +235,7 @@ public class UpdateUtil {
         builder = new NotificationCompat.Builder(context, CHANNEL_ID);
         builder.setContentTitle("开始下载")
                 .setContentText("正在连接服务器")
-                .setSmallIcon(R.drawable.hydra)
+                .setSmallIcon(iconId==-1?R.drawable.hydra:iconId)
                 .setOngoing(true)
                 .setAutoCancel(true)
                 .setWhen(System.currentTimeMillis());

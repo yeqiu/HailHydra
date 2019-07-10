@@ -38,7 +38,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     protected StatusLayout statusLayout;
     protected LinearLayout headLayoutRoot;
-    protected Activity context;
+    private Activity context;
     protected ImageView ivHeadBack;
     protected TextView headerTitle;
     protected TextView tvheaderRight;
@@ -110,7 +110,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         ivHeadBack.setOnClickListener(onClickListener);
         tvheaderRight.setOnClickListener(onClickListener);
         ivheaderRight.setOnClickListener(onClickListener);
-        ivHeadBack.setBackgroundResource(getDefHeadBackImgId());
+        ivHeadBack.setImageResource(getDefHeadBackImgId());
 
         setHeadRootMarginTop();
     }
@@ -148,9 +148,9 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     /**
      * 注册EventBus
      */
-    private void registerEventBus(){
+    private void registerEventBus() {
 
-        if (isRegisterEventBus()){
+        if (isRegisterEventBus()) {
 
             EventBus.getDefault().register(this);
         }
@@ -175,7 +175,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
             ImmersionBar.with(this).destroy();
         }
 
-        if (isRegisterEventBus()){
+        if (isRegisterEventBus()) {
             EventBus.getDefault().unregister(this);
         }
 
@@ -291,12 +291,19 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      *
      * @return
      */
-    protected boolean isRegisterEventBus(){
+    protected boolean isRegisterEventBus() {
 
         return false;
     }
 
-
+    /**
+     * 返回本身实例
+     *
+     * @return
+     */
+    public Activity getContext() {
+        return context;
+    }
 
     /**
      * 是否使用侧滑返回
@@ -323,6 +330,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * @param bakImg
      */
     public void setHeadBackImg(int bakImg) {
+
 
         ivHeadBack.setImageResource(bakImg);
     }
@@ -360,7 +368,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         headLayoutRoot.setVisibility(show ? View.VISIBLE : View.GONE);
 
     }
-
 
 
     /**
@@ -475,6 +482,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     /**
      * 状态布局的点击
+     *
      * @param view
      */
     @Override
