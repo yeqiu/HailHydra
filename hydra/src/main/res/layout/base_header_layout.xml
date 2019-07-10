@@ -22,7 +22,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:scaleType="centerInside"
-            android:paddingLeft="20dp"
+            android:paddingLeft="10dp"
             android:paddingRight="20dp"
             />
 

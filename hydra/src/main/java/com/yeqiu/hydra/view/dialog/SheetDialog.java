@@ -33,6 +33,12 @@ public class SheetDialog extends BaseDialog {
     }
 
     @Override
+    protected int getstyle() {
+        return R.style.sheet_dialog;
+
+    }
+
+    @Override
     protected void setWindow() {
         Window window = dialog.getWindow();
         window.getDecorView().setPadding(DensityUtils.dp2px(10), 0, DensityUtils.dp2px

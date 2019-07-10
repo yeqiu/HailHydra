@@ -63,7 +63,7 @@ public class ListDialog extends BaseDialog implements AdapterView.OnItemClickLis
             lvList.addFooterView(view);
         }
 
-        ImageUtils.setSimpleImage(getContext(),dialogBuilder.getBackImg(), ivBack);
+        ivBack.setImageResource(dialogBuilder.getBackImg());
         tvTitle.setText(dialogBuilder.getTitleText());
         ListAdapter listAdapter = new ListAdapter(dialogBuilder.getListDatas());
         lvList.setAdapter(listAdapter);

@@ -13,11 +13,12 @@
         android:layout_marginBottom="1dp"
         android:background="@color/color_white"
         >
+
         <!--左侧返回键-->
         <ImageView
             android:id="@+id/iv_list_back"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"

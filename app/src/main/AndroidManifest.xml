@@ -50,6 +50,7 @@
             android:name=".view.activity.UpdateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name=".view.activity.DialogActivity"/>
 
 
     </application>

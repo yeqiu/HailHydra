@@ -49,7 +49,7 @@
         <item name="android:background">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimAmount">0.7</item>
+        <item name="android:backgroundDimAmount">0.5</item>
     </style>
 
 
