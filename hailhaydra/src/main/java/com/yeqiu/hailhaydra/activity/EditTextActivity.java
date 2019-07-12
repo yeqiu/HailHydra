@@ -7,7 +7,7 @@ import android.text.InputFilter;
 import android.widget.EditText;
 
 import com.yeqiu.hailhaydra.R;
-import com.yeqiu.hailhaydra.Test.DecimalDigitsInputFilter;
+import com.yeqiu.hydra.utils.DecimalDigitsInputFilter;
 
 
 /**

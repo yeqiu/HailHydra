@@ -1,6 +1,4 @@
-package com.yeqiu.hydra.view.dialog;
-
-import com.yeqiu.hydra.view.dialog.base.BaseDialogListener;
+package com.yeqiu.hydra.view.dialog.callback;
 
 /**
  * @project：AndroidLbrary

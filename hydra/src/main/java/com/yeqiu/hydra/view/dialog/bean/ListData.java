@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.view.dialog.model;
+package com.yeqiu.hydra.view.dialog.bean;
 
 import java.io.Serializable;
 

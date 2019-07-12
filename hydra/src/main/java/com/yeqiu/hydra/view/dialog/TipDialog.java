@@ -24,11 +24,17 @@ import com.yeqiu.hydrautils.R;
  * @describe：
  * @fix：
  */
-public class TipDialog extends HydraBaseDialog {
+public class TipDialog extends HydraBaseDialog<TipDialog> {
 
     private ObjectAnimator animator;
     private ImageView imageView;
     private LinearLayout llRoot;
+    private int iconId = -999;
+    private String tipText;
+    private boolean orientationHorizontal = true;
+    private int dismissTime = 3000;
+    private boolean isLoading = false;
+
 
     public TipDialog(Activity context) {
         super(context);
@@ -53,8 +59,7 @@ public class TipDialog extends HydraBaseDialog {
 
         llRoot = (LinearLayout) view.findViewById(R.id.ll_tip_dialog_root);
 
-
-        if (dialogBuilder.getOrientationHorizontal()) {
+        if (isOrientationHorizontal()) {
             llRoot.setOrientation(LinearLayout.HORIZONTAL);
             RelativeLayout.LayoutParams rootLayoutParams = (RelativeLayout.LayoutParams) llRoot
                     .getLayoutParams();
@@ -72,28 +77,25 @@ public class TipDialog extends HydraBaseDialog {
         }
 
 
-        if (dialogBuilder.getIconId() != -999) {
+        if (getIconId() != -999) {
             imageView = new ImageView(getContext());
             LinearLayout.LayoutParams imageViewLP = new LinearLayout.LayoutParams(DensityUtils
                     .dp2px(30), DensityUtils.dp2px(30));
             imageView.setLayoutParams(imageViewLP);
-            imageView.setImageResource(dialogBuilder.getIconId());
+            imageView.setImageResource(getIconId());
             llRoot.addView(imageView);
         }
 
-
-        if (!TextUtils.isEmpty(dialogBuilder.getTipText())) {
+        if (!TextUtils.isEmpty(getTipText())) {
             MarqueeTextView textView = new MarqueeTextView(getContext());
             LinearLayout.LayoutParams tipViewLP = new LinearLayout.LayoutParams(LinearLayout
                     .LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             //垂直布局
-            tipViewLP.topMargin = dialogBuilder.getOrientationHorizontal() ? 0 : DensityUtils
-                    .dp2px(10);
+            tipViewLP.topMargin = isOrientationHorizontal() ? 0 : DensityUtils.dp2px(10);
 
             //水平布局
-            tipViewLP.leftMargin = dialogBuilder.getOrientationHorizontal() ? DensityUtils.dp2px
-                    (10) : 0;
+            tipViewLP.leftMargin = isOrientationHorizontal() ? DensityUtils.dp2px(10) : 0;
 
             textView.setLayoutParams(tipViewLP);
             textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -101,7 +103,7 @@ public class TipDialog extends HydraBaseDialog {
             textView.setGravity(Gravity.CENTER);
             textView.setTextColor(ContextCompat.getColor(getContext(), R.color.color_white));
             textView.setTextSize(14);
-            textView.setText(dialogBuilder.getTipText());
+            textView.setText(getTipText());
 
             llRoot.addView(textView);
         }
@@ -115,7 +117,7 @@ public class TipDialog extends HydraBaseDialog {
 
     public void startAnimate() {
 
-        if (imageView != null && dialogBuilder.isLoading()) {
+        if (imageView != null && isLoading()) {
             animator = ObjectAnimator.ofFloat(imageView, "rotation",
                     0f, 360f);
             animator.setDuration(1000);
@@ -125,16 +127,14 @@ public class TipDialog extends HydraBaseDialog {
             animator.start();
         }
 
-
     }
 
 
+
     @Override
-    public HydraBaseDialog show() {
+    public TipDialog show() {
 
-
-        int dismissTime = dialogBuilder.getDismissTime();
-
+        int dismissTime = getDismissTime();
         if (dismissTime != 0 && llRoot != null) {
             llRoot.postDelayed(new Runnable() {
                 @Override
@@ -144,9 +144,7 @@ public class TipDialog extends HydraBaseDialog {
             }, dismissTime);
 
         }
-
         return super.show();
-
     }
 
     @Override
@@ -158,4 +156,68 @@ public class TipDialog extends HydraBaseDialog {
     }
 
 
+    //==========设置数据==========
+
+    /**
+     * 加载框的方向
+     */
+    public TipDialog setOrientationHorizontal(boolean orientationHorizontal) {
+        this.orientationHorizontal = orientationHorizontal;
+        return this;
+    }
+
+    /**
+     * 加载框的消失的时间，默认30000，
+     */
+    public TipDialog setDismissTime(int dismissTime) {
+        this.dismissTime = dismissTime;
+        return this;
+    }
+
+    /**
+     * 是否是加载框 加载框会执行旋转动画
+     */
+    public TipDialog setIsLoading(boolean loading) {
+        isLoading = loading;
+        return this;
+    }
+
+    /**
+     * 图片id
+     */
+    public TipDialog setIconId(int iconId) {
+        this.iconId = iconId;
+        return this;
+    }
+
+    /**
+     * tip的提示文字
+     */
+    public TipDialog setTipText(String tipText) {
+        this.tipText = tipText;
+        return this;
+    }
+
+    //==========get()==========
+
+
+    public int getIconId() {
+        return iconId;
+    }
+
+    public String getTipText() {
+        return tipText == null ? "" : tipText;
+    }
+
+    public boolean isOrientationHorizontal() {
+        return orientationHorizontal;
+    }
+
+    public int getDismissTime() {
+        return dismissTime;
+    }
+
+    public boolean isLoading() {
+        return isLoading;
+    }
 }

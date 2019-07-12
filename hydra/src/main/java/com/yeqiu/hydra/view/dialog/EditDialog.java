@@ -1,11 +1,13 @@
 package com.yeqiu.hydra.view.dialog;
 
 import android.app.Activity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.utils.KeybordUtils;
+import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
@@ -16,10 +18,20 @@ import com.yeqiu.hydrautils.R;
  * @describe：带输入框的dailog
  * @fix：
  */
-public class EditDialog extends HydraBaseDialog implements View.OnClickListener {
+public class EditDialog extends HydraBaseDialog<EditDialog> implements View.OnClickListener {
 
 
     private EditText edit;
+
+    private boolean justConfirm = false;
+    private String confirmText = "确定";
+    private String hintText = "请输入";
+    private int confirmColor = R.color.color_808080;
+    private int descSize = 15;
+    private int confirmSizer = 15;
+    private int inputType = InputType.TYPE_CLASS_TEXT;
+    private int inputSize = 15;
+
 
     public EditDialog(Activity context) {
         super(context);
@@ -40,30 +52,30 @@ public class EditDialog extends HydraBaseDialog implements View.OnClickListener 
         TextView confirm = (TextView) view.findViewById(R.id.tv_edit_dialog_confirm);
 
         //设置文字
-        title.setText(dialogBuilder.getTitleText());
-        edit.setHint(dialogBuilder.getHintText());
-        cancel.setText(dialogBuilder.getCancelText());
-        confirm.setText(dialogBuilder.getConfirmText());
-        edit.setInputType(dialogBuilder.getInputType());
+        title.setText(getTitleText());
+        edit.setHint(getHintText());
+        cancel.setText(getCancelText());
+        confirm.setText(getConfirmText());
+        edit.setInputType(getInputType());
 
         //设置颜色
-        confirm.setTextColor(getContext().getResources().getColor(dialogBuilder.getConfirmColor()));
-        cancel.setTextColor(getContext().getResources().getColor(dialogBuilder.getCancelColor()));
-        title.setTextColor(getContext().getResources().getColor(dialogBuilder.getTitleColor()));
+        confirm.setTextColor(ResourceUtil.getColor(getConfirmColor()));
+        cancel.setTextColor(ResourceUtil.getColor(getCancelColor()));
+        title.setTextColor(ResourceUtil.getColor(getTitleColor()));
 
         //设置文字大小
-        title.setTextSize(dialogBuilder.getTitleSize());
-        confirm.setTextSize(dialogBuilder.getConfirmSizer());
-        cancel.setTextSize(dialogBuilder.getCancelSize());
+        title.setTextSize(getTitleSize());
+        confirm.setTextSize(getConfirmSizer());
+        cancel.setTextSize(getCancelSize());
 
         //设置取消键是否显示
-        boolean justConfirm = dialogBuilder.getJustConfirm();
+        boolean justConfirm = isJustConfirm();
         cancel.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
         line.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
 
         //设置点击外面 返回是否可以隐藏
-        dialog.setCancelable(dialogBuilder.getIsBackCancel());
-        dialog.setCanceledOnTouchOutside(dialogBuilder.getCanceledOnTouchOutside());
+        dialog.setCancelable(isBackCancel());
+        dialog.setCanceledOnTouchOutside(isCanceledOnTouchOutside());
 
         confirm.setOnClickListener(this);
         cancel.setOnClickListener(this);
@@ -74,8 +86,8 @@ public class EditDialog extends HydraBaseDialog implements View.OnClickListener 
 
         int i = v.getId();
         if (i == R.id.tv_edit_dialog_confirm) {
-            if (dialogBuilder.getDialogListener() != null) {
-                dialogBuilder.getDialogListener().onConfirmClick(edit.getText().toString());
+            if (getDialogListener() != null) {
+                getDialogListener().onConfirmClick(edit.getText().toString());
             }
             //关闭弹窗
             if (dialog != null && dialog.isShowing()) {
@@ -83,8 +95,8 @@ public class EditDialog extends HydraBaseDialog implements View.OnClickListener 
             }
 
         } else if (i == R.id.tv_edit_dialog_cancel) {
-            if (dialogBuilder.getDialogListener() != null) {
-                dialogBuilder.getDialogListener().onCanceclClick(edit.getText().toString());
+            if (getDialogListener() != null) {
+                getDialogListener().onCanceclClick(edit.getText().toString());
             }
             //关闭弹窗
             if (dialog != null && dialog.isShowing()) {
@@ -101,4 +113,107 @@ public class EditDialog extends HydraBaseDialog implements View.OnClickListener 
     }
 
 
+    //==========设置数据==========
+
+    /**
+     * 设置仅仅只有确认键
+     */
+    public EditDialog setJustConfirm(boolean justConfirm) {
+        this.justConfirm = justConfirm;
+        return this;
+    }
+
+    /**
+     * 确认键文字
+     */
+    public EditDialog setConfirmText(String confirmText) {
+        this.confirmText = confirmText;
+        return this;
+    }
+
+
+    /**
+     * 提示文字
+     */
+    public EditDialog setHint(String hintText) {
+        this.hintText = hintText;
+        return this;
+    }
+
+    /**
+     * 确认的颜色
+     */
+    public EditDialog setConfirmColor(int confirmColor) {
+        this.confirmColor = confirmColor;
+        return this;
+    }
+
+
+    /**
+     * 内容的文字大小
+     */
+    public EditDialog setDescSize(int descSize) {
+        this.descSize = descSize;
+        return this;
+    }
+
+    /**
+     * 确认的文字大小
+     */
+    public EditDialog setConfirmSizer(int confirmSizer) {
+        this.confirmSizer = confirmSizer;
+        return this;
+    }
+
+
+    /**
+     * 输入框的输入类型
+     */
+    public EditDialog setInputType(int inputType) {
+        this.inputType = inputType;
+        return this;
+    }
+
+    /**
+     * 输入框的文字大小
+     */
+    public EditDialog setInputSize(int inputSize) {
+        this.inputSize = inputSize;
+        return this;
+    }
+
+    //==========get()==========
+
+
+    protected boolean isJustConfirm() {
+        return justConfirm;
+    }
+
+    protected String getConfirmText() {
+        return confirmText == null ? "" : confirmText;
+    }
+
+    protected String getHintText() {
+        return hintText == null ? "" : hintText;
+    }
+
+    protected int getConfirmColor() {
+        return confirmColor;
+    }
+
+    protected int getDescSize() {
+        return descSize;
+    }
+
+    protected int getConfirmSizer() {
+        return confirmSizer;
+    }
+
+    public int getInputType() {
+        return inputType;
+    }
+
+    public int getInputSize() {
+        return inputSize;
+    }
 }

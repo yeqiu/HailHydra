@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,11 +26,13 @@ import java.util.List;
  * @describe：
  * @fix：
  */
-public class BottomDialog extends HydraBaseDialog implements View.OnClickListener, AdapterView
-        .OnItemClickListener {
+public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.OnClickListener,
+        AdapterView.OnItemClickListener {
 
     private ListView lvBottomDialog;
     private boolean hasHead;
+    private List<String> listDatas;
+
 
     public BottomDialog(Activity context) {
         super(context);
@@ -64,19 +67,19 @@ public class BottomDialog extends HydraBaseDialog implements View.OnClickListene
 
         lvBottomDialog = (ListView) view.findViewById(R.id.lv_bottom_dialog);
 
-        List<String> datas = dialogBuilder.getSheetDatas();
+        List<String> datas = getListDatas();
 
         if (datas == null || datas.size() == 0) {
             return;
         }
 
 
-        if (!TextUtils.isEmpty(dialogBuilder.getTitleText())) {
+        if (!TextUtils.isEmpty(getTitleText())) {
             //显示标题
             View headView = View.inflate(getContext(), R.layout.head_bottom_dialog,
                     null);
             TextView title = (TextView) headView.findViewById(R.id.tv_head_bottom_dialog);
-            title.setText(dialogBuilder.getTitleText());
+            title.setText(getTitleText());
             lvBottomDialog.addHeaderView(headView);
             hasHead = true;
         }
@@ -84,7 +87,7 @@ public class BottomDialog extends HydraBaseDialog implements View.OnClickListene
         //取消按钮
         View footer = View.inflate(getContext(), R.layout.footer_bottom_dialog, null);
         TextView cancel = (TextView) footer.findViewById(R.id.tv_footer_bottom_dialog);
-        cancel.setText(dialogBuilder.getCancelText());
+        cancel.setText(getCancelText());
         lvBottomDialog.addFooterView(footer);
         footer.setOnClickListener(this);
 
@@ -131,8 +134,8 @@ public class BottomDialog extends HydraBaseDialog implements View.OnClickListene
     @Override
     public void onClick(View v) {
 
-        if (dialogBuilder.getDialogListener() != null) {
-            dialogBuilder.getDialogListener().onCanceclClick();
+        if (getDialogListener() != null) {
+            getDialogListener().onCanceclClick();
         }
         dismissDialog();
     }
@@ -140,19 +143,16 @@ public class BottomDialog extends HydraBaseDialog implements View.OnClickListene
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        if (dialogBuilder.getDialogListener() != null) {
+        if (getDialogListener() != null) {
 
-            if (position == 0) {
-                return;
+
+            if (hasHead){
+                position = position=1;
             }
 
-            if (hasHead) {
-                position = position - 1;
-            }
 
-            if (dialogBuilder.getDialogListener() != null) {
-                dialogBuilder.getDialogListener().onItemClick(position, dialogBuilder
-                        .getSheetDatas().get(position));
+            if (getDialogListener() != null) {
+                getDialogListener().onItemClick(position, getListDatas().get(position));
             }
 
             dismissDialog();
@@ -163,9 +163,7 @@ public class BottomDialog extends HydraBaseDialog implements View.OnClickListene
 
     class ListAdapter extends BaseAdapter {
 
-
         private List<String> listDatas;
-
 
         public ListAdapter(List<String> listDatas) {
             this.listDatas = listDatas;
@@ -217,6 +215,24 @@ public class BottomDialog extends HydraBaseDialog implements View.OnClickListene
 
             }
         }
+    }
+
+
+    //========设置数据========
+
+    public BottomDialog setListDatas(List<String> listDatas) {
+        this.listDatas = listDatas;
+        return this;
+    }
+
+
+    //========get()========
+
+    protected List<String> getListDatas() {
+        if (listDatas == null) {
+            return new ArrayList<>();
+        }
+        return listDatas;
     }
 
 

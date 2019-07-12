@@ -3,8 +3,8 @@ package com.yeqiu.hailhaydra;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.CheckBox;
-import android.widget.TextView;
+
+import com.yeqiu.hailhaydra.test.B;
 
 /**
  * @project：HailHydra
@@ -16,9 +16,7 @@ import android.widget.TextView;
 public class Test extends Activity {
 
 
-    CheckBox cbItem;
-    TextView tvItemName;
-    TextView tvItemNumber;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,8 +25,13 @@ public class Test extends Activity {
     }
 
     private void onInitView() {
-        cbItem = (CheckBox) findViewById(R.id.cb_item);
-        tvItemName = (TextView) findViewById(R.id.tv_item_name);
-        tvItemNumber = (TextView) findViewById(R.id.tv_item_number);
+
+        new B().funA().funB();
+
+
+
+
+
+
     }
 }

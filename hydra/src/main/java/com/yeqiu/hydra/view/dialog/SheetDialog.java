@@ -10,13 +10,14 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.yeqiu.hydra.utils.DensityUtils;
+import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydra.utils.DensityUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
-;
 
 /**
  * @project：Xbzd
@@ -25,7 +26,12 @@ import java.util.List;
  * @describe：仿ios底部弹出dialog
  * @fix：
  */
-public class SheetDialog extends HydraBaseDialog {
+public class SheetDialog extends HydraBaseDialog<SheetDialog> {
+
+
+    private int itemColor = R.color.color_1a1a1a;
+    private int itemlTextSize = 15;
+    private List<String> sheetDatas;
 
 
     public SheetDialog(Activity context) {
@@ -64,23 +70,22 @@ public class SheetDialog extends HydraBaseDialog {
         LinearLayout list = (LinearLayout) view.findViewById(R.id.ll_sheet_dialog_list);
         TextView cancel = (TextView) view.findViewById(R.id.tv_sheet_dialog_cancel);
 
-        List<String> datas = dialogBuilder.getSheetDatas();
+        List<String> datas = getSheetDatas();
 
         if (datas == null || datas.size() == 0) {
             return;
         }
 
-        if (TextUtils.isEmpty(dialogBuilder.getTitleText())) {
+        if (TextUtils.isEmpty(getTitleText())) {
             //不显示标题
             title.setVisibility(View.GONE);
         } else {
-            title.setText(dialogBuilder.getTitleText());
-            title.setTextColor(getContext().getResources().getColor(dialogBuilder.getTitleColor()));
-            title.setTextSize(dialogBuilder.getTitleSize());
+            title.setText(getTitleText());
+            title.setTextColor(ResourceUtil.getColor(getTitleColor()));
+            title.setTextSize(getTitleSize());
         }
 
-        cancel.setTextColor(getContext().getResources().getColor(dialogBuilder.getCancelColor()));
-
+        cancel.setTextColor(getContext().getResources().getColor(getCancelColor()));
         setItem(datas, list, cancel);
 
 
@@ -98,13 +103,13 @@ public class SheetDialog extends HydraBaseDialog {
             int padding = DensityUtils.dp2px(10);
             tv.setPadding(padding, padding, padding, padding);
             tv.setGravity(Gravity.CENTER);
-            tv.setTextSize(dialogBuilder.getItemlSize());
-            tv.setTextColor(getContext().getResources().getColor(dialogBuilder.getItemColor()));
+            tv.setTextSize(getItemlTextSize());
+            tv.setTextColor(getContext().getResources().getColor(getItemColor()));
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (dialogBuilder.getDialogListener() != null) {
-                        dialogBuilder.getDialogListener().onItemClick(position, text);
+                    if (getDialogListener() != null) {
+                        getDialogListener().onItemClick(position, text);
                     }
                     //关闭弹窗
                     if (dialog != null && dialog.isShowing()) {
@@ -127,8 +132,8 @@ public class SheetDialog extends HydraBaseDialog {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dialogBuilder.getDialogListener() != null) {
-                    dialogBuilder.getDialogListener().onCanceclClick();
+                if (getDialogListener() != null) {
+                    getDialogListener().onCanceclClick();
                 }
                 //关闭弹窗
                 if (dialog != null && dialog.isShowing()) {
@@ -136,5 +141,50 @@ public class SheetDialog extends HydraBaseDialog {
                 }
             }
         });
+    }
+
+
+    //==========设置数据==========
+
+    /**
+     * sheet item的颜色
+     */
+    public SheetDialog setItemColor(int itemColor) {
+        this.itemColor = itemColor;
+        return this;
+    }
+
+    /**
+     * sheet item的文字大小
+     */
+    public SheetDialog setItemlTextSize(int itemlTextSize) {
+        this.itemlTextSize = itemlTextSize;
+        return this;
+    }
+
+    /**
+     * Sheet的Item数据
+     */
+    public SheetDialog setSheetDatas(List<String> sheetDatas) {
+        this.sheetDatas = sheetDatas;
+        return this;
+    }
+
+    //==========get()==========
+
+
+    protected int getItemColor() {
+        return itemColor;
+    }
+
+    protected int getItemlTextSize() {
+        return itemlTextSize;
+    }
+
+    protected List<String> getSheetDatas() {
+        if (sheetDatas == null) {
+            return new ArrayList<>();
+        }
+        return sheetDatas;
     }
 }

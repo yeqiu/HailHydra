@@ -6,11 +6,11 @@ import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hydra.utils.UIHelper;
 import com.yeqiu.hydra.view.dialog.BottomDialog;
 import com.yeqiu.hydra.view.dialog.CommonDialog;
-import com.yeqiu.hydra.view.dialog.DialogListener;
+import com.yeqiu.hydra.view.dialog.callback.DialogListener;
 import com.yeqiu.hydra.view.dialog.EditDialog;
 import com.yeqiu.hydra.view.dialog.ListDialog;
 import com.yeqiu.hydra.view.dialog.TipDialog;
-import com.yeqiu.hydra.view.dialog.model.ListData;
+import com.yeqiu.hydra.view.dialog.bean.ListData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,6 @@ public class DialogActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.bt_cmmon_1:
                 new CommonDialog(DialogActivity.this)
-                        .build()
                         .setTitleText("测试标题")
                         .setDescText("测试内容")
                         .setOnDialogListener(new DialogListener() {
@@ -83,7 +82,6 @@ public class DialogActivity extends BaseActivity {
             case R.id.bt_cmmon_2:
 
                 new CommonDialog(DialogActivity.this)
-                        .build()
                         .setTitleText("测试标题")
                         .setDescText("测试内容")
                         .setJustConfirm(true)
@@ -101,10 +99,8 @@ public class DialogActivity extends BaseActivity {
             case R.id.bt_edit:
 
                 new EditDialog(DialogActivity.this)
-                        .build()
                         .setCanceledOnTouchOutside(true)
                         .setTitleText("测试标题")
-                        .setDescText("测试内容")
                         .setOnDialogListener(new DialogListener() {
                             @Override
                             public void onConfirmClick(String inputText) {
@@ -138,7 +134,7 @@ public class DialogActivity extends BaseActivity {
 
 //                new SheetDialog(DialogActivity.this)
 //                        .build()
-//                        .setSheetDatas(items)
+//                        .setListDatas(items)
 //                        .setTitleText("标题")
 //                        .setOnDialogListener(new DialogListener() {
 //                            @Override
@@ -150,8 +146,8 @@ public class DialogActivity extends BaseActivity {
 
 
                 new BottomDialog(DialogActivity.this)
-                        .build()
-                        .setSheetDatas(items)
+
+                        .setListDatas(items)
                         .setTitleText("标题")
                         .setOnDialogListener(new DialogListener() {
                             @Override
@@ -168,7 +164,7 @@ public class DialogActivity extends BaseActivity {
             case R.id.loading:
 
                 new TipDialog(DialogActivity.this)
-                        .build()
+
                         .setTipText("正在加载")
                         .setIconId(R.drawable.icon_load)
                         .setOrientationHorizontal(false)
@@ -182,7 +178,7 @@ public class DialogActivity extends BaseActivity {
             case R.id.bt_tip:
 
                 new TipDialog(DialogActivity.this)
-                        .build()
+
                         .setTipText("提示")
                         .setIconId(R.drawable.icon_done)
                         .setOrientationHorizontal(false)
@@ -203,7 +199,7 @@ public class DialogActivity extends BaseActivity {
 
 
                 new ListDialog(DialogActivity.this)
-                        .build()
+
                         .setTitleText("啦啦啦啦")
                         .setListDatas(data)
                         .setListMaxHeightWhitItem(5)

@@ -16,9 +16,10 @@ import android.widget.TextView;
 
 import com.yeqiu.hydra.utils.image.ImageUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
+import com.yeqiu.hydra.view.dialog.bean.ListData;
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydra.view.dialog.model.ListData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,12 +29,19 @@ import java.util.List;
  * @describe：
  * @fix：
  */
-public class ListDialog extends HydraBaseDialog implements AdapterView.OnItemClickListener, View
+public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterView.OnItemClickListener, View
         .OnClickListener {
 
     private ImageView ivBack;
     private TextView tvTitle;
     private ListView lvList;
+    private int listHeight = -1;
+    private int listMaxHeightWhitItem = -1;
+    private int listFootViewId = -1;
+    private int backImg = R.drawable.head_back_gray;
+    private List<ListData> listDatas;
+
+
 
     public ListDialog(Activity context) {
         super(context);
@@ -57,30 +65,30 @@ public class ListDialog extends HydraBaseDialog implements AdapterView.OnItemCli
 
     private void initData() {
 
-        int listFootViewId = dialogBuilder.getListFootViewId();
+        int listFootViewId = getListFootViewId();
         if (listFootViewId != -1) {
-            View view = inflateView(dialogBuilder.getListFootViewId());
+            View view = inflateView(getListFootViewId());
             lvList.addFooterView(view);
         }
 
-        ivBack.setImageResource(dialogBuilder.getBackImg());
-        tvTitle.setText(dialogBuilder.getTitleText());
-        ListAdapter listAdapter = new ListAdapter(dialogBuilder.getListDatas());
+        ivBack.setImageResource(getBackImg());
+        tvTitle.setText(getTitleText());
+        ListAdapter listAdapter = new ListAdapter(getListDatas());
         lvList.setAdapter(listAdapter);
 
         ivBack.setOnClickListener(this);
         lvList.setOnItemClickListener(this);
 
 
-        if (dialogBuilder.getListHeight() != -1) {
+        if (getListHeight() != -1) {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup
-                    .LayoutParams.MATCH_PARENT, dialogBuilder.getListHeight());
+                    .LayoutParams.MATCH_PARENT,getListHeight());
             lvList.setLayoutParams(layoutParams);
         }
 
 
-        if (dialogBuilder.getListMaxHeightWhitItem() != -1) {
-            setListViewHeight(dialogBuilder.getListMaxHeightWhitItem());
+        if (getListMaxHeightWhitItem() != -1) {
+            setListViewHeight(getListMaxHeightWhitItem());
         }
 
 
@@ -134,16 +142,15 @@ public class ListDialog extends HydraBaseDialog implements AdapterView.OnItemCli
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-        List<ListData> listDatas = dialogBuilder.getListDatas();
+        List<ListData> listDatas = getListDatas();
 
-
-        if (position == listDatas.size() &&  dialogBuilder.getDialogListener() != null) {
-            dialogBuilder.getDialogListener().onFootClick();
+        if (position == listDatas.size() && getDialogListener() != null) {
+            getDialogListener().onFootClick();
         }
 
-        if (listDatas.size() > position && dialogBuilder.getDialogListener() != null) {
+        if (listDatas.size() > position && getDialogListener() != null) {
             String title = listDatas.get(position).getTitle();
-            dialogBuilder.getDialogListener().onItemClick(position, title);
+            getDialogListener().onItemClick(position, title);
         }
 
         if (dialog != null && dialog.isShowing()) {
@@ -160,7 +167,6 @@ public class ListDialog extends HydraBaseDialog implements AdapterView.OnItemCli
 
 
     class ListAdapter extends BaseAdapter {
-
 
         private List<ListData> listDatas;
 
@@ -201,7 +207,7 @@ public class ListDialog extends HydraBaseDialog implements AdapterView.OnItemCli
             if (TextUtils.isEmpty(item.getIcon())) {
                 holder.ivIcon.setVisibility(View.GONE);
             } else {
-                ImageUtils.setSimpleImage(getContext(),item.getIcon(), holder.ivIcon);
+                ImageUtils.setSimpleImage(getContext(), item.getIcon(), holder.ivIcon);
             }
 
             holder.tvTitle.setText(item.getTitle());
@@ -220,5 +226,74 @@ public class ListDialog extends HydraBaseDialog implements AdapterView.OnItemCli
                 tvTitle = (TextView) view.findViewById(R.id.tv_list_title);
             }
         }
+    }
+
+
+    //==========设置数据==========
+
+    /**
+     * 列表弹框的列表高度
+     */
+    public ListDialog setListHeight(int listHeight) {
+        this.listHeight = listHeight;
+        return this;
+    }
+
+    /**
+     * 列表弹框的列表最多显示几个item 此属性优先于listHeight
+     */
+    public ListDialog setListMaxHeightWhitItem(int listMaxHeightWhitItem) {
+        this.listMaxHeightWhitItem = listMaxHeightWhitItem;
+        return this;
+    }
+
+    /**
+     * footView
+     */
+    public ListDialog setListFootViewId(int listFootViewId) {
+        this.listFootViewId = listFootViewId;
+        return this;
+    }
+
+    /**
+     * 列表弹框的返回键
+     */
+    public ListDialog setBackImg(int backImg) {
+        this.backImg = backImg;
+        return this;
+    }
+
+    /**
+     * 列表弹框的列表数据
+     */
+    public ListDialog setListDatas(List<ListData> listDatas) {
+        this.listDatas = listDatas;
+        return this;
+    }
+
+    //==========get()==========
+
+
+    public int getListHeight() {
+        return listHeight;
+    }
+
+    public int getListMaxHeightWhitItem() {
+        return listMaxHeightWhitItem;
+    }
+
+    public int getListFootViewId() {
+        return listFootViewId;
+    }
+
+    public int getBackImg() {
+        return backImg;
+    }
+
+    public List<ListData> getListDatas() {
+        if (listDatas == null) {
+            return new ArrayList<>();
+        }
+        return listDatas;
     }
 }

@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.view.dialog.base;
+package com.yeqiu.hydra.view.dialog.callback;
 
 /**
  * @project：AndroidLbrary

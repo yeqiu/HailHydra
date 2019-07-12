@@ -24,7 +24,6 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
     private void initDialog(Activity activity) {
 
         dialog = (TipDialog) new TipDialog(activity)
-                .build()
                 .setTipText("正在加载")
                 .setIconId(R.drawable.icon_load)
                 .setOrientationHorizontal(false)

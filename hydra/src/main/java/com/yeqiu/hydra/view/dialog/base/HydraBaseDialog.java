@@ -10,9 +10,9 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydra.utils.DensityUtils;
-import com.yeqiu.hydra.view.dialog.DialogBuilder;
+import com.yeqiu.hydra.view.dialog.callback.BaseDialogListener;
+import com.yeqiu.hydrautils.R;
 
 import java.lang.ref.WeakReference;
 
@@ -23,22 +23,29 @@ import java.lang.ref.WeakReference;
  * @describe：
  * @fix：
  */
-public abstract class HydraBaseDialog {
+public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
 
     protected Dialog dialog;
     private WeakReference<Activity> context;
-    protected DialogBuilder dialogBuilder;
+    private View dialogView;
+    private boolean canceledOnTouchOutside = false;
+    private boolean isBackCancel = true;
+    private String titleText = "";
+    private BaseDialogListener dialogListener;
+    private int titleSize = 15;
+    private String cancelText = "取消";
+    private int cancelSize = 15;
+    private int cancelColor = R.color.color_808080;
+    private int titleColor = R.color.color_808080;
 
     public HydraBaseDialog(Activity context) {
         this.context = new WeakReference<>(context);
         dialog = new Dialog(context, getstyle());
-        dialogBuilder = new DialogBuilder(this);
-
         setWindow();
     }
 
 
-    public HydraBaseDialog getDialog(){
+    public HydraBaseDialog getDialog() {
 
         return this;
     }
@@ -72,18 +79,6 @@ public abstract class HydraBaseDialog {
 
 
     /**
-     * 获取 dialogBuilder
-     * 设置dialog的各种显示数据 标题 内容文字等
-     *
-     * @return
-     */
-    public DialogBuilder build() {
-
-        return dialogBuilder;
-    }
-
-
-    /**
      * 当前的 dialog 是否正在显示
      *
      * @return
@@ -96,15 +91,13 @@ public abstract class HydraBaseDialog {
     /**
      * 显示 dialog
      */
-    public HydraBaseDialog show() {
+    public T show() {
 
         Object layoutIdOrView = getDiaologlayoutIdOrView();
 
         if (layoutIdOrView == null) {
             throw new IllegalArgumentException("layoutIdOrView参数不能为null，可以是一个布局id，也可以是一个View对象");
         }
-
-        View dialogView = null;
 
         if (layoutIdOrView instanceof View) {
             dialogView = (View) layoutIdOrView;
@@ -113,10 +106,10 @@ public abstract class HydraBaseDialog {
             dialogView = inflateView(layoutId);
         }
 
-        if (dialogView == null || dialog == null || dialogBuilder == null || getContext() == null ||
+        if (dialogView == null || dialog == null || getContext() == null ||
                 getContext().isFinishing()) {
             //不符合现实弹窗的条件
-            return this;
+            return (T) this;
         }
 
         initDialog(dialogView);
@@ -125,14 +118,15 @@ public abstract class HydraBaseDialog {
 
         clearOnDetach(dialog);
 
-        return this;
+        return (T) this;
 
     }
 
 
     protected void onDialogDismiss() {
-        if (dialogBuilder.getDialogListener() != null) {
-            dialogBuilder.getDialogListener().onDialogDismiss();
+
+        if (getDialogListener() != null) {
+            getDialogListener().onDialogDismiss();
         }
     }
 
@@ -204,6 +198,135 @@ public abstract class HydraBaseDialog {
     protected Activity getContext() {
 
         return context.get();
+    }
+
+    /**
+     * 查找控件
+     *
+     * @param id
+     * @return
+     */
+    public View findViewById(int id) {
+        return dialogView.findViewById(id);
+
+    }
+
+
+    //==============设置数据==============
+
+    /**
+     * 设置标题文字大小
+     */
+    public T setTitleSize(int titleSize) {
+        this.titleSize = titleSize;
+        return (T) this;
+    }
+
+    /**
+     * 点击外部是否消失
+     */
+    public T setCanceledOnTouchOutside(boolean canceledOnTouchOutside) {
+        this.canceledOnTouchOutside = canceledOnTouchOutside;
+        return (T) this;
+    }
+
+    /**
+     * 点击返回是否消失
+     */
+    public T setBackCancel(boolean backCancel) {
+        isBackCancel = backCancel;
+        return (T) this;
+    }
+
+    /**
+     * 标题文字
+     */
+    public T setTitleText(String titleText) {
+        this.titleText = titleText;
+        return (T) this;
+    }
+
+    /**
+     * dialog监听
+     */
+    public T setOnDialogListener(BaseDialogListener dialogListener) {
+        this.dialogListener = dialogListener;
+        return (T) this;
+    }
+
+    /**
+     * 取消键文字
+     */
+    public T setCancelText(String cancelText) {
+        this.cancelText = cancelText;
+        return (T) this;
+    }
+
+    /**
+     * 取消的颜色
+     */
+    public T setCancelColor(int cancelColor) {
+        this.cancelColor = cancelColor;
+        return (T) this;
+    }
+
+    /**
+     * 标题的颜色
+     */
+    public T setTitleColor(int titleColor) {
+        this.titleColor = titleColor;
+        return (T) this;
+    }
+
+    /**
+     * 取消的文字大小
+     */
+    public T setCancelSize(int cancelSize) {
+        this.cancelSize = cancelSize;
+        return (T) this;
+    }
+
+    //==============get()==============
+
+
+    protected boolean isCanceledOnTouchOutside() {
+        return canceledOnTouchOutside;
+    }
+
+    protected boolean isBackCancel() {
+        return isBackCancel;
+    }
+
+    protected String getTitleText() {
+        return titleText == null ? "" : titleText;
+    }
+
+    protected BaseDialogListener getDialogListener() {
+        return dialogListener;
+    }
+
+    protected int getTitleSize() {
+        return titleSize;
+    }
+
+    public View getDialogView() {
+        return dialogView;
+    }
+
+    protected String getCancelText() {
+        return cancelText == null ? "" : cancelText;
+    }
+
+    protected int getCancelColor() {
+        return cancelColor;
+    }
+
+    protected int getTitleColor() {
+        return titleColor;
+    }
+
+    protected int getCancelSize() {
+        return cancelSize;
     }
 
 }

@@ -7,12 +7,12 @@ import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.utils.UIHelper;
 import com.yeqiu.hydra.view.dialog.BottomDialog;
 import com.yeqiu.hydra.view.dialog.CommonDialog;
-import com.yeqiu.hydra.view.dialog.DialogListener;
+import com.yeqiu.hydra.view.dialog.callback.DialogListener;
 import com.yeqiu.hydra.view.dialog.EditDialog;
 import com.yeqiu.hydra.view.dialog.ListDialog;
 import com.yeqiu.hydra.view.dialog.SheetDialog;
 import com.yeqiu.hydra.view.dialog.TipDialog;
-import com.yeqiu.hydra.view.dialog.model.ListData;
+import com.yeqiu.hydra.view.dialog.bean.ListData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +78,6 @@ public class DialogActivity extends BaseActivity {
             case R.id.tv_dialog_cmmon_1:
 
                 new CommonDialog(DialogActivity.this)
-                        .build()
                         .setTitleText("测试标题")
                         .setDescText("测试内容")
                         .setOnDialogListener(new DialogListener() {
@@ -100,7 +99,6 @@ public class DialogActivity extends BaseActivity {
             case R.id.tv_dialog_cmmon_2:
 
                 new CommonDialog(DialogActivity.this)
-                        .build()
                         .setTitleText("测试标题")
                         .setDescText("测试内容")
                         .setJustConfirm(true)
@@ -118,10 +116,9 @@ public class DialogActivity extends BaseActivity {
             case R.id.tv_dialog_edit:
 
                 new EditDialog(DialogActivity.this)
-                        .build()
                         .setCanceledOnTouchOutside(true)
                         .setTitleText("测试标题")
-                        .setDescText("测试内容")
+                        .setHint("测试内容")
                         .setOnDialogListener(new DialogListener() {
                             @Override
                             public void onConfirmClick(String inputText) {
@@ -153,7 +150,6 @@ public class DialogActivity extends BaseActivity {
                 items.add("我打ADC");
 
                 new SheetDialog(DialogActivity.this)
-                        .build()
                         .setSheetDatas(items)
                         .setTitleText("标题")
                         .setOnDialogListener(new DialogListener() {
@@ -169,7 +165,6 @@ public class DialogActivity extends BaseActivity {
             case R.id.tv_dialog_loading:
 
                 new TipDialog(DialogActivity.this)
-                        .build()
                         .setTipText("正在加载")
                         .setIconId(R.drawable.icon_load)
                         .setOrientationHorizontal(false)
@@ -182,7 +177,6 @@ public class DialogActivity extends BaseActivity {
             case R.id.tv_dialog_tip:
 
                 new TipDialog(DialogActivity.this)
-                        .build()
                         .setTipText("提示")
                         .setIconId(R.drawable.icon_done)
                         .setOrientationHorizontal(false)
@@ -202,7 +196,6 @@ public class DialogActivity extends BaseActivity {
 
 
                 new ListDialog(DialogActivity.this)
-                        .build()
                         .setTitleText("啦啦啦啦")
                         .setListDatas(data)
                         .setBackImg(R.drawable.head_back_gray)
@@ -226,9 +219,7 @@ public class DialogActivity extends BaseActivity {
                 items2.add("我打ADC");
 
                 new BottomDialog(DialogActivity.this)
-                        .build()
-                        .setSheetDatas(items2)
-                        .setTitleText("标题")
+                        .setListDatas(items2)
                         .setOnDialogListener(new DialogListener() {
                             @Override
                             public void onItemClick(int position, String text) {

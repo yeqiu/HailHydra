@@ -11,7 +11,7 @@ import com.yeqiu.hydra.utils.APPInfoUtil;
 import com.yeqiu.hydra.utils.UIHelper;
 import com.yeqiu.hydra.utils.UpdateUtil;
 import com.yeqiu.hydra.view.dialog.CommonDialog;
-import com.yeqiu.hydra.view.dialog.DialogListener;
+import com.yeqiu.hydra.view.dialog.callback.DialogListener;
 
 import java.io.File;
 
@@ -73,7 +73,6 @@ public class UpdateActivity extends BaseActivity {
     private void showDialog() {
 
         new CommonDialog(UpdateActivity.this)
-                .build()
                 .setTitleText("更新")
                 .setDescText("有新版本")
                 .setOnDialogListener(new DialogListener() {

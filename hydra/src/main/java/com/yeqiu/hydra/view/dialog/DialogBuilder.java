@@ -3,9 +3,9 @@ package com.yeqiu.hydra.view.dialog;
 import android.text.InputType;
 
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
-import com.yeqiu.hydra.view.dialog.base.BaseDialogListener;
+import com.yeqiu.hydra.view.dialog.callback.BaseDialogListener;
 import com.yeqiu.hydrautils.R;
-import com.yeqiu.hydra.view.dialog.model.ListData;
+import com.yeqiu.hydra.view.dialog.bean.ListData;
 
 import java.util.ArrayList;
 import java.util.List;
