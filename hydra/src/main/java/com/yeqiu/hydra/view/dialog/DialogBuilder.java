@@ -2,7 +2,7 @@ package com.yeqiu.hydra.view.dialog;
 
 import android.text.InputType;
 
-import com.yeqiu.hydra.view.dialog.base.BaseDialog;
+import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydra.view.dialog.base.BaseDialogListener;
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydra.view.dialog.model.ListData;
@@ -151,20 +151,20 @@ public class DialogBuilder {
     private int listFootViewId = -1;
 
 
-    private BaseDialog baseDialog;
+    private HydraBaseDialog baseDialog;
     /**
      * dialog监听
      */
     private BaseDialogListener dialogListener;
 
 
-    public DialogBuilder(BaseDialog baseDialog) {
+    public DialogBuilder(HydraBaseDialog baseDialog) {
 
         this.baseDialog = baseDialog;
     }
 
 
-    public BaseDialog show() {
+    public HydraBaseDialog show() {
         baseDialog.show();
         return baseDialog;
     }

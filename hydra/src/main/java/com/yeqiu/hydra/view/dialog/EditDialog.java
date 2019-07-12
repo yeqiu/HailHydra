@@ -6,7 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.utils.KeybordUtils;
-import com.yeqiu.hydra.view.dialog.base.BaseDialog;
+import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
 /**
@@ -16,7 +16,7 @@ import com.yeqiu.hydrautils.R;
  * @describe：带输入框的dailog
  * @fix：
  */
-public class EditDialog extends BaseDialog implements View.OnClickListener {
+public class EditDialog extends HydraBaseDialog implements View.OnClickListener {
 
 
     private EditText edit;

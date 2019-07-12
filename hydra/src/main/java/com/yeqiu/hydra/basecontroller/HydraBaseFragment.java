@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.yeqiu.hydra.utils.UIHelper;
 import com.yeqiu.hydra.utils.net.NetWorkUtils;
 import com.yeqiu.hydra.widget.StatusLayout.StatusLayout;
 
@@ -74,40 +73,6 @@ public abstract class HydraBaseFragment extends LifeCycleFragment {
      */
     public boolean hasNet() {
         return NetWorkUtils.hasNetwork(context);
-    }
-
-    /**
-     * 显示网络提示
-     */
-    public void showNetTip() {
-        int netStatus = getNetStatus();
-
-        String netTip = "";
-        switch (netStatus) {
-            case 0:
-                netTip = "无网络";
-                break;
-
-            case 1:
-                netTip = "网络断开";
-                break;
-            case 2:
-                netTip = "wifi";
-                break;
-            case 3:
-                netTip = "wifi";
-                break;
-            case 4:
-                netTip = "移动数据";
-                break;
-
-            default:
-                break;
-
-        }
-
-        UIHelper.showToast(netTip);
-
     }
 
 

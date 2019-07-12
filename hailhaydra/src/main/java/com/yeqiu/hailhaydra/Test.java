@@ -13,7 +13,7 @@ import android.widget.TextView;
  * @describe：
  * @fix：
  */
-public class test extends Activity {
+public class Test extends Activity {
 
 
     CheckBox cbItem;

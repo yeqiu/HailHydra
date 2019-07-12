@@ -58,7 +58,20 @@
             android:text="todo 自定义通用的edittext"/>
 
 
+
+
+        <EditText
+            android:id="@+id/test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
     </LinearLayout>
+
+
+
+
+
 
 
 </LinearLayout>

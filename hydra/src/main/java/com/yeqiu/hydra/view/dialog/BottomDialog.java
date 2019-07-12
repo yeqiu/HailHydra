@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.yeqiu.hydra.view.dialog.base.BaseDialog;
+import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
 import java.util.List;
@@ -25,7 +25,7 @@ import java.util.List;
  * @describe：
  * @fix：
  */
-public class BottomDialog extends BaseDialog implements View.OnClickListener, AdapterView
+public class BottomDialog extends HydraBaseDialog implements View.OnClickListener, AdapterView
         .OnItemClickListener {
 
     private ListView lvBottomDialog;

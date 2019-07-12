@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yeqiu.hydra.view.dialog.base.BaseDialog;
+import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
 /**
@@ -14,7 +14,7 @@ import com.yeqiu.hydrautils.R;
  * @describe：ios风格dialog
  * @fix：
  */
-public class CommonDialog extends BaseDialog implements View.OnClickListener {
+public class CommonDialog extends HydraBaseDialog implements View.OnClickListener {
 
 
     public CommonDialog(Activity context) {

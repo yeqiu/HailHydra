@@ -57,19 +57,19 @@ public class TextToolActivity extends BaseActivity {
 
         //如果url等属性需要变色请在设置颜色后重新在设置属性
 
-        tvTextUrl.setText(new SpanUtils().append("test  ").appendLine("Url").setForegroundColor
+        tvTextUrl.setText(new SpanUtils().append("Test  ").appendLine("Url").setForegroundColor
                 (Color.BLUE).setUrl(Url.jianshu).create());
 
 
-        tvTextClick.setText(new SpanUtils().append("test  ").appendLine("点击事件").setForegroundColor
+        tvTextClick.setText(new SpanUtils().append("Test  ").appendLine("点击事件").setForegroundColor
                 (Color.BLUE).setClickSpan(clickableSpan).create());
 
 
-        tvTextDelline.setText(new SpanUtils().append("test  ").appendLine("删除线").setForegroundColor
+        tvTextDelline.setText(new SpanUtils().append("Test  ").appendLine("删除线").setForegroundColor
                 (Color.BLUE).setStrikethrough().create());
 
 
-        tvTextUnderline.setText(new SpanUtils().append("test  ").appendLine("下划线")
+        tvTextUnderline.setText(new SpanUtils().append("Test  ").appendLine("下划线")
                 .setForegroundColor(Color.BLUE).setUnderline().create());
 
     }

@@ -49,7 +49,7 @@ public class TitlebarGradientActivity extends BaseActivity {
 
         ArrayList<String> datas = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
-            datas.add("test" + i);
+            datas.add("Test" + i);
         }
 
         list.setCacheColorHint(Color.TRANSPARENT);

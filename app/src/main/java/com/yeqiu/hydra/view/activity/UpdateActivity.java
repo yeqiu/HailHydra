@@ -92,7 +92,7 @@ public class UpdateActivity extends BaseActivity {
 
         boolean notificationOpen = APPInfoUtil.isNotificationOpen();
         if (!notificationOpen){
-            UIHelper.showToast("请在设置中开启通知全新啊");
+            UIHelper.showToast("请在设置中开启通知权限");
         }
 
 

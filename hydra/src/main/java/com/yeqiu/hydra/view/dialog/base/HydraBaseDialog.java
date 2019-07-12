@@ -23,13 +23,13 @@ import java.lang.ref.WeakReference;
  * @describe：
  * @fix：
  */
-public abstract class BaseDialog {
+public abstract class HydraBaseDialog {
 
     protected Dialog dialog;
     private WeakReference<Activity> context;
     protected DialogBuilder dialogBuilder;
 
-    public BaseDialog(Activity context) {
+    public HydraBaseDialog(Activity context) {
         this.context = new WeakReference<>(context);
         dialog = new Dialog(context, getstyle());
         dialogBuilder = new DialogBuilder(this);
@@ -38,7 +38,7 @@ public abstract class BaseDialog {
     }
 
 
-    public BaseDialog getDialog(){
+    public HydraBaseDialog getDialog(){
 
         return this;
     }
@@ -96,7 +96,7 @@ public abstract class BaseDialog {
     /**
      * 显示 dialog
      */
-    public BaseDialog show() {
+    public HydraBaseDialog show() {
 
         Object layoutIdOrView = getDiaologlayoutIdOrView();
 

@@ -16,7 +16,6 @@ import com.yeqiu.hydra.utils.ActivityManager;
 import com.yeqiu.hydra.utils.KeybordUtils;
 import com.yeqiu.hydra.utils.LogUtils;
 import com.yeqiu.hydra.utils.ScreenUtils;
-import com.yeqiu.hydra.utils.UIHelper;
 import com.yeqiu.hydra.utils.net.NetWorkUtils;
 import com.yeqiu.hydra.widget.StatusLayout.OnStatusClickListener;
 import com.yeqiu.hydra.widget.StatusLayout.StatusLayout;
@@ -119,7 +118,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * 设置标题栏距离顶部的距离，让布局定在状态栏下面
      * 当顶部是图片的时候建议重写此方法让图片顶在屏幕下面
      */
-    private void setHeadRootMarginTop() {
+    protected void setHeadRootMarginTop() {
 
         int statusHeight = ScreenUtils.getStatusHeight();
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) rlCommonHead
@@ -389,40 +388,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         return NetWorkUtils.hasNetwork(this);
     }
 
-
-    /**
-     * 显示网络提示
-     */
-    public void showNetTip() {
-        int netStatus = getNetStatus();
-
-        String netTip = "";
-        switch (netStatus) {
-            case 0:
-                netTip = "无网络";
-                break;
-
-            case 1:
-                netTip = "网络断开";
-                break;
-            case 2:
-                netTip = "wifi";
-                break;
-            case 3:
-                netTip = "wifi";
-                break;
-            case 4:
-                netTip = "移动数据";
-                break;
-
-            default:
-                break;
-
-        }
-
-        UIHelper.showToast(netTip);
-
-    }
 
 
     /**

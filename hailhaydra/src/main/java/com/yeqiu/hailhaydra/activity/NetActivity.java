@@ -57,7 +57,7 @@ public class NetActivity extends BaseActivity {
 
     private void getNetData() {
 
-        NetManager.getInstance().getMachineList(context, new DialogCallback<String>(context) {
+        NetManager.getInstance().getMachineList(getContext(), new DialogCallback<String> (){
             @Override
             public void onNetSuccess(String data) {
 

@@ -40,7 +40,6 @@ public class MainActivity extends BaseActivity {
 
         data = getData();
 
-
         rvHaydra.setLayoutManager(new GridLayoutManager(this, 3));
         rvHaydra.addItemDecoration(new HydraRecyclerViewDivider(DensityUtils.dp2px(5f)));
         HailHaydraAdapter hailHaydraAdapter = new HailHaydraAdapter(this, data);
@@ -54,18 +53,18 @@ public class MainActivity extends BaseActivity {
         data.add(new ModelHaydraItem("获取设备信息", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("base的介绍", getRandomId(), BaseExplainActivity.class));
         data.add(new ModelHaydraItem("app升级和安装", getRandomId(), UpdateActivity.class));
-        data.add(new ModelHaydraItem("ios风格的dialog", getRandomId(),DialogActivity.class));
-
+        data.add(new ModelHaydraItem("ios风格的dialog", getRandomId(), DialogActivity.class));
 
 
         data.add(new ModelHaydraItem("WebView的封装", getRandomId(), PhoneInfoActivity.class));
-        data.add(new ModelHaydraItem("网络请求", getRandomId(),PhoneInfoActivity.class));
-        data.add(new ModelHaydraItem("常见工具类", getRandomId(),PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("网络请求", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("常见工具类", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("悬浮窗", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("自定义控件", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("其他一些功能", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("一些Demo", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("键盘开启关闭的监听", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("集成常见的三方", getRandomId(), PhoneInfoActivity.class));
 
 //        data.add(new ModelHaydraItem("StringUtils的使用", getRandomId(), StringUtilsActivity.class));
 //        data.add(new ModelHaydraItem("沉浸式状态栏", getRandomId(), ImmersionBarActivity.class));

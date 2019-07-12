@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.yeqiu.hydra.utils.DensityUtils;
-import com.yeqiu.hydra.view.dialog.base.BaseDialog;
+import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydra.widget.marquee.MarqueeTextView;
 import com.yeqiu.hydrautils.R;
 
@@ -24,7 +24,7 @@ import com.yeqiu.hydrautils.R;
  * @describe：
  * @fix：
  */
-public class TipDialog extends BaseDialog {
+public class TipDialog extends HydraBaseDialog {
 
     private ObjectAnimator animator;
     private ImageView imageView;
@@ -130,7 +130,7 @@ public class TipDialog extends BaseDialog {
 
 
     @Override
-    public BaseDialog show() {
+    public HydraBaseDialog show() {
 
 
         int dismissTime = dialogBuilder.getDismissTime();

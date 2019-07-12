@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.yeqiu.hydra.view.dialog.base.BaseDialog;
+import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 import com.yeqiu.hydra.utils.DensityUtils;
 
@@ -25,7 +25,7 @@ import java.util.List;
  * @describe：仿ios底部弹出dialog
  * @fix：
  */
-public class SheetDialog extends BaseDialog {
+public class SheetDialog extends HydraBaseDialog {
 
 
     public SheetDialog(Activity context) {

@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.R;
+import com.yeqiu.hydra.utils.ResourceUtil;
 
 /**
  * @project：HailHydra
@@ -42,9 +43,10 @@ public class BaseExplainActivity extends BaseActivity {
     @Override
     protected void initData() {
 
-        activity = "activity";
-        fragment = "fragment";
-        dialog = "dialog";
+
+        activity = ResourceUtil.getString(R.string.activty_explain);
+        fragment = ResourceUtil.getString(R.string.fragment_explain);
+        dialog = ResourceUtil.getString(R.string.dialog_explain);
 
         tvBaseExplain.setText(activity);
     }

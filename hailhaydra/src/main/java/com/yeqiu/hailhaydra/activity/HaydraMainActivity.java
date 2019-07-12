@@ -33,6 +33,8 @@ public class HaydraMainActivity extends AppCompatActivity {
         initData();
         initView();
 
+
+
     }
 
     private void initView() {

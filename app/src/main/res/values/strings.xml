@@ -1,3 +1,44 @@
 <resources>
     <string name="app_name">New Hailhydra</string>
+
+
+    <string name="activty_explain">
+        集成 HydraBaseActivity 可具备以下功能\n
+1.自动添加到 ActivityManager 管理器\n
+2.实现左滑返回 需重写 isSwipeBack()\n
+3.getContext() 可返回自己本身实例\n
+4.自动使用 StatusLayout 默认显示自定义的布局\n
+5.自动添加标题栏，默认使用白色，需要设置返回图标,可在base中配置\n
+6.自动实现沉浸式透明状态栏并自动设置黑色模式\n
+7.自动注册EventBus 需重新isRegisterEventBus()\n
+8.退出Activity自动关闭软键盘\n
+9.标题栏可右侧可设置一个TextView或者mageView,不可同时存在\n
+10.获取当前网络状态
+    </string>
+
+
+    <string name="fragment_explain">
+        HydraBaseFragment 提供以下功能\n
+1.自动使用 StatusLayout 默认显示自定义的布局\n
+2.当前Fragment处于可见状态的生命周期方法onVisible()\n
+3.getContext() 可返回宿主实例\n
+     </string>
+
+
+
+
+    <string name="dialog_explain">
+        HydraBaseDialog 提供以下功能\n
+1.自动使用 common_dialog 主题\n
+2.自动设置window属性()默认距离两边30dp 居中显示\n
+3.具体使用请参考 DialogActivity\n
+     </string>
+
+
+
+
+
+
+
+
 </resources>

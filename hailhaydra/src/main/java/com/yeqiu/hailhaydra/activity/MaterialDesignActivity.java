@@ -40,7 +40,7 @@ public class MaterialDesignActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Snackbar.make(v, "test", Snackbar.LENGTH_SHORT)
+                Snackbar.make(v, "Test", Snackbar.LENGTH_SHORT)
                         .setAction("点击", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
