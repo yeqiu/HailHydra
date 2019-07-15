@@ -139,7 +139,7 @@ public class TipDialog extends HydraBaseDialog<TipDialog> {
             llRoot.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    dismissDialog();
+                    dismissDialogWhitDelayer();
                 }
             }, dismissTime);
 

@@ -137,7 +137,7 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
         if (getDialogListener() != null) {
             getDialogListener().onCanceclClick();
         }
-        dismissDialog();
+        dismissDialogWhitDelayer();
     }
 
     @Override
@@ -147,7 +147,7 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
 
 
             if (hasHead){
-                position = position=1;
+                position = position-1;
             }
 
 
@@ -155,7 +155,7 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
                 getDialogListener().onItemClick(position, getListDatas().get(position));
             }
 
-            dismissDialog();
+            dismissDialogWhitDelayer();
 
         }
     }

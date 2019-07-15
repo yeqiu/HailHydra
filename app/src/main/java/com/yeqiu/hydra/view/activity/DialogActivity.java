@@ -7,12 +7,13 @@ import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.utils.UIHelper;
 import com.yeqiu.hydra.view.dialog.BottomDialog;
 import com.yeqiu.hydra.view.dialog.CommonDialog;
-import com.yeqiu.hydra.view.dialog.callback.DialogListener;
 import com.yeqiu.hydra.view.dialog.EditDialog;
 import com.yeqiu.hydra.view.dialog.ListDialog;
 import com.yeqiu.hydra.view.dialog.SheetDialog;
 import com.yeqiu.hydra.view.dialog.TipDialog;
 import com.yeqiu.hydra.view.dialog.bean.ListData;
+import com.yeqiu.hydra.view.dialog.callback.DialogListener;
+import com.yeqiu.hydra.view.dialog.pagergrid.PagerGridDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class DialogActivity extends BaseActivity {
     TextView tvDialogTip;
     TextView tvDialogList;
     TextView tvDialogBottom;
+    TextView tvDialogPagerGrid;
 
     @Override
     protected Object getContentView() {
@@ -52,6 +54,7 @@ public class DialogActivity extends BaseActivity {
         tvDialogTip = (TextView) findViewById(R.id.tv_dialog_tip);
         tvDialogList = (TextView) findViewById(R.id.tv_dialog_list);
         tvDialogBottom = (TextView) findViewById(R.id.tv_dialog_bottom);
+        tvDialogPagerGrid = (TextView) findViewById(R.id.tv_dialog_pager_grid);
 
     }
 
@@ -70,6 +73,7 @@ public class DialogActivity extends BaseActivity {
         tvDialogTip.setOnClickListener(this);
         tvDialogList.setOnClickListener(this);
         tvDialogBottom.setOnClickListener(this);
+        tvDialogPagerGrid.setOnClickListener(this);
     }
 
     @Override
@@ -189,11 +193,9 @@ public class DialogActivity extends BaseActivity {
 
                 List<ListData> data = new ArrayList<>();
                 for (int i = 0; i < 20; i++) {
-                    ListData listData = new ListData("上单送人头 " + i,
-                            "");
+                    ListData listData = new ListData("上单送人头 " + i);
                     data.add(listData);
                 }
-
 
                 new ListDialog(DialogActivity.this)
                         .setTitleText("啦啦啦啦")
@@ -208,6 +210,7 @@ public class DialogActivity extends BaseActivity {
                             }
                         })
                         .show();
+
 
                 break;
 
@@ -228,6 +231,30 @@ public class DialogActivity extends BaseActivity {
                         })
                         .show();
                 break;
+
+            case R.id.tv_dialog_pager_grid:
+
+                final List<ListData> data2 = new ArrayList<>();
+                for (int i = 0; i < 20; i++) {
+                    ListData listData = new ListData("分享到  " + i);
+                    data2.add(listData);
+                }
+
+
+                new PagerGridDialog(getContext())
+                        .setData(data2)
+                        .setPageSize(6)
+                        .setNumColumns(3)
+                        .setOnDialogListener(new DialogListener(){
+                            @Override
+                            public void onItemClick(int position, String text) {
+                                super.onItemClick(position, text);
+                                UIHelper.showToast(data2.get(position).getTitle());
+                            }
+                        })
+                        .show();
+                break;
+
 
             default:
                 break;

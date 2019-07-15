@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
     android:orientation="vertical">
 
 
@@ -10,7 +11,15 @@
         android:id="@+id/vp_pager_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        />
 
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll_pager_grid_dot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"/>
+
+</LinearLayout>

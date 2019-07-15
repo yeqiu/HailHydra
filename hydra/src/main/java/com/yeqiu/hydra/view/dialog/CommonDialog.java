@@ -68,9 +68,7 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
         cancel.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
         line.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
 
-        //设置点击外面 返回是否可以隐藏
-        dialog.setCancelable(isBackCancel());
-        dialog.setCanceledOnTouchOutside(isCanceledOnTouchOutside());
+
 
         confirm.setOnClickListener(this);
         cancel.setOnClickListener(this);

@@ -28,7 +28,7 @@ public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
     protected Dialog dialog;
     private WeakReference<Activity> context;
     private View dialogView;
-    private boolean canceledOnTouchOutside = false;
+    private boolean canceledOnTouchOutside = true;
     private boolean isBackCancel = true;
     private String titleText = "";
     private BaseDialogListener dialogListener;
@@ -114,6 +114,9 @@ public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
 
         initDialog(dialogView);
         dialog.setContentView(dialogView);
+        //设置点击外面 返回是否可以隐藏
+        dialog.setCancelable(isBackCancel());
+        dialog.setCanceledOnTouchOutside(isCanceledOnTouchOutside());
         dialog.show();
 
         clearOnDetach(dialog);
@@ -187,9 +190,30 @@ public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
     protected abstract void initDialog(View view);
 
 
-    public void dismissDialog() {
+    /**
+     * 延时200毫秒关闭
+     */
+    public void dismissDialogWhitDelayer() {
 
         if (dialog != null) {
+
+            dialogView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    dialog.dismiss();
+                }
+            }, 200);
+        }
+    }
+
+
+    /**
+     * 立即关闭
+     */
+    public void dismissDialogImmediately() {
+
+        if (dialog != null) {
+
             dialog.dismiss();
         }
     }

@@ -48,7 +48,7 @@ public class SplashActivity extends BaseActivity {
                 ActivityUtils.toMainActivity();
                 finish();
             }
-        }, 2000);
+        }, 500);
 
 
     }

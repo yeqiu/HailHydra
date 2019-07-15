@@ -145,6 +145,22 @@
             android:layout_height="0.5dp"
             android:background="@color/color_b9b9b9"/>
 
+        <TextView
+            android:id="@+id/tv_dialog_pager_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="viewpager+gridView 分享弹框"
+            android:textColor="@color/color_black"
+            android:textSize="14sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_b9b9b9"/>
+
     </LinearLayout>
 
 
