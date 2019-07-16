@@ -70,9 +70,9 @@ public class NetManager {
     }
 
 
-
     /**
      * 升级
+     *
      * @param tag
      * @param callback
      */

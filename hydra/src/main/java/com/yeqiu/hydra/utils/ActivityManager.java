@@ -124,6 +124,7 @@ public class ActivityManager {
             activityStack = new Stack<>();
         }
         activityStack.add(activity);
+
     }
 
     /**

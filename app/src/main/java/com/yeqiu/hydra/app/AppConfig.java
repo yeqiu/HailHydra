@@ -2,9 +2,10 @@ package com.yeqiu.hydra.app;
 
 import android.app.Application;
 
-import com.yeqiu.hydra.net.HailHaydraNetIntermediary;
-import com.yeqiu.hydra.utils.AppUtils;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.yeqiu.hydra.HydraUtilsManager;
+import com.yeqiu.hydra.utils.AppUtils;
 
 /**
  * @project：HailHydra
@@ -16,6 +17,7 @@ import com.yeqiu.hydra.HydraUtilsManager;
 public class AppConfig {
 
     private static AppConfig instance;
+    private RefWatcher refWatcher;
 
     private AppConfig() {
     }
@@ -41,6 +43,9 @@ public class AppConfig {
      */
     public void init(Application app) {
         initHydra(app);
+
+        initLeakCanary(app);
+
     }
 
 
@@ -53,11 +58,19 @@ public class AppConfig {
 
         HydraUtilsManager.getInstance()
                 .init(app)
-                .setCurrentEnvironment(AppUtils.isDebug())
-                .getNetConfig()
-                .setNetIntermediary(new HailHaydraNetIntermediary());
+                .setCurrentEnvironment(AppUtils.isDebug());
 
 
+    }
+
+
+    private void initLeakCanary(Application app) {
+        refWatcher = LeakCanary.install(app);
+    }
+
+
+    public RefWatcher getRefWatcher() {
+        return refWatcher;
     }
 
 

@@ -4,7 +4,6 @@ package com.yeqiu.hailhaydra.net.callback.dialogcallback;
 import android.app.Activity;
 
 import com.lzy.okgo.request.base.Request;
-import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.net.callback.jsoncallback.JsonCallback;
 import com.yeqiu.hydra.utils.ActivityManager;
 import com.yeqiu.hydra.view.dialog.TipDialog;
@@ -24,13 +23,7 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
 
     private void initDialog(Activity activity) {
 
-        dialog = (TipDialog) new TipDialog(activity)
-                .build()
-                .setTipText("正在加载")
-                .setIconId(R.drawable.icon_load)
-                .setOrientationHorizontal(false)
-                .setIsLoading(true)
-                .show();
+
 
     }
 

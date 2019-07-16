@@ -5,9 +5,11 @@
     android:layout_height="match_parent">
 
 
-    <com.yeqiu.hydra.widget.FullGridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"/>
+    <ImageView
+        android:id="@+id/iv_test"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/icon_head_hydra_5"
+        />
 
 </RelativeLayout>

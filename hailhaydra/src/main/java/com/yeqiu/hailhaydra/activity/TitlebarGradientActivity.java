@@ -71,7 +71,6 @@ public class TitlebarGradientActivity extends BaseActivity {
                 //计算滑动距离
                 int scrollY = getScrollY(list);
 
-
                 if (scrollY <= 0) {
                     //当前没有滑动，head全透明
                     head.setAlpha(0f);

@@ -15,6 +15,7 @@ import com.yeqiu.hydra.net.OkGoManager;
 import com.yeqiu.hydra.utils.ActivityManager;
 import com.yeqiu.hydra.utils.KeybordUtils;
 import com.yeqiu.hydra.utils.LogUtils;
+import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.utils.ScreenUtils;
 import com.yeqiu.hydra.utils.net.NetWorkUtils;
 import com.yeqiu.hydra.widget.StatusLayout.OnStatusClickListener;
@@ -39,6 +40,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected LinearLayout headLayoutRoot;
     private Activity context;
     protected ImageView ivHeadBack;
+    protected TextView tvHeadClose;
     protected TextView headerTitle;
     protected TextView tvheaderRight;
     protected ImageView ivheaderRight;
@@ -79,6 +81,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     private void init() {
         statusLayout = (StatusLayout) findViewById(R.id.base_status_layout);
+        statusLayout.setBackgroundColor(ResourceUtil.getColor(R.color.color_white));
         statusLayout.setContentView(getContentView());
         statusLayout.showContentView();
         statusLayout.setOnStatusClickListener(this);
@@ -98,6 +101,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     private void initHead() {
         headLayoutRoot = (LinearLayout) findViewById(R.id.ll_common_header_root);
         ivHeadBack = (ImageView) findViewById(R.id.iv_common_head_back);
+        tvHeadClose = (TextView) findViewById(R.id.tv_common_head_close);
         headerTitle = (TextView) findViewById(R.id.tv_common_head_title);
         tvheaderRight = (TextView) findViewById(R.id.tv_common_head_title_right);
         ivheaderRight = (ImageView) findViewById(R.id.iv_common_head_title_right);
@@ -106,6 +110,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         //默认隐藏右侧的图片和文字
         tvheaderRight.setVisibility(View.GONE);
         ivheaderRight.setVisibility(View.GONE);
+        tvHeadClose.setVisibility(View.GONE);
         ivHeadBack.setOnClickListener(onClickListener);
         tvheaderRight.setOnClickListener(onClickListener);
         ivheaderRight.setOnClickListener(onClickListener);
@@ -113,6 +118,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
         setHeadRootMarginTop();
     }
+
 
     /**
      * 设置标题栏距离顶部的距离，让布局定在状态栏下面
@@ -126,7 +132,17 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         layoutParams.setMargins(0, statusHeight, 0, 0);
         rlCommonHead.setLayoutParams(layoutParams);
 
+
+//        ViewGroup contentView = (ViewGroup) findViewById(android.R.id.content);
+//        View statusBarView = new View(getContext());
+//        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
+//                .MATCH_PARENT, ScreenUtils.getStatusHeight());
+//        statusBarView.setBackgroundColor(ResourceUtil.getColor(R.color.color_white));
+//        contentView.addView(statusBarView, lp);
+
+
     }
+
 
     /**
      * 初始化沉浸式
@@ -387,7 +403,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     public boolean hasNet() {
         return NetWorkUtils.hasNetwork(this);
     }
-
 
 
     /**

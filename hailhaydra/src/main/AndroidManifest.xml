@@ -80,6 +80,7 @@
         <activity android:name=".activity.CoordinatorLayoutActivity"/>
         <activity android:name=".activity.TitlebarGradientActivity"/>
         <activity android:name=".activity.NetActivity"/>
+        <activity android:name=".test.TestOne"/>
 
     </application>
 

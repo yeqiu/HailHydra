@@ -467,16 +467,6 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
     }
 
 
-    /**
-     * 销毁时删除所有子view
-     */
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-
-        this.removeAllViews();
-    }
-
 
     public void setOnStatusClickListener(OnStatusClickListener onStatusClickListener) {
 

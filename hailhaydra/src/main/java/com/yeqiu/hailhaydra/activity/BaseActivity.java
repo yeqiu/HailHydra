@@ -21,10 +21,6 @@ public abstract class BaseActivity extends HydraBaseActivity {
         return R.drawable.icon_head_back;
     }
 
-    @Override
-    protected void initImmersionBar() {
-        super.initImmersionBar();
-    }
 
 
     @Override

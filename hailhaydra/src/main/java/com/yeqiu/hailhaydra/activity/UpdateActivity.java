@@ -5,8 +5,6 @@ import android.widget.TextView;
 
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hydra.utils.UpdateUtil;
-import com.yeqiu.hydra.view.dialog.CommonDialog;
-import com.yeqiu.hydra.view.dialog.callback.DialogListener;
 
 import java.io.File;
 
@@ -36,18 +34,7 @@ public class UpdateActivity extends BaseActivity {
     @Override
     protected void initData() {
 
-        new CommonDialog(UpdateActivity.this)
-                .build()
-                .setTitleText("更新")
-                .setDescText("有新版本")
-                .setOnDialogListener(new DialogListener() {
-                    @Override
-                    public void onConfirmClick() {
-                        super.onConfirmClick();
-                        update();
-                    }
-                })
-                .show();
+
 
 
     }

@@ -38,6 +38,20 @@
 
 
 
+    <string name="net_explain">
+        网络请求使用okgo，如无需添加公共请求头等配置，直接初始化HydraUtilsManager即可。\n
+详细配置\n
+ HydraUtilsManager.getInstance()\n
+                .init(app)\n
+                .getNetConfig()\n
+                .setHttpHeaders(headers)//添加公共请求头\n
+                .setNetIntermediary(new JjycNetIntermediary()); //添加网络拦截器\n
+     </string>
+
+
+
+
+
 
 
 
