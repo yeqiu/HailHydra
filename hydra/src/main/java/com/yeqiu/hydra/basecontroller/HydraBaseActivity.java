@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,6 +37,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 public abstract class HydraBaseActivity extends SwipeBackActivity implements View
         .OnClickListener, OnStatusClickListener {
 
+    protected LinearLayout llBaseRoot;
     protected StatusLayout statusLayout;
     protected LinearLayout headLayoutRoot;
     private Activity context;
@@ -47,6 +49,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected View headLine;
     protected ImmersionBar imersionBar;
     protected RelativeLayout rlCommonHead;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +83,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
 
     private void init() {
+        llBaseRoot = (LinearLayout) findViewById(R.id.ll_base_root);
         statusLayout = (StatusLayout) findViewById(R.id.base_status_layout);
         statusLayout.setBackgroundColor(ResourceUtil.getColor(R.color.color_white));
         statusLayout.setContentView(getContentView());
@@ -116,30 +120,24 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         ivheaderRight.setOnClickListener(onClickListener);
         ivHeadBack.setImageResource(getDefHeadBackImgId());
 
-        setHeadRootMarginTop();
+        addStatusViewWithColor(getStatusColorId());
     }
 
 
     /**
-     * 设置标题栏距离顶部的距离，让布局定在状态栏下面
-     * 当顶部是图片的时候建议重写此方法让图片顶在屏幕下面
+     * 添加状态栏占位视图
+     * 如果页面顶部是图片，可以重新此方法 不添加任何占位
+     *
+     * @param colorId
      */
-    protected void setHeadRootMarginTop() {
+    protected void addStatusViewWithColor(int colorId) {
 
-        int statusHeight = ScreenUtils.getStatusHeight();
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) rlCommonHead
-                .getLayoutParams();
-        layoutParams.setMargins(0, statusHeight, 0, 0);
-        rlCommonHead.setLayoutParams(layoutParams);
+        View statusBarView = new View(getContext());
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
+                .MATCH_PARENT, ScreenUtils.getStatusHeight());
+        statusBarView.setBackgroundColor(getResources().getColor(R.color.color_white));
 
-
-//        ViewGroup contentView = (ViewGroup) findViewById(android.R.id.content);
-//        View statusBarView = new View(getContext());
-//        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
-//                .MATCH_PARENT, ScreenUtils.getStatusHeight());
-//        statusBarView.setBackgroundColor(ResourceUtil.getColor(R.color.color_white));
-//        contentView.addView(statusBarView, lp);
-
+        llBaseRoot.addView(statusBarView, 0, lp);
 
     }
 
@@ -309,6 +307,16 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected boolean isRegisterEventBus() {
 
         return false;
+    }
+
+
+    /**
+     * 状态栏占位的颜色
+     *
+     * @return
+     */
+    protected int getStatusColorId() {
+        return R.color.color_white;
     }
 
     /**

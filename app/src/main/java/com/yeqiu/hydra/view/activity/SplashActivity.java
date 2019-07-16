@@ -64,6 +64,11 @@ public class SplashActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void addStatusViewWithColor(int colorId) {
+//        super.addStatusViewWithColor(colorId);
+    }
+
     private int getRandomId() {
 
         int id = new Random().nextInt(30) + 1;

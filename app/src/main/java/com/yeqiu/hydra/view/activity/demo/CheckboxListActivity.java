@@ -1,10 +1,8 @@
 package com.yeqiu.hydra.view.activity.demo;
 
-import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -12,7 +10,6 @@ import android.widget.TextView;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.bean.Model.CheckboxData;
 import com.yeqiu.hydra.callback.OnCheckedChangeListener;
-import com.yeqiu.hydra.utils.ScreenUtils;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 import com.yeqiu.hydra.view.adapter.CheckboxListAdapter;
 
@@ -53,35 +50,6 @@ public class CheckboxListActivity extends BaseActivity {
 
 
 
-    /**
-     * 添加状态栏占位视图
-     * 如果页面顶部是图片，可以重新此方法 不添加任何占位
-     * @param colorId
-     */
-    protected void addStatusViewWithColor(int colorId) {
-        //4.4以上才能设置状态栏
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //设置 paddingTop 状态栏的高度
-            ViewGroup rootView = (ViewGroup) getWindow().getDecorView()
-                    .findViewById(android.R.id.content);
-            rootView.setPadding(0, ScreenUtils.getStatusHeight(), 0, 0);
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                //5.0以上直接设置状态栏颜色
-                getWindow().setStatusBarColor(getResources().getColor(colorId));
-
-            } else {
-                //增加占位状态栏
-                ViewGroup decorView = (ViewGroup) getWindow().getDecorView();
-                View statusBarView = new View(getContext());
-                ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
-                        .MATCH_PARENT, ScreenUtils.getStatusHeight());
-                statusBarView.setBackgroundColor(colorId);
-                decorView.addView(statusBarView, lp);
-            }
-        }
-
-    }
 
 
     @Override
