@@ -3,6 +3,7 @@ package com.yeqiu.hydra.basecontroller;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -343,8 +344,12 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * 自动显示标题栏
      */
     public void setHeaderTitle(String title) {
-        headLayoutRoot.setVisibility(View.VISIBLE);
-        headerTitle.setText(title);
+
+        if (!TextUtils.isEmpty(title)) {
+            headLayoutRoot.setVisibility(View.VISIBLE);
+            headerTitle.setText(title);
+        }
+
     }
 
     /**

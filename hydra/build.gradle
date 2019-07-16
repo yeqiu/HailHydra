@@ -42,5 +42,7 @@ dependencies {
     api files('libs/alipaySdk-20180601.jar')
     //微信支付
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    //lifecycle
+    api 'android.arch.lifecycle:extensions:1.1.1'
 
 }

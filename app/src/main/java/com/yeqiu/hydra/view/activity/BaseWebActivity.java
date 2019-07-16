@@ -40,6 +40,7 @@ public abstract class BaseWebActivity extends BaseActivity {
     @Override
     protected void initView() {
 
+        setHeaderTitle("加载中");
         pbWebProgress = (ProgressBar) findViewById(R.id.pb_web_progress);
         webView = (WebView) findViewById(R.id.ev_web);
     }
@@ -68,7 +69,7 @@ public abstract class BaseWebActivity extends BaseActivity {
 
     @Override
     protected void onBackClick() {
-       // super.onBackClick();
+        // super.onBackClick();
         handleBack();
     }
 
@@ -213,7 +214,6 @@ public abstract class BaseWebActivity extends BaseActivity {
     }
 
     protected abstract void otherSetting();
-
 
 
 }

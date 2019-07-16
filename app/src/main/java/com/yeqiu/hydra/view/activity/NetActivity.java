@@ -1,5 +1,6 @@
 package com.yeqiu.hydra.view.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -7,6 +8,7 @@ import com.lzy.okgo.model.HttpParams;
 import com.lzy.okgo.request.base.Request;
 import com.yeqiu.hydra.HydraUtilsManager;
 import com.yeqiu.hydra.R;
+import com.yeqiu.hydra.constant.Url;
 import com.yeqiu.hydra.net.NetIntermediary;
 import com.yeqiu.hydra.net.OkGoManager;
 import com.yeqiu.hydra.net.callback.dialogcallback.DialogCallback;
@@ -25,6 +27,7 @@ import org.json.JSONObject;
 public class NetActivity extends BaseActivity {
 
     TextView tvNetPost;
+    TextView tvAboutOkgo;
     TextView tvNetResult;
 
     @Override
@@ -37,6 +40,7 @@ public class NetActivity extends BaseActivity {
         setHeaderTitle("网络请求");
         tvNetPost = (TextView) findViewById(R.id.tv_net_post);
         tvNetResult = (TextView) findViewById(R.id.tv_net_result);
+        tvAboutOkgo = (TextView) findViewById(R.id.tv_about_okgo);
     }
 
     @Override
@@ -47,15 +51,21 @@ public class NetActivity extends BaseActivity {
     @Override
     protected void initListener() {
         tvNetPost.setOnClickListener(this);
+        tvAboutOkgo.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_net_post:
-
                 post();
                 break;
+            case R.id.tv_about_okgo:
+                Intent intent = new Intent(getContext(), WebViewActivity.class);
+                intent.putExtra("url", Url.about_okgo);
+                startActivity(intent);
+                break;
+
             default:
                 break;
         }
@@ -133,7 +143,7 @@ public class NetActivity extends BaseActivity {
         } catch (JSONException e) {
             message = json;
         }
-       return  message;
+        return message;
 
     }
 

@@ -10,10 +10,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
-import com.yeqiu.hydra.view.activity.demo.CheckboxListActivity;
-import com.yeqiu.hydra.view.activity.demo.TitlebarGradientActivity;
-import com.yeqiu.hydra.view.activity.demo.sticky.CoordinatorStickyActivity;
-import com.yeqiu.hydra.view.activity.demo.sticky.StickyHeadActivity;
+import com.yeqiu.hydra.view.activity.utils.KeyBordUtilsActivity;
+import com.yeqiu.hydra.view.activity.utils.StringUtilsActivity;
+import com.yeqiu.hydra.view.activity.utils.TextToolActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.List;
  * @describe：
  * @fix：
  */
-public class DemoActivity extends BaseActivity {
+public class UtilsActivity extends BaseActivity {
 
     private RecyclerView rvDemo;
 
@@ -36,7 +35,7 @@ public class DemoActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("一些Demo");
+        setHeaderTitle("工具类");
         rvDemo = (RecyclerView) findViewById(R.id.rv_demo);
         rvDemo.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -45,15 +44,14 @@ public class DemoActivity extends BaseActivity {
     protected void initData() {
 
         final List<ModelHaydraItem> datas = new ArrayList<>();
-        datas.add(new ModelHaydraItem("简单实现悬浮", StickyHeadActivity.class));
-        datas.add(new ModelHaydraItem("CoordinatorLayout实现悬浮", CoordinatorStickyActivity.class));
-        datas.add(new ModelHaydraItem("滑动渐变显示标题栏", TitlebarGradientActivity.class));
-        datas.add(new ModelHaydraItem("列表中使用checkbox", CheckboxListActivity.class));
-        datas.add(new ModelHaydraItem("网易云音乐引导页效果", StickyHeadActivity.class));
-        datas.add(new ModelHaydraItem("RecyclerView双列表联动", StickyHeadActivity.class));
+        datas.add(new ModelHaydraItem("StringUtils的使用", StringUtilsActivity.class));
+        datas.add(new ModelHaydraItem("键盘开启关闭的监听", KeyBordUtilsActivity.class));
+        datas.add(new ModelHaydraItem("TextTool的使用", TextToolActivity.class));
 
 
-        DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky, datas);
+
+       DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky,
+               datas);
         rvDemo.setAdapter(demoAdapter);
 
         demoAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -87,5 +85,5 @@ public class DemoActivity extends BaseActivity {
         }
     }
 
-
 }
+

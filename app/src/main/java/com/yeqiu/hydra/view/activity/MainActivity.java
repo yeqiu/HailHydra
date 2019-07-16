@@ -7,7 +7,6 @@ import android.view.View;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
 import com.yeqiu.hydra.utils.DensityUtils;
-import com.yeqiu.hydra.view.activity.demo.sticky.StickyHeadActivity;
 import com.yeqiu.hydra.view.adapter.HailHaydraAdapter;
 import com.yeqiu.hydra.widget.HydraRecyclerViewDivider;
 
@@ -58,8 +57,7 @@ public class MainActivity extends BaseActivity {
         data.add(new ModelHaydraItem("WebView的封装", getRandomId(), WebViewActivity.class));
         data.add(new ModelHaydraItem("网络请求", getRandomId(), NetActivity.class));
         data.add(new ModelHaydraItem("一些Demo", getRandomId(),DemoActivity.class));
-
-        data.add(new ModelHaydraItem("常见工具类", getRandomId(), StickyHeadActivity.class));
+        data.add(new ModelHaydraItem("工具类", getRandomId(), UtilsActivity.class));
         data.add(new ModelHaydraItem("悬浮窗", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("自定义控件", getRandomId(), PhoneInfoActivity.class));
         data.add(new ModelHaydraItem("其他一些功能", getRandomId(), PhoneInfoActivity.class));
