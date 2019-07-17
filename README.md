@@ -6,10 +6,6 @@
 
 ## Demo
 
-[下载地址](<https://www.pgyer.com/LVg8>)
+[下载地址](<https://www.pgyer.com/rt4C>)
 
 
-
-扫码
-
-![image](https://github.com/yeqiu/HailHydra/blob/master/art/%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
