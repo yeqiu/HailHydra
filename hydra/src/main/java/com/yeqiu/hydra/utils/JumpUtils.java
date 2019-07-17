@@ -12,7 +12,7 @@ import com.yeqiu.hydra.HydraUtilsManager;
  * @project：HailHydra
  * @author：小卷子
  * @date 2018/9/17
- * @describe：activity fragment跳转工具类
+ * @describe：activity 跳转工具类
  * @fix：
  */
 public class JumpUtils {

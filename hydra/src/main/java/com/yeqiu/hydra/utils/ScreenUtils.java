@@ -142,7 +142,7 @@ public class ScreenUtils {
     /**
      * 获取当前屏幕截图，包含状态栏 但状态栏是空白
      */
-    public static Bitmap screenShotWithStatusBar(Activity activity) {
+    public static Bitmap getScreenShotWithStatusBar(Activity activity) {
 
         View view = activity.getWindow().getDecorView();
         view.setDrawingCacheEnabled(true);
@@ -160,7 +160,7 @@ public class ScreenUtils {
     /**
      * 获取当前屏幕截图，不包含状态栏
      */
-    public static Bitmap screenShotWithoutStatusBar(Activity activity) {
+    public static Bitmap getScreenShotWithoutStatusBar(Activity activity) {
 
         View view = activity.getWindow().getDecorView();
         view.setDrawingCacheEnabled(true);

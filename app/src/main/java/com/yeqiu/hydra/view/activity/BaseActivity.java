@@ -20,4 +20,8 @@ public abstract class BaseActivity extends HydraBaseActivity {
     }
 
 
+    @Override
+    protected boolean isSwipeBack() {
+        return true;
+    }
 }

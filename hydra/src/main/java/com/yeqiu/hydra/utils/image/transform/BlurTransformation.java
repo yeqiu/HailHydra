@@ -15,7 +15,11 @@ import com.bumptech.glide.util.Util;
 import java.security.MessageDigest;
 
 /**
- * @author sunfusheng on 2018/6/25.
+ * @project：CarWash
+ * @author：小卷子
+ * @date 2019/4/16
+ * @describe：毛玻璃效果
+ * @fix：
  */
 public class BlurTransformation extends BitmapTransformation {
     private final String ID = getClass().getName();
@@ -43,7 +47,8 @@ public class BlurTransformation extends BitmapTransformation {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
-    protected Bitmap transform(@NonNull BitmapPool pool, @NonNull Bitmap toTransform, int outWidth, int outHeight) {
+    protected Bitmap transform(@NonNull BitmapPool pool, @NonNull Bitmap toTransform, int
+            outWidth, int outHeight) {
         int width = toTransform.getWidth();
         int height = toTransform.getHeight();
         int scaledWidth = width / sampling;

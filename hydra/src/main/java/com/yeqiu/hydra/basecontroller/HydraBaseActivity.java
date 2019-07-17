@@ -41,7 +41,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected LinearLayout llBaseRoot;
     protected StatusLayout statusLayout;
     protected LinearLayout headLayoutRoot;
-    private Activity context;
     protected ImageView ivHeadBack;
     protected TextView tvHeadClose;
     protected TextView headerTitle;
@@ -50,6 +49,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected View headLine;
     protected ImmersionBar imersionBar;
     protected RelativeLayout rlCommonHead;
+    private Activity context;
 
 
     @Override
@@ -335,7 +335,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * @return
      */
     protected boolean isSwipeBack() {
-        return true;
+        return false;
     }
 
 

@@ -58,13 +58,23 @@ public abstract class BaseWebActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        tvHeadClose.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
 
+        switch (v.getId()) {
+
+            case R.id.tv_common_head_close:
+                finish();
+                break;
+
+            default:
+                break;
+
+        }
     }
 
     @Override

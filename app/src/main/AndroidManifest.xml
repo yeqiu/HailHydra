@@ -115,7 +115,33 @@
             android:name=".view.activity.utils.ImageUtilsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity android:name=".view.activity.utils.ScaleTypeActivity"/>
+
+        <activity
+            android:name=".view.activity.utils.ScaleTypeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+
+        <activity
+            android:name=".view.activity.demo.ScreenshotActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+
+        <activity
+            android:name=".Test"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+        <activity
+            android:name=".view.activity.demo.ScreenshotWebActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+        <activity
+            android:name=".view.activity.demo.BigPicActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
 
 
     </application>

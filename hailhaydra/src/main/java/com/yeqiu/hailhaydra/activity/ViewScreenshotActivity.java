@@ -74,14 +74,14 @@ public class ViewScreenshotActivity extends BaseActivity {
                 break;
             case R.id.bt_ss_screen:
                 //截取的整个屏幕
-                Bitmap bitmap = ScreenUtils.screenShotWithStatusBar(ViewScreenshotActivity.this);
+                Bitmap bitmap = ScreenUtils.getScreenShotWithStatusBar(ViewScreenshotActivity.this);
 
                 JumpUtils.jumpToActivityByIntent(getIntenWithBitMp(bitmap));
 
                 break;
             case R.id.bt_ss_screen_no_statusbar:
                 //截取除了导航栏之外的整个屏幕
-                Bitmap bitmapWithoutStatusBar = ScreenUtils.screenShotWithoutStatusBar
+                Bitmap bitmapWithoutStatusBar = ScreenUtils.getScreenShotWithoutStatusBar
                         (ViewScreenshotActivity.this);
 
                 JumpUtils.jumpToActivityByIntent(getIntenWithBitMp(bitmapWithoutStatusBar));

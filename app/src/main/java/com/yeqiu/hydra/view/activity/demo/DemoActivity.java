@@ -9,7 +9,6 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.Test;
 import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 import com.yeqiu.hydra.view.activity.demo.sticky.CoordinatorStickyActivity;
@@ -49,10 +48,7 @@ public class DemoActivity extends BaseActivity {
         datas.add(new ModelHaydraItem("CoordinatorLayout实现悬浮", CoordinatorStickyActivity.class));
         datas.add(new ModelHaydraItem("滑动渐变显示标题栏", TitlebarGradientActivity.class));
         datas.add(new ModelHaydraItem("列表中使用checkbox", CheckboxListActivity.class));
-        // TODO: 2019/7/17
-        datas.add(new ModelHaydraItem("网易云音乐引导页效果", Test.class));
-        datas.add(new ModelHaydraItem("RecyclerView双列表联动", Test.class));
-        datas.add(new ModelHaydraItem("截图", Test.class));
+        datas.add(new ModelHaydraItem("截图", ScreenshotActivity.class));
 
 
         DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky, datas);

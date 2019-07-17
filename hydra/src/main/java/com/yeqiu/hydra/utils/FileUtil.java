@@ -40,21 +40,6 @@ public class FileUtil {
     public static final String CACHE_DIRECTORY = Environment.getExternalStorageDirectory()
             .getAbsolutePath() + File.separator;
 
-    //存储图片目录路径
-    public static final String CACHE_IMAGE_PATH = "JinGeWenKu/cache/others/images/";
-
-    //存储主页播放图片目录路径
-    public static final String CACHE_MAIN_GALLERY_IMAGE_PATH = "JinGeWenKu/cache/gallery/images/";
-
-    //存放用户选择头像目录路径
-    public static final String CACHE_CHOOSE_HEAD_PATH = "JinGeWenKu/cache/head/images/";
-
-    //菜单操作按钮缓存目录路径
-    public static final String CACHE_APP_ICON_IMAGES_PATH = "JinGeWenKu/cache/app/icon/images/";
-
-    //存储浏览图片目录
-    public static final String CACH_BROWSE_PATH = "JinGeWenKu/cache/browse/images/";
-
     //缓存目录位置
     public static final String CACHE_DIR = "";
 

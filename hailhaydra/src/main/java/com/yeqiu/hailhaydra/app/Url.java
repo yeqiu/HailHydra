@@ -16,4 +16,6 @@ public interface Url {
     String ScreenShot = "https://www.jianshu.com/p/96c44dba1307";
     String jianshu_web = "https://www.jianshu.com/p/6462d36d5ff6";
 
+    String HailHydraUrl = "https://github.com/yeqiu/HailHydra";
+
 }

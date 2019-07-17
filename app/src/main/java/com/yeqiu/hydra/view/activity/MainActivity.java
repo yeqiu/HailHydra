@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.yeqiu.hydra.R;
+import com.yeqiu.hydra.Test;
 import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.view.activity.demo.DemoActivity;
-import com.yeqiu.hydra.view.activity.utils.ScaleTypeActivity;
 import com.yeqiu.hydra.view.activity.utils.UtilsActivity;
 import com.yeqiu.hydra.view.adapter.HailHaydraAdapter;
 import com.yeqiu.hydra.widget.HydraRecyclerViewDivider;
@@ -62,10 +62,10 @@ public class MainActivity extends BaseActivity {
         data.add(new ModelHaydraItem("一些Demo", getRandomId(),DemoActivity.class));
         data.add(new ModelHaydraItem("工具类", getRandomId(), UtilsActivity.class));
 
-        data.add(new ModelHaydraItem("悬浮窗", getRandomId(), ScaleTypeActivity.class));
-        data.add(new ModelHaydraItem("自定义控件", getRandomId(), PhoneInfoActivity.class));
-        data.add(new ModelHaydraItem("其他一些功能", getRandomId(), PhoneInfoActivity.class));
-        data.add(new ModelHaydraItem("集成常见的三方", getRandomId(), PhoneInfoActivity.class));
+        data.add(new ModelHaydraItem("悬浮窗", getRandomId(), Test.class));
+        data.add(new ModelHaydraItem("自定义控件", getRandomId(), Test.class));
+        data.add(new ModelHaydraItem("其他一些功能", getRandomId(), Test.class));
+        data.add(new ModelHaydraItem("集成常见的三方", getRandomId(), Test.class));
 
 //        data.add(new ModelHaydraItem("StringUtils的使用", getRandomId(), StringUtilsActivity.class));
 //        data.add(new ModelHaydraItem("沉浸式状态栏", getRandomId(), ImmersionBarActivity.class));

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_screenshot_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="webView截长图"
+        android:textColor="@color/color_black"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_b9b9b9"/>
+
+
+    <TextView
+        android:id="@+id/tv_screenshot_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="截取整个屏幕（无法获取状态栏）"
+        android:textColor="@color/color_black"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_b9b9b9"/>
+
+
+    <TextView
+        android:id="@+id/tv_screenshot_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="截取view在屏幕上的可见区域"
+        android:textColor="@color/color_black"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_b9b9b9"/>
+
+    <TextView
+        android:id="@+id/tv_screenshot_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="截取列表长图"
+        android:textColor="@color/color_black"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_b9b9b9"/>
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_screenshot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"/>
+
+
+</LinearLayout>
