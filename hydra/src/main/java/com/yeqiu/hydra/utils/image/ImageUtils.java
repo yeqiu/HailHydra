@@ -1,9 +1,12 @@
 package com.yeqiu.hydra.utils.image;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -12,12 +15,21 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.yeqiu.hydra.HydraUtilsManager;
 import com.yeqiu.hydra.ui.UiConfig;
+import com.yeqiu.hydra.utils.APPInfoUtil;
+import com.yeqiu.hydra.utils.LogUtils;
+import com.yeqiu.hydra.utils.thread.ThreadUtil;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 /**
  * @project：Xbzd
@@ -28,203 +40,223 @@ import com.yeqiu.hydra.ui.UiConfig;
  */
 public class ImageUtils {
 
-
-    private static RequestOptions getRequestOptions() {
-
-        RequestOptions requestOptions = new RequestOptions();
-        if (UiConfig.getInstance().getImgPlaceholder() != -1) {
-            requestOptions.placeholder(UiConfig.getInstance().getImgPlaceholder());
-        }
-        if (UiConfig.getInstance().getImgError() != -1) {
-            requestOptions.error(UiConfig.getInstance().getImgError());
-        }
-        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
-
-        return requestOptions;
-    }
+    private RequestOptions options;
 
 
     /**
-     * 以填满整个ImageView，将原图的中心对准ImageView的中心，等比例放大原图，直到填满ImageView为止（ImageView
-     * 的宽和高都要填满），原图超过ImageView的部分作裁剪处理。
-     *
-     * @param url
-     * @param imageView
+     * ImageView的默认模式，在该模式下，图片会被等比缩放到能够填充控件大小，并居中展示：
      */
-    public static void setImageWithCenerCrop(Context context, String url, ImageView imageView) {
-
-        if (TextUtils.isEmpty(url) || !checkContext(context)) {
-            return;
-        }
-
-        RequestOptions options = getRequestOptions().centerCrop();
-
-        Glide.with(context)
-                .load(url)
-                .apply(options)
-                .into(imageView);
-    }
+    public static final int fitCenter = 1;
 
     /**
-     * 以填满整个ImageView，将原图的中心对准ImageView的中心，等比例放大原图，直到填满ImageView为止（ImageView
-     * 的宽和高都要填满），原图超过ImageView的部分作裁剪处理。
-     *
-     * @param ImgId
-     * @param imageView
+     * 使用此模式以完全展示图片的内容为目的。图片将被等比缩放到能够完整展示在ImageView中并居中，如果图片大小小于控件大小，那么就直接居中展示该图片：
      */
-    public static void setImageWithCenerCrop(Context context, int ImgId, ImageView imageView) {
-
-        if (!checkContext(context)) {
-            return;
-        }
-
-        RequestOptions options = getRequestOptions().centerCrop();
-
-        Glide.with(context)
-                .load(ImgId)
-                .apply(options)
-                .into(imageView);
-    }
-
+    public static final int centerInside = 2;
 
     /**
-     * 保持原图比例放大图片去填充View
-     *
-     * @param url
-     * @param imageView
+     * 在该模式下，图片会被等比缩放直到完全填充整个ImageView，并居中显示。该模式也是最常用的模式了。
      */
-    public static void setImageWithfitCenter(Context context, String url, ImageView imageView) {
-
-        if (TextUtils.isEmpty(url) || !checkContext(context)) {
-            return;
-        }
-
-
-        RequestOptions options = getRequestOptions().fitCenter();
-
-        Glide.with(context)
-                .load(url)
-                .apply(options)
-                .into(imageView);
-    }
+    public static final int centerCrop = 3;
 
 
     /**
-     * 保持原图比例放大图片去填充View
-     *
-     * @param urlId
-     * @param imageView
+     * 图片会被裁剪成圆形
      */
-    public static void setImageWithfitCenter(Context context, int urlId, ImageView imageView) {
-
-
-        if (!checkContext(context)) {
-            return;
-        }
-
-        RequestOptions options = getRequestOptions().fitCenter();
-
-        Glide.with(context)
-                .load(urlId)
-                .apply(options)
-                .into(imageView);
-    }
+    public static final int circle = 4;
 
 
     /**
-     * 裁剪成圆图
-     *
-     * @param url
-     * @param imageView
-     */
-    public static void setCircleImage(Context context, String url, final ImageView
-            imageView) {
-
-        if (TextUtils.isEmpty(url) || !checkContext(context)) {
-            return;
-        }
-
-        RequestOptions options = getRequestOptions().circleCrop();
-
-        Glide.with(context)
-                .load(url)
-                .apply(options)
-                .into(imageView);
-
-    }
-
-
-    /**
-     * 裁剪成圆图
+     * 任意条件不满足 返回true
      *
      * @param context
-     * @param imgId
-     * @param imageView
+     * @param url
+     * @param view
+     * @return
      */
-    public static void setCircleImage(Context context, int imgId, final ImageView
-            imageView) {
+    private boolean check(Context context, String url, View view) {
 
-        if (!checkContext(context)) {
-            return;
-        }
 
-        RequestOptions options = getRequestOptions().circleCrop();
+        return (TextUtils.isEmpty(url) || context == null || view == null);
 
-        Glide.with(context)
-                .load(imgId)
-                .apply(options)
-                .into(imageView);
+    }
+
+    /**
+     * 任意条件不满足 返回true
+     *
+     * @param url
+     * @return
+     */
+    private boolean check(String url) {
+
+
+        return (TextUtils.isEmpty(url));
 
     }
 
 
     /**
-     * 设置背景
+     * 任意条件不满足 返回true
      *
+     * @param context
+     * @param view
+     * @return
+     */
+    private boolean check(Context context, View view) {
+
+        return (context == null || view == null);
+
+    }
+
+
+    /**
+     * 任意条件不满足 返回true
+     *
+     * @param context
+     * @param imageView
+     * @return
+     */
+    private boolean check(Context context, ImageView imageView) {
+
+
+        return (context == null || imageView == null);
+
+    }
+
+
+    /**
+     * 获取默认配置
+     *
+     * @return
+     */
+    private RequestOptions getdDefaultRequestOptions() {
+
+        options = new RequestOptions();
+        //占位图
+        if (UiConfig.getInstance().getImgPlaceholder() != -1) {
+            options.placeholder(UiConfig.getInstance().getImgPlaceholder());
+        }
+        //错误图
+        if (UiConfig.getInstance().getImgError() != -1) {
+            options.error(UiConfig.getInstance().getImgError());
+        }
+
+        options.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+        return options;
+    }
+
+
+    /**
+     * 占位图
+     *
+     * @param imgId
+     * @return
+     */
+    public ImageUtils setImgPlaceholder(int imgId) {
+
+        getOptions().placeholder(imgId);
+        return this;
+    }
+
+    /**
+     * 错误图
+     *
+     * @param imgId
+     * @return
+     */
+    public ImageUtils setImgError(int imgId) {
+
+        getOptions().error(imgId);
+        return this;
+    }
+
+
+    /**
+     * 设置缓存策略
+     *
+     * @param diskCacheStrategy
+     * @return
+     */
+    public ImageUtils setCacheStrategy(DiskCacheStrategy diskCacheStrategy) {
+
+        getOptions().diskCacheStrategy(diskCacheStrategy);
+        return this;
+    }
+
+
+    private RequestOptions getOptions() {
+        return options == null ? getdDefaultRequestOptions() : options;
+    }
+
+
+    /**
+     * 设置配置
+     *
+     * @param scaleType
+     * @return
+     */
+    public ImageUtils setOptions(int scaleType) {
+
+        switch (scaleType) {
+
+            case fitCenter:
+                getOptions().fitCenter();
+                break;
+
+            case centerInside:
+                getOptions().centerInside();
+                break;
+            case centerCrop:
+                getOptions().centerCrop();
+                break;
+
+            case circle:
+                getOptions().circleCrop();
+                break;
+
+
+            default:
+                break;
+        }
+
+        return this;
+    }
+
+
+
+    public ImageUtils setTransformation(BitmapTransformation bitmapTransformation){
+
+        getOptions().transform(bitmapTransformation);
+
+        return this;
+    }
+
+
+
+    public ImageUtils setListener() {
+
+
+        return this;
+    }
+
+
+    /**
+     * 设置成圆角
+     *
+     * @param context
      * @param url
      * @param view
      */
-    public static void setBg(Context context, String url, final View view) {
+    public void setBg(Context context, String url, final View view) {
 
-        if (TextUtils.isEmpty(url) || !checkContext(context)) {
+        if (check(context, url, view)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
             return;
         }
 
         Glide.with(context)
                 .load(url)
-                .apply(getRequestOptions())
-                .into(new SimpleTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition
-                            <? super Drawable> transition) {
-
-                        if (Build.VERSION.SDK_INT >= 16) {
-                            view.setBackground(resource);
-                        } else {
-                            view.setBackgroundDrawable(resource);
-                        }
-
-                    }
-                });
-    }
-
-    /**
-     * 设置背景
-     *
-     * @param id
-     * @param view
-     */
-    public static void setBg(Context context, int id, final View view) {
-
-        if (view == null || !checkContext(context)) {
-
-            return;
-        }
-
-
-        Glide.with(context)
-                .load(id)
-                .apply(getRequestOptions())
+                .apply(getOptions())
                 .into(new SimpleTarget<Drawable>() {
                     @Override
                     public void onResourceReady(@NonNull Drawable resource, @Nullable
@@ -239,100 +271,50 @@ public class ImageUtils {
                     }
                 });
 
-
     }
 
 
     /**
-     * 根据图大小自动设置
+     * 加载图片 最后调用
      *
+     * @param context
      * @param url
      * @param imageView
      */
-    public static void setSimpleImage(Context context, String url, final ImageView imageView) {
+    public void load(Context context, String url, ImageView imageView) {
 
-        if (TextUtils.isEmpty(url) || !checkContext(context)) {
+
+        if (check(context, url, imageView)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
             return;
         }
-
-
-        RequestOptions options = getRequestOptions();
 
         Glide.with(context)
                 .load(url)
-                .apply(options)
+                .apply(getOptions())
                 .into(imageView);
 
-    }
-
-    /**
-     * 根据图大小自动设置
-     *
-     * @param id
-     * @param imageView
-     */
-    public static void setSimpleImage(Context context, int id, final ImageView imageView) {
-
-
-        if (!checkContext(context)) {
-            return;
-        }
-
-        RequestOptions options = getRequestOptions();
-
-        Glide.with(context)
-                .load(id)
-                .apply(options)
-                .into(imageView);
 
     }
 
 
-    /**
-     * 圆角图片
-     *
-     * @param context
-     * @param id
-     * @param imageView
-     * @param round
-     */
-    public static void setImageWithRound(Context context, int id, final ImageView
-            imageView, int round) {
-
-
-        if (!checkContext(context)) {
-            return;
-        }
-
-        RequestOptions requestOptions = getRequestOptions().transforms(new CenterCrop(), new
-                RoundedCorners(round));
-
-        Glide.with(context)
-                .load(id)
-                .apply(requestOptions)
-                .into(imageView);
-
-    }
 
     /**
-     * 圆角图片
+     * 添加圆角
      *
      * @param context
      * @param url
      * @param imageView
-     * @param round
      */
-    public static void setImageWithRound(Context context, String url, final ImageView
-            imageView, int round) {
+    public void loadWithRound(Context context, String url, ImageView imageView, int round) {
 
 
-        if (!checkContext(context) || TextUtils.isEmpty(url)) {
+        if (check(context, url, imageView)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
             return;
         }
-
-        RequestOptions requestOptions = getRequestOptions().transforms(new CenterCrop(), new
+        RequestOptions requestOptions = getOptions().transforms(new CenterCrop(), new
                 RoundedCorners(round));
-
 
         Glide.with(context)
                 .load(url)
@@ -342,18 +324,225 @@ public class ImageUtils {
     }
 
 
-    private static boolean checkContext(Context context) {
+    //=========== 本地资源 ===========
 
-        if (context instanceof Activity) {
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                return !((Activity) context).isDestroyed();
+    /**
+     * 设置成圆角
+     *
+     * @param context
+     * @param id
+     * @param view
+     */
+    public void setBg(Context context, int id, final View view) {
+
+
+        if (check(context, view)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
+            return;
+        }
+
+        Glide.with(context)
+                .load(id)
+                .apply(getOptions())
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable
+                            Transition<? super Drawable> transition) {
+
+                        if (Build.VERSION.SDK_INT >= 16) {
+                            view.setBackground(resource);
+                        } else {
+                            view.setBackgroundDrawable(resource);
+                        }
+
+                    }
+                });
+    }
+
+
+    /**
+     * 加载图片 最后调用
+     *
+     * @param context
+     * @param id
+     * @param imageView
+     */
+    public void load(Context context, int id, ImageView imageView) {
+
+
+        if (check(context, imageView)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
+            return;
+        }
+
+        Glide.with(context)
+                .load(id)
+                .apply(getOptions())
+                .into(imageView);
+
+
+    }
+
+
+    /**
+     * 添加圆角
+     *
+     * @param context
+     * @param id
+     * @param imageView
+     */
+    public void loadWithRound(Context context, int id, ImageView imageView, int round) {
+
+
+        if (check(context, imageView)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
+            return;
+        }
+        RequestOptions requestOptions = getOptions().transforms(new CenterCrop(), new
+                RoundedCorners(round));
+
+        Glide.with(context)
+                .load(id)
+                .apply(requestOptions)
+                .into(imageView);
+
+    }
+
+
+    //=========== 保存图片 ===========
+
+
+    /**
+     * 保存图片到图库
+     *
+     * @param url
+     * @param savaListener
+     */
+    public void saveToGallery(final String url, final ImageSavaListener savaListener) {
+
+        if (check(url)) {
+            return;
+        }
+
+        String name = System.currentTimeMillis() + ".jpg";
+
+        saveToGallery(url, name, savaListener);
+
+    }
+
+    /**
+     * 保存图片到图库
+     *
+     * @param url
+     * @param imgName
+     * @param savaListener
+     */
+    public void saveToGallery(final String url, final String imgName, final ImageSavaListener
+            savaListener) {
+
+        if (check(url)) {
+            return;
+        }
+
+        ThreadUtil.runOnChildThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    FutureTarget<Bitmap> submit = Glide.with(HydraUtilsManager.getInstance()
+                            .getContext())
+                            .asBitmap()
+                            .load(url)
+                            .submit();
+
+                    final Bitmap bitmap = submit.get();
+
+                    saveBitmapToGallery(bitmap, imgName, savaListener);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    /**
+     * 保存biemap到图库
+     *
+     * @param bitmap
+     * @param savaListener
+     */
+    public void saveBitmapToGallery(Bitmap bitmap, ImageSavaListener savaListener) {
+
+        if (bitmap == null) {
+            return;
+        }
+
+        String name = System.currentTimeMillis() + ".jpg";
+
+        saveBitmapToGallery(bitmap, name, savaListener);
+
+    }
+
+
+    /**
+     * 保存biemap到图库
+     *
+     * @param bitmap
+     * @param imgName
+     * @param savaListener
+     */
+    public void saveBitmapToGallery(Bitmap bitmap, String imgName, final ImageSavaListener
+            savaListener) {
+
+
+        File path = new File(Environment.getExternalStorageDirectory().getPath() +
+                "/" + APPInfoUtil.getPackageNameLast());
+        if (!path.exists()) {
+            path.mkdirs();
+        }
+
+        final File imgFile = new File(path, imgName);
+
+        FileOutputStream out;
+        try {
+            out = new FileOutputStream(imgFile);
+            // 格式为 JPEG，照相机拍出的图片为JPEG格式的，PNG格式的不能显示在相册中
+            if (bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)) {
+                out.flush();
+                out.close();
+                // 插入图库
+//                MediaStore.Images.Media.insertImage(context.getContentResolver(), imgFile
+//                        .getAbsolutePath(), imgFile.getName(), null);
+                // 发送广播，通知刷新图库的显示
+                HydraUtilsManager.getInstance().getContext().sendBroadcast(new Intent(Intent
+                        .ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse
+                        ("file://" + imgFile.getAbsolutePath())));
+
+                if (savaListener != null) {
+                    ThreadUtil.runOnMainThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            savaListener.onSuccess(imgFile);
+                        }
+                    });
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (savaListener != null) {
+
+                ThreadUtil.runOnMainThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        savaListener.onFail("sava erro");
+                    }
+                });
             }
 
-            return !((Activity) context).isFinishing();
-        } else {
-            return context != null;
         }
     }
+
 
 }

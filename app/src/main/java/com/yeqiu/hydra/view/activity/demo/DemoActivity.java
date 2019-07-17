@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.view.activity;
+package com.yeqiu.hydra.view.activity.demo;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -9,10 +9,11 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yeqiu.hydra.R;
+import com.yeqiu.hydra.Test;
 import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
-import com.yeqiu.hydra.view.activity.utils.KeyBordUtilsActivity;
-import com.yeqiu.hydra.view.activity.utils.StringUtilsActivity;
-import com.yeqiu.hydra.view.activity.utils.TextToolActivity;
+import com.yeqiu.hydra.view.activity.BaseActivity;
+import com.yeqiu.hydra.view.activity.demo.sticky.CoordinatorStickyActivity;
+import com.yeqiu.hydra.view.activity.demo.sticky.StickyHeadActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.List;
  * @describe：
  * @fix：
  */
-public class UtilsActivity extends BaseActivity {
+public class DemoActivity extends BaseActivity {
 
     private RecyclerView rvDemo;
 
@@ -35,7 +36,7 @@ public class UtilsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("工具类");
+        setHeaderTitle("一些Demo");
         rvDemo = (RecyclerView) findViewById(R.id.rv_demo);
         rvDemo.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -44,14 +45,17 @@ public class UtilsActivity extends BaseActivity {
     protected void initData() {
 
         final List<ModelHaydraItem> datas = new ArrayList<>();
-        datas.add(new ModelHaydraItem("StringUtils的使用", StringUtilsActivity.class));
-        datas.add(new ModelHaydraItem("键盘开启关闭的监听", KeyBordUtilsActivity.class));
-        datas.add(new ModelHaydraItem("TextTool的使用", TextToolActivity.class));
+        datas.add(new ModelHaydraItem("简单实现悬浮", StickyHeadActivity.class));
+        datas.add(new ModelHaydraItem("CoordinatorLayout实现悬浮", CoordinatorStickyActivity.class));
+        datas.add(new ModelHaydraItem("滑动渐变显示标题栏", TitlebarGradientActivity.class));
+        datas.add(new ModelHaydraItem("列表中使用checkbox", CheckboxListActivity.class));
+        // TODO: 2019/7/17
+        datas.add(new ModelHaydraItem("网易云音乐引导页效果", Test.class));
+        datas.add(new ModelHaydraItem("RecyclerView双列表联动", Test.class));
+        datas.add(new ModelHaydraItem("截图", Test.class));
 
 
-
-       DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky,
-               datas);
+        DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky, datas);
         rvDemo.setAdapter(demoAdapter);
 
         demoAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -85,5 +89,5 @@ public class UtilsActivity extends BaseActivity {
         }
     }
 
-}
 
+}

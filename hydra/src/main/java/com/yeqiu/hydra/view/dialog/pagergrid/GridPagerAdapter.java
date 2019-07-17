@@ -79,9 +79,9 @@ public class GridPagerAdapter extends BaseAdapter {
         ListData item = getItem(position);
 
         if (TextUtils.isEmpty(item.getIcon())) {
-            ImageUtils.setSimpleImage(parent.getContext(), item.getIconId(), holder.ivGridPager);
+            new ImageUtils().load(parent.getContext(), item.getIconId(), holder.ivGridPager);
         } else {
-            ImageUtils.setSimpleImage(parent.getContext(), item.getIcon(), holder.ivGridPager);
+            new ImageUtils().load(parent.getContext(), item.getIcon(), holder.ivGridPager);
         }
 
         holder.tvGridPager.setText(item.getTitle());

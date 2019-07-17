@@ -16,6 +16,7 @@ public class Test extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkbox_list);
+        setContentView(R.layout.activity_image_utils);
+
     }
 }

@@ -52,8 +52,9 @@ public class HailHaydraAdapter extends RecyclerView.Adapter<HailHaydraAdapter.Vi
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final ModelHaydraItem modelHaydraItem = data.get(position);
 
+        new ImageUtils().setOptions(ImageUtils.centerCrop)
+                .load(context,modelHaydraItem.getImage(), holder.ivItemHaydraIcon);
 
-        ImageUtils.setImageWithCenerCrop(context,modelHaydraItem.getImage(), holder.ivItemHaydraIcon);
 
         holder.tvItemHaydraName.setText(modelHaydraItem.getName());
 

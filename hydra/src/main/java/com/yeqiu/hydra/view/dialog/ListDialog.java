@@ -207,7 +207,8 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
             if (TextUtils.isEmpty(item.getIcon())) {
                 holder.ivIcon.setVisibility(View.GONE);
             } else {
-                ImageUtils.setSimpleImage(getContext(), item.getIcon(), holder.ivIcon);
+
+                new ImageUtils().load(getContext(), item.getIcon(), holder.ivIcon);
             }
 
             holder.tvTitle.setText(item.getTitle());
