@@ -49,7 +49,10 @@ public class DemoActivity extends BaseActivity {
         datas.add(new ModelHaydraItem("滑动渐变显示标题栏", TitlebarGradientActivity.class));
         datas.add(new ModelHaydraItem("列表中使用checkbox", CheckboxListActivity.class));
         datas.add(new ModelHaydraItem("截图", ScreenshotActivity.class));
-
+        // TODO: 2019/7/17
+        datas.add(new ModelHaydraItem("popupView", ScreenshotActivity.class));
+        datas.add(new ModelHaydraItem("快速索引列表", ScreenshotActivity.class));
+        datas.add(new ModelHaydraItem("震动", ScreenshotActivity.class));
 
         DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky, datas);
         rvDemo.setAdapter(demoAdapter);

@@ -202,7 +202,7 @@ public class DialogActivity extends BaseActivity {
 
                         .setTitleText("啦啦啦啦")
                         .setListDatas(data)
-                        .setListMaxHeightWhitItem(5)
+                        .setListMaxHeightWhitItem(3)
                         .setOnDialogListener(new DialogListener() {
                             @Override
                             public void onItemClick(int position, String text) {

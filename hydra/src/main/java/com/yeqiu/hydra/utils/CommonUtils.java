@@ -37,9 +37,11 @@ public class CommonUtils {
             List<T> subList = list.subList(i * len, ((i + 1) * len > size ? size : len * (i + 1)));
             result.add(subList);
         }
-
         return result;
-
     }
+
+
+
+
 
 }

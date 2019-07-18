@@ -6,15 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.LruCache;
 import android.view.View;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.constant.Url;
 import com.yeqiu.hydra.utils.JumpUtils;
@@ -22,8 +18,6 @@ import com.yeqiu.hydra.utils.ScreenUtils;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @project：HailHydra
@@ -37,8 +31,7 @@ public class ScreenshotActivity extends BaseActivity {
     TextView tvScreenshotWebView;
     TextView tvScreenshotScreen;
     TextView tvScreenshotView;
-    TextView tvScreenshotList;
-    RecyclerView rvScreenshot;
+
 
     @Override
     protected Object getContentView() {
@@ -51,9 +44,7 @@ public class ScreenshotActivity extends BaseActivity {
         tvScreenshotWebView = (TextView) findViewById(R.id.tv_screenshot_web_view);
         tvScreenshotScreen = (TextView) findViewById(R.id.tv_screenshot_screen);
         tvScreenshotView = (TextView) findViewById(R.id.tv_screenshot_view);
-        tvScreenshotList = (TextView) findViewById(R.id.tv_screenshot_list);
-        rvScreenshot = (RecyclerView) findViewById(R.id.rv_screenshot);
-        rvScreenshot.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
     }
 
@@ -61,14 +52,7 @@ public class ScreenshotActivity extends BaseActivity {
     protected void initData() {
 
 
-        List<String> datas = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            datas.add("测试数据 " + i);
-        }
-
-        SimpleAdapter simpleAdapter = new SimpleAdapter(R.layout.item_sticky, datas);
-        rvScreenshot.setAdapter(simpleAdapter);
-
+        
 
     }
 
@@ -77,7 +61,7 @@ public class ScreenshotActivity extends BaseActivity {
         tvScreenshotWebView.setOnClickListener(this);
         tvScreenshotScreen.setOnClickListener(this);
         tvScreenshotView.setOnClickListener(this);
-        tvScreenshotList.setOnClickListener(this);
+
 
     }
 
@@ -93,9 +77,7 @@ public class ScreenshotActivity extends BaseActivity {
             case R.id.tv_screenshot_view:
                 viewScreenshot();
                 break;
-            case R.id.tv_screenshot_list:
-                listScreenshot();
-                break;
+
 
             default:
                 break;
@@ -138,14 +120,6 @@ public class ScreenshotActivity extends BaseActivity {
     }
 
 
-    private void listScreenshot() {
-
-
-        Bitmap bitmap = shotRecyclerView(rvScreenshot);
-        Intent intenWithBitMp = getIntenWithBitMp(bitmap);
-        JumpUtils.jumpToActivityByIntent(intenWithBitMp);
-
-    }
 
 
     public static Bitmap shotRecyclerView(RecyclerView view) {
@@ -162,7 +136,8 @@ public class ScreenshotActivity extends BaseActivity {
             final int cacheSize = maxMemory / 8;
             LruCache<String, Bitmap> bitmaCache = new LruCache<>(cacheSize);
             for (int i = 0; i < size; i++) {
-                RecyclerView.ViewHolder holder = adapter.createViewHolder(view, adapter.getItemViewType(i));
+                RecyclerView.ViewHolder holder = adapter.createViewHolder(view, adapter
+                        .getItemViewType(i));
                 adapter.onBindViewHolder(holder, i);
                 holder.itemView.measure(
                         View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY),
@@ -179,7 +154,8 @@ public class ScreenshotActivity extends BaseActivity {
                 height += holder.itemView.getMeasuredHeight();
             }
 
-            bigBitmap = Bitmap.createBitmap(view.getMeasuredWidth(), height, Bitmap.Config.ARGB_8888);
+            bigBitmap = Bitmap.createBitmap(view.getMeasuredWidth(), height, Bitmap.Config
+                    .ARGB_8888);
             Canvas bigCanvas = new Canvas(bigBitmap);
             Drawable lBackground = view.getBackground();
             if (lBackground instanceof ColorDrawable) {
@@ -197,8 +173,6 @@ public class ScreenshotActivity extends BaseActivity {
         }
         return bigBitmap;
     }
-
-
 
 
     /**
@@ -219,17 +193,5 @@ public class ScreenshotActivity extends BaseActivity {
     }
 
 
-    class SimpleAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
-
-        public SimpleAdapter(int layoutResId, @Nullable List<String> data) {
-            super(layoutResId, data);
-        }
-
-        @Override
-        protected void convert(BaseViewHolder helper, String item) {
-
-            helper.setText(R.id.tv_item_sticky, item);
-        }
-    }
 
 }

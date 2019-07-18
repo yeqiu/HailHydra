@@ -201,7 +201,7 @@ public class DialogActivity extends BaseActivity {
                         .setTitleText("啦啦啦啦")
                         .setListDatas(data)
                         .setBackImg(R.drawable.head_back_gray)
-                        .setListMaxHeightWhitItem(5)
+                        .setListMaxHeightWhitItem(3)
                         .setOnDialogListener(new DialogListener() {
                             @Override
                             public void onItemClick(int position, String text) {

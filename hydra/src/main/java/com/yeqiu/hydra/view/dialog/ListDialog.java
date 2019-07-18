@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.utils.image.ImageUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydra.view.dialog.bean.ListData;
@@ -29,7 +30,8 @@ import java.util.List;
  * @describe：
  * @fix：
  */
-public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterView.OnItemClickListener, View
+public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterView
+        .OnItemClickListener, View
         .OnClickListener {
 
     private ImageView ivBack;
@@ -40,7 +42,6 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
     private int listFootViewId = -1;
     private int backImg = R.drawable.head_back_gray;
     private List<ListData> listDatas;
-
 
 
     public ListDialog(Activity context) {
@@ -82,44 +83,15 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
 
         if (getListHeight() != -1) {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup
-                    .LayoutParams.MATCH_PARENT,getListHeight());
+                    .LayoutParams.MATCH_PARENT, getListHeight());
             lvList.setLayoutParams(layoutParams);
         }
 
 
         if (getListMaxHeightWhitItem() != -1) {
-            setListViewHeight(getListMaxHeightWhitItem());
+            ViewUtils.setListViewHeightWhitItem(lvList, getListMaxHeightWhitItem());
         }
 
-
-    }
-
-    /**
-     * 根据最多显示item设置list的高度
-     *
-     * @param listMaxHeightWhitItem
-     */
-    private void setListViewHeight(int listMaxHeightWhitItem) {
-
-        android.widget.ListAdapter listAdapter = lvList.getAdapter();
-        if (listAdapter == null) {
-            return;
-        }
-        //获取其中的一项
-        View itemView = listAdapter.getView(0, null, lvList);
-        //进行这一项的测量，为什么加这一步，具体分析可以参考 https://www.jianshu.com/p/dbd6afb2c890这篇文章
-        itemView.measure(0, 0);
-        int itemHeight = itemView.getMeasuredHeight();
-        int itemCount = listAdapter.getCount();
-        LinearLayout.LayoutParams layoutParams = null;
-        if (itemCount <= listMaxHeightWhitItem) {
-            layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    itemHeight * itemCount);
-        } else if (itemCount > listMaxHeightWhitItem) {
-            layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    itemHeight * listMaxHeightWhitItem);
-        }
-        lvList.setLayoutParams(layoutParams);
 
     }
 
