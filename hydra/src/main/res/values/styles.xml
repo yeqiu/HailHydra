@@ -31,13 +31,25 @@
     </style>
 
 
+
+
+
+
     <style name="TipDialog" parent="android:Theme.Dialog">
+        <!-- Dialog的windowFrame框为无-->
         <item name="android:windowFrame">@null</item>
+        <!-- 是否显示title-->
         <item name="android:windowNoTitle">true</item>
+        <!-- 显示区域背景是否透明-->
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 显示区域以外是否使用黑色半透明背景-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 是否浮现在activity之上-->
         <item name="android:windowIsFloating">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+        <!-- 是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--控制灰度的值，当为1时，界面除了dialog内容是高亮显示的，dialog以外的区域是黑色的，完全看不到其他内容-->
+        <item name="android:backgroundDimAmount">0.3</item>
     </style>
 
 
@@ -48,14 +60,14 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:background">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.4</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimAmount">0.5</item>
+
     </style>
 
 
     <style name="sheet_dialog" parent="android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:backgroundDimEnabled">true</item>

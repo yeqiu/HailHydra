@@ -34,53 +34,133 @@ public class SharedUtil {
     }
 
 
-    public int getInt(String key, int def) {
-        try {
-            SharedPreferences sp = getSp();
-            if (sp != null)
-                def = sp.getInt(key, def);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return def;
+    /**
+     * apply方法是将share的修改提交到内存而后异步写入磁盘，
+     * 但是commit是直接写入磁盘，这就造成两者性能上的差异，
+     * 犹如apply不直接写入磁盘而share本身是单例创建，
+     * apply方法会覆写之前内存中的值，异步写入磁盘的值只是最后的值
+     * 而commit每次都要写入磁盘，而磁盘的写入相对来说是很低效的，
+     * 所以apply方法在频繁调用时要比commit效率高很多
+
+     * @param editor
+     */
+    private void apply(SharedPreferences.Editor editor) {
+
+        editor.apply();
+
     }
 
-    public void putInt(String key, int val) {
-        try {
-            SharedPreferences sp = getSp();
-            if (sp != null) {
-                SharedPreferences.Editor e = sp.edit();
-                e.putInt(key, val);
-                e.commit();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void commit(SharedPreferences.Editor editor) {
+
+        editor.commit();
+
     }
 
-    public long getLong(String key, long def) {
-        try {
-            SharedPreferences sp = getSp();
-            if (sp != null)
-                def = sp.getLong(key, def);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return def;
-    }
+
+    // ==================存储==================
+
 
     public void putLong(String key, long val) {
         try {
             SharedPreferences sp = getSp();
             if (sp != null) {
-                SharedPreferences.Editor e = sp.edit();
-                e.putLong(key, val);
-                e.commit();
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putLong(key, val);
+                apply(editor);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+    public void putString(String key, String val) {
+        try {
+            SharedPreferences sp = getSp();
+            if (sp != null) {
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString(key, val);
+                apply(editor);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void putFloat(String key, float val) {
+        try {
+            SharedPreferences sp = getSp();
+            if (sp != null) {
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putFloat(key, val);
+                apply(editor);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void putBoolean(String key, boolean val) {
+        try {
+            SharedPreferences sp = getSp();
+            if (sp != null) {
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putBoolean(key, val);
+                apply(editor);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void putInt(String key, int val) {
+        try {
+            SharedPreferences sp = getSp();
+            if (sp != null) {
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putInt(key, val);
+                apply(editor);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // ==================取出==================
+
+
+    public int getInt(String key, int def) {
+        try {
+            SharedPreferences sp = getSp();
+            if (sp != null) {
+                def = sp.getInt(key, def);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return def;
+    }
+
+
+    public long getLong(String key, long def) {
+        try {
+            SharedPreferences sp = getSp();
+            if (sp != null) {
+                def = sp.getLong(key, def);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return def;
+    }
+
 
     public String getString(String key, String def) {
         try {
@@ -94,29 +174,19 @@ public class SharedUtil {
         return def;
     }
 
-    public void putString(String key, String val) {
-        try {
-            SharedPreferences sp = getSp();
-            if (sp != null) {
-                SharedPreferences.Editor e = sp.edit();
-                e.putString(key, val);
-                e.commit();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public boolean getBoolean(String key, boolean def) {
         try {
             SharedPreferences sp = getSp();
-            if (sp != null)
+            if (sp != null) {
                 def = sp.getBoolean(key, def);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return def;
     }
+
 
     public float getFloat(String key, float def) {
         try {
@@ -130,33 +200,12 @@ public class SharedUtil {
         return def;
     }
 
-    public void putFloat(String key, float val) {
-        try {
-            SharedPreferences sp = getSp();
-            if (sp != null) {
-                SharedPreferences.Editor edit = sp.edit();
-                edit.putFloat(key, val);
-                edit.commit();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    public void putBoolean(String key, boolean val) {
-        try {
-            SharedPreferences sp = getSp();
-            if (sp != null) {
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putBoolean(key, val);
-                editor.commit();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
+    /**
+     * 删除 key
+     *
+     * @param key
+     */
     public void remove(String key) {
 
         try {
@@ -164,7 +213,7 @@ public class SharedUtil {
             if (sp != null) {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.remove(key);
-                editor.commit();
+                apply(editor);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -172,17 +221,21 @@ public class SharedUtil {
     }
 
 
+    /**
+     * 清空
+     */
     public void clear() {
 
         try {
             SharedPreferences sp = getSp();
             SharedPreferences.Editor editor = sp.edit();
             editor.clear();
-            editor.commit();
+            apply(editor);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
+
 
 }

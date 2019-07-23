@@ -50,6 +50,8 @@ public class DemoActivity extends BaseActivity {
         datas.add(new ModelHaydraItem("列表中使用checkbox", CheckboxListActivity.class));
         datas.add(new ModelHaydraItem("截图", ScreenshotActivity.class));
         // TODO: 2019/7/17
+        datas.add(new ModelHaydraItem("RecyclerView拖曳排序,滑动删除",RecyclerViewActivity.class));
+        datas.add(new ModelHaydraItem("RecyclerView实现轮播",BannerActivity.class));
         datas.add(new ModelHaydraItem("popupView", ScreenshotActivity.class));
         datas.add(new ModelHaydraItem("快速索引列表", ScreenshotActivity.class));
         datas.add(new ModelHaydraItem("震动", ScreenshotActivity.class));

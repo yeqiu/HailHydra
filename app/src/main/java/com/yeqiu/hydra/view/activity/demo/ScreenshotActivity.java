@@ -52,7 +52,7 @@ public class ScreenshotActivity extends BaseActivity {
     protected void initData() {
 
 
-        
+
 
     }
 

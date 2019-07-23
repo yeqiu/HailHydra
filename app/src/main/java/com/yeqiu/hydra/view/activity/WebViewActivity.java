@@ -38,4 +38,7 @@ public class WebViewActivity extends BaseWebActivity {
             JumpUtils.jumpToBrowserActivity(url);
         }
     }
+
+
+
 }

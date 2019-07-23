@@ -1,15 +1,150 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#11ff0000"
+    tools:context=".test.ConstraintLayoutTest">
 
 
-    <ImageView
-        android:id="@+id/iv_test"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/icon_head_hydra_5"
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/color_b9b9b9"
+        android:gravity="center"
+        android:text="Banner"
+        app:layout_constraintDimensionRatio="H,16:4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="140dp"
+        android:layout_height="86dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:background="#fd3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/banner"
         />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="12dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="text,text,text,text,text,text,text,text,text,text,text,text,text,text,text,text,text,text,text,text,"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toRightOf="@id/tv1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv1"/>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:text="8分钟前"
+        android:textColor="#333"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv1"
+        app:layout_constraintLeft_toRightOf="@id/tv1"/>
+
+
+
+    <TextView
+        android:id="@+id/tab1"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="#f67"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:text="Tab1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tab2"/>
+
+
+    <TextView
+        android:id="@+id/tab2"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="#A67"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:text="Tab2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toRightOf="@id/tab1"
+        app:layout_constraintRight_toLeftOf="@+id/tab3"/>
+
+
+    <TextView
+        android:id="@+id/tab3"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="#767"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:text="Tab3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toRightOf="@id/tab2"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@color/color_ff2f00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"/>
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"/>
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_w"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"/>
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="#612"
+        app:layout_constraintLeft_toRightOf="@id/guideline_w"
+        app:layout_constraintTop_toBottomOf="@id/guideline_h"/>
+
+
+</android.support.constraint.ConstraintLayout>

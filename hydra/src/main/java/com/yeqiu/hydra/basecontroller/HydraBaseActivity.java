@@ -57,10 +57,10 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         context = this;
-        ///隐藏ActionBar
-        isShowActionBar();
         //添加到activity管理器
         ActivityManager.getAppManager().addActivity(this);
+        ///隐藏ActionBar
+        isShowActionBar();
         setSwipeBackEnable(isSwipeBack());
         init();
 
@@ -81,6 +81,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         }
 
     }
+
 
 
     private void init() {

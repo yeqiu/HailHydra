@@ -72,7 +72,6 @@ public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.alpha = 0.98f;
         window.setAttributes(lp);
         window.setGravity(Gravity.CENTER);
     }

@@ -28,7 +28,6 @@ public class ViewUtils {
         if (adapter == null) {
             return;
         }
-        maxHeightWhitItem = maxHeightWhitItem-1;
         int count = adapter.getCount();
         int height = 0;
         for (int i = 0; i < count; i++) {

@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.yeqiu.hailhaydra.R;
 import com.yeqiu.hailhaydra.adapter.HailHaydraAdapter;
 import com.yeqiu.hailhaydra.bean.Model.ModelHaydraItem;
-import com.yeqiu.hailhaydra.test.TestOne;
+import com.yeqiu.hailhaydra.test.ConstraintLayoutTest;
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.widget.HydraRecyclerViewDivider;
 
@@ -72,7 +72,7 @@ public class HaydraMainActivity extends AppCompatActivity {
         data.add(new ModelHaydraItem(" 网络请求", getRandomId(),NetActivity.class));
 
 
-        startActivity(new Intent(this, TestOne.class));
+        startActivity(new Intent(this, ConstraintLayoutTest.class));
 
     }
 

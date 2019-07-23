@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Stack;
 
 /**
  * @project：HailHydra
@@ -40,10 +39,9 @@ public class ActivityManager {
     }
 
 
-    private void checkActivityManager (){
+    private void checkActivityManager() {
 
-
-        if (activityStack.size() == 0){
+        if (getActivityStack().size() == 0) {
 
             throw new NullPointerException("activityStack的size为0,请检查在base中是否启用ActivityManager");
         }
@@ -54,8 +52,6 @@ public class ActivityManager {
     /**
      * 获取指定index的activity
      * 注：debug模式下如果index不合法会抛出异常
-     * 在调用此方法时请务必做NullCheck
-     *
      * @param index
      * @return
      */
@@ -63,15 +59,16 @@ public class ActivityManager {
 
         checkActivityManager();
 
-        if (index < 0 || index >= activityStack.size()) {
+        if (index < 0 || index >= getActivityStack().size()) {
             //抛出异常
             LogUtils.e("请检查传入的index是否合法");
             throw new IndexOutOfBoundsException("请检查传入的index是否合法,详细内容请打开log查看");
         }
 
-        Activity activity = activityStack.get(index);
+        Activity activity = getActivityStack().get(index);
         return activity;
     }
+
 
     /**
      * 获取栈
@@ -98,7 +95,7 @@ public class ActivityManager {
 
         checkActivityManager();
 
-        for (Activity activity : activityStack) {
+        for (Activity activity : getActivityStack()) {
             if (activity.getClass().equals(clazz)) {
                 return activity;
             }
@@ -119,11 +116,7 @@ public class ActivityManager {
      */
     public void addActivity(Activity activity) {
 
-
-        if (activityStack == null) {
-            activityStack = new Stack<>();
-        }
-        activityStack.add(activity);
+        getActivityStack().add(activity);
 
     }
 
@@ -133,7 +126,7 @@ public class ActivityManager {
     public Activity getCurrentActivity() {
 
         checkActivityManager();
-        return activityStack.get(activityStack.size() - 1);
+        return activityStack.get(getActivityStack().size() - 1);
     }
 
 
@@ -144,7 +137,7 @@ public class ActivityManager {
 
         checkActivityManager();
 
-        Activity activity = activityStack.get(activityStack.size() - 1);
+        Activity activity = getActivityStack().get(getActivityStack().size() - 1);
         finishActivity(activity);
     }
 
@@ -156,9 +149,9 @@ public class ActivityManager {
         checkActivityManager();
 
         activity.finish();
-        if (!activityStack.isEmpty()) {
+        if (!getActivityStack().isEmpty()) {
             if (activity != null) {
-                activityStack.remove(activity);
+                getActivityStack().remove(activity);
             }
         }
     }
@@ -170,7 +163,7 @@ public class ActivityManager {
 
         checkActivityManager();
 
-        Iterator<Activity> iterator = activityStack.iterator();
+        Iterator<Activity> iterator = getActivityStack().iterator();
         while (iterator.hasNext()) {
             Activity next = iterator.next();
             if (next.getClass().equals(cls)) {
@@ -189,13 +182,13 @@ public class ActivityManager {
 
         checkActivityManager();
 
-        Iterator<Activity> iterator = activityStack.iterator();
+        Iterator<Activity> iterator = getActivityStack().iterator();
         while (iterator.hasNext()) {
             Activity next = iterator.next();
             next.finish();
             iterator.remove();
         }
-        activityStack.clear();
+        getActivityStack().clear();
     }
 
     /**
@@ -205,7 +198,7 @@ public class ActivityManager {
 
         checkActivityManager();
 
-        Iterator<Activity> iterator = activityStack.iterator();
+        Iterator<Activity> iterator = getActivityStack().iterator();
 
         while (iterator.hasNext()) {
 
@@ -228,7 +221,7 @@ public class ActivityManager {
 
         ListIterator<Activity> listIterator;
 
-        for (listIterator = activityStack.listIterator(); listIterator.hasNext(); ) {
+        for (listIterator = getActivityStack().listIterator(); listIterator.hasNext(); ) {
             // 将游标定位到列表结尾
             listIterator.next();
         }

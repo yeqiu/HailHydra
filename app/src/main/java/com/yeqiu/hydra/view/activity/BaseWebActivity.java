@@ -31,6 +31,7 @@ public abstract class BaseWebActivity extends BaseActivity {
     protected String url;
     protected String title;
 
+
     @Override
     protected Object getContentView() {
 
@@ -224,6 +225,7 @@ public abstract class BaseWebActivity extends BaseActivity {
     }
 
     protected abstract void otherSetting();
+
 
 
 }
