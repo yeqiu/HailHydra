@@ -1,9 +1,7 @@
 package com.yeqiu.hydra.view.adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +15,9 @@ import com.yeqiu.hydra.utils.image.ImageUtils;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 /**
  * @project：HailHydra
@@ -28,10 +29,10 @@ import java.util.List;
 public class HailHaydraAdapter extends RecyclerView.Adapter<HailHaydraAdapter.ViewHolder> {
 
 
-    private Context context;
+    private Activity context;
     private List<ModelHaydraItem> data;
 
-    public HailHaydraAdapter(Context context, List<ModelHaydraItem> data) {
+    public HailHaydraAdapter(Activity context, List<ModelHaydraItem> data) {
         this.context = context;
         this.data = data;
     }
@@ -42,7 +43,6 @@ public class HailHaydraAdapter extends RecyclerView.Adapter<HailHaydraAdapter.Vi
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout
                 .item_recyclerview_hail_haydra, parent, false);
-        context = view.getContext();
 
         return new ViewHolder(view);
 
@@ -62,6 +62,13 @@ public class HailHaydraAdapter extends RecyclerView.Adapter<HailHaydraAdapter.Vi
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context, modelHaydraItem.getActivity()));
+
+
+//                Intent intent = new Intent(context, modelHaydraItem.getActivity());
+//
+//                JumpUtils.jumpToActivityByIntent(intent);
+
+
             }
         });
 

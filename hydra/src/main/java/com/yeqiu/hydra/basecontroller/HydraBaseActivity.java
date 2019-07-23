@@ -2,7 +2,6 @@ package com.yeqiu.hydra.basecontroller;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,7 @@ import com.yeqiu.hydrautils.R;
 
 import org.greenrobot.eventbus.EventBus;
 
+import androidx.annotation.Nullable;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
@@ -40,7 +40,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     protected LinearLayout llBaseRoot;
     protected StatusLayout statusLayout;
-    protected LinearLayout headLayoutRoot;
+    protected LinearLayout llHeadLayoutRoot;
     protected ImageView ivHeadBack;
     protected TextView tvHeadClose;
     protected TextView headerTitle;
@@ -105,7 +105,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * 标题栏中包括 返回 标题 右侧文字
      */
     private void initHead() {
-        headLayoutRoot = (LinearLayout) findViewById(R.id.ll_common_header_root);
+        llHeadLayoutRoot = (LinearLayout) findViewById(R.id.ll_common_header_root);
         ivHeadBack = (ImageView) findViewById(R.id.iv_common_head_back);
         tvHeadClose = (TextView) findViewById(R.id.tv_common_head_close);
         headerTitle = (TextView) findViewById(R.id.tv_common_head_title);
@@ -137,7 +137,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         View statusBarView = new View(getContext());
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ScreenUtils.getStatusHeight());
-        statusBarView.setBackgroundColor(getResources().getColor(R.color.color_white));
+        statusBarView.setBackgroundColor(ResourceUtil.getColor(colorId));
 
         llBaseRoot.addView(statusBarView, 0, lp);
 
@@ -155,7 +155,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
                     .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION);
             imersionBar.init();
 
-            setStatusBarDarkFont(true);
+            setStatusBarDarkFont(isStatusBarDarkFont());
         }
     }
 
@@ -258,7 +258,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * @param backSrcId
      */
     protected void setHeadLayoutColor(int colorId, int backSrcId) {
-        headLayoutRoot.setBackgroundColor(getResources().getColor(colorId));
+        llHeadLayoutRoot.setBackgroundColor(getResources().getColor(colorId));
         ivHeadBack.setImageResource(backSrcId);
     }
 
@@ -288,7 +288,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * 3:wifi网络
      * 4:移动数据连接
      */
-    private int getNetStatus() {
+    protected int getNetStatus() {
         return NetWorkUtils.getNetworkType();
     }
 
@@ -300,6 +300,16 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected boolean isImmersionBarEnabled() {
         return true;
     }
+
+
+    /**
+     * 状态栏是否设置深色
+     * @return
+     */
+    protected boolean isStatusBarDarkFont(){
+        return true;
+    }
+
 
     /**
      * 是否注册EventBus
@@ -326,7 +336,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      *
      * @return
      */
-    public Activity getContext() {
+    protected Activity getContext() {
         return context;
     }
 
@@ -344,10 +354,10 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * 设置head的标题
      * 自动显示标题栏
      */
-    public void setHeaderTitle(String title) {
+    protected void setHeaderTitle(String title) {
 
         if (!TextUtils.isEmpty(title)) {
-            headLayoutRoot.setVisibility(View.VISIBLE);
+            llHeadLayoutRoot.setVisibility(View.VISIBLE);
             headerTitle.setText(title);
         }
 
@@ -358,7 +368,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      *
      * @param bakImg
      */
-    public void setHeadBackImg(int bakImg) {
+    protected void setHeadBackImg(int bakImg) {
 
 
         ivHeadBack.setImageResource(bakImg);
@@ -367,7 +377,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     /**
      * 显示标题栏右侧图片
      */
-    public void showHeaderRightImageview(int imaId) {
+    protected void showHeaderRightImageview(int imaId) {
         ivheaderRight.setVisibility(View.VISIBLE);
         ivheaderRight.setImageResource(imaId);
     }
@@ -375,7 +385,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     /**
      * 显示标题栏右侧文字
      */
-    public void showHeaderRightTextview(String headTitle) {
+    protected void showHeaderRightTextview(String headTitle) {
         tvheaderRight.setVisibility(View.VISIBLE);
         tvheaderRight.setText(headTitle);
 
@@ -384,7 +394,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     /**
      * 隐藏head底部的横线
      */
-    public void hideHeadLine() {
+    protected void hideHeadLine() {
         headLine.setVisibility(View.GONE);
     }
 
@@ -393,8 +403,8 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      *
      * @param show
      */
-    public void showHeadLayout(boolean show) {
-        headLayoutRoot.setVisibility(show ? View.VISIBLE : View.GONE);
+    protected void showHeadLayout(boolean show) {
+        llHeadLayoutRoot.setVisibility(show ? View.VISIBLE : View.GONE);
 
     }
 
@@ -404,7 +414,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      *
      * @param f
      */
-    public void backgroundAlpha(float f) {
+    protected void backgroundAlpha(float f) {
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.alpha = f;
         getWindow().setAttributes(lp);
@@ -414,7 +424,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     /**
      * 是否有网络
      */
-    public boolean hasNet() {
+    protected boolean hasNet() {
         return NetWorkUtils.hasNetwork(this);
     }
 

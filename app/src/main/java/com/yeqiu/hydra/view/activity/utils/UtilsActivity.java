@@ -1,9 +1,6 @@
 package com.yeqiu.hydra.view.activity.utils;
 
 import android.content.Intent;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -14,6 +11,10 @@ import com.yeqiu.hydra.view.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @project：HailHydra
@@ -46,8 +47,7 @@ public class UtilsActivity extends BaseActivity {
         datas.add(new ModelHaydraItem("键盘开启关闭的监听", KeyBordUtilsActivity.class));
         datas.add(new ModelHaydraItem("TextTool的使用", TextToolActivity.class));
         datas.add(new ModelHaydraItem("ImageUtils的使用", ImageUtilsActivity.class));
-        // TODO: 2019/7/17  
-        datas.add(new ModelHaydraItem("二维码", ImageUtilsActivity.class));
+
 
 
         DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky,
