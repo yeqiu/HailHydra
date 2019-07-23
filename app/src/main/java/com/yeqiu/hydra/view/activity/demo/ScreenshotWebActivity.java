@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Picture;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.webkit.WebView;
 
 import com.yeqiu.hydra.utils.JumpUtils;

@@ -3,7 +3,7 @@ package com.yeqiu.hydra.utils;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 
 import com.yeqiu.hydra.HydraUtilsManager;
 

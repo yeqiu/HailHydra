@@ -1,7 +1,7 @@
 package com.yeqiu.hydra.ui;
 
 import android.os.CountDownTimer;
-import android.support.annotation.CheckResult;
+import androidx.annotation.CheckResult;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.utils.ResourceUtil;

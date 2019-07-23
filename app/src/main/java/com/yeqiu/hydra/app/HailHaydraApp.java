@@ -1,6 +1,6 @@
 package com.yeqiu.hydra.app;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 /**
  * @project：HailHydra

@@ -11,7 +11,7 @@ import android.util.AttributeSet;
  * @describe：
  * @fix：
  */
-public class MarqueeTextView extends android.support.v7.widget.AppCompatTextView {
+public class MarqueeTextView extends androidx.appcompat.widget.AppCompatTextView {
 
     public MarqueeTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

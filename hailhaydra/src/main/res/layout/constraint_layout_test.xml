@@ -1,4 +1,4 @@
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
@@ -20,7 +20,7 @@
 
     <!-- constraint_referenced_ids包含我们需要包含的组件，以这些组件的某一侧为基准 -->
     <!-- barrierDirection面向包含的组件 -->
-    <android.support.constraint.Barrier
+    <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -53,4 +53,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

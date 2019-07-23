@@ -1,7 +1,7 @@
 package com.yeqiu.hydra.view.activity;
 
 import android.Manifest;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 

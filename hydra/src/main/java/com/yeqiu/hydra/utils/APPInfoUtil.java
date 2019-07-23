@@ -1,7 +1,6 @@
 package com.yeqiu.hydra.utils;
 
 import android.app.ActivityManager;
-import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -9,14 +8,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.app.NotificationManagerCompat;
+import androidx.core.app.NotificationManagerCompat;
 import android.text.TextUtils;
 
 import com.yeqiu.hydra.HydraUtilsManager;
 
 import java.io.DataOutputStream;
 import java.io.File;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
 
