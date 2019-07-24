@@ -3,7 +3,7 @@ package com.yeqiu.hydra.view.activity;
 import android.text.TextUtils;
 
 import com.yeqiu.hydra.utils.JumpUtils;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 
 /**
  * @project：HailHydra
@@ -21,7 +21,7 @@ public class WebViewActivity extends BaseWebActivity {
         if (TextUtils.isEmpty(url)) {
             url = "https://github.com/yeqiu/HailHydra";
             String hint = "url可通过  intent.putExtra(\"url\", url); ";
-            UIHelper.showToast(hint);
+            ToastUtils.showToast(hint);
         }
 
 

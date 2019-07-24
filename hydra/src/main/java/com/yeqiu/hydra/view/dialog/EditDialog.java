@@ -12,7 +12,7 @@ import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
 /**
- * @project：Xbzd
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/5/2
  * @describe：带输入框的dailog

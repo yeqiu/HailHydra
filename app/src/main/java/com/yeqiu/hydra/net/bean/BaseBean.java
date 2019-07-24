@@ -3,7 +3,7 @@ package com.yeqiu.hydra.net.bean;
 import java.io.Serializable;
 
 /**
- * @project：Xbzd
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/4/16 下午2:38
  * @describe：data为null

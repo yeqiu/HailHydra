@@ -8,7 +8,7 @@ import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 
 /**
- * @project：Xbzd
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/4/16
  * @describe：log工具类

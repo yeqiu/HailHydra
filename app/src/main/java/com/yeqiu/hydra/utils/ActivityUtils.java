@@ -7,7 +7,7 @@ import com.yeqiu.hydra.view.activity.MainActivity;
 
 
 /**
- * @project：jinjuyunchuang
+ * @project：HailHydra
  * @author：小卷子
  * @date 2019/06/26
  * @describe：activity 跳转

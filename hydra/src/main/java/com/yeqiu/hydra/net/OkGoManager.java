@@ -8,7 +8,7 @@ import com.lzy.okgo.model.HttpParams;
 import com.yeqiu.hydra.net.callback.jsoncallback.JsonCallback;
 
 /**
- * @project：android_tools
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/4/16 上午10:17
  * @describe：

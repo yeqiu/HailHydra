@@ -38,7 +38,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
- * @project：Xbzd
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/4/14
  * @describe：图片加载框架
@@ -406,8 +406,6 @@ public class ImageUtils {
             return;
         }
 
-
-
         ProgressInterceptor.addListener(url, progressListener);
 
         GlideApp.with(context)
@@ -439,8 +437,6 @@ public class ImageUtils {
 
                     }
                 });
-
-
     }
 
 

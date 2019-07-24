@@ -8,7 +8,7 @@ import com.yeqiu.hydra.utils.ResourceUtil;
 
 
 /**
- * @project：XMGJ
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/10/30
  * @describe：倒计时的textview

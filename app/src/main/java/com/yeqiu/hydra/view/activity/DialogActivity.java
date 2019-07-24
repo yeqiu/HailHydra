@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.view.dialog.BottomDialog;
 import com.yeqiu.hydra.view.dialog.CommonDialog;
 import com.yeqiu.hydra.view.dialog.EditDialog;
@@ -88,13 +88,13 @@ public class DialogActivity extends BaseActivity {
                             @Override
                             public void onConfirmClick() {
                                 super.onConfirmClick();
-                                UIHelper.showToast("确定");
+                                ToastUtils.showToast("确定");
                             }
 
                             @Override
                             public void onCanceclClick() {
                                 super.onCanceclClick();
-                                UIHelper.showToast("取消");
+                                ToastUtils.showToast("取消");
                             }
                         })
                         .show();
@@ -110,7 +110,7 @@ public class DialogActivity extends BaseActivity {
                             @Override
                             public void onConfirmClick() {
                                 super.onConfirmClick();
-                                UIHelper.showToast("确定");
+                                ToastUtils.showToast("确定");
                             }
 
                         })
@@ -127,13 +127,13 @@ public class DialogActivity extends BaseActivity {
                             @Override
                             public void onConfirmClick(String inputText) {
                                 super.onConfirmClick();
-                                UIHelper.showToast(inputText);
+                                ToastUtils.showToast(inputText);
                             }
 
                             @Override
                             public void onCanceclClick(String inputText) {
                                 super.onCanceclClick();
-                                UIHelper.showToast(inputText);
+                                ToastUtils.showToast(inputText);
                             }
 
                             @Override
@@ -159,7 +159,7 @@ public class DialogActivity extends BaseActivity {
                         .setOnDialogListener(new DialogListener() {
                             @Override
                             public void onItemClick(int position, String text) {
-                                UIHelper.showToast(text);
+                                ToastUtils.showToast(text);
                             }
                         })
                         .show();
@@ -206,7 +206,7 @@ public class DialogActivity extends BaseActivity {
                             @Override
                             public void onItemClick(int position, String text) {
                                 super.onItemClick(position, text);
-                                UIHelper.showToast(text);
+                                ToastUtils.showToast(text);
                             }
                         })
                         .show();
@@ -225,7 +225,7 @@ public class DialogActivity extends BaseActivity {
                         .setOnDialogListener(new DialogListener() {
                             @Override
                             public void onItemClick(int position, String text) {
-                                UIHelper.showToast(text);
+                                ToastUtils.showToast(text);
                             }
                         })
                         .show();
@@ -248,7 +248,7 @@ public class DialogActivity extends BaseActivity {
                             @Override
                             public void onItemClick(int position, String text) {
                                 super.onItemClick(position, text);
-                                UIHelper.showToast(data2.get(position).getTitle());
+                                ToastUtils.showToast(data2.get(position).getTitle());
                             }
                         })
                         .show();

@@ -105,6 +105,16 @@ public class UiConfig {
     }
 
 
+    public UiConfig setImgPlaceholder(int imgPlaceholder) {
+        this.imgPlaceholder = imgPlaceholder;
+        return this;
+    }
+
+    public UiConfig setImgError(int imgError) {
+        this.imgError = imgError;
+        return this;
+    }
+
     // ---------------------------------
 
 

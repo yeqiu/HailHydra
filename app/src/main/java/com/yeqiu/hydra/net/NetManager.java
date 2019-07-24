@@ -5,7 +5,7 @@ import com.yeqiu.hydra.net.bean.BaseBean;
 import com.yeqiu.hydra.net.callback.jsoncallback.JsonCallback;
 
 /**
- * @project：Xbzd
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/4/14 下午4:40
  * @describe：网络请求 注：所有在页面中的请求都使用activity做tag 便于页面关闭取消请求

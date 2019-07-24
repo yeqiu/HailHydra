@@ -5,7 +5,7 @@ import com.tencent.mm.opensdk.constants.Build;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 
 
 /**
@@ -94,7 +94,7 @@ public class WXPayUtils {
                              String nonceStr, String timeStamp, String sign) {
 
         if (!checkUserWeChat(context,appKey)) {
-            UIHelper.showToast("请检查是否安装微信或微信版本是否支持支付");
+            ToastUtils.showToast("请检查是否安装微信或微信版本是否支持支付");
             return;
         }
         registerWeChatPay(context,appKey);

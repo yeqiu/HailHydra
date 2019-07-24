@@ -15,10 +15,10 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 
 /**
- * @project：XMGJ
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/10/22
  * @describe：
@@ -121,7 +121,7 @@ public abstract class BaseWebActivity extends BaseActivity {
         if (webView != null) {
             webView.loadUrl(url);
         } else {
-            UIHelper.showToast("加载错误，请退出app后重试");
+            ToastUtils.showToast("加载错误，请退出app后重试");
             finish();
         }
 

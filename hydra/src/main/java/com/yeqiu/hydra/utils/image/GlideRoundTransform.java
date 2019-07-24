@@ -15,7 +15,7 @@ import com.bumptech.glide.load.resource.bitmap.TransformationUtils;
 import java.security.MessageDigest;
 
 /**
- * @project：CarWash
+ * @project：HailHydra
  * @author：小卷子
  * @date 2019/4/16
  * @describe：

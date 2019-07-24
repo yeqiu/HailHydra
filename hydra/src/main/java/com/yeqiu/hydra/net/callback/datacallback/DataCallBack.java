@@ -4,7 +4,7 @@ import android.text.TextUtils;
 
 import com.lzy.okgo.model.Response;
 import com.yeqiu.hydra.net.callback.jsoncallback.JsonCallback;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 
 
 /**
@@ -54,7 +54,7 @@ public abstract class DataCallBack<T> extends JsonCallback<T> {
     public void onError(int code, String msg) {
 
         if (!TextUtils.isEmpty(msg)) {
-            UIHelper.showToast( msg);
+            ToastUtils.showToast( msg);
         }
 
 

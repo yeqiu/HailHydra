@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.utils.KeyBroadListener;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 
 /**
@@ -34,12 +34,12 @@ public class KeyBordUtilsActivity extends BaseActivity {
         keyBroadListener.addKeyboardStateListener(new KeyBroadListener.KeyboardStateListener() {
             @Override
             public void onKeyboardOpened(int keyboardHeightInPx) {
-                UIHelper.showToast("键盘打开");
+                ToastUtils.showToast("键盘打开");
             }
 
             @Override
             public void onKeyboardClosed() {
-                UIHelper.showToast("键盘关闭");
+                ToastUtils.showToast("键盘关闭");
             }
         });
 

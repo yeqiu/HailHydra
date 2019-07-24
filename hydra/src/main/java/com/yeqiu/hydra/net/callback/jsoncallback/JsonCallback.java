@@ -25,7 +25,7 @@ import com.lzy.okgo.request.base.Request;
 import com.yeqiu.hydra.net.NetConfig;
 import com.yeqiu.hydra.utils.LogUtils;
 import com.yeqiu.hydra.utils.NetLog;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -196,7 +196,7 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
      */
     public void onNetError(int code, String msg) {
 
-        UIHelper.showToast(msg);
+        ToastUtils.showToast(msg);
 
     }
 

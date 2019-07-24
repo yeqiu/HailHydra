@@ -9,7 +9,7 @@ import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.ui.UiConfig;
 
 /**
- * @project：XMGJ
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/10/29
  * @describe：输入框达到指定位数 改变按钮颜色

@@ -1,7 +1,7 @@
 package com.yeqiu.hydra.view.dialog.callback;
 
 /**
- * @project：AndroidLbrary
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/7/11
  * @describe：

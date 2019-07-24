@@ -183,7 +183,7 @@ public class UpdateUtil {
     private boolean checkSDCardPermission() {
         if (ActivityCompat.checkSelfPermission(HydraUtilsManager.getInstance().getContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            UIHelper.showToast("SD权限被禁止，无法下载文件！");
+            ToastUtils.showToast("SD权限被禁止，无法下载文件！");
             return false;
         }
 

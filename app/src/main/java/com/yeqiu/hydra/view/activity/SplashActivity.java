@@ -11,7 +11,7 @@ import java.util.Random;
 
 
 /**
- * @project：jinjuyunchuang
+ * @project：HailHydra
  * @author：小卷子
  * @date 2019/06/26
  * @describe：启动欢迎页

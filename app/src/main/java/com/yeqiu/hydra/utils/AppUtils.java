@@ -4,7 +4,7 @@ package com.yeqiu.hydra.utils;
 import com.yeqiu.hydra.BuildConfig;
 
 /**
- * @project：jinjuyunchuang
+ * @project：HailHydra
  * @author：小卷子
  * @date 2019/06/25
  * @describe：

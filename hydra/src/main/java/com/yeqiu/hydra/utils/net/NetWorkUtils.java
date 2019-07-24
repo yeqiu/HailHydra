@@ -9,7 +9,7 @@ import android.telephony.TelephonyManager;
 import com.yeqiu.hydra.HydraUtilsManager;
 
 /**
- * @project：android_tools
+ * @project：HailHydra
  * @author：小卷子
  * @date 2018/6/1
  * @describe：

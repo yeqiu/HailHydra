@@ -8,7 +8,7 @@ import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.yanzhenjie.permission.AndPermission;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.utils.APPInfoUtil;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.utils.UpdateUtil;
 import com.yeqiu.hydra.view.dialog.CommonDialog;
 import com.yeqiu.hydra.view.dialog.callback.DialogListener;
@@ -91,7 +91,7 @@ public class UpdateActivity extends BaseActivity {
 
         boolean notificationOpen = APPInfoUtil.isNotificationOpen();
         if (!notificationOpen){
-            UIHelper.showToast("请在设置中开启通知权限");
+            ToastUtils.showToast("请在设置中开启通知权限");
         }
 
 

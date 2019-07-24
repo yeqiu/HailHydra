@@ -6,7 +6,7 @@ import com.lzy.okgo.model.HttpParams;
 import com.lzy.okgo.request.base.Request;
 import com.yeqiu.hydra.net.bean.BaseBean;
 import com.yeqiu.hydra.utils.NetLog;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -62,11 +62,11 @@ public class HailHaydraNetIntermediary implements NetIntermediary {
                 return true;
 
             case 401:
-                UIHelper.showToast("登录失效，请重新登录");
+                ToastUtils.showToast("登录失效，请重新登录");
                 return false;
 
             default:
-                UIHelper.showToast(data.getMessage());
+                ToastUtils.showToast(data.getMessage());
                 return false;
         }
     }

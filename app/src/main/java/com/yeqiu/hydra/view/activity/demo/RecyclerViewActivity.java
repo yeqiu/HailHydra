@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.utils.image.ImageUtils;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 
@@ -65,7 +65,7 @@ public class RecyclerViewActivity extends BaseActivity {
         simpleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                UIHelper.showToast(datas.get(position));
+                ToastUtils.showToast(datas.get(position));
             }
         });
 

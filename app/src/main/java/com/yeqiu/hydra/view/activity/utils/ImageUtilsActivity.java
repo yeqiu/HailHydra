@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.widget.CircleProgressView;
 import com.yeqiu.hydra.utils.ResourceUtil;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.utils.image.ImageSavaListener;
 import com.yeqiu.hydra.utils.image.ImageUtils;
 import com.yeqiu.hydra.utils.image.progress.ProgressListener;
@@ -167,7 +167,7 @@ public class ImageUtilsActivity extends BaseActivity {
 
                             @Override
                             public void onLoadFailed() {
-                                UIHelper.showToast("加载失败");
+                                ToastUtils.showToast("加载失败");
                             }
                         });
 
@@ -184,12 +184,12 @@ public class ImageUtilsActivity extends BaseActivity {
                 new ImageUtils().saveToGallery(url, new ImageSavaListener() {
                     @Override
                     public void onSuccess(File file) {
-                        UIHelper.showToast("保存成功 保存到 == " + file.getAbsolutePath());
+                        ToastUtils.showToast("保存成功 保存到 == " + file.getAbsolutePath());
                     }
 
                     @Override
                     public void onFail(String msg) {
-                        UIHelper.showToast("保存失败 " + msg);
+                        ToastUtils.showToast("保存失败 " + msg);
                     }
                 });
 

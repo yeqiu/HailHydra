@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.constant.Url;
 import com.yeqiu.hydra.utils.SpanUtils;
-import com.yeqiu.hydra.utils.UIHelper;
+import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 import com.yeqiu.hydra.view.activity.WebViewActivity;
 
@@ -96,7 +96,7 @@ public class TextToolActivity extends BaseActivity {
         @Override
         public void onClick(View widget) {
 
-            UIHelper.showToast("点击事件");
+            ToastUtils.showToast("点击事件");
         }
 
         @Override
