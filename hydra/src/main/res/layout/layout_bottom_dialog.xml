@@ -2,17 +2,21 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/color_transparent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_08_0_0_ffffff_corners_just_top"
     android:orientation="vertical">
 
 
     <ListView
         android:id="@+id/lv_bottom_dialog"
-        style="@style/appListviewNoLine"
-        android:background="@color/color_transparent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:divider="@color/color_f1f1f1"
+        android:dividerHeight="0.5dp"
+        android:fadeScrollbars="false"
+        android:fastScrollEnabled="false"
+        android:scrollbars="none"
+        />
 
 
 </LinearLayout>

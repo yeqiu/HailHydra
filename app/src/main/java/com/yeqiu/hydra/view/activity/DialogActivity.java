@@ -217,9 +217,8 @@ public class DialogActivity extends BaseActivity {
             case R.id.tv_dialog_bottom:
 
                 List<String> items2 = new ArrayList<>();
-                items2.add("我走中路");
-                items2.add("我打野");
-                items2.add("我打ADC");
+                items2.add("拍照");
+                items2.add("从图库选择");
 
                 new BottomDialog(DialogActivity.this)
                         .setListDatas(items2)

@@ -1,7 +1,6 @@
 package com.yeqiu.hydra.view.dialog;
 
 import android.app.Activity;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,7 +28,6 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
         AdapterView.OnItemClickListener {
 
     private ListView lvBottomDialog;
-    private boolean hasHead;
     private List<String> listDatas;
 
 
@@ -74,16 +71,6 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
         }
 
 
-        if (!TextUtils.isEmpty(getTitleText())) {
-            //显示标题
-            View headView = View.inflate(getContext(), R.layout.head_bottom_dialog,
-                    null);
-            TextView title = (TextView) headView.findViewById(R.id.tv_head_bottom_dialog);
-            title.setText(getTitleText());
-            lvBottomDialog.addHeaderView(headView);
-            hasHead = true;
-        }
-
         //取消按钮
         View footer = View.inflate(getContext(), R.layout.footer_bottom_dialog, null);
         TextView cancel = (TextView) footer.findViewById(R.id.tv_footer_bottom_dialog);
@@ -92,43 +79,13 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
         footer.setOnClickListener(this);
 
         //设置列表数据
-
         ListAdapter listAdapter = new ListAdapter(datas);
         lvBottomDialog.setAdapter(listAdapter);
-        setListViewHeight(5);
-
         lvBottomDialog.setOnItemClickListener(this);
 
     }
 
-    /**
-     * 根据最多显示item设置list的高度
-     *
-     * @param listMaxHeightWhitItem
-     */
-    private void setListViewHeight(int listMaxHeightWhitItem) {
 
-        android.widget.ListAdapter listAdapter = lvBottomDialog.getAdapter();
-        if (listAdapter == null) {
-            return;
-        }
-        //获取其中的一项
-        View itemView = listAdapter.getView(0, null, lvBottomDialog);
-        //进行这一项的测量，为什么加这一步，具体分析可以参考 https://www.jianshu.com/p/dbd6afb2c890这篇文章
-        itemView.measure(0, 0);
-        int itemHeight = itemView.getMeasuredHeight();
-        int itemCount = listAdapter.getCount();
-        LinearLayout.LayoutParams layoutParams = null;
-        if (itemCount <= listMaxHeightWhitItem) {
-            layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    itemHeight * itemCount + 10);
-        } else if (itemCount > listMaxHeightWhitItem) {
-            layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    itemHeight * listMaxHeightWhitItem + 10);
-        }
-        lvBottomDialog.setLayoutParams(layoutParams);
-
-    }
 
 
     @Override
@@ -144,12 +101,6 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         if (getDialogListener() != null) {
-
-
-            if (hasHead){
-                position = position-1;
-            }
-
 
             if (getDialogListener() != null) {
                 getDialogListener().onItemClick(position, getListDatas().get(position));

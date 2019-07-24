@@ -25,7 +25,6 @@ import com.yeqiu.hydra.HydraUtilsManager;
 import com.yeqiu.hydra.ui.UiConfig;
 import com.yeqiu.hydra.utils.APPInfoUtil;
 import com.yeqiu.hydra.utils.LogUtils;
-import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.utils.image.progress.GlideApp;
 import com.yeqiu.hydra.utils.image.progress.ProgressInterceptor;
 import com.yeqiu.hydra.utils.image.progress.ProgressListener;
@@ -398,7 +397,7 @@ public class ImageUtils {
      * @param progressListener
      * @return
      */
-    public void loadWhitListener(Context context, final String url, final ImageView imageView,
+    public void loadWhitListener(final Context context, final String url, final ImageView imageView,
                                  ProgressListener progressListener) {
 
 
@@ -420,7 +419,7 @@ public class ImageUtils {
                     @Override
                     public void onLoadStarted(@Nullable Drawable placeholder) {
                         super.onLoadStarted(placeholder);
-                        imageView.setBackgroundColor(ResourceUtil.getColor(R.color.color_646464));
+                       imageView.setImageResource(R.color.color_646464);
                     }
 
 
@@ -428,7 +427,7 @@ public class ImageUtils {
                     public void onLoadFailed(@Nullable Drawable errorDrawable) {
                         super.onLoadFailed(errorDrawable);
                         ProgressInterceptor.LISTENER_MAP.get(url).onLoadFailed();
-                        imageView.setBackgroundColor(ResourceUtil.getColor(R.color.color_transparent));
+                        imageView.setImageResource(R.color.color_transparent);
                     }
 
                     @Override
@@ -437,7 +436,7 @@ public class ImageUtils {
                         super.onResourceReady(resource, transition);
 
                         ProgressInterceptor.removeListener(url);
-                        imageView.setBackgroundColor(ResourceUtil.getColor(R.color.color_transparent));
+
                     }
                 });
 

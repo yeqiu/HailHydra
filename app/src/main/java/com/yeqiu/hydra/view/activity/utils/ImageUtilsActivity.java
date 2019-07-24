@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.ui.circleprogressview.CircleProgressView;
+import com.yeqiu.hydra.widget.CircleProgressView;
 import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.utils.UIHelper;
 import com.yeqiu.hydra.utils.image.ImageSavaListener;

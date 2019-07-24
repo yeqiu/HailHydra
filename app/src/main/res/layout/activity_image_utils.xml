@@ -22,7 +22,7 @@
             />
 
 
-        <com.yeqiu.hydra.ui.circleprogressview.CircleProgressView
+        <com.yeqiu.hydra.widget.CircleProgressView
             android:visibility="gone"
             android:id="@+id/cpv_image_utils"
             android:layout_width="match_parent"

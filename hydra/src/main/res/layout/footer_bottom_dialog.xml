@@ -3,27 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_transparent"
+    android:background="@color/color_f1f1f1"
     android:orientation="vertical">
 
 
-
     <TextView
-        android:layout_marginTop="5dp"
         android:id="@+id/tv_footer_bottom_dialog"
-        android:background="@color/color_white"
-        android:paddingTop="10dp"
         android:layout_width="match_parent"
-        android:paddingBottom="10dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:background="@color/color_white"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:textColor="@color/color_black"
-        android:textSize="16sp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         android:text="取消"
-        android:gravity="center"/>
-
-
-
+        android:textColor="@color/color_black"
+        android:textSize="18sp"/>
 
 
 </LinearLayout>
