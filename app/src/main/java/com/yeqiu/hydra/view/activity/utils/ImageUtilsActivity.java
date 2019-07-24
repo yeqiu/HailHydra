@@ -8,10 +8,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.yeqiu.hydra.R;
+import com.yeqiu.hydra.ui.circleprogressview.CircleProgressView;
 import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.utils.UIHelper;
 import com.yeqiu.hydra.utils.image.ImageSavaListener;
 import com.yeqiu.hydra.utils.image.ImageUtils;
+import com.yeqiu.hydra.utils.image.progress.ProgressListener;
 import com.yeqiu.hydra.utils.image.transform.BlurTransformation;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 
@@ -38,6 +40,7 @@ public class ImageUtilsActivity extends BaseActivity {
     TextView tvImageUtilsListener;
     TextView tvImageUtilsSave;
     TextView tvImageUtilsBlur;
+    CircleProgressView progressView;
 
     String url = "http://i4.3conline" +
             ".com/images/piclib/201011/19/batch/1/74824/1290127095498e4n36hhgqz.jpg";
@@ -58,6 +61,8 @@ public class ImageUtilsActivity extends BaseActivity {
     @Override
     protected void initData() {
         ivImageUtils = (ImageView) findViewById(R.id.iv_image_utils);
+        progressView = (CircleProgressView) findViewById(R.id.cpv_image_utils);
+
         btImageUtilsFitcenter = (Button) findViewById(R.id.bt_image_utils_fitcenter);
         btImageUtilsCentercrop = (Button) findViewById(R.id.bt_image_utils_centercrop);
         btImageUtilsCenterInside = (Button) findViewById(R.id.bt_image_utils_centerInside);
@@ -148,7 +153,23 @@ public class ImageUtilsActivity extends BaseActivity {
                 break;
             case R.id.bt_image_utils_listener:
 
-                UIHelper.showToast("todo");
+                progressView.setVisibility(View.VISIBLE);
+
+                new ImageUtils()
+                        .setCacheStrategy(DiskCacheStrategy.NONE)
+                        .loadWhitListener(getContext(), url, ivImageUtils, new ProgressListener() {
+                            @Override
+                            public void onLoadProgress(boolean isDone, int progress) {
+
+                                progressView.setVisibility(isDone ? View.GONE : View.VISIBLE);
+                                progressView.setProgress(progress);
+                            }
+
+                            @Override
+                            public void onLoadFailed() {
+                                UIHelper.showToast("加载失败");
+                            }
+                        });
 
 
                 break;

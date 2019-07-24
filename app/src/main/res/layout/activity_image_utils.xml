@@ -1,19 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-    <ImageView
-        android:id="@+id/iv_image_utils"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:background="@color/color_d2ebff"
-        />
+        android:layout_margin="10dp">
+
+
+        <ImageView
+            android:id="@+id/iv_image_utils"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/color_d2ebff"
+            />
+
+
+        <com.yeqiu.hydra.ui.circleprogressview.CircleProgressView
+            android:visibility="gone"
+            android:id="@+id/cpv_image_utils"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:progress="0"
+            app:cpv_innerPadding="2dp"
+            app:cpv_outerColor="#E5ffffff"
+            app:cpv_outerSize="1dp"
+            app:cpv_progressNormalColor="#00000000"
+            app:cpv_progressReachColor="#E5ffffff"
+            app:cpv_progressStyle="FillInnerArc"/>
+
+    </FrameLayout>
 
 
     <LinearLayout

@@ -7,8 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,16 +18,25 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.yeqiu.hydra.HydraUtilsManager;
 import com.yeqiu.hydra.ui.UiConfig;
 import com.yeqiu.hydra.utils.APPInfoUtil;
 import com.yeqiu.hydra.utils.LogUtils;
+import com.yeqiu.hydra.utils.ResourceUtil;
+import com.yeqiu.hydra.utils.image.progress.GlideApp;
+import com.yeqiu.hydra.utils.image.progress.ProgressInterceptor;
+import com.yeqiu.hydra.utils.image.progress.ProgressListener;
 import com.yeqiu.hydra.utils.thread.ThreadUtil;
+import com.yeqiu.hydrautils.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * @project：Xbzd
@@ -223,18 +230,9 @@ public class ImageUtils {
     }
 
 
-
-    public ImageUtils setTransformation(BitmapTransformation bitmapTransformation){
+    public ImageUtils setTransformation(BitmapTransformation bitmapTransformation) {
 
         getOptions().transform(bitmapTransformation);
-
-        return this;
-    }
-
-
-
-    public ImageUtils setListener() {
-
 
         return this;
     }
@@ -257,16 +255,20 @@ public class ImageUtils {
         Glide.with(context)
                 .load(url)
                 .apply(getOptions())
-                .into(new SimpleTarget<Drawable>() {
+                .into(new CustomTarget<Drawable>() {
                     @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable
-                            Transition<? super Drawable> transition) {
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<
+                            ? super Drawable> transition) {
 
                         if (Build.VERSION.SDK_INT >= 16) {
                             view.setBackground(resource);
                         } else {
                             view.setBackgroundDrawable(resource);
                         }
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
 
                     }
                 });
@@ -298,7 +300,6 @@ public class ImageUtils {
     }
 
 
-
     /**
      * 添加圆角
      *
@@ -328,7 +329,7 @@ public class ImageUtils {
 
 
     /**
-     * 设置成圆角
+     * 设置成背景
      *
      * @param context
      * @param id
@@ -342,19 +343,24 @@ public class ImageUtils {
             return;
         }
 
+
         Glide.with(context)
                 .load(id)
                 .apply(getOptions())
-                .into(new SimpleTarget<Drawable>() {
+                .into(new CustomTarget<Drawable>() {
                     @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable
-                            Transition<? super Drawable> transition) {
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<
+                            ? super Drawable> transition) {
 
                         if (Build.VERSION.SDK_INT >= 16) {
                             view.setBackground(resource);
                         } else {
                             view.setBackgroundDrawable(resource);
                         }
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
 
                     }
                 });
@@ -380,6 +386,60 @@ public class ImageUtils {
                 .load(id)
                 .apply(getOptions())
                 .into(imageView);
+
+
+    }
+
+
+    /**
+     * 加载图片 回传进度
+     *
+     * @param url
+     * @param progressListener
+     * @return
+     */
+    public void loadWhitListener(Context context, final String url, final ImageView imageView,
+                                 ProgressListener progressListener) {
+
+
+        if (check(context, url, imageView)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
+            return;
+        }
+
+
+
+        ProgressInterceptor.addListener(url, progressListener);
+
+        GlideApp.with(context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(new DrawableImageViewTarget(imageView) {
+
+                    @Override
+                    public void onLoadStarted(@Nullable Drawable placeholder) {
+                        super.onLoadStarted(placeholder);
+                        imageView.setBackgroundColor(ResourceUtil.getColor(R.color.color_646464));
+                    }
+
+
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                        super.onLoadFailed(errorDrawable);
+                        ProgressInterceptor.LISTENER_MAP.get(url).onLoadFailed();
+                        imageView.setBackgroundColor(ResourceUtil.getColor(R.color.color_transparent));
+                    }
+
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<
+                            ? super Drawable> transition) {
+                        super.onResourceReady(resource, transition);
+
+                        ProgressInterceptor.removeListener(url);
+                        imageView.setBackgroundColor(ResourceUtil.getColor(R.color.color_transparent));
+                    }
+                });
 
 
     }

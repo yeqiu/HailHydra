@@ -41,7 +41,20 @@ public class CommonUtils {
     }
 
 
+    /**
+     * 获取独一无二的tag
+     * @param originalTag
+     * @return
+     */
+    public static String getOnlyTag(Object originalTag) {
 
+
+        return new StringBuffer().append(originalTag)
+                .append(System.currentTimeMillis())
+                .toString();
+
+
+    }
 
 
 }
