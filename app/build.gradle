@@ -1,18 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.1"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -48,10 +47,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     //cardview
     implementation 'androidx.cardview:cardview:1.0.0'
-    //工具库
-    implementation project(':hydra')
     //分包处理
     implementation 'androidx.multidex:multidex:2.0.0'
+    //工具库
+    implementation project(':hydra')
     //权限
     implementation 'com.yanzhenjie.permission:support:2.0.1'
     //eventbus
