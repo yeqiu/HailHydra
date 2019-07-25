@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.widget.StatusLayout;
+package com.yeqiu.hydra.widget.statuslayout;
 
 import android.view.View;
 

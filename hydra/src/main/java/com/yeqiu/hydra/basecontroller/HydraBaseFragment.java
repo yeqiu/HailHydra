@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yeqiu.hydra.utils.net.NetWorkUtils;
-import com.yeqiu.hydra.widget.StatusLayout.StatusLayout;
+import com.yeqiu.hydra.widget.statuslayout.StatusLayout;
 
 /**
  * @project：HailHydra

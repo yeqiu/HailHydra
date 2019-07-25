@@ -1,16 +1,17 @@
-package com.yeqiu.hydra.widget.StatusLayout;
+package com.yeqiu.hydra.widget.statuslayout;
 
 import android.content.Context;
-import androidx.annotation.AttrRes;
-import androidx.annotation.IdRes;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * @project：HailHydra
@@ -22,7 +23,6 @@ import android.widget.FrameLayout;
 public class StatusLayout extends FrameLayout implements View.OnClickListener {
 
     private Context context;
-
     private View emptyView;
     private View errorView;
     private View loadingView;
@@ -52,7 +52,6 @@ public class StatusLayout extends FrameLayout implements View.OnClickListener {
         this.context = context;
 
     }
-
 
     /**
      * 设置空布局

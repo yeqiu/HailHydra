@@ -6,12 +6,13 @@
     android:orientation="vertical">
 
 
-    <com.yeqiu.hydra.widget.StatusLayout.StatusLayout
+    <com.yeqiu.hydra.widget.statuslayout.StatusLayout
         android:id="@+id/status_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         />
+
 
 
     <View

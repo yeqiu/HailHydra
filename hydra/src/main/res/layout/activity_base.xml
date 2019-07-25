@@ -10,7 +10,7 @@
         layout="@layout/base_header_layout"
         />
 
-    <com.yeqiu.hydra.widget.StatusLayout.StatusLayout
+    <com.yeqiu.hydra.widget.statuslayout.StatusLayout
         android:id="@+id/base_status_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

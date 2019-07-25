@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.widget.StatusLayout.StatusLayout;
+import com.yeqiu.hydra.widget.statuslayout.StatusLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

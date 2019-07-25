@@ -19,8 +19,8 @@ import com.yeqiu.hydra.utils.LogUtils;
 import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.utils.ScreenUtils;
 import com.yeqiu.hydra.utils.net.NetWorkUtils;
-import com.yeqiu.hydra.widget.StatusLayout.OnStatusClickListener;
-import com.yeqiu.hydra.widget.StatusLayout.StatusLayout;
+import com.yeqiu.hydra.widget.statuslayout.OnStatusClickListener;
+import com.yeqiu.hydra.widget.statuslayout.StatusLayout;
 import com.yeqiu.hydrautils.R;
 
 import org.greenrobot.eventbus.EventBus;
