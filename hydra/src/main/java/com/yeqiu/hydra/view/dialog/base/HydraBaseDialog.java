@@ -106,7 +106,7 @@ public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
         }
 
         if (dialogView == null || dialog == null || getContext() == null ||
-                getContext().isFinishing()) {
+                getContext().isFinishing() || dialog.isShowing()) {
             //不符合现实弹窗的条件
             return (T) this;
         }

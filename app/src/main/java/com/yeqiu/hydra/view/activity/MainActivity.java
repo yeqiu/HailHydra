@@ -62,6 +62,7 @@ public class MainActivity extends BaseActivity {
         data.add(new ModelHaydraItem("一些Demo", getRandomId(),DemoActivity.class));
         data.add(new ModelHaydraItem("工具类", getRandomId(), UtilsActivity.class));
         data.add(new ModelHaydraItem("StatusLayout的使用", getRandomId(), StatusLayoutActivity.class));
+        data.add(new ModelHaydraItem("通知的一些写法", getRandomId(), NotificationActivity.class));
 
 
 //        data.add(new ModelHaydraItem("StringUtils的使用", getRandomId(), StringUtilsActivity.class));
