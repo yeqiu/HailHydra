@@ -69,4 +69,16 @@
     </declare-styleable>
 
 
+    <!--数字键盘-->
+    <declare-styleable name="ViewPagerIndicator">
+        <attr name="indicator_width" format="dimension"/>
+        <attr name="indicator_height" format="dimension"/>
+        <attr name="indicator_margin" format="dimension"/>
+        <attr name="indicator_unselectId" format="reference"/>
+        <attr name="indicator_selectId" format="reference"/>
+        <attr name="indicator_animation" format="boolean"/>
+
+    </declare-styleable>
+
+
 </resources>

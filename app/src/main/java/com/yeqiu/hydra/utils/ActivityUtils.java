@@ -3,6 +3,7 @@ package com.yeqiu.hydra.utils;
 import android.content.Intent;
 
 import com.yeqiu.hydra.app.HailHaydraApp;
+import com.yeqiu.hydra.view.activity.LeadActivity;
 import com.yeqiu.hydra.view.activity.MainActivity;
 
 
@@ -25,4 +26,9 @@ public class ActivityUtils extends JumpUtils {
     }
 
 
+    public static void toLeadActivity() {
+
+        Intent intent = new Intent(HailHaydraApp.getInstance(), LeadActivity.class);
+        jumpToActivityByIntent(intent);
+    }
 }

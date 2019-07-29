@@ -24,4 +24,6 @@ public abstract class BaseActivity extends HydraBaseActivity {
     protected boolean isSwipeBack() {
         return true;
     }
+
+
 }

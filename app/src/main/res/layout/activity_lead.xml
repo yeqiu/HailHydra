@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_lead"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <com.yeqiu.hydra.widget.ViewPagerIndicator
+        android:id="@+id/vci_lead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_lead_next"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        app:indicator_animation="true"
+        app:indicator_height="10dp"
+        app:indicator_margin="10dp"
+        app:indicator_selectId="@drawable/shape_dot_select"
+        app:indicator_unselectId="@drawable/shape_dot_normal"
+        app:indicator_width="10dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_lead_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/shape_40_ff7852_0_0"
+        android:gravity="center"
+        android:paddingLeft="60dp"
+        android:paddingTop="10dp"
+        android:paddingRight="60dp"
+        android:paddingBottom="10dp"
+        android:text="立即体验"
+        android:textColor="@color/color_ff7852"
+        android:textSize="16dp"/>
+
+
+</RelativeLayout>

@@ -5,7 +5,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.yeqiu.hydra.R;
+import com.yeqiu.hydra.constant.AppConstant;
+import com.yeqiu.hydra.utils.APPInfoUtil;
 import com.yeqiu.hydra.utils.ActivityUtils;
+import com.yeqiu.hydra.utils.SharedUtil;
 
 import java.util.Random;
 
@@ -45,13 +48,39 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ActivityUtils.toMainActivity();
+                toNextActivity();
                 finish();
             }
         }, 500);
 
 
     }
+
+
+    private void toNextActivity() {
+
+        if (showLead()) {
+            ActivityUtils.toLeadActivity();
+        } else {
+
+            ActivityUtils.toMainActivity();
+        }
+
+        finish();
+    }
+
+
+    private boolean showLead() {
+
+        //本地记录的versionCode
+        int versionCode = SharedUtil.getInstance().getInt(AppConstant.currentVersion, 0);
+        //本app的versionCode
+        int currentVersionCode = APPInfoUtil.getVersionCode();
+        //存入本地versionCode
+        return currentVersionCode > versionCode;
+
+    }
+
 
     @Override
     protected void initListener() {

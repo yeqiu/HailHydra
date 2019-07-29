@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.utils.NotificationUtils;
+import com.yeqiu.hydra.view.dialog.CommonDialog;
+import com.yeqiu.hydra.view.dialog.callback.DialogListener;
 
 import java.util.ArrayList;
 
@@ -30,7 +32,7 @@ public class NotificationActivity extends BaseActivity {
     TextView tvNotification2;
     TextView tvNotification3;
     TextView tvNotification4;
-
+    TextView tvNotification5;
     TextView tvNotification6;
     TextView tvNotification7;
 
@@ -51,6 +53,7 @@ public class NotificationActivity extends BaseActivity {
         tvNotification2 = (TextView) findViewById(R.id.tv_notification_2);
         tvNotification3 = (TextView) findViewById(R.id.tv_notification_3);
         tvNotification4 = (TextView) findViewById(R.id.tv_notification_4);
+        tvNotification5 = (TextView) findViewById(R.id.tv_notification_5);
         tvNotification6 = (TextView) findViewById(R.id.tv_notification_6);
         tvNotification7 = (TextView) findViewById(R.id.tv_notification_7);
 
@@ -72,9 +75,31 @@ public class NotificationActivity extends BaseActivity {
         tvNotification2.setOnClickListener(this);
         tvNotification3.setOnClickListener(this);
         tvNotification4.setOnClickListener(this);
+        tvNotification5.setOnClickListener(this);
         tvNotification6.setOnClickListener(this);
         tvNotification7.setOnClickListener(this);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (!NotificationUtils.checkNotifyOpen()) {
+
+            new CommonDialog(getContext())
+                    .setTitleText("请开启通知权限")
+                    .setDescText("检测到您没有开启通知，请在设置中打开")
+                    .setOnDialogListener(new DialogListener() {
+
+                        @Override
+                        public void onConfirmClick() {
+                            super.onConfirmClick();
+                            NotificationUtils.toNotificationSetting();
+                        }
+                    })
+                    .show();
+        }
     }
 
     @Override
@@ -91,6 +116,9 @@ public class NotificationActivity extends BaseActivity {
                 break;
             case R.id.tv_notification_4:
                 custom();
+                break;
+            case R.id.tv_notification_5:
+                bigPic();
                 break;
 
             case R.id.tv_notification_6:
@@ -253,6 +281,40 @@ public class NotificationActivity extends BaseActivity {
 
     }
 
+    private void bigPic() {
+        NotificationManager notificationManager =
+                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent intent = new Intent(getContext(), NotificationActivity.class);
+        PendingIntent pi = PendingIntent.getService(getContext(), 0, intent, 0);
+
+
+        NotificationCompat.BigPictureStyle bigPictureStyle =
+                new NotificationCompat.BigPictureStyle()
+                        .bigPicture(BitmapFactory.decodeResource(getResources(),
+                                R.drawable.icon_head_hydra_5))
+                        .setBigContentTitle("图片标题");
+
+
+        Notification notification = new NotificationCompat.Builder(this, channelId)
+                //标题
+                .setContentTitle("你有一条新消息")
+                .setContentText("图片")
+                //设置小图标（通知栏没有下拉的图标）
+                .setSmallIcon(R.drawable.icon_done)
+                //设置右侧大图标
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(),
+                        R.drawable.icon_head_hydra_2))
+                //设置发送的时间
+                .setWhen(System.currentTimeMillis())
+                //设置点击通知后自动删除通知
+                .setAutoCancel(true)
+                .setContentIntent(pi)
+                .setStyle(bigPictureStyle)
+                .build();
+        notificationManager.notify(1, notification);
+    }
+
 
     private void progress() {
 
@@ -288,7 +350,10 @@ public class NotificationActivity extends BaseActivity {
 
     private void clear() {
 
-        new NotificationUtils().cancelAll();
+        NotificationManager notificationManager =
+                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
+
     }
 
 

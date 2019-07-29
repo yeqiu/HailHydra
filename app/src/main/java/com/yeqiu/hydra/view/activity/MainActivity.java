@@ -1,10 +1,12 @@
 package com.yeqiu.hydra.view.activity;
 
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
 import com.yeqiu.hydra.utils.DensityUtils;
+import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.view.activity.demo.DemoActivity;
 import com.yeqiu.hydra.view.activity.utils.UtilsActivity;
 import com.yeqiu.hydra.view.adapter.HailHaydraAdapter;
@@ -23,11 +25,17 @@ public class MainActivity extends BaseActivity {
     private RecyclerView rvHaydra;
 
     private List<ModelHaydraItem> data;
-
+    private long firstTime = 0;
 
     @Override
     protected Object getContentView() {
         return R.layout.activity_main;
+    }
+
+
+    @Override
+    protected boolean isSwipeBack() {
+        return false;
     }
 
     @Override
@@ -106,5 +114,28 @@ public class MainActivity extends BaseActivity {
 
         return resId;
     }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                long secondTime = System.currentTimeMillis();
+                if (secondTime - firstTime > 2000) {
+                    ToastUtils.showToast("再按一次退出程序");
+                    firstTime = secondTime;
+                    return true;
+                } else {
+                    finish();
+                    System.exit(0);
+                }
+                break;
+
+            default:
+                break;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
 
 }

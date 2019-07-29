@@ -158,7 +158,16 @@
             android:name=".view.activity.NotificationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity android:name=".view.activity.NotificationClickActivity"/>
+
+        <activity
+            android:name=".view.activity.NotificationClickActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+        <activity
+            android:name=".view.activity.LeadActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
 
 
     </application>
