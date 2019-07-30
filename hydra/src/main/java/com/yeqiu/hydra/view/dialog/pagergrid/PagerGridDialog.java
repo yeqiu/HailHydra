@@ -1,7 +1,7 @@
 package com.yeqiu.hydra.view.dialog.pagergrid;
 
 import android.app.Activity;
-import androidx.viewpager.widget.ViewPager;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -10,8 +10,10 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.yeqiu.hydra.utils.ResourceUtil;
+import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydra.view.dialog.bean.ListData;
 import com.yeqiu.hydra.widget.FullGridView;
@@ -19,6 +21,9 @@ import com.yeqiu.hydrautils.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.DrawableRes;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * @project：HailHydra
@@ -29,7 +34,7 @@ import java.util.List;
  */
 public class PagerGridDialog extends HydraBaseDialog<PagerGridDialog> {
 
-
+    private TextView tvPagerGridTitle;
     private ViewPager vpPagerGrid;
     private List<GridView> gridViews;
     private LinearLayout llDot;
@@ -47,6 +52,12 @@ public class PagerGridDialog extends HydraBaseDialog<PagerGridDialog> {
 
     }
 
+
+    @Override
+    protected int getstyle() {
+        return R.style.sheet_dialog;
+
+    }
 
     @Override
     protected void setWindow() {
@@ -70,9 +81,19 @@ public class PagerGridDialog extends HydraBaseDialog<PagerGridDialog> {
     @Override
     protected void initDialog(View view) {
 
-
+        tvPagerGridTitle = (TextView) findViewById(R.id.tv_pager_grid_title);
         vpPagerGrid = (ViewPager) findViewById(R.id.vp_pager_grid);
         llDot = (LinearLayout) findViewById(R.id.ll_pager_grid_dot);
+
+
+        if (TextUtils.isEmpty(getTitleText())) {
+            tvPagerGridTitle.setVisibility(View.GONE);
+        } else {
+            tvPagerGridTitle.setVisibility(View.VISIBLE);
+            ViewUtils.setTextView(tvPagerGridTitle, getTitleText(), getTitleSize(),
+                    getTitleColor());
+        }
+
 
         //计算总页数
         pageCount = (int) Math.ceil(getDatas().size() * 1.0 / pageSize);
@@ -152,7 +173,7 @@ public class PagerGridDialog extends HydraBaseDialog<PagerGridDialog> {
 
         for (int i = 0; i < llDot.getChildCount(); i++) {
             ImageView ivDot = (ImageView) llDot.getChildAt(i);
-            ivDot.setImageResource(i == position ? selectedIndictor : unselectedIndictor);
+            ivDot.setImageResource(i == position ? getSelectedIndictor() : getUnselectedIndictor());
 
         }
 
@@ -201,7 +222,7 @@ public class PagerGridDialog extends HydraBaseDialog<PagerGridDialog> {
      * @param selectedIndictor
      * @return
      */
-    public PagerGridDialog setSelectedIndictor(int selectedIndictor) {
+    public PagerGridDialog setSelectedIndictor(@DrawableRes int selectedIndictor) {
         this.selectedIndictor = selectedIndictor;
         return this;
     }
@@ -212,7 +233,7 @@ public class PagerGridDialog extends HydraBaseDialog<PagerGridDialog> {
      * @param unselectedIndictor
      * @return
      */
-    public PagerGridDialog setUnselectedIndictor(int unselectedIndictor) {
+    public PagerGridDialog setUnselectedIndictor(@DrawableRes int unselectedIndictor) {
         this.unselectedIndictor = unselectedIndictor;
         return this;
     }

@@ -7,9 +7,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.utils.KeybordUtils;
-import com.yeqiu.hydra.utils.ResourceUtil;
+import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
+
+import androidx.annotation.ColorRes;
 
 /**
  * @project：HailHydra
@@ -51,22 +53,16 @@ public class EditDialog extends HydraBaseDialog<EditDialog> implements View.OnCl
         TextView cancel = (TextView) view.findViewById(R.id.tv_edit_dialog_cancel);
         TextView confirm = (TextView) view.findViewById(R.id.tv_edit_dialog_confirm);
 
+
+        ViewUtils.setTextView(title, getTitleText(), getTitleSize(), getTitleColor());
+        ViewUtils.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
+        ViewUtils.setTextView(confirm, getConfirmText(), getConfirmSizer(), getConfirmColor());
+
+
         //设置文字
-        title.setText(getTitleText());
         edit.setHint(getHintText());
-        cancel.setText(getCancelText());
-        confirm.setText(getConfirmText());
         edit.setInputType(getInputType());
-
-        //设置颜色
-        confirm.setTextColor(ResourceUtil.getColor(getConfirmColor()));
-        cancel.setTextColor(ResourceUtil.getColor(getCancelColor()));
-        title.setTextColor(ResourceUtil.getColor(getTitleColor()));
-
-        //设置文字大小
-        title.setTextSize(getTitleSize());
-        confirm.setTextSize(getConfirmSizer());
-        cancel.setTextSize(getCancelSize());
+        edit.setTextSize(getInputSize());
 
         //设置取消键是否显示
         boolean justConfirm = isJustConfirm();
@@ -143,7 +139,7 @@ public class EditDialog extends HydraBaseDialog<EditDialog> implements View.OnCl
     /**
      * 确认的颜色
      */
-    public EditDialog setConfirmColor(int confirmColor) {
+    public EditDialog setConfirmColor(@ColorRes int confirmColor) {
         this.confirmColor = confirmColor;
         return this;
     }

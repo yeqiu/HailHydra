@@ -1,6 +1,7 @@
 package com.yeqiu.hydra.view.dialog;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
@@ -27,8 +30,12 @@ import java.util.List;
 public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.OnClickListener,
         AdapterView.OnItemClickListener {
 
+    private TextView tvBottomDialogTitle;
+    private LinearLayout llBottomDialogTitle;
     private ListView lvBottomDialog;
     private List<String> listDatas;
+    private int itemSize = 18;
+    private int itemColor = R.color.color_black;
 
 
     public BottomDialog(Activity context) {
@@ -62,6 +69,8 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
     @Override
     protected void initDialog(View view) {
 
+        tvBottomDialogTitle = (TextView) findViewById(R.id.tv_bottom_dialog_title);
+        llBottomDialogTitle = (LinearLayout) findViewById(R.id.ll_bottom_dialog_title);
         lvBottomDialog = (ListView) view.findViewById(R.id.lv_bottom_dialog);
 
         List<String> datas = getListDatas();
@@ -70,13 +79,24 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
             return;
         }
 
+        if (TextUtils.isEmpty(getTitleText())) {
+            llBottomDialogTitle.setVisibility(View.GONE);
+        } else {
+            llBottomDialogTitle.setVisibility(View.VISIBLE);
+            ViewUtils.setTextView(tvBottomDialogTitle, getTitleText(), getTitleSize(),
+                    getTitleColor());
+        }
 
-        //取消按钮
-        View footer = View.inflate(getContext(), R.layout.footer_bottom_dialog, null);
-        TextView cancel = (TextView) footer.findViewById(R.id.tv_footer_bottom_dialog);
-        cancel.setText(getCancelText());
-        lvBottomDialog.addFooterView(footer);
-        footer.setOnClickListener(this);
+
+        //取消按钮 默认显示取消按钮
+        if (!TextUtils.isEmpty(getCancelText())) {
+            View footer = View.inflate(getContext(), R.layout.footer_bottom_dialog, null);
+            TextView cancel = (TextView) footer.findViewById(R.id.tv_footer_bottom_dialog);
+            lvBottomDialog.addFooterView(footer);
+            footer.setOnClickListener(this);
+            ViewUtils.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
+        }
+
 
         //设置列表数据
         ListAdapter listAdapter = new ListAdapter(datas);
@@ -84,8 +104,6 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
         lvBottomDialog.setOnItemClickListener(this);
 
     }
-
-
 
 
     @Override
@@ -148,8 +166,8 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
             }
 
             String item = getItem(position);
-            holder.tvItemBottomDialog.setText(item);
 
+            ViewUtils.setTextView(holder.tvItemBottomDialog, item, getItemSize(), getItemColor());
 
             return convertView;
         }
@@ -176,6 +194,16 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
         return this;
     }
 
+    public BottomDialog setItemSize(int itemSize) {
+        this.itemSize = itemSize;
+        return this;
+    }
+
+    public BottomDialog setItemColor(int itemColor) {
+        this.itemColor = itemColor;
+        return this;
+    }
+
 
     //========get()========
 
@@ -187,4 +215,11 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
     }
 
 
+    public int getItemSize() {
+        return itemSize;
+    }
+
+    public int getItemColor() {
+        return itemColor;
+    }
 }

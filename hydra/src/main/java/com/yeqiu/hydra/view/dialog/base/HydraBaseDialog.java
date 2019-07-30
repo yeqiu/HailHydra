@@ -16,6 +16,8 @@ import com.yeqiu.hydrautils.R;
 
 import java.lang.ref.WeakReference;
 
+import androidx.annotation.ColorRes;
+
 /**
  * @project：AndroidLbrary
  * @author：小卷子
@@ -288,7 +290,7 @@ public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
     /**
      * 取消的颜色
      */
-    public T setCancelColor(int cancelColor) {
+    public T setCancelColor(@ColorRes int cancelColor) {
         this.cancelColor = cancelColor;
         return (T) this;
     }
@@ -296,7 +298,7 @@ public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
     /**
      * 标题的颜色
      */
-    public T setTitleColor(int titleColor) {
+    public T setTitleColor(@ColorRes int titleColor) {
         this.titleColor = titleColor;
         return (T) this;
     }

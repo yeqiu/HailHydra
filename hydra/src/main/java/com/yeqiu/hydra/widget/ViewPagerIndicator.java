@@ -125,6 +125,12 @@ public class ViewPagerIndicator extends FrameLayout {
 
     public void setViewPager(ViewPager viewPager) {
 
+
+        if (viewPager.getAdapter() == null) {
+            throw new NullPointerException("请设置ViewPager Adapter");
+        }
+
+
         int count = viewPager.getAdapter().getCount();
 
         dots = new ArrayList<>();

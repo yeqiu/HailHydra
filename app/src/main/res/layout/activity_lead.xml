@@ -21,7 +21,7 @@
         app:indicator_animation="true"
         app:indicator_height="10dp"
         app:indicator_margin="10dp"
-        app:indicator_selectId="@drawable/shape_dot_select"
+        app:indicator_selectId="@drawable/shape_dot_selected"
         app:indicator_unselectId="@drawable/shape_dot_normal"
         app:indicator_width="10dp"
         />

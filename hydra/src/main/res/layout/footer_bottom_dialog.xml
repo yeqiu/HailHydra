@@ -10,13 +10,11 @@
     <TextView
         android:id="@+id/tv_footer_bottom_dialog"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginTop="7dp"
         android:background="@color/color_white"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
         android:text="取消"
         android:textColor="@color/color_black"
         android:textSize="18sp"/>

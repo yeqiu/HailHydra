@@ -23,6 +23,9 @@ import com.yeqiu.hydrautils.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+
 /**
  * @project：HailHydra
  * @author：小卷子
@@ -30,9 +33,7 @@ import java.util.List;
  * @describe：
  * @fix：
  */
-public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterView
-        .OnItemClickListener, View
-        .OnClickListener {
+public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private ImageView ivBack;
     private TextView tvTitle;
@@ -41,6 +42,8 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
     private int listMaxHeightWhitItem = -1;
     private int listFootViewId = -1;
     private int backImg = R.drawable.head_back_gray;
+    private int itemColor = R.color.color_1a1a1a;
+    private int itemlTextSize = 15;
     private List<ListData> listDatas;
 
 
@@ -61,6 +64,12 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
         lvList = (ListView) view.findViewById(R.id.lv_list);
 
         initData();
+
+    }
+
+    @Override
+    protected int getstyle() {
+        return R.style.sheet_dialog;
 
     }
 
@@ -178,12 +187,10 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
             if (TextUtils.isEmpty(item.getIcon())) {
                 holder.ivIcon.setVisibility(View.GONE);
             } else {
-
                 new ImageUtils().load(getContext(), item.getIcon(), holder.ivIcon);
             }
 
-            holder.tvTitle.setText(item.getTitle());
-
+            ViewUtils.setTextView(holder.tvTitle, item.getTitle(), getItemlTextSize(), getItemColor());
 
             return convertView;
         }
@@ -230,7 +237,7 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
     /**
      * 列表弹框的返回键
      */
-    public ListDialog setBackImg(int backImg) {
+    public ListDialog setBackImg(@DrawableRes int backImg) {
         this.backImg = backImg;
         return this;
     }
@@ -240,6 +247,16 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
      */
     public ListDialog setListDatas(List<ListData> listDatas) {
         this.listDatas = listDatas;
+        return this;
+    }
+
+    public ListDialog setItemColor(@ColorRes int itemColor) {
+        this.itemColor = itemColor;
+        return this;
+    }
+
+    public ListDialog setItemlTextSize(int itemlTextSize) {
+        this.itemlTextSize = itemlTextSize;
         return this;
     }
 
@@ -267,5 +284,13 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
             return new ArrayList<>();
         }
         return listDatas;
+    }
+
+    public int getItemColor() {
+        return itemColor;
+    }
+
+    public int getItemlTextSize() {
+        return itemlTextSize;
     }
 }

@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yeqiu.hydra.utils.ResourceUtil;
+import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
+
+import androidx.annotation.ColorRes;
 
 /**
  * @project：HailHydra
@@ -21,6 +23,7 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
     private boolean justConfirm = false;
     private String confirmText = "确定";
     private String descText = "";
+    private int descColor = R.color.color_black;
     private int confirmColor = R.color.color_808080;
     private int descSize = 15;
     private int confirmSizer = 15;
@@ -44,34 +47,28 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
         View line = view.findViewById(R.id.v_common_dialog_line);
         TextView cancel = (TextView) view.findViewById(R.id.tv_common_dialog_cancel);
         TextView confirm = (TextView) view.findViewById(R.id.tv_common_dialog_confirm);
+
         //设置文字
+        ViewUtils.setTextView(title, getTitleText(), getTitleSize(), getTitleColor());
+        ViewUtils.setTextView(content, getDescText(), getDescSize(), getDescColor());
+        ViewUtils.setTextView(confirm, getConfirmText(), getCancelSize(), getConfirmColor());
 
-        title.setText(getTitleText());
-        content.setText(getDescText());
-        cancel.setText(getCancelText());
-        confirm.setText(getConfirmText());
 
-        //设置颜色
-        confirm.setTextColor(ResourceUtil.getColor(getConfirmColor()));
-        cancel.setTextColor(ResourceUtil.getColor(getConfirmColor()));
-        title.setTextColor(ResourceUtil.getColor(getConfirmColor()));
-        content.setTextColor(ResourceUtil.getColor(getConfirmColor()));
-
-        //设置文字大小
-        title.setTextSize(getTitleSize());
-        content.setTextSize(getDescSize());
-        confirm.setTextSize(getConfirmSizer());
-        cancel.setTextSize(getCancelSize());
+        confirm.setOnClickListener(this);
 
         //设置取消键是否显示
         boolean justConfirm = isJustConfirm();
         cancel.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
         line.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
 
+        if (!justConfirm) {
+            ViewUtils.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
+            cancel.setOnClickListener(this);
+        }
 
 
-        confirm.setOnClickListener(this);
-        cancel.setOnClickListener(this);
+
+
 
     }
 
@@ -121,7 +118,6 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
     }
 
 
-
     /**
      * 内容文字
      */
@@ -133,11 +129,10 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
     /**
      * 确认的颜色
      */
-    public CommonDialog setConfirmColor(int confirmColor) {
+    public CommonDialog setConfirmColor(@ColorRes int confirmColor) {
         this.confirmColor = confirmColor;
         return this;
     }
-
 
 
     /**
@@ -156,6 +151,10 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
         return this;
     }
 
+    public CommonDialog setDescColor(int descColor) {
+        this.descColor = descColor;
+        return this;
+    }
 
 
     //==========get()==========
@@ -187,7 +186,7 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
         return confirmSizer;
     }
 
-
-
-
+    public int getDescColor() {
+        return descColor;
+    }
 }

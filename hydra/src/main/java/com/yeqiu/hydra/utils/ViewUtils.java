@@ -1,11 +1,14 @@
 package com.yeqiu.hydra.utils;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.annotation.ColorRes;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @project：HailHydra
@@ -21,7 +24,7 @@ public class ViewUtils {
      *
      * @param maxHeightWhitItem
      */
-    public static void setListViewHeightWhitItem( ListView listView,int maxHeightWhitItem) {
+    public static void setListViewHeightWhitItem(ListView listView, int maxHeightWhitItem) {
 
         ListAdapter adapter = listView.getAdapter();
 
@@ -36,7 +39,7 @@ public class ViewUtils {
             itemView.measure(0, 0);
             int itemHeight = itemView.getMeasuredHeight();
             height = height + itemHeight;
-            if (i == maxHeightWhitItem-1) {
+            if (i == maxHeightWhitItem - 1) {
                 break;
             }
         }
@@ -82,7 +85,7 @@ public class ViewUtils {
             viewHolder.itemView.buildDrawingCache();
 
             height = viewHolder.itemView.getMeasuredHeight() + height;
-            if (i == maxHeightWhitItem-1) {
+            if (i == maxHeightWhitItem - 1) {
                 break;
             }
         }
@@ -93,6 +96,14 @@ public class ViewUtils {
             recyclerView.setLayoutParams(layoutParams);
         }
 
+    }
+
+
+    public static void setTextView(TextView tv, String text,  int size, @ColorRes int colorId) {
+
+        tv.setText(text);
+        tv.setTextSize(size);
+        tv.setTextColor(ResourceUtil.getColor(colorId));
     }
 
 

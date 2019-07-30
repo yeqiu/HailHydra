@@ -222,6 +222,8 @@ public class DialogActivity extends BaseActivity {
 
                 new BottomDialog(DialogActivity.this)
                         .setListDatas(items2)
+                        .setCancelColor(R.color.color_black)
+                        .setCancelSize(18)
                         .setOnDialogListener(new DialogListener() {
                             @Override
                             public void onItemClick(int position, String text) {
@@ -241,6 +243,7 @@ public class DialogActivity extends BaseActivity {
 
 
                 new PagerGridDialog(getContext())
+                        .setTitleText("请选择")
                         .setData(data2)
                         .setPageSize(6)
                         .setNumColumns(3)

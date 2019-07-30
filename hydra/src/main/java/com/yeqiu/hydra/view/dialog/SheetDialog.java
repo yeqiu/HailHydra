@@ -12,11 +12,14 @@ import android.widget.TextView;
 
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.utils.ResourceUtil;
+import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.ColorRes;
 
 
 /**
@@ -32,6 +35,7 @@ public class SheetDialog extends HydraBaseDialog<SheetDialog> {
     private int itemColor = R.color.color_1a1a1a;
     private int itemlTextSize = 15;
     private List<String> sheetDatas;
+
 
 
     public SheetDialog(Activity context) {
@@ -96,14 +100,13 @@ public class SheetDialog extends HydraBaseDialog<SheetDialog> {
             final int position = i;
             final String text = datas.get(i);
             final TextView tv = new TextView(getContext());
-            tv.setText(text);
             tv.setTag(i);
-
             int padding = DensityUtils.dp2px(10);
             tv.setPadding(padding, padding, padding, padding);
             tv.setGravity(Gravity.CENTER);
-            tv.setTextSize(getItemlTextSize());
-            tv.setTextColor(getContext().getResources().getColor(getItemColor()));
+            //设置文字
+            ViewUtils.setTextView(tv, text, getItemlTextSize(), getItemColor());
+
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -122,7 +125,7 @@ public class SheetDialog extends HydraBaseDialog<SheetDialog> {
                 View divider = new View(getContext());
                 divider.setBackgroundResource(R.color.color_e1e1e1);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup
-                        .LayoutParams.MATCH_PARENT, 3);
+                        .LayoutParams.MATCH_PARENT, DensityUtils.dp2px(1));
                 list.addView(divider, params);
             }
         }
@@ -148,7 +151,7 @@ public class SheetDialog extends HydraBaseDialog<SheetDialog> {
     /**
      * sheet item的颜色
      */
-    public SheetDialog setItemColor(int itemColor) {
+    public SheetDialog setItemColor(@ColorRes int itemColor) {
         this.itemColor = itemColor;
         return this;
     }
