@@ -39,6 +39,10 @@ public class UtilsActivity extends BaseActivity {
         rvDemo.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+
+
+
+
     @Override
     protected void initData() {
 

@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity {
         data.add(new ModelHaydraItem("ios风格的dialog", getRandomId(), DialogActivity.class));
         data.add(new ModelHaydraItem("WebView的封装", getRandomId(), WebViewActivity.class));
         data.add(new ModelHaydraItem("网络请求", getRandomId(), NetActivity.class));
-        data.add(new ModelHaydraItem("一些Demo", getRandomId(),DemoActivity.class));
+        data.add(new ModelHaydraItem("一些Demo", getRandomId(), DemoActivity.class));
         data.add(new ModelHaydraItem("工具类", getRandomId(), UtilsActivity.class));
         data.add(new ModelHaydraItem("StatusLayout的使用", getRandomId(), StatusLayoutActivity.class));
         data.add(new ModelHaydraItem("通知的一些写法", getRandomId(), NotificationActivity.class));
@@ -92,6 +92,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
 
     }
 

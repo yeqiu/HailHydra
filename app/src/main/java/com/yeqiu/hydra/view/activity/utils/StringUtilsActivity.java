@@ -99,6 +99,8 @@ public class StringUtilsActivity extends BaseActivity implements View.OnClickLis
         mBtStringUtilsTime.setOnClickListener(this);
         mBtStringUtilsReverse = (Button) findViewById(R.id.bt_string_utils_reverse);
         mBtStringUtilsReverse.setOnClickListener(this);
+
+
     }
 
     @Override

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import com.yeqiu.hydra.utils.net.NetWorkUtils;
 import com.yeqiu.hydra.widget.statuslayout.StatusLayout;
 
+import androidx.annotation.Nullable;
+
 /**
  * @project：HailHydra
  * @author：小卷子
@@ -18,8 +20,8 @@ import com.yeqiu.hydra.widget.statuslayout.StatusLayout;
  */
 public abstract class HydraBaseFragment extends LifeCycleFragment {
 
-    protected StatusLayout contentView;
-    protected Activity context;
+    private StatusLayout contentView;
+    private Activity context;
 
 
     @Override
@@ -89,9 +91,6 @@ public abstract class HydraBaseFragment extends LifeCycleFragment {
     }
 
 
-
-
-
     /**
      * 显示正常数据页面
      */
@@ -135,7 +134,16 @@ public abstract class HydraBaseFragment extends LifeCycleFragment {
 
     }
 
+    @Nullable
+    @Override
+    public Activity getContext() {
+        return context;
+    }
 
+
+    public View getRootView() {
+        return contentView;
+    }
 
 
 }

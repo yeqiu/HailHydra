@@ -8,7 +8,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.core.app.NotificationManagerCompat;
 import android.text.TextUtils;
 
 import com.yeqiu.hydra.HydraUtilsManager;
@@ -17,6 +16,8 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.List;
+
+import androidx.core.app.NotificationManagerCompat;
 
 /**
  * @project：HailHydra
@@ -425,7 +426,6 @@ public class APPInfoUtil {
     }
 
 
-
     /**
      * 获取包名最后一个节点名
      *
@@ -445,4 +445,23 @@ public class APPInfoUtil {
 
         return "";
     }
+
+
+    /**
+     * 重启应用
+     */
+    public static void restart() {
+
+
+        System.gc();
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+        Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+
+        android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+
 }
