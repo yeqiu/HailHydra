@@ -69,7 +69,7 @@
     </declare-styleable>
 
 
-    <!--数字键盘-->
+    <!--ViewPager 指示器-->
     <declare-styleable name="ViewPagerIndicator">
         <attr name="indicator_width" format="dimension"/>
         <attr name="indicator_height" format="dimension"/>
@@ -78,6 +78,18 @@
         <attr name="indicator_selectId" format="reference"/>
         <attr name="indicator_animation" format="boolean"/>
 
+    </declare-styleable>
+
+
+    <!--圆角布局-->
+    <declare-styleable name="CornerLayout">
+        <attr name="corners" format="dimension"/>
+        <attr name="top_left_corner" format="dimension"/>
+        <attr name="top_right_corner" format="dimension"/>
+        <attr name="bottom_left_corner" format="dimension"/>
+        <attr name="bottom_right_corner" format="dimension"/>
+        <attr name="stroke_width" format="dimension"/>
+        <attr name="stroke_color" format="color"/>
     </declare-styleable>
 
 
