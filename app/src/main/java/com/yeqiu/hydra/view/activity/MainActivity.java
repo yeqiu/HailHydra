@@ -62,6 +62,7 @@ public class MainActivity extends BaseActivity {
         HailHaydraAdapter hailHaydraAdapter = new HailHaydraAdapter(this, data);
         rvHaydra.setAdapter(hailHaydraAdapter);
 
+
     }
 
     private List<ModelHaydraItem> getData() {

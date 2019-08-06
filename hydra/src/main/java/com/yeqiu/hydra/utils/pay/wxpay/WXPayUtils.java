@@ -19,6 +19,8 @@ public class WXPayUtils {
 
 
     private static WxPayResultListener wxPayResultListener;
+    private static Context context;
+    private static String appKey;
 
     public static WxPayResultListener getWxPayResultListener() {
         return wxPayResultListener;
@@ -28,10 +30,16 @@ public class WXPayUtils {
         WXPayUtils.wxPayResultListener = wxPayResultListener;
     }
 
+    public static String getAppKey() {
+        return appKey == null ? "" : appKey;
+    }
+
     public static void unregisterListener() {
 
         WXPayUtils.wxPayResultListener = null;
+        unRegisterWeChatPay(context,appKey);
     }
+
 
     /**
      * 注册微信支付
@@ -45,7 +53,7 @@ public class WXPayUtils {
     /**
      * 注销微信支付
      */
-    public static void unRegisterWeChatPay(Context context,String appKey) {
+    private static void unRegisterWeChatPay(Context context, String appKey) {
         getWXApi(context,appKey).unregisterApp();
 
     }
@@ -93,8 +101,10 @@ public class WXPayUtils {
      * @param sign      签名
      */
     public static void doPay(Context context,String appKey, String appId, String partnerId, String
-            prepayId,
-                             String nonceStr, String timeStamp, String sign) {
+            prepayId, String nonceStr, String timeStamp, String sign) {
+
+        WXPayUtils.context = context;
+        WXPayUtils.appKey = appKey;
 
         if (!checkUserWeChat(context,appKey)) {
             ToastUtils.showToast("请检查是否安装微信或微信版本是否支持支付");
