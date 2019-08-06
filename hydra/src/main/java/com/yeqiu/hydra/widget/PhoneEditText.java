@@ -4,14 +4,15 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.widget.EditText;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 /**
  * @author ye
  * @date 2017/12/25
  * @desc 手机号输入框 自动添加 —
  */
-public class PhoneEditText extends EditText{
+public class PhoneEditText extends AppCompatEditText {
 
 
     public PhoneEditText(Context context) {
@@ -51,7 +52,11 @@ public class PhoneEditText extends EditText{
                         continue;
                     } else {
                         sb.append(s.charAt(i));
-                        if ((sb.length() == 4 || sb.length() == 9) && sb.charAt(sb.length() - 1) != '-') {
+
+                        boolean isInsert =
+                                (sb.length() == 4 || sb.length() == 9) && sb.charAt(sb.length() - 1) != '-';
+
+                        if (isInsert) {
                             sb.insert(sb.length() - 1, '-');
                         }
                     }

@@ -1,12 +1,13 @@
-package com.yeqiu.hydra.ui.EditTextUtils;
+package com.yeqiu.hydra.ui.edittextutils;
 
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
-import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.ui.UiConfig;
+import com.yeqiu.hydra.utils.ResourceUtil;
 
 /**
  * @project：HailHydra
@@ -15,7 +16,7 @@ import com.yeqiu.hydra.ui.UiConfig;
  * @describe：输入框达到指定位数 改变按钮颜色
  * @fix：
  */
-public class EtChangeBackground  {
+public class EtChangeBackground {
 
     /**
      * 默认view的背景
@@ -37,11 +38,15 @@ public class EtChangeBackground  {
     protected int limitNumber = UiConfig.getInstance().getLimitNumber();
 
 
-
     private View codeView;
 
 
     public void changeBackgroundByEtNmber(View view, EditText editText) {
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+            return;
+        }
+
         if (view == null || editText == null) {
             return;
         }
@@ -71,6 +76,11 @@ public class EtChangeBackground  {
 
         @Override
         public void afterTextChanged(Editable s) {
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                return;
+            }
+
             String phone = s.toString().trim();
             if (phone.length() >= limitNumber) {
                 codeView.setBackground(ResourceUtil.getDrawable(limitg));
@@ -100,7 +110,6 @@ public class EtChangeBackground  {
     }
 
 
-
     //-------------- get --------------
 
     public EtChangeBackground setDefBg(int defBg) {
@@ -122,8 +131,6 @@ public class EtChangeBackground  {
         this.limitNumber = limitNumber;
         return this;
     }
-
-
 
 
 }

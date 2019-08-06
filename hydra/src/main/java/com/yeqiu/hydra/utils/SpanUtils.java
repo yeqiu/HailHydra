@@ -14,14 +14,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.FloatRange;
-import androidx.annotation.IntDef;
-import androidx.annotation.IntRange;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import android.text.Layout;
 import android.text.Layout.Alignment;
 import android.text.SpannableStringBuilder;
@@ -56,15 +48,24 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.ref.WeakReference;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntDef;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+
 import static android.graphics.BlurMaskFilter.Blur;
 
+
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 16/12/13
- *     desc  : utils about span
- * </pre>
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2019-08-05
+ * @describe：
+ * @fix：
  */
 public final class SpanUtils {
 
@@ -766,7 +767,9 @@ public final class SpanUtils {
 
     private void updateCharCharSequence() {
 
-        if (mText.length() == 0) return;
+        if (mText.length() == 0) {
+            return;
+        }
         int start = mBuilder.length();
         mBuilder.append(mText);
         int end = mBuilder.length();
@@ -1001,10 +1004,12 @@ public final class SpanUtils {
             this.gapWidth = gapWidth;
         }
 
+        @Override
         public int getLeadingMargin(final boolean first) {
             return stripeWidth + gapWidth;
         }
 
+        @Override
         public void drawLeadingMargin(final Canvas c, final Paint p, final int x, final int dir,
                                       final int top, final int baseline, final int bottom,
                                       final CharSequence text, final int start, final int end,
@@ -1036,10 +1041,12 @@ public final class SpanUtils {
             this.gapWidth = gapWidth;
         }
 
+        @Override
         public int getLeadingMargin(final boolean first) {
             return 2 * radius + gapWidth;
         }
 
+        @Override
         public void drawLeadingMargin(final Canvas c, final Paint p, final int x, final int dir,
                                       final int top, final int baseline, final int bottom,
                                       final CharSequence text, final int start, final int end,

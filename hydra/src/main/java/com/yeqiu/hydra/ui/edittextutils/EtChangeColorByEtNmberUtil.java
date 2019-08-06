@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.ui.EditTextUtils;
+package com.yeqiu.hydra.ui.edittextutils;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.yeqiu.hydra.HydraUtilsManager;
 import com.yeqiu.hydra.ui.UiConfig;
+import com.yeqiu.hydra.utils.ResourceUtil;
 
 /**
  * @project：HailHydra
@@ -67,8 +68,7 @@ public class EtChangeColorByEtNmberUtil {
         this.codeView = view;
 
 
-        view.setTextColor(HydraUtilsManager.getInstance().getContext().getResources().getColor
-                (defColor));
+        view.setTextColor(ResourceUtil.getColor(defColor));
         view.setClickable(defClickable);
 
         editText.addTextChangedListener(textWatcher);

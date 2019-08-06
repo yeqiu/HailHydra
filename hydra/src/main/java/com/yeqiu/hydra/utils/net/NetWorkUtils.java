@@ -69,13 +69,12 @@ public class NetWorkUtils {
     }
 
 
-
     /**
      * 判断当前网络类型-1为未知网络0为没有网络连接1网络断开或关闭2为以太网3为WiFi4为2G5为3G6为4G
      */
     public static int getNetworkType() {
 
-        Context context  = HydraUtilsManager.getInstance().getContext();
+        Context context = HydraUtilsManager.getInstance().getContext();
 
         ConnectivityManager connectMgr = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -117,6 +116,9 @@ public class NetWorkUtils {
                 case TelephonyManager.NETWORK_TYPE_LTE:
                     /** 4G网络 */
                     return 4;
+
+                default:
+                    break;
             }
         }
         /** 未知网络 */
@@ -171,13 +173,14 @@ public class NetWorkUtils {
                 case TelephonyManager.NETWORK_TYPE_LTE:
                     /** 4G网络 */
                     return true;
+
+                default:
+                    break;
             }
         }
         /** 未知网络 */
         return false;
     }
-
-
 
 
 }

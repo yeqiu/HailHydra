@@ -6,7 +6,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
+import com.yeqiu.hydra.bean.model.ModelHaydraItem;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 
 import java.util.ArrayList;

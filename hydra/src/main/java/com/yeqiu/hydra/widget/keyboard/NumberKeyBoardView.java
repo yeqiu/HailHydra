@@ -148,7 +148,7 @@ public class NumberKeyBoardView extends RelativeLayout {
         numbers.add("del");
 
         keyBoardAdapter = new KeyBoardAdapter(context, numbers);
-        keyBoardAdapter.ShowPoit(showPoint);
+        keyBoardAdapter.showPoit(showPoint);
         gvKeybord.setAdapter(keyBoardAdapter);
     }
 
@@ -164,7 +164,7 @@ public class NumberKeyBoardView extends RelativeLayout {
             this.datas = datas;
         }
 
-        public void ShowPoit(boolean isShowPoit) {
+        public void showPoit(boolean isShowPoit) {
 
             this.isShowPoit = isShowPoit;
             notifyDataSetChanged();
@@ -278,7 +278,7 @@ public class NumberKeyBoardView extends RelativeLayout {
     public void showPoit(boolean isShowPoit) {
 
         if (keyBoardAdapter != null) {
-            keyBoardAdapter.ShowPoit(isShowPoit);
+            keyBoardAdapter.showPoit(isShowPoit);
         }
     }
 

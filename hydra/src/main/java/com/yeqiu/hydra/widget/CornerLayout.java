@@ -40,7 +40,7 @@ public class CornerLayout extends FrameLayout {
     private int bottomLeftCorner;
     private int bottomRightCorner;
     private int strokeWidth;
-    private int strokeColor = getResources().getColor(R.color.color_transparent);
+    private int strokeColor = ResourceUtil.getColor(R.color.color_transparent);
     public float[] radii = new float[8];
     /**
      * 画布图层大小

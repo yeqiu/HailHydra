@@ -6,12 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.yeqiu.hydrautils.R;
+
+import androidx.annotation.Nullable;
 
 
 /**
@@ -234,7 +235,7 @@ public class RatingBar extends View {
                         // 选中的数量：满的就回调（1.0这种），一半就（0.5这种）
                         float selectedNumber = status == Status.FULL ? mSelectedNumber
                                 : (mSelectedNumber - 0.5f);
-                        mOnStarChangeListener.OnStarChanged(selectedNumber,
+                        mOnStarChangeListener.onStarChanged(selectedNumber,
                                 position < 0 ? 0 : position);
                     }
                 }
@@ -256,7 +257,7 @@ public class RatingBar extends View {
 
     //  回调监听（选中的数量，位置）
     public interface OnStarChangeListener {
-        void OnStarChanged(float selectedNumber, int position);
+        void onStarChanged(float selectedNumber, int position);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.yeqiu.hydra.bean.Model;
+package com.yeqiu.hydra.bean.model;
 
 import java.io.Serializable;
 

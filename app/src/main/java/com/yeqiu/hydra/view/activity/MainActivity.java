@@ -4,7 +4,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
+import com.yeqiu.hydra.bean.model.ModelHaydraItem;
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.view.activity.demo.DemoActivity;
@@ -19,7 +19,13 @@ import java.util.Random;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2019/7/15
+ * @describe：
+ * @fix：
+ */
 public class MainActivity extends BaseActivity {
 
     private RecyclerView rvHaydra;

@@ -8,7 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.bean.Model.CheckboxData;
+import com.yeqiu.hydra.bean.model.CheckboxData;
 import com.yeqiu.hydra.callback.OnCheckedChangeListener;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 import com.yeqiu.hydra.view.adapter.CheckboxListAdapter;

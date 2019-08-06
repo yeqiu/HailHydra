@@ -13,19 +13,12 @@ import java.util.TimeZone;
  * @fix：
  */
 public class DateUtil {
-    public static final SimpleDateFormat YYYYMMDD_FORMAT = new SimpleDateFormat("yyyy-MM-dd",
+    public static  SimpleDateFormat YYYYMMDD_FORMAT = new SimpleDateFormat("yyyy-MM-dd",
             Locale.getDefault());
-    public static final SimpleDateFormat HHMMSS_FORMAT = new SimpleDateFormat("HH:mm:ss", Locale
+    public static  SimpleDateFormat HHMMSS_FORMAT = new SimpleDateFormat("HH:mm:ss", Locale
             .getDefault());
-    public static final SimpleDateFormat YYYYMMDDHHMMSS_FORMAT = new SimpleDateFormat("yyyy-MM-dd" +
+    public static  SimpleDateFormat YYYYMMDDHHMMSS_FORMAT = new SimpleDateFormat("yyyy-MM-dd" +
             " HH:mm:ss", Locale.getDefault());
-    private static final String[] CHINESE_ZODIAC = new String[]{"猴", "鸡", "狗", "猪", "鼠", "牛",
-            "虎", "兔", "龙", "蛇", "马", "羊"};
-    private static final String[] ZODIAC = new String[]{"水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座",
-            "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "魔羯座"};
-
-    private static final int[] ZODIAC_FLAGS = new int[]{20, 19, 21, 21, 21, 22, 23, 23, 23, 24,
-            23, 22};
 
     /** 格式化日期的标准字符串 */
     public final static String Detail_Format = "yyyy-MM-dd HH:mm:ss";

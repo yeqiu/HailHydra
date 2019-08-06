@@ -34,9 +34,10 @@ public class DecimalDigitsInputFilter implements InputFilter {
         }
         if (dotPos >= 0) {
             // protects against many dots
-            if (source.equals(".") || source.equals(",")) {
+            if (".".equals(source)||",".equals(source)){
                 return "";
             }
+
             // if the text is entered before the dot
             if (dend <= dotPos) {
                 return null;

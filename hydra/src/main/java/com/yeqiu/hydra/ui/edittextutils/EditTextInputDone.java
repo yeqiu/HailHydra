@@ -1,5 +1,6 @@
-package com.yeqiu.hydra.ui.EditTextUtils;
+package com.yeqiu.hydra.ui.edittextutils;
 
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -53,6 +54,11 @@ public class EditTextInputDone {
 
 
     public void checkInputDone(View inputBindView, TextView... textViews) {
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+            return;
+        }
+
         if (inputBindView == null || textViews == null || textViews.length <= 0) {
             return;
         }
@@ -63,12 +69,12 @@ public class EditTextInputDone {
         inputBindView.setBackground(ResourceUtil.getDrawable(defBg));
 
         for (TextView textView : textViews) {
-            textView.addTextChangedListener(InputTextWatcher);
+            textView.addTextChangedListener(inputTextWatcher);
         }
     }
 
 
-    private TextWatcher InputTextWatcher = new TextWatcher() {
+    private TextWatcher inputTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -81,6 +87,10 @@ public class EditTextInputDone {
 
         @Override
         public void afterTextChanged(Editable s) {
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                return;
+            }
 
             boolean inputDone = true;
 

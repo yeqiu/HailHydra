@@ -5,7 +5,11 @@ import android.util.AttributeSet;
 import android.widget.ListView;
 
 /**
-  自适应高度ListVIew
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2019-08-05
+ * @describe：自适应高度ListVIew
+ * @fix：
  */
 public class FullListView extends ListView {
 

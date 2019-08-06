@@ -121,7 +121,9 @@ final class ThreadHandler extends Handler {
             } finally {
                 syncActive = rescheduled;
             }
-        } else super.handleMessage(msg);
+        } else {
+            super.handleMessage(msg);
+        }
     }
 }
 

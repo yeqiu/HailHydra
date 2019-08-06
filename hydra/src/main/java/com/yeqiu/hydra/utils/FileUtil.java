@@ -85,7 +85,7 @@ public class FileUtil {
     public static long getFileSize(File file) {
         long size = 0;
         if (file != null && file.exists() && file.isDirectory()) {
-            File files[] = file.listFiles();
+            File[] files = file.listFiles();
             for (int i = 0; i < files.length; i++) {
                 if (files[i].isDirectory()) {
                     size = size + getFileSize(files[i]);
@@ -269,7 +269,7 @@ public class FileUtil {
             //创建输出流
             output = new FileOutputStream(file);
             //一次读取文件的长度
-            byte buffer[] = new byte[4 * 1024];
+            byte[] buffer = new byte[4 * 1024];
             if ((inputStream.read(buffer)) != -1) {
                 output.write(buffer);
             }
@@ -670,9 +670,10 @@ public class FileUtil {
         try {
             //1:单文件剪切操作
             if (src.isFile()) {
-                if (!desc.isFile() || boolCover)
+                if (!desc.isFile() || boolCover){
                     //创建新文件
                     desc.createNewFile();
+                }
                 //进行复制操作
                 CUT_FALG = copyFile(src, desc);
                 //是否是剪切操作

@@ -9,9 +9,12 @@ import com.yeqiu.hydra.utils.ToastUtils;
 
 
 /**
- * 第三方支付工具类
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2019-08-05
+ * @describe：微信支付
+ * @fix：
  */
-
 public class WXPayUtils {
 
 
@@ -25,7 +28,7 @@ public class WXPayUtils {
         WXPayUtils.wxPayResultListener = wxPayResultListener;
     }
 
-    public static void UnregisterListener() {
+    public static void unregisterListener() {
 
         WXPayUtils.wxPayResultListener = null;
     }

@@ -44,7 +44,7 @@ public class UpdateActivity extends BaseActivity {
     protected void initData() {
 
 
-        String permissions[] = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
         AndPermission.with(this)
                 .runtime()

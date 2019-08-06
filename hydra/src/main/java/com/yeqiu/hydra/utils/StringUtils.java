@@ -4,8 +4,6 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 
-import com.yeqiu.hydra.HydraUtilsManager;
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -100,7 +98,7 @@ public class StringUtils {
     public static CharSequence discoloration(int colorId, String string, String keyWord) {
 
 
-        int color = HydraUtilsManager.getInstance().getContext().getResources().getColor(colorId);
+        int color = ResourceUtil.getColor(colorId);
 
         SpannableStringBuilder builder = new SpannableStringBuilder(string);
         int indexOf = string.indexOf(keyWord);
@@ -205,14 +203,14 @@ public class StringUtils {
      * 隐藏手机中间4位号码
      * 130****0000
      *
-     * @param mobile_phone 手机号码
+     * @param mobilePhone 手机号码
      * @return 130****0000
      */
-    public static String hideMobilePhone(String mobile_phone) {
-        if (mobile_phone.length() != 11) {
+    public static String hideMobilePhone(String mobilePhone) {
+        if (mobilePhone.length() != 11) {
             return "手机号码不正确";
         }
-        return mobile_phone.substring(0, 3) + "****" + mobile_phone.substring(7, 11);
+        return mobilePhone.substring(0, 3) + "****" + mobilePhone.substring(7, 11);
     }
 
     /**

@@ -9,6 +9,7 @@ package com.yeqiu.hydra.app;
  */
 
 import com.yeqiu.hydra.utils.APPInfoUtil;
+import com.yeqiu.hydra.utils.LogUtils;
 
 /**
  * 捕捉bug，并写入日志文件 自定义的 异常处理类 , 实现了 UncaughtExceptionHandler接口
@@ -40,6 +41,8 @@ public class BugHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
 
+        LogUtils.i("crash: "+throwable.getMessage());
+        
         APPInfoUtil.restart();
 
 

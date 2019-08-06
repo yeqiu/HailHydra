@@ -2,7 +2,6 @@ package com.yeqiu.hydra.view.dialog;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -16,6 +15,8 @@ import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydra.widget.marquee.MarqueeTextView;
 import com.yeqiu.hydrautils.R;
+
+import androidx.core.content.ContextCompat;
 
 /**
  * @project：HailHydra
@@ -79,9 +80,9 @@ public class TipDialog extends HydraBaseDialog<TipDialog> {
 
         if (getIconId() != -999) {
             imageView = new ImageView(getContext());
-            LinearLayout.LayoutParams imageViewLP = new LinearLayout.LayoutParams(DensityUtils
+            LinearLayout.LayoutParams imageviewlp = new LinearLayout.LayoutParams(DensityUtils
                     .dp2px(30), DensityUtils.dp2px(30));
-            imageView.setLayoutParams(imageViewLP);
+            imageView.setLayoutParams(imageviewlp);
             imageView.setImageResource(getIconId());
             llRoot.addView(imageView);
         }

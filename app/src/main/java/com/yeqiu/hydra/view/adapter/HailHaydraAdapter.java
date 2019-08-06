@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.bean.Model.ModelHaydraItem;
+import com.yeqiu.hydra.bean.model.ModelHaydraItem;
 import com.yeqiu.hydra.utils.image.ImageUtils;
 
 import java.util.List;

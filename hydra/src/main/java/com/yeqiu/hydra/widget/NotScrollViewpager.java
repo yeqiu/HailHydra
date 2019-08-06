@@ -1,13 +1,19 @@
 package com.yeqiu.hydra.widget;
 
 import android.content.Context;
-import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import androidx.viewpager.widget.ViewPager;
+
+
+
 /**
- * 不能滑动的ViewPager
- * 主要通过radioGroup的切换实现viewPager的切换
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2019-08-05
+ * @describe：不能滑动的ViewPager
+ * @fix：
  */
 public class NotScrollViewpager extends ViewPager {
 
@@ -32,18 +38,20 @@ public class NotScrollViewpager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent arg0) {
-        if (noScroll)
+        if (noScroll) {
             return false;
-        else
+        } else {
             return super.onTouchEvent(arg0);
+        }
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent arg0) {
-        if (noScroll)
+        if (noScroll) {
             return false;
-        else
+        } else {
             return super.onInterceptTouchEvent(arg0);
+        }
     }
 
     @Override

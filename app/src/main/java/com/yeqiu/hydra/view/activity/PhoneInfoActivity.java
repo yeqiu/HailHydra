@@ -1,7 +1,6 @@
 package com.yeqiu.hydra.view.activity;
 
 import android.Manifest;
-import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +10,8 @@ import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.utils.PhoneInfoUtil;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 
 /**
@@ -63,7 +64,7 @@ public class PhoneInfoActivity extends BaseActivity {
     protected void initData() {
 
 
-        String permissions[] = {Manifest.permission.READ_PHONE_STATE};
+        String[] permissions = {Manifest.permission.READ_PHONE_STATE};
 
         AndPermission.with(this)
                 .runtime()

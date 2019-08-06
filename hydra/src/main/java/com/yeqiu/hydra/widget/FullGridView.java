@@ -4,8 +4,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridView;
 
+
 /**
- * 自适应高度GirdView
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2019-08-05
+ * @describe：自适应高度GirdView
+ * @fix：
  */
 public class FullGridView extends GridView {
     public FullGridView(Context context) {

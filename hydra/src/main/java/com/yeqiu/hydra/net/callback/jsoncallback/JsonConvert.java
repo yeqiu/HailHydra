@@ -174,7 +174,9 @@ public class JsonConvert<T> implements Converter<T> {
     private static Charset getCharset(MediaType contentType) {
         Charset UTF8 = Charset.forName("UTF-8");
         Charset charset = contentType != null ? contentType.charset(UTF8) : UTF8;
-        if (charset == null) charset = UTF8;
+        if (charset == null) {
+            charset = UTF8;
+        }
         return charset;
     }
 
