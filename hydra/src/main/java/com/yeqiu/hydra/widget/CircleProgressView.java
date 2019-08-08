@@ -21,7 +21,13 @@ import java.lang.annotation.RetentionPolicy;
 
 import androidx.annotation.IntDef;
 
-
+/**
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2019-08-05
+ * @describe：
+ * @fix：
+ */
 public class CircleProgressView extends ProgressBar {
 
 
@@ -319,6 +325,8 @@ public class CircleProgressView extends ProgressBar {
                 break;
             case ProgressStyle.FILL_IN_ARC:
                 drawFillInArcCircle(canvas);
+                break;
+            default:
                 break;
         }
     }

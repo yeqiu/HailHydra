@@ -88,7 +88,7 @@ public class SheetDialog extends HydraBaseDialog<SheetDialog> {
             title.setTextSize(getTitleSize());
         }
 
-        cancel.setTextColor(getContext().getResources().getColor(getCancelColor()));
+        cancel.setTextColor( ResourceUtil.getColor(getCancelColor()));
         setItem(datas, list, cancel);
 
 

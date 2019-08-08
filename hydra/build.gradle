@@ -25,7 +25,7 @@ android {
 
 dependencies {
 
-    api "androidx.appcompat:appcompat:$rootProject.androidx"
+    api "androidx.appcompat:appcompat:$rootProject.androidxAppcompat"
     //constraintlayout
     api "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayout"
     //recyclerview

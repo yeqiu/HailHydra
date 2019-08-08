@@ -52,23 +52,23 @@ public class ImageUtils {
     /**
      * ImageView的默认模式，在该模式下，图片会被等比缩放到能够填充控件大小，并居中展示：
      */
-    public static final int fitCenter = 1;
+    public static final int FIT_CENTER = 1;
 
     /**
      * 使用此模式以完全展示图片的内容为目的。图片将被等比缩放到能够完整展示在ImageView中并居中，如果图片大小小于控件大小，那么就直接居中展示该图片：
      */
-    public static final int centerInside = 2;
+    public static final int CENTER_INSIDE = 2;
 
     /**
      * 在该模式下，图片会被等比缩放直到完全填充整个ImageView，并居中显示。该模式也是最常用的模式了。
      */
-    public static final int centerCrop = 3;
+    public static final int CENTER_CROP = 3;
 
 
     /**
      * 图片会被裁剪成圆形
      */
-    public static final int circle = 4;
+    public static final int CIRCLE = 4;
 
 
     /**
@@ -205,18 +205,18 @@ public class ImageUtils {
 
         switch (scaleType) {
 
-            case fitCenter:
+            case FIT_CENTER:
                 getOptions().fitCenter();
                 break;
 
-            case centerInside:
+            case CENTER_INSIDE:
                 getOptions().centerInside();
                 break;
-            case centerCrop:
+            case CENTER_CROP:
                 getOptions().centerCrop();
                 break;
 
-            case circle:
+            case CIRCLE:
                 getOptions().circleCrop();
                 break;
 

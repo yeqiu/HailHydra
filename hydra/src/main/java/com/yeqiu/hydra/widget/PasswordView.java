@@ -24,11 +24,14 @@ import com.yeqiu.hydrautils.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Created by Arron on 2016/11/21 0021.
- * 密码输入框
- */
 
+/**
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2019-08-05
+ * @describe：
+ * @fix：
+ */
 public class PasswordView extends View {
 
     private Mode mode; //样式模式
@@ -191,6 +194,8 @@ public class PasswordView extends View {
                 //密码框大小等于 (宽度 - 密码框间距 *(密码位数 - 1)) / 密码位数
                 passwordSize = (width - (passwordPadding * (passwordLength - 1))) / passwordLength;
                 break;
+            default:
+                break;
         }
         setMeasuredDimension(width, passwordSize);
     }
@@ -254,8 +259,6 @@ public class PasswordView extends View {
                     if (passwordListener != null && !TextUtils.isEmpty(addText)) {
                         passwordListener.passwordChange(addText);
                     }
-
-
 
 
                     return true;

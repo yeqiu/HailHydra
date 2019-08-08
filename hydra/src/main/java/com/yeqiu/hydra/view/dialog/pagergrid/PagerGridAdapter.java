@@ -1,12 +1,13 @@
 package com.yeqiu.hydra.view.dialog.pagergrid;
 
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
  * @project：HailHydra
@@ -38,7 +39,6 @@ public class PagerGridAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-       // super.destroyItem(container, position, object);
 
         container.removeView((View) object);
     }

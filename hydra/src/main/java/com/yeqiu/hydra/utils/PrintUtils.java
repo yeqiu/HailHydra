@@ -15,7 +15,7 @@ import org.json.JSONObject;
  */
 public class PrintUtils {
 
-    private static final String tag = "json";
+    private static final String TAG = "json";
 
     public static void printJson(String msg) {
         //正式版不打印
@@ -37,9 +37,9 @@ public class PrintUtils {
         } catch (JSONException e) {
             message = msg;
         }
-        printLine(tag, true);
-        Log.v(tag, message);
-        printLine(tag, false);
+        printLine(TAG, true);
+        Log.v(TAG, message);
+        printLine(TAG, false);
     }
 
 

@@ -71,6 +71,8 @@ public class DateUtil {
      * @return
      */
     public static String getTodayYyyyMmDd() {
+
+
         return YYYYMMDD_FORMAT.format(new Date());
     }
 

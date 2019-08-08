@@ -1,9 +1,12 @@
 package com.yeqiu.hydra.utils;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.os.Build;
@@ -56,6 +59,7 @@ public class PhoneInfoUtil {
      *
      * @return
      */
+    @SuppressLint("MissingPermission")
     public static String getPhoneImei() {
 
         try {
@@ -79,6 +83,7 @@ public class PhoneInfoUtil {
      *
      * @return
      */
+    @SuppressLint("MissingPermission")
     public static String getPhoneNum() {
 
 

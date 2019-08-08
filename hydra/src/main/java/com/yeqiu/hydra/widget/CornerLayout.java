@@ -97,8 +97,8 @@ public class CornerLayout extends FrameLayout {
         }
 
         strokeWidth = typedArray.getDimensionPixelSize(R.styleable.CornerLayout_stroke_width, 1);
-        strokeColor = typedArray.getColor(R.styleable.CornerLayout_stroke_color,
-                getResources().getColor(R.color.color_transparent));
+        strokeColor = typedArray.getColor(R.styleable.CornerLayout_stroke_color, ResourceUtil.getColor(R.color.color_transparent));
+
         typedArray.recycle();
 
 

@@ -92,7 +92,7 @@ public class ALiPayUtils {
 
         void onAliPaySuccess(String resultInfo);
 
-        void onAliPayFail(String ret_code, String msg);
+        void onAliPayFail(String code, String msg);
     }
 
 

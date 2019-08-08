@@ -261,6 +261,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     /**
      * 设置返回键图片
+     * @return
      */
     protected abstract int getDefHeadBackImgId();
 
@@ -299,7 +300,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      * @param backSrcId
      */
     protected void setHeadLayoutColor(int colorId, int backSrcId) {
-        llHeadLayoutRoot.setBackgroundColor(getResources().getColor(colorId));
+        llHeadLayoutRoot.setBackgroundColor(ResourceUtil.getColor(colorId));
         ivHeadBack.setImageResource(backSrcId);
     }
 

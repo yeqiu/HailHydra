@@ -5,7 +5,6 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.yeqiu.hydra.HydraUtilsManager;
 import com.yeqiu.hydra.ui.UiConfig;
 import com.yeqiu.hydra.utils.ResourceUtil;
 
@@ -94,12 +93,11 @@ public class EtChangeColorByEtNmberUtil {
         public void afterTextChanged(Editable s) {
             String phone = s.toString().trim();
             if (phone.length() >= limitNumber) {
-                codeView.setTextColor(HydraUtilsManager.getInstance().getContext().getResources()
-                        .getColor(limitcolor));
+                codeView.setTextColor(ResourceUtil.getColor(limitcolor));
+
                 codeView.setClickable(true);
             } else {
-                codeView.setTextColor(HydraUtilsManager.getInstance().getContext().getResources()
-                        .getColor(defColor));
+                codeView.setTextColor(ResourceUtil.getColor(limitcolor));
                 codeView.setClickable(defClickable);
             }
         }

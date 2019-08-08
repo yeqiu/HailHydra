@@ -100,7 +100,7 @@ public class ImageUtilsActivity extends BaseActivity {
             case R.id.bt_image_utils_fitcenter:
 
                 new ImageUtils()
-                        .setOptions(ImageUtils.fitCenter)
+                        .setOptions(ImageUtils.FIT_CENTER)
                         .setImgPlaceholder(R.drawable.hydra)
                         .setCacheStrategy(DiskCacheStrategy.NONE)
                         .load(getContext(), url, ivImageUtils);
@@ -109,7 +109,7 @@ public class ImageUtilsActivity extends BaseActivity {
             case R.id.bt_image_utils_centercrop:
 
                 new ImageUtils()
-                        .setOptions(ImageUtils.centerCrop)
+                        .setOptions(ImageUtils.CENTER_CROP)
                         .setImgPlaceholder(R.drawable.hydra)
                         .setCacheStrategy(DiskCacheStrategy.NONE)
                         .load(getContext(), url, ivImageUtils);
@@ -118,7 +118,7 @@ public class ImageUtilsActivity extends BaseActivity {
             case R.id.bt_image_utils_centerInside:
 
                 new ImageUtils()
-                        .setOptions(ImageUtils.centerInside)
+                        .setOptions(ImageUtils.CENTER_INSIDE)
                         .setImgPlaceholder(R.drawable.hydra)
                         .setCacheStrategy(DiskCacheStrategy.NONE)
                         .load(getContext(), url, ivImageUtils);
@@ -127,7 +127,7 @@ public class ImageUtilsActivity extends BaseActivity {
             case R.id.bt_image_utils_circle:
 
                 new ImageUtils()
-                        .setOptions(ImageUtils.circle)
+                        .setOptions(ImageUtils.CIRCLE)
                         .setImgPlaceholder(R.drawable.hydra)
                         .setCacheStrategy(DiskCacheStrategy.NONE)
                         .load(getContext(), url, ivImageUtils);
@@ -136,7 +136,7 @@ public class ImageUtilsActivity extends BaseActivity {
             case R.id.bt_image_utils_round:
 
                 new ImageUtils()
-                        .setOptions(ImageUtils.centerCrop)
+                        .setOptions(ImageUtils.CENTER_CROP)
                         .setImgPlaceholder(R.drawable.hydra)
                         .setCacheStrategy(DiskCacheStrategy.NONE)
                         .loadWithRound(getContext(), url, ivImageUtils, 20);
@@ -145,7 +145,7 @@ public class ImageUtilsActivity extends BaseActivity {
             case R.id.bt_image_utils_bg:
 
                 new ImageUtils()
-                        .setOptions(ImageUtils.fitCenter)
+                        .setOptions(ImageUtils.FIT_CENTER)
                         .setImgPlaceholder(R.drawable.hydra)
                         .setCacheStrategy(DiskCacheStrategy.NONE)
                         .setBg(getContext(), url, ivImageUtils);
@@ -200,7 +200,7 @@ public class ImageUtilsActivity extends BaseActivity {
                 BlurTransformation blurTransformation = new BlurTransformation(getContext(), 25, 1);
 
                 new ImageUtils()
-                        .setOptions(ImageUtils.centerCrop)
+                        .setOptions(ImageUtils.CENTER_CROP)
                         .setImgPlaceholder(R.drawable.hydra)
                         .setCacheStrategy(DiskCacheStrategy.NONE)
                         .setTransformation(blurTransformation)

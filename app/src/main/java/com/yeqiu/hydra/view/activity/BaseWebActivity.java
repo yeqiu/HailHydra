@@ -80,7 +80,6 @@ public abstract class BaseWebActivity extends BaseActivity {
 
     @Override
     protected void onBackClick() {
-        // super.onBackClick();
         handleBack();
     }
 
@@ -224,6 +223,9 @@ public abstract class BaseWebActivity extends BaseActivity {
         }
     }
 
+    /**
+     * webview 的其他设置 在initview中 loadurl之前
+     */
     protected abstract void otherSetting();
 
 

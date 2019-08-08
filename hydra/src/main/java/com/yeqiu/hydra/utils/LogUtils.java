@@ -65,7 +65,7 @@ public class LogUtils {
         private int last;
 
         private String randomKey() {
-            int random = (int) (10 * Math.random());
+            int random = (int) ( Math.random()*10);
             if (random == last) {
                 random = (random + 1) % 10;
             }
