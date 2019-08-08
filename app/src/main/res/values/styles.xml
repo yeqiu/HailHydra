@@ -6,7 +6,24 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
+
+
+    <!--<item name="android:windowAnimationStyle">@style/activityAnimation</item>-->
+
+    <style name="activityAnimation" parent="@android:style/Animation">
+        <!-- A1启动A2，A2出现在屏幕上的动画-->
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_to_left_in</item>
+        <!-- A1启动A2，A1从屏幕上消失的动画-->
+        <item name="android:activityOpenExitAnimation">@anim/slide_right_to_left_out</item>
+        <!-- A2退回A1 A1出现在屏幕上的动画-->
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_to_right_in</item>
+        <!-- A2退回A1 A2从屏幕上消失的动画-->
+        <item name="android:activityCloseExitAnimation">@anim/slide_left_to_right_out</item>
+    </style>
+
+
 
     <!--进度条-->
     <style name="numberProgressbarUpdate">

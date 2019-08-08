@@ -51,9 +51,15 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected RelativeLayout rlCommonHead;
     private Activity context;
 
+    private int openEnterAnimation = R.anim.slide_right_to_left_in;
+    private int openExitAnimation = R.anim.slide_right_to_left_out;
+    private int closeEnterAnimation = R.anim.slide_left_to_right_in;
+    private int closeExitAnimation = R.anim.slide_left_to_right_out;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        showActivityAnimation(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         context = this;
@@ -63,6 +69,25 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         isShowActionBar();
         setSwipeBackEnable(isSwipeBack());
         init();
+
+    }
+
+    /**
+     * activty跳转动画
+     *
+     * @param isCreate
+     */
+    private void showActivityAnimation(boolean isCreate) {
+
+        if (!isShowActivityAnimation()) {
+            return;
+        }
+
+        if (isCreate) {
+            overridePendingTransition(openEnterAnimation, openExitAnimation);
+        } else {
+            overridePendingTransition(closeEnterAnimation, closeExitAnimation);
+        }
 
     }
 
@@ -81,7 +106,6 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         }
 
     }
-
 
 
     private void init() {
@@ -204,6 +228,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         //关闭本页的输入法
         KeybordUtils.closeKeybord(this);
         super.finish();
+        showActivityAnimation(false);
     }
 
 
@@ -241,6 +266,22 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
 
     //    --------- 以下方法供子类使用  ---------
+
+    /**
+     * 设置activity跳转动画
+     *
+     * @param openEnterAnimation  A1启动A2，A2出现在屏幕上的动画
+     * @param openExitAnimation   A1启动A2，A1从屏幕上消失的动画
+     * @param closeEnterAnimation A2退回A1 A1出现在屏幕上的动画
+     * @param closeExitAnimation  A2退回A1 A2从屏幕上消失的动画
+     */
+    protected void setActivityAnimation(int openEnterAnimation, int openExitAnimation,
+                                        int closeEnterAnimation, int closeExitAnimation) {
+        this.openEnterAnimation = openEnterAnimation;
+        this.openExitAnimation = openExitAnimation;
+        this.closeEnterAnimation = closeEnterAnimation;
+        this.closeExitAnimation = closeExitAnimation;
+    }
 
 
     /**
@@ -292,6 +333,16 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         return NetWorkUtils.getNetworkType();
     }
 
+
+    /**
+     * 是否设置activity跳转动画
+     *
+     * @return
+     */
+    protected boolean isShowActivityAnimation() {
+        return true;
+    }
+
     /**
      * 是否可以使用沉浸式
      *
@@ -304,9 +355,10 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     /**
      * 状态栏是否设置深色
+     *
      * @return
      */
-    protected boolean isStatusBarDarkFont(){
+    protected boolean isStatusBarDarkFont() {
         return true;
     }
 

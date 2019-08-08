@@ -34,6 +34,11 @@ public class MainActivity extends BaseActivity {
     private long firstTime = 0;
 
     @Override
+    protected boolean isShowActivityAnimation() {
+        return false;
+    }
+
+    @Override
     protected Object getContentView() {
         return R.layout.activity_main;
     }

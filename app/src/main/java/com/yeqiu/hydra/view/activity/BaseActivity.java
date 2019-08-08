@@ -14,6 +14,7 @@ import com.yeqiu.hydra.basecontroller.HydraBaseActivity;
 public abstract class BaseActivity extends HydraBaseActivity {
 
 
+
     @Override
     protected int getDefHeadBackImgId() {
         return R.drawable.head_back_gray;

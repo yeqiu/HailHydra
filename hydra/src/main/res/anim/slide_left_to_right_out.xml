@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- A2退回A1 A2从屏幕上消失的动画-->
+    <!--左侧向右侧 消失-->
+    <translate
+        android:duration="200"
+        android:fromXDelta="0.0"
+        android:toXDelta="100.0%p"/>
+
+</set>

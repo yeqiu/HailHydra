@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- A1启动A2，A2出现在屏幕上的动画-->
+    <!-- 右侧向左侧插入 -->
+    <translate
+        android:duration="200"
+        android:fromXDelta="100%p"
+        android:toXDelta="0%p"/>
+
+</set>

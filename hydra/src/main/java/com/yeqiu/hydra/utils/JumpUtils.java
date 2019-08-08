@@ -27,6 +27,7 @@ public class JumpUtils {
         try {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,6 +46,7 @@ public class JumpUtils {
         }
         Context context = HydraUtilsManager.getInstance().getContext();
         Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+        dialIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(dialIntent);
     }
 
@@ -73,6 +75,8 @@ public class JumpUtils {
         context.startActivity(intent);
 
     }
+
+
 
 
 }

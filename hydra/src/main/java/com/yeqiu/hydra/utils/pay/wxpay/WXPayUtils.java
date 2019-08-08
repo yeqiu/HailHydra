@@ -112,8 +112,6 @@ public class WXPayUtils {
         }
         registerWeChatPay(context,appKey);
 
-
-        //mac_id = partnerId
         PayReq req = createPayReq(appId, partnerId, prepayId, nonceStr, timeStamp, sign);
         getWXApi(context,appKey).sendReq(req);
     }
