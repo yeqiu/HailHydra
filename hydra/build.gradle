@@ -51,10 +51,7 @@ dependencies {
     api 'com.lzy.net:okgo:3.0.4'
     //eventbus
     api 'org.greenrobot:eventbus:3.1.1'
-    //支付宝支付
-    api files('libs/alipaySdk-20180601.jar')
-    //微信支付
-    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
 
 
 }
