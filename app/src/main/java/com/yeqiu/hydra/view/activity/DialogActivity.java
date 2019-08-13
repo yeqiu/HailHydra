@@ -242,7 +242,7 @@ public class DialogActivity extends BaseActivity {
                 }
 
 
-                new PagerGridDialog(getContext())
+                new PagerGridDialog(getActivity())
                         .setTitleText("请选择")
                         .setData(data2)
                         .setPageSize(6)

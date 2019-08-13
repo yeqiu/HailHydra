@@ -84,7 +84,7 @@ public class TextToolActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
 
-        Intent intent = new Intent(getContext(), WebViewActivity.class);
+        Intent intent = new Intent(getActivity(), WebViewActivity.class);
         intent.putExtra("url", Url.SpannableString);
         startActivity(intent);
 

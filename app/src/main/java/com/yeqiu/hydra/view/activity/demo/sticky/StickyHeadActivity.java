@@ -44,7 +44,7 @@ public class StickyHeadActivity extends BaseActivity {
 
         rvSticky.setLayoutManager(new LinearLayoutManager(this));
 
-        headView = View.inflate(getContext(), R.layout.layout_head_sticky_header, null);
+        headView = View.inflate(getActivity(), R.layout.layout_head_sticky_header, null);
         tvHeadSticky = (TextView) headView.findViewById(R.id.tv_sticky);
 
 

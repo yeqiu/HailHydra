@@ -86,14 +86,14 @@ public class ScreenshotActivity extends BaseActivity {
 
     private void webScreenshot() {
 
-        Intent intent = new Intent(getContext(), ScreenshotWebActivity.class);
+        Intent intent = new Intent(getActivity(), ScreenshotWebActivity.class);
         intent.putExtra("url", Url.HailHydraUrl);
         JumpUtils.jumpToActivityByIntent(intent);
     }
 
     private void screenshot() {
 
-        Bitmap screenShotWithoutStatusBar = ScreenUtils.getScreenShotWithoutStatusBar(getContext());
+        Bitmap screenShotWithoutStatusBar = ScreenUtils.getScreenShotWithoutStatusBar(getActivity());
         Intent intenWithBitMp = getIntenWithBitMp(screenShotWithoutStatusBar);
         JumpUtils.jumpToActivityByIntent(intenWithBitMp);
 

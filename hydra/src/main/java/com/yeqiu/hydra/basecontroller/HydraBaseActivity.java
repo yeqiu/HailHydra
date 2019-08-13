@@ -158,7 +158,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      */
     protected void addStatusViewWithColor(int colorId) {
 
-        View statusBarView = new View(getContext());
+        View statusBarView = new View(getActivity());
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ScreenUtils.getStatusHeight());
         statusBarView.setBackgroundColor(ResourceUtil.getColor(colorId));
@@ -389,7 +389,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
      *
      * @return
      */
-    protected Activity getContext() {
+    protected Activity getActivity() {
         return context;
     }
 

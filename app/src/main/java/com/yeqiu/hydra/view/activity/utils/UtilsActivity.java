@@ -36,7 +36,7 @@ public class UtilsActivity extends BaseActivity {
     protected void initView() {
         setHeaderTitle("工具类");
         rvDemo = (RecyclerView) findViewById(R.id.rv_demo);
-        rvDemo.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvDemo.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
 
@@ -61,7 +61,7 @@ public class UtilsActivity extends BaseActivity {
         demoAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(getContext(), datas.get(position).getActivity()));
+                startActivity(new Intent(getActivity(), datas.get(position).getActivity()));
             }
         });
     }

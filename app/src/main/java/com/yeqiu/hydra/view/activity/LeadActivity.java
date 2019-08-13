@@ -75,7 +75,7 @@ public class LeadActivity extends BaseActivity {
 
         views = new ArrayList<>();
         for (int i = 0; i < imgs.size(); i++) {
-            ImageView imageView = new ImageView(getContext());
+            ImageView imageView = new ImageView(getActivity());
             //设置图片
             imageView.setImageResource(imgs.get(i));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);

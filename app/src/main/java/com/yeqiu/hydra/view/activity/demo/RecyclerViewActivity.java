@@ -47,7 +47,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
         setHeaderTitle("RecyclerView");
         rvRecyclerView = (RecyclerView) findViewById(R.id.rv_recycler_view);
-        rvRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
@@ -71,7 +71,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
 
         //添加分割线
-        rvRecyclerView.addItemDecoration(new DividerListItemDecoration(getContext(),
+        rvRecyclerView.addItemDecoration(new DividerListItemDecoration(getActivity(),
                 DividerListItemDecoration.VERTICAL_LIST));
 
 

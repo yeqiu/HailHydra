@@ -17,9 +17,9 @@
         android:supportsRtl="true"
         >
 
-        <!--微信 支付-->
+        <!--微信支付-->
         <activity
-            android:name="com.yeqiu.hydra.wxapi.WXPayEntryActivity"
+            android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
@@ -30,6 +30,7 @@
                 <data android:scheme="wx02d75af244d2596e"/>
             </intent-filter>
         </activity>
+
 
 
     </application>

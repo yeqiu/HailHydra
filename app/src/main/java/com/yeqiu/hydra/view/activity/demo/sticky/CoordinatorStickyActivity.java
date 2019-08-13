@@ -33,7 +33,7 @@ public class CoordinatorStickyActivity extends BaseActivity {
     protected void initView() {
         setHeaderTitle("CoordinatorLayout实现悬浮");
         rvCoordinatorSticky = (RecyclerView) findViewById(R.id.rv_coordinator_sticky);
-        rvCoordinatorSticky.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvCoordinatorSticky.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override

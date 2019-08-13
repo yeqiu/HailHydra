@@ -61,7 +61,7 @@ public class NetActivity extends BaseActivity {
                 post();
                 break;
             case R.id.tv_about_okgo:
-                Intent intent = new Intent(getContext(), WebViewActivity.class);
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
                 intent.putExtra("url", Url.about_okgo);
                 startActivity(intent);
                 break;
@@ -114,7 +114,7 @@ public class NetActivity extends BaseActivity {
         params.put("action", 1);
 
 
-        OkGoManager.getInstance().post(url, params, getContext(), new DialogCallback<String>() {
+        OkGoManager.getInstance().post(url, params, getActivity(), new DialogCallback<String>() {
             @Override
             public void onNetSuccess(String data) {
 

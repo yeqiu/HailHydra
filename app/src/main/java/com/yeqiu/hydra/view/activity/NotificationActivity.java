@@ -87,7 +87,7 @@ public class NotificationActivity extends BaseActivity {
 
         if (!NotificationUtils.checkNotifyOpen()) {
 
-            new CommonDialog(getContext())
+            new CommonDialog(getActivity())
                     .setTitleText("请开启通知权限")
                     .setDescText("检测到您没有开启通知，请在设置中打开")
                     .setOnDialogListener(new DialogListener() {
@@ -138,10 +138,10 @@ public class NotificationActivity extends BaseActivity {
 
 
         NotificationManager notificationManager =
-                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent = new Intent(getContext(), NotificationActivity.class);
-        PendingIntent pi = PendingIntent.getService(getContext(), 0, intent, 0);
+        Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        PendingIntent pi = PendingIntent.getService(getActivity(), 0, intent, 0);
 
         Notification notification = new NotificationCompat.Builder(this, channelId)
                 //标题
@@ -171,10 +171,10 @@ public class NotificationActivity extends BaseActivity {
 
 
         NotificationManager notificationManager =
-                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent = new Intent(getContext(), NotificationActivity.class);
-        PendingIntent pi = PendingIntent.getService(getContext(), 0, intent, 0);
+        Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        PendingIntent pi = PendingIntent.getService(getActivity(), 0, intent, 0);
 
         String title = "多行文字标题";
         String content =
@@ -210,10 +210,10 @@ public class NotificationActivity extends BaseActivity {
     private void list() {
 
         NotificationManager notificationManager =
-                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent = new Intent(getContext(), NotificationActivity.class);
-        PendingIntent pi = PendingIntent.getService(getContext(), 0, intent, 0);
+        Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        PendingIntent pi = PendingIntent.getService(getActivity(), 0, intent, 0);
 
         String title = "冰冰";
         ArrayList<String> messageList = new ArrayList<>();
@@ -259,10 +259,10 @@ public class NotificationActivity extends BaseActivity {
         RemoteViews remoteViews = getRemoteViews();
 
         NotificationManager notificationManager =
-                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent = new Intent(getContext(), NotificationActivity.class);
-        PendingIntent pi = PendingIntent.getService(getContext(), 0, intent, 0);
+        Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        PendingIntent pi = PendingIntent.getService(getActivity(), 0, intent, 0);
 
         Notification notification = new NotificationCompat.Builder(this, channelId)
                 //设置发送的时间
@@ -283,10 +283,10 @@ public class NotificationActivity extends BaseActivity {
 
     private void bigPic() {
         NotificationManager notificationManager =
-                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent = new Intent(getContext(), NotificationActivity.class);
-        PendingIntent pi = PendingIntent.getService(getContext(), 0, intent, 0);
+        Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        PendingIntent pi = PendingIntent.getService(getActivity(), 0, intent, 0);
 
 
         NotificationCompat.BigPictureStyle bigPictureStyle =
@@ -319,10 +319,10 @@ public class NotificationActivity extends BaseActivity {
     private void progress() {
 
         NotificationManager notificationManager =
-                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent = new Intent(getContext(), NotificationActivity.class);
-        PendingIntent pi = PendingIntent.getService(getContext(), 0, intent, 0);
+        Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        PendingIntent pi = PendingIntent.getService(getActivity(), 0, intent, 0);
 
         Notification notification = new NotificationCompat.Builder(this, channelId)
                 //标题
@@ -351,7 +351,7 @@ public class NotificationActivity extends BaseActivity {
     private void clear() {
 
         NotificationManager notificationManager =
-                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
 
     }

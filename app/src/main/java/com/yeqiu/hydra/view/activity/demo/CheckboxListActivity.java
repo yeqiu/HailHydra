@@ -59,7 +59,7 @@ public class CheckboxListActivity extends BaseActivity {
         rvCheckboxList = (RecyclerView) findViewById(R.id.rv_checkbox_list);
         cbCheckboxList = (CheckBox) findViewById(R.id.cb_checkbox_list);
         tvCheckboxList = (TextView) findViewById(R.id.tv_checkbox_list);
-        rvCheckboxList.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvCheckboxList.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
