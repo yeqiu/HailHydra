@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.yeqiu.docpreview.DocPreview;
 import com.yeqiu.hydra.HydraUtilsManager;
 import com.yeqiu.hydra.utils.AppUtils;
 
@@ -45,6 +46,8 @@ public class AppConfig {
         initHydra(app);
 
         initLeakCanary(app);
+
+        DocPreview.init(app);
 
     }
 

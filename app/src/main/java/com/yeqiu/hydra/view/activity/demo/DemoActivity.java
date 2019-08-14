@@ -52,6 +52,7 @@ public class DemoActivity extends BaseActivity {
         datas.add(new ModelHaydraItem("截图", ScreenshotActivity.class));
         datas.add(new ModelHaydraItem("RecyclerView拖曳排序,滑动删除",RecyclerViewActivity.class));
         datas.add(new ModelHaydraItem("自定义的圆角布局",CornerLayoutActivity.class));
+        datas.add(new ModelHaydraItem("基于腾讯x5查看文档",DocPreviewActivity.class));
 
 
         DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky, datas);
