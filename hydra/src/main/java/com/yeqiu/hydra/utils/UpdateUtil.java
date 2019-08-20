@@ -35,7 +35,6 @@ import androidx.core.content.FileProvider;
 public class UpdateUtil {
 
     private String appName;
-    private String downUrl;
     private NotificationManager notificationManager;
     private NotificationCompat.Builder builder;
     private Context context = HydraUtilsManager.getInstance().getContext();
@@ -67,33 +66,29 @@ public class UpdateUtil {
      */
     public void update(String downUrl, String versionName) {
 
-        this.downUrl = downUrl;
         appName = APPInfoUtil.getPackageNameLast() + "_" + versionName + ".apk";
         //appName 示例 QQ_1.1.apk
 
+        String path = StringUtils.append(HydraUtilsManager.getInstance().getContext()
+                .getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
 
-        boolean isExists = fileIsExists(HydraUtilsManager.getInstance().getContext()
-                .getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) + "/" + appName);
+        ifIsExists(path,appName);
 
-        // TODO: 2018/11/23 判断是否存在  存在的文件是否正确
-        downAPK(downUrl);
+        downAPK(downUrl,path);
 
     }
 
-    private void downAPK(String downloadUrl) {
+    private void downAPK(String downloadUrl,String path) {
 
         if (!checkSDCardPermission()) {
             return;
         }
 
-        String path = HydraUtilsManager.getInstance().getContext()
-                .getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getPath() + "/";
-
         setUpNotification();
 
         OkGo.<File>get(downloadUrl)
                 .tag(this)
-                .execute(new FileCallback(path, appName) {
+                .execute(new FileCallback(path,appName) {
 
                     //避免通知栏刷新过快
                     int oldRate = 0;
@@ -107,6 +102,10 @@ public class UpdateUtil {
                     public void onSuccess(Response<File> response) {
 
                         installApp(response.body());
+                        if (notificationManager!=null){
+                            //取消通知栏
+                            notificationManager.cancel(NOTIFY_ID);
+                        }
                         if (onDownloadProgress != null) {
                             onDownloadProgress.onSuccess(response.body());
                         }
@@ -192,24 +191,24 @@ public class UpdateUtil {
     }
 
 
+
     /**
-     * 判断文件是否存在  
+     * 判断文件是否存在，如果存在直接删除
+     * 不存在创建文件
      *
-     * @param file
-     * @return
+     * @param path
      */
-    private boolean fileIsExists(String file) {
+    private void ifIsExists(String path,String appName) {
+
         try {
-            File f = new File(file);
-            if (!f.exists()) {
-                return false;
+            File file = new File(path,appName);
+            if (file.exists()) {
+                file.delete();
             }
         } catch (Exception e) {
-            return false;
+            LogUtils.i("升级时检测检测文件是否存在失败");
         }
-        return true;
     }
-
 
     /**
      * 创建通知

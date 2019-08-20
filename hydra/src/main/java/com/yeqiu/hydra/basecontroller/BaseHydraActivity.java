@@ -35,7 +35,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  * @describe：
  * @fix：activity
  */
-public abstract class HydraBaseActivity extends SwipeBackActivity implements View
+public abstract class BaseHydraActivity extends SwipeBackActivity implements View
         .OnClickListener, OnStatusClickListener {
 
     protected LinearLayout llBaseRoot;
@@ -136,7 +136,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         tvheaderRight = (TextView) findViewById(R.id.tv_common_head_title_right);
         ivheaderRight = (ImageView) findViewById(R.id.iv_common_head_title_right);
         rlCommonHead = (RelativeLayout) findViewById(R.id.rl_common_head);
-        headLine = findViewById(R.id.head_lien);
+        headLine = findViewById(R.id.head_line);
         //默认隐藏右侧的图片和文字
         tvheaderRight.setVisibility(View.GONE);
         ivheaderRight.setVisibility(View.GONE);
@@ -144,6 +144,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
         ivHeadBack.setOnClickListener(onClickListener);
         tvheaderRight.setOnClickListener(onClickListener);
         ivheaderRight.setOnClickListener(onClickListener);
+        tvHeadClose.setOnClickListener(onClickListener);
         ivHeadBack.setImageResource(getDefHeadBackImgId());
 
         addStatusViewWithColor(getStatusColorId());
@@ -261,6 +262,7 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
 
     /**
      * 设置返回键图片
+     *
      * @return
      */
     protected abstract int getDefHeadBackImgId();
@@ -559,21 +561,26 @@ public abstract class HydraBaseActivity extends SwipeBackActivity implements Vie
     protected void onIvRightClick() {
     }
 
+    /**
+     * 标题栏关闭点击事件
+     */
+    protected void onTvCloseClick() {
+    }
+
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            int i = v.getId();
-            if (i == R.id.iv_common_head_back) {
+            int id = v.getId();
+            if (id == R.id.iv_common_head_back) {
                 //左上角返回按钮统一处理
                 onBackClick();
-
-            } else if (i == R.id.tv_common_head_title_right) {
+            } else if (id == R.id.tv_common_head_title_right) {
                 onTvRightClick();
-
-            } else if (i == R.id.iv_common_head_title_right) {
+            } else if (id == R.id.iv_common_head_title_right) {
                 onIvRightClick();
-
+            } else if (id == R.id.tv_common_head_close) {
+                onTvCloseClick();
             }
         }
     };

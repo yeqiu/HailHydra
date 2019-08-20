@@ -53,15 +53,11 @@ public class NetLog {
         } catch (JSONException e) {
             message = json;
         }
-        Log.v(tagJson, "<=====");
+        Log.v(tagJson, "请求响应  "+"<=====");
         //printLine(tagJson, true);
-        String msg = "===== " + url + " =====";
-        Log.v(tagJson, msg);
-        Log.v(tagJson, message);
-        // printLine(tagJson, false);
-        Log.v(tagJson, "  ");
+        Log.v(tagJson, url+" 返回json=" + "\n"+message);
 
-        Log.v(tagUrl, " ═══════════════════华丽的分割线 ═══════════════════ ");
+        Log.v(tagUrl, " ═══════════════════华丽的分割线 ═══════════════════ "+ "\n");
     }
 
 
@@ -78,7 +74,7 @@ public class NetLog {
         params = unicodeToString(params);
 
         if (!TextUtils.isEmpty(url)) {
-            Log.v(tagUrl, "=====>");
+            Log.v(tagUrl, "请求开始  "+"=====>");
             Log.v(tagUrl, "本次访问接口 " + url);
         }
 
@@ -86,18 +82,8 @@ public class NetLog {
             Log.v(tagUrl, "本次访问参数 " + params);
         }
 
-        Log.v(tagUrl, " ═══════════════════华丽的分割线 ═══════════════════ ");
+        Log.v(tagUrl, " ═══════════════════华丽的分割线 ═══════════════════ "+ "\n"+".");
 
-    }
-
-
-    public static void printLine(String tag, boolean isTop) {
-        if (isTop) {
-            Log.v(tag, "═══════════════════华丽的分割线 ~开始═══════════════════");
-        } else {
-            Log.v(tag, "═══════════════════华丽的分割线 ~结束═══════════════════");
-
-        }
     }
 
 

@@ -2,7 +2,7 @@ package com.yeqiu.hydra.view.activity;
 
 
 import com.yeqiu.hydra.R;
-import com.yeqiu.hydra.basecontroller.HydraBaseActivity;
+import com.yeqiu.hydra.basecontroller.BaseHydraActivity;
 
 /**
  * @project：HailHydra
@@ -11,7 +11,7 @@ import com.yeqiu.hydra.basecontroller.HydraBaseActivity;
  * @describe：
  * @fix：
  */
-public abstract class BaseActivity extends HydraBaseActivity {
+public abstract class BaseActivity extends BaseHydraActivity {
 
 
 
