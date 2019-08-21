@@ -75,11 +75,11 @@ public class NetLog {
 
         if (!TextUtils.isEmpty(url)) {
             Log.v(tagUrl, "请求开始  "+"=====>");
-            Log.v(tagUrl, "本次访问接口 " + url);
+            Log.v(tagUrl, "请求接口 " + url);
         }
 
         if (!TextUtils.isEmpty(params)) {
-            Log.v(tagUrl, "本次访问参数 " + params);
+            Log.v(tagUrl, "请求参数 " + params);
         }
 
         Log.v(tagUrl, " ═══════════════════华丽的分割线 ═══════════════════ "+ "\n"+".");

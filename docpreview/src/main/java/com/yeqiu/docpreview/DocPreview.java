@@ -50,16 +50,23 @@ public class DocPreview extends FrameLayout {
             @Override
             public void onViewInitFinished(boolean b) {
 
-                Toast.makeText(context, "加载" + b, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
 
 
-    public void openFile(Activity activity, String path) {
+    /**
+     * 打开文件
+     * 这里打开的结果返回true不一定绝对能打开
+     *
+     * @param activity
+     * @param path
+     * @return
+     */
+    public boolean openFile(Activity activity, String path) {
 
         if (tbsReaderView == null) {
-
             tbsReaderView = new TbsReaderView(activity, new TbsReaderView.ReaderCallback() {
                 @Override
                 public void onCallBackAction(Integer integer, Object o, Object o1) {
@@ -76,10 +83,9 @@ public class DocPreview extends FrameLayout {
             boolean mkdir = bsReaderTempFile.mkdir();
             if (!mkdir) {
                 Toast.makeText(getContext(), "发生了错误，请稍后重试", Toast.LENGTH_SHORT).show();
-                return;
+                return false;
             }
         }
-
         //加载文件
         Bundle localBundle = new Bundle();
         localBundle.putString("filePath", path);
@@ -90,8 +96,9 @@ public class DocPreview extends FrameLayout {
 
         if (canOpen) {
             tbsReaderView.openFile(localBundle);
+            return true;
         } else {
-            Toast.makeText(getContext(), "无法打开此文件", Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 

@@ -3,6 +3,9 @@ package com.yeqiu.hydra.view.activity;
 import android.view.KeyEvent;
 import android.view.View;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.bean.model.ModelHaydraItem;
 import com.yeqiu.hydra.utils.DensityUtils;
@@ -15,9 +18,6 @@ import com.yeqiu.hydra.widget.HydraRecyclerViewDivider;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @project：HailHydra

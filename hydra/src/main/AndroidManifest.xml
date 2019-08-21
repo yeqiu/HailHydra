@@ -17,9 +17,20 @@
         android:supportsRtl="true"
         >
 
+        <!-- FileProvider 适配-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
         <!--微信支付-->
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
+            android:name="com.yeqiu.hydra.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
@@ -30,7 +41,6 @@
                 <data android:scheme="wx02d75af244d2596e"/>
             </intent-filter>
         </activity>
-
 
 
     </application>
