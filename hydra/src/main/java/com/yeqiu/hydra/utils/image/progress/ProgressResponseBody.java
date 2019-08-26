@@ -67,9 +67,10 @@ public class ProgressResponseBody extends ResponseBody {
             } else {
                 totalBytesRead += bytesRead;
             }
-            int progress = (int) (100f * totalBytesRead / fullLength);
+
+            int progress = (int) (100 * totalBytesRead / fullLength);
             if (listener != null && progress != currentProgress) {
-                listener.onLoadProgress(progress == 100, progress);
+                listener.onLoadProgress(totalBytesRead == fullLength, progress);
             }
             if (listener != null && totalBytesRead == fullLength) {
                 listener = null;

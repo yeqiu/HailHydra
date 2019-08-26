@@ -11,6 +11,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
@@ -33,9 +36,6 @@ import com.yeqiu.hydrautils.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 /**
  * @project：HailHydra
@@ -425,7 +425,8 @@ public class ImageUtils {
                     public void onLoadFailed(@Nullable Drawable errorDrawable) {
                         super.onLoadFailed(errorDrawable);
                         ProgressInterceptor.LISTENER_MAP.get(url).onLoadFailed();
-                        imageView.setImageResource(R.color.color_transparent);
+                        int imgError = UiConfig.getInstance().getImgError();
+                        imageView.setImageResource(imgError);
                     }
 
                     @Override

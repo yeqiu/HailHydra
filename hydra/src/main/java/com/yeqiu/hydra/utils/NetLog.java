@@ -55,7 +55,7 @@ public class NetLog {
         }
         Log.v(tagJson, "请求响应  "+"<=====");
         //printLine(tagJson, true);
-        Log.v(tagJson, url+" 返回json=" + "\n"+message);
+        Log.v(tagJson, url+" 返回数据=" + "\n"+message);
 
         Log.v(tagUrl, " ═══════════════════华丽的分割线 ═══════════════════ "+ "\n");
     }
