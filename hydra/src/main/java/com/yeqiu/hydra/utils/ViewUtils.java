@@ -5,10 +5,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import androidx.annotation.ColorRes;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 /**
  * @project：HailHydra
@@ -99,11 +99,53 @@ public class ViewUtils {
     }
 
 
-    public static void setTextView(TextView tv, String text,  int size, @ColorRes int colorId) {
 
-        tv.setText(text);
-        tv.setTextSize(size);
-        tv.setTextColor(ResourceUtil.getColor(colorId));
+
+    /**
+     * x y 坐标是否在view的区域内,这里的x y 传入 getRawX()
+     * ev.getX()：表示相对于控件自身左上角的X坐标
+     * ev.getRawX()：表示相对于手机屏幕左上角的X坐标
+     * @param view
+     * @param x
+     * @param y
+     * @return
+     */
+    private boolean isTouchPointInView(View view, int x, int y) {
+        if (view == null) {
+            return false;
+        }
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        int left = location[0];
+        int top = location[1];
+        int right = left + view.getMeasuredWidth();
+        int bottom = top + view.getMeasuredHeight();
+        if (y >= top && y <= bottom && x >= left
+                && x <= right) {
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 传入一个父控件，找到获取焦点的子控件
+     * @param parentView
+     * @param x
+     * @param y
+     * @return
+     */
+    private View getTouchTarget(View parentView, int x, int y) {
+        View targetView = null;
+        // 判断view是否可以聚焦
+        ArrayList<View> TouchableViews = parentView.getTouchables();
+        for (View child : TouchableViews) {
+            if (isTouchPointInView(child, x, y)) {
+                targetView = child;
+                break;
+            }
+        }
+        return targetView;
     }
 
 

@@ -12,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
+import androidx.viewpager.widget.ViewPager;
+
 import com.yeqiu.hydra.utils.ResourceUtil;
-import com.yeqiu.hydra.utils.ViewUtils;
+import com.yeqiu.hydra.view.dialog.DialogUtil;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydra.view.dialog.bean.ListData;
 import com.yeqiu.hydra.widget.FullGridView;
@@ -21,9 +24,6 @@ import com.yeqiu.hydrautils.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.DrawableRes;
-import androidx.viewpager.widget.ViewPager;
 
 /**
  * @project：HailHydra
@@ -90,7 +90,7 @@ public class PagerGridDialog extends HydraBaseDialog<PagerGridDialog> {
             tvPagerGridTitle.setVisibility(View.GONE);
         } else {
             tvPagerGridTitle.setVisibility(View.VISIBLE);
-            ViewUtils.setTextView(tvPagerGridTitle, getTitleText(), getTitleSize(),
+            DialogUtil.setTextView(tvPagerGridTitle, getTitleText(), getTitleSize(),
                     getTitleColor());
         }
 

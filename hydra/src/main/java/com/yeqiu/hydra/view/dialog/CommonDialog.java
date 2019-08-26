@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yeqiu.hydra.utils.ViewUtils;
+import androidx.annotation.ColorRes;
+
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
-
-import androidx.annotation.ColorRes;
 
 /**
  * @project：HailHydra
@@ -49,9 +48,9 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
         TextView confirm = (TextView) view.findViewById(R.id.tv_common_dialog_confirm);
 
         //设置文字
-        ViewUtils.setTextView(title, getTitleText(), getTitleSize(), getTitleColor());
-        ViewUtils.setTextView(content, getDescText(), getDescSize(), getDescColor());
-        ViewUtils.setTextView(confirm, getConfirmText(), getCancelSize(), getConfirmColor());
+        DialogUtil.setTextView(title, getTitleText(), getTitleSize(), getTitleColor());
+        DialogUtil.setTextView(content, getDescText(), getDescSize(), getDescColor());
+        DialogUtil.setTextView(confirm, getConfirmText(), getCancelSize(), getConfirmColor());
 
 
         confirm.setOnClickListener(this);
@@ -62,7 +61,7 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
         line.setVisibility(justConfirm ? View.GONE : View.VISIBLE);
 
         if (!justConfirm) {
-            ViewUtils.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
+            DialogUtil.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
             cancel.setOnClickListener(this);
         }
 

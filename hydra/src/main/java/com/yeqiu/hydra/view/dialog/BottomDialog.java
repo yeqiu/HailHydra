@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
@@ -83,7 +82,7 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
             llBottomDialogTitle.setVisibility(View.GONE);
         } else {
             llBottomDialogTitle.setVisibility(View.VISIBLE);
-            ViewUtils.setTextView(tvBottomDialogTitle, getTitleText(), getTitleSize(),
+            DialogUtil.setTextView(tvBottomDialogTitle, getTitleText(), getTitleSize(),
                     getTitleColor());
         }
 
@@ -94,7 +93,7 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
             TextView cancel = (TextView) footer.findViewById(R.id.tv_footer_bottom_dialog);
             lvBottomDialog.addFooterView(footer);
             footer.setOnClickListener(this);
-            ViewUtils.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
+            DialogUtil.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
         }
 
 
@@ -167,7 +166,7 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
 
             String item = getItem(position);
 
-            ViewUtils.setTextView(holder.tvItemBottomDialog, item, getItemSize(), getItemColor());
+            DialogUtil.setTextView(holder.tvItemBottomDialog, item, getItemSize(), getItemColor());
 
             return convertView;
         }

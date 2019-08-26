@@ -14,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+
 import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.utils.image.ImageUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
@@ -22,9 +25,6 @@ import com.yeqiu.hydrautils.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.ColorRes;
-import androidx.annotation.DrawableRes;
 
 /**
  * @project：HailHydra
@@ -190,7 +190,7 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
                 new ImageUtils().load(getContext(), item.getIcon(), holder.ivIcon);
             }
 
-            ViewUtils.setTextView(holder.tvTitle, item.getTitle(), getItemlTextSize(), getItemColor());
+            DialogUtil.setTextView(holder.tvTitle, item.getTitle(), getItemlTextSize(), getItemColor());
 
             return convertView;
         }

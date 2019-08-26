@@ -6,12 +6,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
+
 import com.yeqiu.hydra.utils.KeybordUtils;
-import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
-
-import androidx.annotation.ColorRes;
 
 /**
  * @project：HailHydra
@@ -54,9 +53,9 @@ public class EditDialog extends HydraBaseDialog<EditDialog> implements View.OnCl
         TextView confirm = (TextView) view.findViewById(R.id.tv_edit_dialog_confirm);
 
 
-        ViewUtils.setTextView(title, getTitleText(), getTitleSize(), getTitleColor());
-        ViewUtils.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
-        ViewUtils.setTextView(confirm, getConfirmText(), getConfirmSizer(), getConfirmColor());
+        DialogUtil.setTextView(title, getTitleText(), getTitleSize(), getTitleColor());
+        DialogUtil.setTextView(cancel, getCancelText(), getCancelSize(), getCancelColor());
+        DialogUtil.setTextView(confirm, getConfirmText(), getConfirmSizer(), getConfirmColor());
 
 
         //设置文字

@@ -10,16 +10,15 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
+
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.utils.ResourceUtil;
-import com.yeqiu.hydra.utils.ViewUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydrautils.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.ColorRes;
 
 
 /**
@@ -105,7 +104,7 @@ public class SheetDialog extends HydraBaseDialog<SheetDialog> {
             tv.setPadding(padding, padding, padding, padding);
             tv.setGravity(Gravity.CENTER);
             //设置文字
-            ViewUtils.setTextView(tv, text, getItemlTextSize(), getItemColor());
+            DialogUtil.setTextView(tv, text, getItemlTextSize(), getItemColor());
 
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
