@@ -238,7 +238,7 @@ public class ImageUtils {
 
 
     /**
-     * 设置成圆角
+     * 设置成背景
      *
      * @param context
      * @param url
@@ -259,7 +259,7 @@ public class ImageUtils {
                     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<
                             ? super Drawable> transition) {
 
-                        if (Build.VERSION.SDK_INT >= 16) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                             view.setBackground(resource);
                         } else {
                             view.setBackgroundDrawable(resource);
@@ -276,7 +276,7 @@ public class ImageUtils {
 
 
     /**
-     * 加载图片 最后调用
+     * 加载图片
      *
      * @param context
      * @param url
@@ -294,7 +294,6 @@ public class ImageUtils {
                 .load(url)
                 .apply(getOptions())
                 .into(imageView);
-
 
     }
 
@@ -324,7 +323,82 @@ public class ImageUtils {
     }
 
 
-    //=========== 本地资源 ===========
+    /**
+     * 裁剪成圆图
+     *
+     * @param url
+     * @param imageView
+     */
+    public  void loadWithCircle(Context context, String url, final ImageView
+            imageView) {
+
+        if (check(context, url, imageView)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
+            return;
+        }
+
+        RequestOptions requestOptions = getOptions().circleCrop();
+        Glide.with(context)
+                .load(url)
+                .apply(requestOptions)
+                .into(imageView);
+
+    }
+
+
+    /**
+     * 加载图片 回传进度
+     *
+     * @param url
+     * @param progressListener
+     * @return
+     */
+    public void loadWhitListener(final Context context, final String url, final ImageView imageView,
+                                 ProgressListener progressListener) {
+
+
+        if (check(context, url, imageView)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
+            return;
+        }
+
+        ProgressInterceptor.addListener(url, progressListener);
+
+        GlideApp.with(context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(new DrawableImageViewTarget(imageView) {
+
+                    @Override
+                    public void onLoadStarted(@Nullable Drawable placeholder) {
+                        super.onLoadStarted(placeholder);
+                        imageView.setImageResource(R.color.color_646464);
+                    }
+
+
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                        super.onLoadFailed(errorDrawable);
+                        ProgressInterceptor.LISTENER_MAP.get(url).onLoadFailed();
+                        int imgError = UiConfig.getInstance().getImgError();
+                        imageView.setImageResource(imgError);
+                    }
+
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<
+                            ? super Drawable> transition) {
+                        super.onResourceReady(resource, transition);
+
+                        ProgressInterceptor.removeListener(url);
+
+                    }
+                });
+    }
+
+
+
+    //=========== 设置本地资源图片 ===========
 
 
     /**
@@ -367,7 +441,7 @@ public class ImageUtils {
 
 
     /**
-     * 加载图片 最后调用
+     * 加载图片
      *
      * @param context
      * @param id
@@ -390,55 +464,6 @@ public class ImageUtils {
     }
 
 
-    /**
-     * 加载图片 回传进度
-     *
-     * @param url
-     * @param progressListener
-     * @return
-     */
-    public void loadWhitListener(final Context context, final String url, final ImageView imageView,
-                                 ProgressListener progressListener) {
-
-
-        if (check(context, url, imageView)) {
-            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
-            return;
-        }
-
-        ProgressInterceptor.addListener(url, progressListener);
-
-        GlideApp.with(context)
-                .load(url)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
-                .into(new DrawableImageViewTarget(imageView) {
-
-                    @Override
-                    public void onLoadStarted(@Nullable Drawable placeholder) {
-                        super.onLoadStarted(placeholder);
-                       imageView.setImageResource(R.color.color_646464);
-                    }
-
-
-                    @Override
-                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
-                        super.onLoadFailed(errorDrawable);
-                        ProgressInterceptor.LISTENER_MAP.get(url).onLoadFailed();
-                        int imgError = UiConfig.getInstance().getImgError();
-                        imageView.setImageResource(imgError);
-                    }
-
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<
-                            ? super Drawable> transition) {
-                        super.onResourceReady(resource, transition);
-
-                        ProgressInterceptor.removeListener(url);
-
-                    }
-                });
-    }
 
 
     /**
@@ -465,6 +490,29 @@ public class ImageUtils {
 
     }
 
+
+    /**
+     * 裁剪成圆图
+     *
+     * @param context
+     * @param ImgId
+     * @param imageView
+     */
+    public  void loadWithCircle(Context context, int ImgId, final ImageView
+            imageView) {
+
+        if (check(context, imageView)) {
+            LogUtils.i("ImageUtils 传入的参数错误,请检查!!!");
+            return;
+        }
+
+        RequestOptions requestOptions = getOptions().circleCrop();
+        Glide.with(context)
+                .load(ImgId)
+                .apply(requestOptions)
+                .into(imageView);
+
+    }
 
     //=========== 保存图片 ===========
 
