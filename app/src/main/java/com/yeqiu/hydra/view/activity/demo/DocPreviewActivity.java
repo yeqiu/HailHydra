@@ -1,10 +1,16 @@
 package com.yeqiu.hydra.view.activity.demo;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.view.View;
 
 import com.yeqiu.docpreview.DocPreview;
 import com.yeqiu.hydra.R;
+import com.yeqiu.hydra.utils.FileProviderUtils;
 import com.yeqiu.hydra.view.activity.BaseActivity;
+
+import java.io.File;
 
 /**
  * @project：jinjuyunchuang
@@ -34,10 +40,30 @@ public class DocPreviewActivity extends BaseActivity {
 
         String url = "/storage/emulated/0/zhihu/test.pdf";
 
-        dpv.openFile(this, url);
+        boolean canOpen = dpv.openFile(this, url);
+
+        if (!canOpen) {
+            openPdfByOtherApp(url);
+        }
+
 
     }
 
+
+    private void openPdfByOtherApp(String path) {
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Uri uri = FileProviderUtils.getUriForFile(path);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setDataAndType(uri, "application/pdf");
+        } else {
+            intent.setDataAndType(Uri.fromFile(new File(path)), "application/pdf");
+        }
+        startActivity(intent);
+    }
 
     @Override
     protected void onDestroy() {

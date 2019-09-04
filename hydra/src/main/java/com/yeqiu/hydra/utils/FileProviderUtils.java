@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 
+import androidx.core.content.FileProvider;
+
 import com.yeqiu.hydra.HydraUtilsManager;
 
 import java.io.File;
-
-import androidx.core.content.FileProvider;
 
 /**
  * @project：HailHydra
@@ -20,7 +20,10 @@ import androidx.core.content.FileProvider;
  */
 public class FileProviderUtils {
 
-    public static Uri getUriForFile(Context context, String path) {
+    public static Uri getUriForFile( String path) {
+
+        Context context = HydraUtilsManager.getInstance().getContext();
+
         Uri fileUri = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             fileUri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider",
@@ -31,17 +34,15 @@ public class FileProviderUtils {
         return fileUri;
     }
 
-    public static Intent getIntent(String type, String path, boolean writeAble){
+    public static Intent getIntent(String type, String path){
 
-        context = HydraUtilsManager.getInstance().getContext();
+        Context context = HydraUtilsManager.getInstance().getContext();
 
         Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            intent.setDataAndType(getUriForFile(context, path), type);
+            intent.setDataAndType(getUriForFile( path), type);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            if (writeAble) {
-                intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            }
+            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         } else {
             intent.setDataAndType(Uri.fromFile(new File(path)), type);
         }

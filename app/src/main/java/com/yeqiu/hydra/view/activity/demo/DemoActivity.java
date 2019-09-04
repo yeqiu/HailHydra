@@ -3,6 +3,10 @@ package com.yeqiu.hydra.view.activity.demo;
 import android.content.Intent;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yeqiu.hydra.R;
@@ -13,10 +17,6 @@ import com.yeqiu.hydra.view.activity.demo.sticky.StickyHeadActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @project：HailHydra
@@ -53,6 +53,7 @@ public class DemoActivity extends BaseActivity {
         datas.add(new ModelHaydraItem("RecyclerView拖曳排序,滑动删除",RecyclerViewActivity.class));
         datas.add(new ModelHaydraItem("自定义的圆角布局",CornerLayoutActivity.class));
         datas.add(new ModelHaydraItem("基于腾讯x5查看文档",DocPreviewActivity.class));
+        datas.add(new ModelHaydraItem("ConstraintLayout实现各种布局",ConstraintLayoutActivity.class));
 
 
         DemoAdapter demoAdapter = new DemoAdapter(R.layout.item_sticky, datas);
