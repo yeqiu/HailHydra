@@ -1,14 +1,9 @@
 package com.yeqiu.hydra;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @project：HailHydra
@@ -28,18 +23,6 @@ public class Test extends AppCompatActivity {
     }
 
 
-    public void text() {
-        List<Button> buttons = new ArrayList<>();
-        fun(buttons);
-    }
-
-
-    public void fun(List<? extends TextView> list) {
-
-        for (int i = 0; i < list.size(); i++) {
-            list.get(i).setText("text");
-        }
-    }
 
 
 }

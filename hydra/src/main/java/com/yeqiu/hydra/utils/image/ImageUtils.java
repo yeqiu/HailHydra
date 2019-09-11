@@ -382,7 +382,9 @@ public class ImageUtils {
                         super.onLoadFailed(errorDrawable);
                         ProgressInterceptor.LISTENER_MAP.get(url).onLoadFailed();
                         int imgError = UiConfig.getInstance().getImgError();
-                        imageView.setImageResource(imgError);
+                        if (imgError!=-1){
+                            imageView.setImageResource(imgError);
+                        }
                     }
 
                     @Override

@@ -45,6 +45,7 @@ public class ImageUtilsActivity extends BaseActivity {
     String url = "http://i4.3conline" +
             ".com/images/piclib/201011/19/batch/1/74824/1290127095498e4n36hhgqz.jpg";
 
+
     @Override
     protected Object getContentView() {
         return R.layout.activity_image_utils;
@@ -54,7 +55,6 @@ public class ImageUtilsActivity extends BaseActivity {
     protected void initView() {
 
         setHeaderTitle("ImageUtils的使用");
-
 
     }
 
@@ -167,6 +167,7 @@ public class ImageUtilsActivity extends BaseActivity {
 
                             @Override
                             public void onLoadFailed() {
+                                progressView.setVisibility(View.GONE);
                                 ToastUtils.showToast("加载失败");
                             }
                         });
@@ -197,7 +198,8 @@ public class ImageUtilsActivity extends BaseActivity {
 
             case R.id.bt_image_utils_blur:
 
-                BlurTransformation blurTransformation = new BlurTransformation(getActivity(), 25, 1);
+                BlurTransformation blurTransformation = new BlurTransformation(getActivity(), 25,
+                        1);
 
                 new ImageUtils()
                         .setOptions(ImageUtils.CENTER_CROP)
