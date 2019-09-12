@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -58,4 +60,7 @@ dependencies {
 
 
 
+}
+repositories {
+    mavenCentral()
 }
