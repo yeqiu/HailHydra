@@ -1,6 +1,7 @@
 package com.yeqiu.hydra.view.activity;
 
 
+import com.umeng.analytics.MobclickAgent;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.basecontroller.BaseHydraActivity;
 
@@ -27,7 +28,18 @@ public abstract class BaseActivity extends BaseHydraActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 
 
 

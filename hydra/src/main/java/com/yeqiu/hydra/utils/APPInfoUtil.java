@@ -10,14 +10,14 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
 
+import androidx.core.app.NotificationManagerCompat;
+
 import com.yeqiu.hydra.HydraUtilsManager;
 
 import java.io.DataOutputStream;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.List;
-
-import androidx.core.app.NotificationManagerCompat;
 
 /**
  * @project：HailHydra
@@ -60,22 +60,22 @@ public class APPInfoUtil {
 
 
         Context context = HydraUtilsManager.getInstance().getContext();
-        String channelName = "unKnown";
+        String channelName = null;
         try {
             PackageManager packageManager = context.getPackageManager();
             if (packageManager != null) {
+                //注意此处为ApplicationInfo 而不是 ActivityInfo,
+                // 因为友盟设置的meta-data是在application标签中，而不是某activity标签中，所以用ApplicationInfo
                 ApplicationInfo applicationInfo = packageManager.
                         getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
                 if (applicationInfo != null) {
                     if (applicationInfo.metaData != null) {
-                        channelName = String.valueOf(applicationInfo.metaData.get("UMENG_CHANNEL"));
+                        channelName = String.valueOf(applicationInfo.metaData.get("CHANNEL_NAME"));
                     }
                 }
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-
-            return "unKnown";
         }
         return channelName;
     }

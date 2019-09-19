@@ -61,8 +61,9 @@
         使用此模式以完全展示图片的内容为目的。图片将被等比缩放到能够完整展示在ImageView中并居中，如果图片大小小于控件大小，那么就直接居中展示该图片：</string>
 
 
+    <string name="um_desc"> 按照官网的提示添加依赖，初始化参照AppConfig -> initUm() \n 在BaseActivity onResume()和onPause()添加对应代码，重复运行app即可在官网统计中看到数据。友盟的官网数据统计是实时的</string>
 
-
+    <string name="bugly_desc"> 按照官网的提示添加依赖，初始化参照AppConfig -> initBugly() \n 此时的异常即可被bugly捕获，官网崩溃统计是实时的</string>
 
 
 </resources>

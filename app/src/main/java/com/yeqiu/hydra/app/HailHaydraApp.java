@@ -35,8 +35,8 @@ public class HailHaydraApp extends MultiDexApplication {
         //初始化第三方的配置
         AppConfig.getInstance().init(this);
 
-        //捕获全局异常并重启
-        Thread.setDefaultUncaughtExceptionHandler(BugHandler.getInstance());
+        //捕获全局异常并重启 不能和bugly一起使用
+       // Thread.setDefaultUncaughtExceptionHandler(BugHandler.getInstance());
 
     }
 }

@@ -4,9 +4,15 @@ import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.tencent.bugly.crashreport.CrashReport;
+import com.umeng.commonsdk.UMConfigure;
 import com.yeqiu.docpreview.DocPreview;
 import com.yeqiu.hydra.HydraUtilsManager;
+import com.yeqiu.hydra.constant.AppKey;
+import com.yeqiu.hydra.utils.APPInfoUtil;
 import com.yeqiu.hydra.utils.AppUtils;
+
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * @project：HailHydra
@@ -44,10 +50,11 @@ public class AppConfig {
      */
     public void init(Application app) {
         initHydra(app);
-
         initLeakCanary(app);
-
         DocPreview.init(app);
+        initJPush(app);
+        initUm(app);
+        initBugly(app);
 
     }
 
@@ -77,4 +84,28 @@ public class AppConfig {
     }
 
 
+    private void initJPush(Application app) {
+
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(app);
+    }
+
+
+    private void initUm(Application app) {
+
+        UMConfigure.setLogEnabled(true);
+        UMConfigure.init(app, AppKey.UMAPPKEY, APPInfoUtil.getChannelName(),
+                UMConfigure.DEVICE_TYPE_PHONE, "");
+    }
+
+
+    private void initBugly(Application app) {
+
+        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(app);
+        strategy.setAppChannel(APPInfoUtil.getChannelName());
+        strategy.setAppReportDelay(3 * 1000);
+        strategy.setAppVersion(APPInfoUtil.getVersionName());
+        CrashReport.initCrashReport(app, AppKey.BUGLYID,
+                false, strategy);
+    }
 }

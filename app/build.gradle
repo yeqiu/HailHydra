@@ -8,12 +8,25 @@ android {
 
 
     defaultConfig {
+        applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         multiDexEnabled true
+        flavorDimensions "default"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a','x86'
+        }
+
+        manifestPlaceholders = [
+                //极光推送的配置
+                JPUSH_PKGNAME : rootProject.ext.applicationId,
+                JPUSH_APPKEY : "d8383c1b9cc7b92ec21fa03c",
+                JPUSH_CHANNEL : "developer-default",
+        ]
     }
 
     buildTypes {
@@ -21,6 +34,16 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    //渠道
+    productFlavors {
+        hailhydra {}
+    }
+
+    //渠道变量名
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [CHANNEL_NAME: name]
     }
 
 
@@ -73,6 +96,15 @@ dependencies {
     implementation "androidx.core:core-ktx:+"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //极光推送
+    implementation 'cn.jiguang.sdk:jpush:3.3.6'
+    implementation 'cn.jiguang.sdk:jcore:2.1.4'
+    //友盟
+    implementation  'com.umeng.umsdk:analytics:8.0.0'
+    implementation  'com.umeng.umsdk:common:2.0.0'
+    //bugly
+    implementation 'com.tencent.bugly:crashreport:3.0.1'
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
 
 
 }

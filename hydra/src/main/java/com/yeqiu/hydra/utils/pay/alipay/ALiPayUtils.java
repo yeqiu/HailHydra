@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 
-import com.alipay.sdk.app.AuthTask;
 import com.alipay.sdk.app.PayTask;
 
 import java.util.Map;
@@ -16,8 +15,8 @@ import java.util.Map;
  * @desc 支付宝工具类
  */
 public class ALiPayUtils {
-    private static final int SDK_PAY_FLAG = 1;  //支付码
-    private static final int SDK_AUTH_FLAG = 2; //授权码
+    //支付码
+    private static final int SDK_PAY_FLAG = 1;
     private static OnPayResultListener onPayResultListener;
     private static OnLoginResultListener onLoginResultListener;
 
@@ -45,30 +44,6 @@ public class ALiPayUtils {
     }
 
 
-    public static void login(final String authInfo, final Activity activity,
-                             OnLoginResultListener onLoginResultListener) {
-
-        ALiPayUtils.onLoginResultListener = onLoginResultListener;
-
-        Runnable payRunnable = new Runnable() {
-
-            @Override
-            public void run() {
-                AuthTask authTask = new AuthTask(activity);
-                // 调用授权接口，获取授权结果
-                Map<String, String> result = authTask.authV2(authInfo, true);
-
-                Message msg = new Message();
-                msg.what = SDK_AUTH_FLAG;
-                msg.obj = result;
-                handler.sendMessage(msg);
-            }
-        };
-
-        Thread payThread = new Thread(payRunnable);
-        payThread.start();
-    }
-
 
     private static Handler handler = new Handler() {
         @Override
@@ -81,13 +56,6 @@ public class ALiPayUtils {
                     getAliPayResult(msg);
 
                     break;
-
-                case SDK_AUTH_FLAG:
-                    //授权
-                    getAliPayAUTH(msg);
-
-                    break;
-
                 default:
                     break;
             }

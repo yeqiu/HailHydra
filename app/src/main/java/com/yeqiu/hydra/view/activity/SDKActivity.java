@@ -1,9 +1,14 @@
 package com.yeqiu.hydra.view.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.yeqiu.hydra.R;
+import com.yeqiu.hydra.view.activity.sdk.JPushActivity;
+import com.yeqiu.hydra.view.activity.sdk.UmBuglyActivity;
+import com.yeqiu.hydra.view.activity.sdk.WechatAliPayActivity;
 
 /**
  * @project：HailHydra
@@ -52,20 +57,27 @@ public class SDKActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_sdk_jg:
-
+                toActivity(JPushActivity.class);
                 break;
 
             case R.id.tv_sdk_um_share:
 
                 break;
             case R.id.tv_sdk_um_bugly:
-
+                toActivity(UmBuglyActivity.class);
                 break;
             case R.id.tv_sdk_pay:
-                
+
+                toActivity(WechatAliPayActivity.class);
                 break;
             default:
                 break;
         }
     }
+
+    private void toActivity(Class<? extends Activity> activityClass) {
+        startActivity(new Intent(this, activityClass));
+    }
+
+
 }

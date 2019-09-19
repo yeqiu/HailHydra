@@ -4,6 +4,7 @@ buildscript {
     ext.kotlin_version = '1.3.50'
 
     ext {
+        applicationId = "com.yeqiu.hydra"
         compileSdkVersion = 29
         buildToolsVersion = "29.0.1"
         minSdkVersion = 15
@@ -36,6 +37,7 @@ buildscript {
 allprojects {
     repositories {
         maven { url "https://maven.google.com" }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
         jcenter()
         maven { url 'https://jitpack.io' }
         google()
