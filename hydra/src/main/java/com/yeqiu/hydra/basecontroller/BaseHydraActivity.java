@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.gyf.barlibrary.ImmersionBar;
 import com.yeqiu.hydra.net.OkGoManager;
 import com.yeqiu.hydra.utils.ActivityManager;
@@ -24,9 +26,6 @@ import com.yeqiu.hydra.widget.statuslayout.StatusLayout;
 import com.yeqiu.hydrautils.R;
 
 import org.greenrobot.eventbus.EventBus;
-
-import androidx.annotation.Nullable;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
  * @project：HailHydra
@@ -49,16 +48,16 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
     protected View headLine;
     protected ImmersionBar imersionBar;
     protected RelativeLayout rlCommonHead;
+    protected int openEnterAnimation = R.anim.slide_right_to_left_in;
+    protected int openExitAnimation = R.anim.slide_right_to_left_out;
+    protected int closeEnterAnimation = R.anim.slide_left_to_right_in;
+    protected int closeExitAnimation = R.anim.slide_left_to_right_out;
     private Activity context;
-
-    private int openEnterAnimation = R.anim.slide_right_to_left_in;
-    private int openExitAnimation = R.anim.slide_right_to_left_out;
-    private int closeEnterAnimation = R.anim.slide_left_to_right_in;
-    private int closeExitAnimation = R.anim.slide_left_to_right_out;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setActivityAnimation(openEnterAnimation,openExitAnimation,closeEnterAnimation,closeExitAnimation);
         showActivityAnimation(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);

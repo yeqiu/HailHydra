@@ -11,23 +11,20 @@ import androidx.multidex.MultiDexApplication;
  */
 public class HailHaydraApp extends MultiDexApplication {
 
-
     private static HailHaydraApp app;
 
-    public HailHaydraApp() {
-        app = this;
-    }
 
     public static synchronized HailHaydraApp getInstance() {
-        if (app == null) {
-            app = new HailHaydraApp();
-        }
+
         return app;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        if (app == null) {
+            app = this;
+        }
         init();
     }
 
