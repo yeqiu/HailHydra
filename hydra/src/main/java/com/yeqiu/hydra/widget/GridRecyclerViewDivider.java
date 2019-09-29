@@ -1,15 +1,18 @@
 package com.yeqiu.hydra.widget;
 
 import android.graphics.Rect;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-/**
- * @author vonde
- * @date 2016/11/13
- */
+import androidx.recyclerview.widget.RecyclerView;
 
-public class HydraRecyclerViewDivider extends RecyclerView.ItemDecoration {
+/**
+ * @project：HailHydra
+ * @author：小卷子
+ * @date 2018/4/16
+ * @describe：
+ * @fix：
+ */
+public class GridRecyclerViewDivider extends RecyclerView.ItemDecoration {
 
     private int space = 0;
     private int leftSpace = 0;
@@ -18,14 +21,14 @@ public class HydraRecyclerViewDivider extends RecyclerView.ItemDecoration {
     private int bottomSpace = 0;
     private boolean isTop = false;
 
-    public HydraRecyclerViewDivider(int leftSpace, int rightSpace, int topSpace, int bottomSpace) {
+    public GridRecyclerViewDivider(int leftSpace, int rightSpace, int topSpace, int bottomSpace) {
         this.leftSpace = leftSpace;
         this.rightSpace = rightSpace;
         this.topSpace = topSpace;
         this.bottomSpace = bottomSpace;
     }
 
-    public HydraRecyclerViewDivider(int leftSpace, int rightSpace, int topSpace, int bottomSpace, boolean isTop) {
+    public GridRecyclerViewDivider(int leftSpace, int rightSpace, int topSpace, int bottomSpace, boolean isTop) {
         this.leftSpace = leftSpace;
         this.rightSpace = rightSpace;
         this.topSpace = topSpace;
@@ -33,12 +36,12 @@ public class HydraRecyclerViewDivider extends RecyclerView.ItemDecoration {
         this.isTop = isTop;
     }
 
-    public HydraRecyclerViewDivider(int space, boolean isTop) {
+    public GridRecyclerViewDivider(int space, boolean isTop) {
         this.space = space;
         this.isTop = isTop;
     }
 
-    public HydraRecyclerViewDivider(int space) {
+    public GridRecyclerViewDivider(int space) {
         this.space = space;
     }
 

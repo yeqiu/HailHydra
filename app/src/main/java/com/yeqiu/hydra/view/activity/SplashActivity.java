@@ -24,6 +24,7 @@ public class SplashActivity extends BaseActivity {
 
     private ImageView ivSplash;
 
+
     @Override
     protected boolean isShowActivityAnimation() {
         return false;

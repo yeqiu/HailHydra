@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.bean.model.ModelHaydraItem;
-import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.utils.ToastUtils;
 import com.yeqiu.hydra.view.activity.demo.DemoActivity;
 import com.yeqiu.hydra.view.activity.utils.UtilsActivity;
 import com.yeqiu.hydra.view.adapter.HailHaydraAdapter;
-import com.yeqiu.hydra.widget.HydraRecyclerViewDivider;
+import com.yeqiu.hydra.widget.RecyclerViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,8 +61,18 @@ public class MainActivity extends BaseActivity {
 
         data = getData();
 
+//        rvHaydra.setLayoutManager(new GridLayoutManager(this, 3));
+        //rvHaydra.addItemDecoration(new GridRecyclerViewDivider(DensityUtils.dp2px(5f)));
+
+       // rvHaydra.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
+//        rvHaydra.addItemDecoration(new RecyclerViewDivider(RecyclerViewDivider.MODE_HORIZONTAL));
+
+//        rvHaydra.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+//        rvHaydra.addItemDecoration(new RecyclerViewDivider(RecyclerViewDivider.MODE_VERTICAL));
+
         rvHaydra.setLayoutManager(new GridLayoutManager(this, 3));
-        rvHaydra.addItemDecoration(new HydraRecyclerViewDivider(DensityUtils.dp2px(5f)));
+        rvHaydra.addItemDecoration(new RecyclerViewDivider(RecyclerViewDivider.MODE_GRID));
+
         HailHaydraAdapter hailHaydraAdapter = new HailHaydraAdapter(this, data);
         rvHaydra.setAdapter(hailHaydraAdapter);
 
