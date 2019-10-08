@@ -61,17 +61,15 @@ public class MainActivity extends BaseActivity {
 
         data = getData();
 
-//        rvHaydra.setLayoutManager(new GridLayoutManager(this, 3));
-        //rvHaydra.addItemDecoration(new GridRecyclerViewDivider(DensityUtils.dp2px(5f)));
-
-       // rvHaydra.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
-//        rvHaydra.addItemDecoration(new RecyclerViewDivider(RecyclerViewDivider.MODE_HORIZONTAL));
-
-//        rvHaydra.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
-//        rvHaydra.addItemDecoration(new RecyclerViewDivider(RecyclerViewDivider.MODE_VERTICAL));
-
         rvHaydra.setLayoutManager(new GridLayoutManager(this, 3));
-        rvHaydra.addItemDecoration(new RecyclerViewDivider(RecyclerViewDivider.MODE_GRID));
+
+        //使用空白分割线
+        RecyclerViewDivider recyclerViewDivider =
+                new RecyclerViewDivider(RecyclerViewDivider.MODE_GRID)
+                        .setDividerColor(R.color.transparent)
+                        .setSpace(10);
+
+        rvHaydra.addItemDecoration(recyclerViewDivider);
 
         HailHaydraAdapter hailHaydraAdapter = new HailHaydraAdapter(this, data);
         rvHaydra.setAdapter(hailHaydraAdapter);
