@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
+    public void initData() {
 
         data = getData();
 

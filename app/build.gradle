@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
@@ -36,6 +37,9 @@ android {
         }
     }
 
+    //添加kotlin文件夹
+    sourceSets { main.java.srcDirs += 'src/main/kotlin'}
+
     //渠道
     productFlavors {
         hailhydra {}
@@ -46,6 +50,14 @@ android {
         flavor.manifestPlaceholders = [CHANNEL_NAME: name]
     }
 
+    signingConfigs {
+        config {
+            storeFile file('../app/key.jks')
+            storePassword '1234567a'
+            keyAlias = 'HailHydra'
+            keyPassword '1234567a'
+        }
+    }
 
 }
 
@@ -107,7 +119,4 @@ dependencies {
     implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
 
 
-}
-repositories {
-    mavenCentral()
 }

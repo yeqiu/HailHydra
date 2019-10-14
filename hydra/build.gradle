@@ -23,6 +23,9 @@ android {
         }
     }
 
+    //添加kotlin文件夹
+    sourceSets { main.java.srcDirs += 'src/main/kotlin'}
+
 }
 
 dependencies {
@@ -57,6 +60,10 @@ dependencies {
     api files('libs/alipaySdk-20180601.jar')
     //微信支付
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    implementation "androidx.core:core-ktx:$ktx_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
 
 
 
