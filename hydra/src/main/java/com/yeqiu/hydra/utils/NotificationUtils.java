@@ -8,9 +8,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 
-import com.yeqiu.hydra.HydraUtilsManager;
-
 import androidx.core.app.NotificationManagerCompat;
+
+import com.yeqiu.hydra.HydraUtilsManager;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 import static android.provider.Settings.EXTRA_APP_PACKAGE;
@@ -66,14 +66,14 @@ public class NotificationUtils {
                 intent.putExtra("app_uid", context.getApplicationInfo().uid);
             }
 
-            JumpUtils.jumpToActivityByIntent(intent);
+            JumpUtil.jumpTo(intent);
         } catch (Exception e) {
 
             //出现异常 直接去设置页面
             intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
             Uri uri = Uri.fromParts("package", context.getPackageName(), null);
             intent.setData(uri);
-            JumpUtils.jumpToActivityByIntent(intent);
+            JumpUtil.jumpTo(intent);
         }
     }
 

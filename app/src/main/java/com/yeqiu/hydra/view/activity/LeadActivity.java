@@ -5,19 +5,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.constant.AppConstant;
 import com.yeqiu.hydra.utils.APPInfoUtil;
-import com.yeqiu.hydra.utils.ActivityUtils;
+import com.yeqiu.hydra.utils.JumpUtil;
 import com.yeqiu.hydra.utils.SharedUtil;
 import com.yeqiu.hydra.widget.ViewPagerIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 /**
  * @project：jinjuyunchuang
@@ -161,7 +161,7 @@ public class LeadActivity extends BaseActivity {
 
         //存入本地versionCode
         SharedUtil.getInstance().putInt(AppConstant.currentVersion, APPInfoUtil.getVersionCode());
-        ActivityUtils.toMainActivity();
+        JumpUtil.jumpTo(MainActivity.class);
         finish();
 
     }

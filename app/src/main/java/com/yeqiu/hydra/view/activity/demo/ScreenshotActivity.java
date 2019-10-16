@@ -6,14 +6,15 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.LruCache;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.constant.Url;
-import com.yeqiu.hydra.utils.JumpUtils;
+import com.yeqiu.hydra.utils.JumpUtil;
 import com.yeqiu.hydra.utils.ScreenUtils;
 import com.yeqiu.hydra.view.activity.BaseActivity;
 
@@ -86,16 +87,15 @@ public class ScreenshotActivity extends BaseActivity {
 
     private void webScreenshot() {
 
-        Intent intent = new Intent(getActivity(), ScreenshotWebActivity.class);
-        intent.putExtra("url", Url.HailHydraUrl);
-        JumpUtils.jumpToActivityByIntent(intent);
+        JumpUtil.jumpTo(ScreenshotWebActivity.class,"url", Url.HailHydraUrl);
     }
 
     private void screenshot() {
 
         Bitmap screenShotWithoutStatusBar = ScreenUtils.getScreenShotWithoutStatusBar(getActivity());
         Intent intenWithBitMp = getIntenWithBitMp(screenShotWithoutStatusBar);
-        JumpUtils.jumpToActivityByIntent(intenWithBitMp);
+        JumpUtil.jumpTo(intenWithBitMp);
+
 
     }
 
@@ -103,7 +103,9 @@ public class ScreenshotActivity extends BaseActivity {
 
         Bitmap bitmap = screenShotView(tvScreenshotView);
         Intent intenWithBitMp = getIntenWithBitMp(bitmap);
-        JumpUtils.jumpToActivityByIntent(intenWithBitMp);
+        JumpUtil.jumpTo(intenWithBitMp);
+
+
     }
 
     /**

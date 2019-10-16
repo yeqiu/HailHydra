@@ -6,10 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Picture;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.webkit.WebView;
 
-import com.yeqiu.hydra.utils.JumpUtils;
+import androidx.annotation.Nullable;
+
+import com.yeqiu.hydra.utils.JumpUtil;
 import com.yeqiu.hydra.view.activity.BaseWebActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -74,7 +75,7 @@ public class ScreenshotWebActivity extends BaseWebActivity {
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
         Canvas canvas = new Canvas(bitmap);
         webView.draw(canvas);
-        JumpUtils.jumpToActivityByIntent(getIntenWithBitMp(bitmap));
+        JumpUtil.jumpTo(getIntenWithBitMp(bitmap));
     }
 
 
@@ -91,7 +92,7 @@ public class ScreenshotWebActivity extends BaseWebActivity {
             Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             picture.draw(canvas);
-            JumpUtils.jumpToActivityByIntent(getIntenWithBitMp(bitmap));
+            JumpUtil.jumpTo(getIntenWithBitMp(bitmap));
         }
 
     }

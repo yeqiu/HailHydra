@@ -66,7 +66,7 @@ public class HailHaydraAdapter extends RecyclerView.Adapter<HailHaydraAdapter.Vi
 
 //                Intent intent = new Intent(context, modelHaydraItem.getActivity());
 //
-//                JumpUtils.jumpToActivityByIntent(intent);
+//                ActivityUtil.jumpToActivityByIntent(intent);
 
 
             }

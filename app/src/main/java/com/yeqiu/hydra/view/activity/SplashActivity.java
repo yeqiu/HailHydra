@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.constant.AppConstant;
 import com.yeqiu.hydra.utils.APPInfoUtil;
-import com.yeqiu.hydra.utils.ActivityUtils;
+import com.yeqiu.hydra.utils.JumpUtil;
 import com.yeqiu.hydra.utils.SharedUtil;
 
 import java.util.Random;
@@ -66,10 +66,9 @@ public class SplashActivity extends BaseActivity {
     private void toNextActivity() {
 
         if (showLead()) {
-            ActivityUtils.toLeadActivity();
+            JumpUtil.jumpTo(LeadActivity.class);
         } else {
-
-            ActivityUtils.toMainActivity();
+            JumpUtil.jumpTo(MainActivity.class);
         }
 
         finish();

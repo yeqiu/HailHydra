@@ -2,7 +2,7 @@ package com.yeqiu.hydra.view.activity;
 
 import android.text.TextUtils;
 
-import com.yeqiu.hydra.utils.JumpUtils;
+import com.yeqiu.hydra.utils.JumpUtil;
 import com.yeqiu.hydra.utils.ToastUtils;
 
 /**
@@ -35,7 +35,7 @@ public class WebViewActivity extends BaseWebActivity {
         super.onTvRightClick();
 
         if (!TextUtils.isEmpty(url)) {
-            JumpUtils.jumpToBrowserActivity(url);
+            JumpUtil.jumpToBrowserActivity(url);
         }
     }
 
