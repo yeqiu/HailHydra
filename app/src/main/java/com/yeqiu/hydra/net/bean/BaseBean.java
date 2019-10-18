@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @describe：data为null
  * @fix：
  */
-public class BaseBean implements Serializable {
+public class BaseBean<T> implements Serializable {
 
     /**
      * code : 0
@@ -18,7 +18,15 @@ public class BaseBean implements Serializable {
 
     private int code;
     private String message;
+    private T data;
 
+    private boolean isOk;
+
+
+    public boolean isOk() {
+
+        return getCode() == 0;
+    }
 
 
     public int getCode() {
@@ -36,8 +44,6 @@ public class BaseBean implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
-
-
 
 
 }
