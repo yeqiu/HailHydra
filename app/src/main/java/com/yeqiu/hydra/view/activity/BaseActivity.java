@@ -15,6 +15,10 @@ import com.yeqiu.hydra.basecontroller.BaseHydraActivity;
 public abstract class BaseActivity extends BaseHydraActivity {
 
 
+    @Override
+    protected void initStatusLayout() {
+
+    }
 
     @Override
     protected int getDefHeadBackImgId() {

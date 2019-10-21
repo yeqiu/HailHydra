@@ -117,10 +117,13 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
         initImmersionBar();
         registerEventBus();
         initHead();
+        initStatusLayout();
         initView();
         initData();
         initListener();
     }
+
+
 
 
     /**
@@ -233,6 +236,12 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
 
 
     //    --------- 抽象方法  ---------
+
+
+    /**
+     * 初始化多布局
+     */
+    protected abstract void initStatusLayout();
 
 
     /**
