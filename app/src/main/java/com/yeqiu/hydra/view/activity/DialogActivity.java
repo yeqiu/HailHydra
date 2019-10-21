@@ -61,6 +61,7 @@ public class DialogActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+
     }
 
     @Override

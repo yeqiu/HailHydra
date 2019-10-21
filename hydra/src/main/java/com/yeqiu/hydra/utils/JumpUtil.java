@@ -23,8 +23,7 @@ import java.util.List;
  */
 public class JumpUtil {
 
-    private static Context context = HydraUtilsManager.getInstance().getContext();
-    public static final int REQUEST_CODE = 100;
+    private static final int REQUEST_CODE = 100;
 
 
     /**
@@ -34,6 +33,11 @@ public class JumpUtil {
      */
     public static void jumpTo(Intent intent) {
 
+        if (intent.getFlags() != Intent.FLAG_ACTIVITY_NEW_TASK) {
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+
+        Context context = HydraUtilsManager.getInstance().getContext();
         context.startActivity(intent);
     }
 
@@ -68,6 +72,10 @@ public class JumpUtil {
      * @param intent
      */
     public static void jumpToForResult(Activity origin, Intent intent) {
+
+        if (intent.getFlags() != Intent.FLAG_ACTIVITY_NEW_TASK) {
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
 
         origin.startActivityForResult(intent, REQUEST_CODE);
 
@@ -111,8 +119,7 @@ public class JumpUtil {
         try {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
+            jumpTo(intent);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,9 +135,8 @@ public class JumpUtil {
         if (TextUtils.isEmpty(number)) {
             return;
         }
-        Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
-        dialIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(dialIntent);
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+        jumpTo(intent);
     }
 
 
@@ -140,12 +146,12 @@ public class JumpUtil {
     public static void goSetting() {
 
         String SETTINGS_ACTION = "android.settings.APPLICATION_DETAILS_SETTINGS";
-
+        Context context = HydraUtilsManager.getInstance().getContext();
         Intent intent = new Intent()
                 .setAction(SETTINGS_ACTION)
                 .setData(Uri.fromParts("package",
                         context.getApplicationContext().getPackageName(), null));
-        context.startActivity(intent);
+        jumpTo(intent);
     }
 
     /**
@@ -153,7 +159,7 @@ public class JumpUtil {
      */
     public static void goBluetoothSetting() {
         Intent intent = new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);
-        context.startActivity(intent);
+        jumpTo(intent);
     }
 
     /**
@@ -161,7 +167,7 @@ public class JumpUtil {
      */
     public static void goWifiSetting() {
         Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
-        context.startActivity(intent);
+        jumpTo(intent);
     }
 
     /**
@@ -169,7 +175,7 @@ public class JumpUtil {
      */
     public static void goNetworkSetting() {
         Intent intent = new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS);
-        context.startActivity(intent);
+        jumpTo(intent);
     }
 
     /**
@@ -177,12 +183,12 @@ public class JumpUtil {
      */
     public static void goLocationSettings() {
         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-        context.startActivity(intent);
+        jumpTo(intent);
     }
 
 
     private static Intent getIntent(Class<? extends Activity> destination) {
-
+        Context context = HydraUtilsManager.getInstance().getContext();
         Intent intent = new Intent(context, destination);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
@@ -194,7 +200,7 @@ public class JumpUtil {
         Intent intent = getIntent(destination);
 
         if (params == null) {
-            return null;
+            return intent;
         }
 
         if (params.length % 2 != 0) {
@@ -204,6 +210,8 @@ public class JumpUtil {
         for (int i = 0; i < params.length / 2; i++) {
             putValueToIntent(intent, (String) params[i * 2], params[i * 2 + 1]);
         }
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         return intent;
     }

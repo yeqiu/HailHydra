@@ -206,7 +206,7 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
 
     //========get()========
 
-    protected List<String> getListDatas() {
+    private List<String> getListDatas() {
         if (listDatas == null) {
             return new ArrayList<>();
         }
@@ -214,11 +214,11 @@ public class BottomDialog extends HydraBaseDialog<BottomDialog> implements View.
     }
 
 
-    public int getItemSize() {
+    private int getItemSize() {
         return itemSize;
     }
 
-    public int getItemColor() {
+    private int getItemColor() {
         return itemColor;
     }
 }

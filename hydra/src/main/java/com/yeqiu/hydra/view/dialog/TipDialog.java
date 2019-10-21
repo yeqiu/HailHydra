@@ -11,12 +11,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.core.content.ContextCompat;
+
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydra.widget.marquee.MarqueeTextView;
 import com.yeqiu.hydrautils.R;
-
-import androidx.core.content.ContextCompat;
 
 /**
  * @project：HailHydra
@@ -202,23 +202,23 @@ public class TipDialog extends HydraBaseDialog<TipDialog> {
     //==========get()==========
 
 
-    public int getIconId() {
+    private int getIconId() {
         return iconId;
     }
 
-    public String getTipText() {
+    private String getTipText() {
         return tipText == null ? "" : tipText;
     }
 
-    public boolean isOrientationHorizontal() {
+    private boolean isOrientationHorizontal() {
         return orientationHorizontal;
     }
 
-    public int getDismissTime() {
+    private int getDismissTime() {
         return dismissTime;
     }
 
-    public boolean isLoading() {
+    private boolean isLoading() {
         return isLoading;
     }
 }

@@ -10,13 +10,13 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.annotation.ColorRes;
+
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.view.dialog.callback.BaseDialogListener;
 import com.yeqiu.hydrautils.R;
 
 import java.lang.ref.WeakReference;
-
-import androidx.annotation.ColorRes;
 
 /**
  * @project：AndroidLbrary
@@ -47,10 +47,13 @@ public abstract class HydraBaseDialog<T extends HydraBaseDialog> {
     }
 
 
-    public HydraBaseDialog getDialog() {
+    public T getDialog() {
 
-        return this;
+        return (T) this;
     }
+
+
+
 
     /**
      * 获取 dialog的style

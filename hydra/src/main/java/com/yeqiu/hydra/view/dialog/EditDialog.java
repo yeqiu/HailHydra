@@ -180,35 +180,35 @@ public class EditDialog extends HydraBaseDialog<EditDialog> implements View.OnCl
     //==========get()==========
 
 
-    protected boolean isJustConfirm() {
+    private boolean isJustConfirm() {
         return justConfirm;
     }
 
-    protected String getConfirmText() {
+    private String getConfirmText() {
         return confirmText == null ? "" : confirmText;
     }
 
-    protected String getHintText() {
+    private String getHintText() {
         return hintText == null ? "" : hintText;
     }
 
-    protected int getConfirmColor() {
+    private int getConfirmColor() {
         return confirmColor;
     }
 
-    protected int getDescSize() {
+    private int getDescSize() {
         return descSize;
     }
 
-    protected int getConfirmSizer() {
+    private int getConfirmSizer() {
         return confirmSizer;
     }
 
-    public int getInputType() {
+    private int getInputType() {
         return inputType;
     }
 
-    public int getInputSize() {
+    private int getInputSize() {
         return inputSize;
     }
 }

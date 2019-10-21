@@ -174,15 +174,15 @@ public class SheetDialog extends HydraBaseDialog<SheetDialog> {
     //==========get()==========
 
 
-    protected int getItemColor() {
+    private int getItemColor() {
         return itemColor;
     }
 
-    protected int getItemlTextSize() {
+    private int getItemlTextSize() {
         return itemlTextSize;
     }
 
-    protected List<String> getSheetDatas() {
+    private List<String> getSheetDatas() {
         if (sheetDatas == null) {
             return new ArrayList<>();
         }

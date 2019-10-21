@@ -263,34 +263,34 @@ public class ListDialog extends HydraBaseDialog<ListDialog> implements AdapterVi
     //==========get()==========
 
 
-    public int getListHeight() {
+    private int getListHeight() {
         return listHeight;
     }
 
-    public int getListMaxHeightWhitItem() {
+    private int getListMaxHeightWhitItem() {
         return listMaxHeightWhitItem;
     }
 
-    public int getListFootViewId() {
+    private int getListFootViewId() {
         return listFootViewId;
     }
 
-    public int getBackImg() {
+    private int getBackImg() {
         return backImg;
     }
 
-    public List<ListData> getListDatas() {
+    private List<ListData> getListDatas() {
         if (listDatas == null) {
             return new ArrayList<>();
         }
         return listDatas;
     }
 
-    public int getItemColor() {
+    private int getItemColor() {
         return itemColor;
     }
 
-    public int getItemlTextSize() {
+    private int getItemlTextSize() {
         return itemlTextSize;
     }
 }

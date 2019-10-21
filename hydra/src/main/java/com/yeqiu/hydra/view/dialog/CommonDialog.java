@@ -159,33 +159,32 @@ public class CommonDialog extends HydraBaseDialog<CommonDialog> implements View.
     //==========get()==========
 
 
-    protected boolean isJustConfirm() {
+    private boolean isJustConfirm() {
         return justConfirm;
     }
 
-    protected String getConfirmText() {
+    private String getConfirmText() {
         return confirmText == null ? "" : confirmText;
     }
 
-
-    protected String getDescText() {
+    private String getDescText() {
         return descText == null ? "" : descText;
     }
 
-    protected int getConfirmColor() {
+    private int getConfirmColor() {
         return confirmColor;
     }
 
 
-    protected int getDescSize() {
+    private int getDescSize() {
         return descSize;
     }
 
-    protected int getConfirmSizer() {
+    private int getConfirmSizer() {
         return confirmSizer;
     }
 
-    public int getDescColor() {
+    private int getDescColor() {
         return descColor;
     }
 }
