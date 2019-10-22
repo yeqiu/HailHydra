@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
@@ -35,7 +34,6 @@ public class HydraHeadBar extends FrameLayout implements View.OnClickListener {
     private ImageView ivHeadRight;
     private View headLine;
     private OnHeadBarClickListener onHeadBarClickListener;
-    private LinearLayout llHeadRoot;
 
 
     public HydraHeadBar(@NonNull Context context) {
@@ -63,7 +61,6 @@ public class HydraHeadBar extends FrameLayout implements View.OnClickListener {
         tvHeadTitle = (TextView) findViewById(R.id.tv_head_title);
         tvHeadRight = (TextView) findViewById(R.id.tv_head_right);
         ivHeadRight = (ImageView) findViewById(R.id.iv_head_right);
-        llHeadRoot = (LinearLayout) findViewById(R.id.ll_head_root);
         headLine = findViewById(R.id.head_line);
 
         tvHeadRight.setVisibility(GONE);

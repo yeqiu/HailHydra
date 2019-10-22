@@ -22,7 +22,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:scaleType="centerInside"
-            android:src="@drawable/head_back_back" />
+            android:src="@drawable/head_back_gray" />
 
 
         <TextView

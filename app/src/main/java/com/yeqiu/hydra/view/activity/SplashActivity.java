@@ -31,6 +31,11 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
+    protected boolean needStatusPlaceholderView() {
+        return false;
+    }
+
+    @Override
     protected Object getContentView() {
         return R.layout.activity_splash;
     }

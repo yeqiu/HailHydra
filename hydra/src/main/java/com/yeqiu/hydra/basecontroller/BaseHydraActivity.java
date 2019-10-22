@@ -140,6 +140,10 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
     protected void addStatusViewWithColor(int colorId) {
 
 
+        if (!needStatusPlaceholderView()) {
+            return;
+        }
+
         if (statusBarView != null) {
             statusBarView.setBackgroundResource(colorId);
             return;
@@ -150,7 +154,6 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
                 .MATCH_PARENT, ScreenUtils.getStatusHeight());
         statusBarView.setBackgroundColor(ResourceUtil.getColor(colorId));
         llBaseRoot.addView(statusBarView, 0, lp);
-
     }
 
     /**
@@ -417,6 +420,15 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
         return false;
     }
 
+    /**
+     * 是否需要通知栏占位
+     *
+     * @return
+     */
+    protected boolean needStatusPlaceholderView() {
+
+        return true;
+    }
 
     /**
      * 设置窗口透明度

@@ -46,11 +46,13 @@ public class LeadActivity extends BaseActivity {
         vpLead = (ViewPager) findViewById(R.id.vp_lead);
         tvLeadNext = (TextView) findViewById(R.id.tv_lead_next);
         indicator = (ViewPagerIndicator) findViewById(R.id.vci_lead);
-
         tvLeadNext.setVisibility(View.INVISIBLE);
-
     }
 
+    @Override
+    protected boolean needStatusPlaceholderView() {
+        return false;
+    }
 
     @Override
     protected boolean isSwipeBack() {
