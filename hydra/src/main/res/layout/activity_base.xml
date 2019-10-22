@@ -6,9 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/base_header_layout"
-        />
+
+    <com.yeqiu.hydra.widget.headbar.HydraHeadBar
+        android:id="@+id/bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <com.yeqiu.hydra.widget.statuslayout.StatusLayout
         android:id="@+id/base_status_layout"

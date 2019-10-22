@@ -24,21 +24,15 @@ public class WebViewActivity extends BaseWebActivity {
             ToastUtils.showToast(hint);
         }
 
-
-        showHeaderRightTextview("浏览器打开");
-
+        barLayout.setTextViewOnBarRight("浏览器打开");
     }
 
 
     @Override
-    protected void onTvRightClick() {
-        super.onTvRightClick();
-
+    public void onHeadRightClick(boolean isImg) {
+        super.onHeadRightClick(isImg);
         if (!TextUtils.isEmpty(url)) {
             JumpUtil.jumpToBrowserActivity(url);
         }
     }
-
-
-
 }

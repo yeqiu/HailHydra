@@ -42,21 +42,15 @@ public class LeadActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        showHeadLayout(false);
+        showHeadBar(false);
         vpLead = (ViewPager) findViewById(R.id.vp_lead);
         tvLeadNext = (TextView) findViewById(R.id.tv_lead_next);
         indicator = (ViewPagerIndicator) findViewById(R.id.vci_lead);
 
         tvLeadNext.setVisibility(View.INVISIBLE);
 
-
     }
 
-
-    @Override
-    protected void addStatusViewWithColor(int colorId) {
-//        super.addStatusViewWithColor(colorId);
-    }
 
     @Override
     protected boolean isSwipeBack() {

@@ -32,7 +32,7 @@ public class SDKActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("集成常见三方sdk");
+        setHeadTitle("集成常见三方sdk");
         tvSdkJg = (TextView) findViewById(R.id.tv_sdk_jg);
         tvSdkUmShare = (TextView) findViewById(R.id.tv_sdk_um_share);
         tvSdkUmBugly = (TextView) findViewById(R.id.tv_sdk_um_bugly);

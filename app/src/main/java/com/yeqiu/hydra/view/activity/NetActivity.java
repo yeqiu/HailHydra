@@ -37,7 +37,7 @@ public class NetActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("网络请求");
+        setHeadTitle("网络请求");
         tvNetPost = (TextView) findViewById(R.id.tv_net_post);
         tvNetResult = (TextView) findViewById(R.id.tv_net_result);
         tvAboutOkgo = (TextView) findViewById(R.id.tv_about_okgo);

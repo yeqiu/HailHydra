@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_common_header_root"
+    android:id="@+id/ll_head_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color_white"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/rl_common_head"
+        android:id="@+id/rl_head"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
         <!--左侧返回键-->
 
         <ImageView
-            android:id="@+id/iv_common_head_back"
+            android:id="@+id/iv_head_back"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -22,23 +22,23 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:scaleType="centerInside"
-            />
+            android:src="@drawable/head_back_back" />
 
 
         <TextView
-            android:id="@+id/tv_common_head_close"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_head_close"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/iv_common_head_back"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="关闭"
             android:visibility="gone" />
 
 
         <!--标题-->
         <TextView
-            android:id="@+id/tv_common_head_title"
+            android:id="@+id/tv_head_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -50,7 +50,7 @@
         <!--右侧可点击的文字-->
 
         <TextView
-            android:id="@+id/tv_common_head_title_right"
+            android:id="@+id/tv_head_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -62,7 +62,7 @@
 
 
         <ImageView
-            android:id="@+id/iv_common_head_title_right"
+            android:id="@+id/iv_head_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

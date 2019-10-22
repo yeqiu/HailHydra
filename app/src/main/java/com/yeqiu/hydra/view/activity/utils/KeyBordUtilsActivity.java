@@ -22,7 +22,7 @@ public class KeyBordUtilsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("键盘监听");
+        setHeadTitle("键盘监听");
 
     }
 

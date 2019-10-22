@@ -1,11 +1,12 @@
 package com.yeqiu.hydra.view.activity.demo;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.bean.model.CheckboxData;
@@ -55,7 +56,7 @@ public class CheckboxListActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("列表中使用checkbox");
+        setHeadTitle("列表中使用checkbox");
         rvCheckboxList = (RecyclerView) findViewById(R.id.rv_checkbox_list);
         cbCheckboxList = (CheckBox) findViewById(R.id.cb_checkbox_list);
         tvCheckboxList = (TextView) findViewById(R.id.tv_checkbox_list);

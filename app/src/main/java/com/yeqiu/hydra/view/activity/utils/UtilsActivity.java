@@ -3,6 +3,10 @@ package com.yeqiu.hydra.view.activity.utils;
 import android.content.Intent;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yeqiu.hydra.R;
@@ -11,10 +15,6 @@ import com.yeqiu.hydra.view.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @project：HailHydra
@@ -34,7 +34,7 @@ public class UtilsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("工具类");
+        setHeadTitle("工具类");
         rvDemo = (RecyclerView) findViewById(R.id.rv_demo);
         rvDemo.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

@@ -38,7 +38,7 @@ public class TitlebarGradientActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        showHeadLayout(false);
+        showHeadBar(false);
         rvTitlebarGradient = (RecyclerView) findViewById(R.id.rv_titlebar_gradient);
         rlTitlebarGradientHead = (RelativeLayout) findViewById(R.id.rl_titlebar_gradient_head);
         rvTitlebarGradient.setLayoutManager(new LinearLayoutManager(getActivity()));

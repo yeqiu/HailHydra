@@ -39,15 +39,14 @@ public class ScreenshotWebActivity extends BaseWebActivity {
     @Override
     protected void otherSetting() {
 
-        showHeaderRightTextview("截图");
+
+        barLayout.setTextViewOnBarRight("截图");
     }
 
 
     @Override
-    protected void onTvRightClick() {
-        super.onTvRightClick();
-
-
+    public void onHeadRightClick(boolean isImg) {
+        super.onHeadRightClick(isImg);
         getScreenshot();
     }
 

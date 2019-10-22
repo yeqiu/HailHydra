@@ -31,7 +31,7 @@ public class DocPreviewActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("查看文档");
+        setHeadTitle("查看文档");
         dpv = (DocPreview) findViewById(R.id.dpv);
     }
 

@@ -44,7 +44,7 @@ public class DialogActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("ios风格的dialog");
+        setHeadTitle("ios风格的dialog");
 
         tvDialogCmmon1 = (TextView) findViewById(R.id.tv_dialog_cmmon_1);
         tvDialogCmmon2 = (TextView) findViewById(R.id.tv_dialog_cmmon_2);

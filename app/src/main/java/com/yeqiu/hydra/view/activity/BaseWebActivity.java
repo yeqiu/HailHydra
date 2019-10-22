@@ -41,7 +41,7 @@ public abstract class BaseWebActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("加载中");
+        setHeadTitle("加载中");
         pbWebProgress = (ProgressBar) findViewById(R.id.pb_web_progress);
         webView = (WebView) findViewById(R.id.ev_web);
     }
@@ -51,7 +51,7 @@ public abstract class BaseWebActivity extends BaseActivity {
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
         title = intent.getStringExtra("title");
-        setHeaderTitle(title);
+        setHeadTitle(title);
         initWebView();
         otherSetting();
         loadUrl();
@@ -59,7 +59,7 @@ public abstract class BaseWebActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-        tvHeadClose.setOnClickListener(this);
+
     }
 
 
@@ -68,7 +68,7 @@ public abstract class BaseWebActivity extends BaseActivity {
 
         switch (v.getId()) {
 
-            case R.id.tv_common_head_close:
+            case R.id.tv_head_close:
                 finish();
                 break;
 
@@ -78,9 +78,11 @@ public abstract class BaseWebActivity extends BaseActivity {
         }
     }
 
+
     @Override
-    protected void onBackClick() {
+    public void onHeadBackClick(boolean isImg) {
         handleBack();
+
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -140,7 +142,7 @@ public abstract class BaseWebActivity extends BaseActivity {
                 webTitle = webTitle.substring(0, 10);
             }
 
-            setHeaderTitle(webTitle);
+            setHeadTitle(webTitle);
         }
     }
 
@@ -154,9 +156,9 @@ public abstract class BaseWebActivity extends BaseActivity {
                 setWebTitle(title);
                 if (webView != null && webView.canGoBack()) {
                     //当前可以返回，显示关闭
-                    tvHeadClose.setVisibility(View.VISIBLE);
+                    barLayout.showHeadBackTextView(true);
                 } else {
-                    tvHeadClose.setVisibility(View.GONE);
+                    barLayout.showHeadBackTextView(false);
                 }
 
             }
@@ -167,9 +169,9 @@ public abstract class BaseWebActivity extends BaseActivity {
 
                 if (webView != null && webView.canGoBack()) {
                     //当前可以返回，显示关闭
-                    tvHeadClose.setVisibility(View.VISIBLE);
+                    barLayout.showHeadBackTextView(true);
                 } else {
-                    tvHeadClose.setVisibility(View.GONE);
+                    barLayout.showHeadBackTextView(false);
                 }
 
                 return super.shouldOverrideUrlLoading(view, request);

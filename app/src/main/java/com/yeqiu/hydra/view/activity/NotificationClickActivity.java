@@ -21,7 +21,7 @@ public class NotificationClickActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("点击通知栏");
+        setHeadTitle("点击通知栏");
 
 
     }

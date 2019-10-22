@@ -4,6 +4,7 @@ package com.yeqiu.hydra.view.activity;
 import com.umeng.analytics.MobclickAgent;
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.basecontroller.BaseHydraActivity;
+import com.yeqiu.hydra.widget.headbar.OnHeadBarClickListener;
 
 /**
  * @project：HailHydra
@@ -12,7 +13,7 @@ import com.yeqiu.hydra.basecontroller.BaseHydraActivity;
  * @describe：
  * @fix：
  */
-public abstract class BaseActivity extends BaseHydraActivity {
+public abstract class BaseActivity extends BaseHydraActivity implements OnHeadBarClickListener {
 
 
     @Override
@@ -46,5 +47,15 @@ public abstract class BaseActivity extends BaseHydraActivity {
     }
 
 
+    @Override
+    public void onHeadBackClick(boolean isImg) {
 
+        finish();
+    }
+
+
+    @Override
+    public void onHeadRightClick(boolean isImg) {
+
+    }
 }

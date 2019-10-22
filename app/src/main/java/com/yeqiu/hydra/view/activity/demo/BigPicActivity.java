@@ -27,7 +27,7 @@ public class BigPicActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        showHeadLayout(false);
+        showHeadBar(false);
 
         pic = (ImageView) findViewById(R.id.iv_big_pic);
 

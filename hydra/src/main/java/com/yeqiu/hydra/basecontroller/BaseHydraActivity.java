@@ -2,15 +2,12 @@ package com.yeqiu.hydra.basecontroller;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
 
 import com.gyf.barlibrary.ImmersionBar;
@@ -21,6 +18,8 @@ import com.yeqiu.hydra.utils.LogUtils;
 import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydra.utils.ScreenUtils;
 import com.yeqiu.hydra.utils.net.NetWorkUtils;
+import com.yeqiu.hydra.widget.headbar.HydraHeadBar;
+import com.yeqiu.hydra.widget.headbar.OnHeadBarClickListener;
 import com.yeqiu.hydra.widget.statuslayout.OnStatusClickListener;
 import com.yeqiu.hydra.widget.statuslayout.StatusLayout;
 import com.yeqiu.hydrautils.R;
@@ -35,29 +34,24 @@ import org.greenrobot.eventbus.EventBus;
  * @fix：activity
  */
 public abstract class BaseHydraActivity extends SwipeBackActivity implements View
-        .OnClickListener, OnStatusClickListener {
+        .OnClickListener, OnStatusClickListener, OnHeadBarClickListener {
 
     protected LinearLayout llBaseRoot;
     protected StatusLayout statusLayout;
-    protected LinearLayout llHeadLayoutRoot;
-    protected ImageView ivHeadBack;
-    protected TextView tvHeadClose;
-    protected TextView headerTitle;
-    protected TextView tvheaderRight;
-    protected ImageView ivheaderRight;
-    protected View headLine;
     protected ImmersionBar imersionBar;
-    protected RelativeLayout rlCommonHead;
+    protected HydraHeadBar barLayout;
     protected int openEnterAnimation = R.anim.slide_right_to_left_in;
     protected int openExitAnimation = R.anim.slide_right_to_left_out;
     protected int closeEnterAnimation = R.anim.slide_left_to_right_in;
     protected int closeExitAnimation = R.anim.slide_left_to_right_out;
     private Activity context;
+    private View statusBarView;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setActivityAnimation(openEnterAnimation,openExitAnimation,closeEnterAnimation,closeExitAnimation);
+        setActivityAnimation(openEnterAnimation, openExitAnimation, closeEnterAnimation,
+                closeExitAnimation);
         showActivityAnimation(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
@@ -124,32 +118,16 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
     }
 
 
-
-
     /**
      * 初始化head标题栏
-     * 标题栏中包括 返回 标题 右侧文字
      */
     private void initHead() {
-        llHeadLayoutRoot = (LinearLayout) findViewById(R.id.ll_common_header_root);
-        ivHeadBack = (ImageView) findViewById(R.id.iv_common_head_back);
-        tvHeadClose = (TextView) findViewById(R.id.tv_common_head_close);
-        headerTitle = (TextView) findViewById(R.id.tv_common_head_title);
-        tvheaderRight = (TextView) findViewById(R.id.tv_common_head_title_right);
-        ivheaderRight = (ImageView) findViewById(R.id.iv_common_head_title_right);
-        rlCommonHead = (RelativeLayout) findViewById(R.id.rl_common_head);
-        headLine = findViewById(R.id.head_line);
-        //默认隐藏右侧的图片和文字
-        tvheaderRight.setVisibility(View.GONE);
-        ivheaderRight.setVisibility(View.GONE);
-        tvHeadClose.setVisibility(View.GONE);
-        ivHeadBack.setOnClickListener(onClickListener);
-        tvheaderRight.setOnClickListener(onClickListener);
-        ivheaderRight.setOnClickListener(onClickListener);
-        tvHeadClose.setOnClickListener(onClickListener);
-        ivHeadBack.setImageResource(getDefHeadBackImgId());
 
-        addStatusViewWithColor(getStatusColorId());
+        barLayout = (HydraHeadBar) findViewById(R.id.bar_layout);
+        barLayout.setOnHydraHeadBarClickListener(this);
+
+        //默认标题栏白色
+        setHeadBarBackgroundColor(R.color.color_white);
     }
 
 
@@ -161,13 +139,58 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
      */
     protected void addStatusViewWithColor(int colorId) {
 
-        View statusBarView = new View(getActivity());
+
+        if (statusBarView != null) {
+            statusBarView.setBackgroundResource(colorId);
+            return;
+        }
+
+        statusBarView = new View(getActivity());
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ScreenUtils.getStatusHeight());
         statusBarView.setBackgroundColor(ResourceUtil.getColor(colorId));
-
         llBaseRoot.addView(statusBarView, 0, lp);
 
+    }
+
+    /**
+     * 设置标题
+     *
+     * @param title
+     */
+    protected void setHeadTitle(String title) {
+
+        barLayout.setHeadTitle(title);
+    }
+
+
+    /**
+     * 设置返回图标
+     */
+    protected void setHeadBackImg() {
+
+        barLayout.setHeadBackImg(getDefHeadBackImgId());
+    }
+
+    /**
+     * 设置标题栏颜色
+     *
+     * @param color
+     */
+    protected void setHeadBarBackgroundColor(@ColorRes int color) {
+
+        barLayout.setHeadBackgroundColor(color);
+        addStatusViewWithColor(color);
+    }
+
+    /**
+     * 是否显示顶部导航栏
+     *
+     * @param isShow
+     */
+    protected void showHeadBar(boolean isShow) {
+
+        barLayout.setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
 
@@ -197,14 +220,6 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
             EventBus.getDefault().register(this);
         }
 
-    }
-
-
-    /**
-     * 标题栏返回点击
-     */
-    protected void onBackClick() {
-        finish();
     }
 
 
@@ -303,16 +318,6 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
         return true;
     }
 
-    /**
-     * 设置标题栏颜色
-     *
-     * @param colorId
-     * @param backSrcId
-     */
-    protected void setHeadLayoutColor(int colorId, int backSrcId) {
-        llHeadLayoutRoot.setBackgroundColor(ResourceUtil.getColor(colorId));
-        ivHeadBack.setImageResource(backSrcId);
-    }
 
     /**
      * 状态栏字体颜色 亮色或深色，默认深色
@@ -414,65 +419,6 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
 
 
     /**
-     * 设置head的标题
-     * 自动显示标题栏
-     */
-    protected void setHeaderTitle(String title) {
-
-        if (!TextUtils.isEmpty(title)) {
-            llHeadLayoutRoot.setVisibility(View.VISIBLE);
-            headerTitle.setText(title);
-        }
-
-    }
-
-    /**
-     * 设置左上角返回图片
-     *
-     * @param bakImg
-     */
-    protected void setHeadBackImg(int bakImg) {
-
-
-        ivHeadBack.setImageResource(bakImg);
-    }
-
-    /**
-     * 显示标题栏右侧图片
-     */
-    protected void showHeaderRightImageview(int imaId) {
-        ivheaderRight.setVisibility(View.VISIBLE);
-        ivheaderRight.setImageResource(imaId);
-    }
-
-    /**
-     * 显示标题栏右侧文字
-     */
-    protected void showHeaderRightTextview(String headTitle) {
-        tvheaderRight.setVisibility(View.VISIBLE);
-        tvheaderRight.setText(headTitle);
-
-    }
-
-    /**
-     * 隐藏head底部的横线
-     */
-    protected void hideHeadLine() {
-        headLine.setVisibility(View.GONE);
-    }
-
-    /**
-     * 是否显示标题栏
-     *
-     * @param show
-     */
-    protected void showHeadLayout(boolean show) {
-        llHeadLayoutRoot.setVisibility(show ? View.VISIBLE : View.GONE);
-
-    }
-
-
-    /**
      * 设置窗口透明度
      *
      * @param f
@@ -556,42 +502,6 @@ public abstract class BaseHydraActivity extends SwipeBackActivity implements Vie
     public void onStatusClick(View view) {
 
     }
-
-    /**
-     * 标题右边的字点击事件
-     */
-    protected void onTvRightClick() {
-    }
-
-    /**
-     * 标题右边的图标点击事件
-     */
-    protected void onIvRightClick() {
-    }
-
-    /**
-     * 标题栏关闭点击事件
-     */
-    protected void onTvCloseClick() {
-    }
-
-
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int id = v.getId();
-            if (id == R.id.iv_common_head_back) {
-                //左上角返回按钮统一处理
-                onBackClick();
-            } else if (id == R.id.tv_common_head_title_right) {
-                onTvRightClick();
-            } else if (id == R.id.iv_common_head_title_right) {
-                onIvRightClick();
-            } else if (id == R.id.tv_common_head_close) {
-                onTvCloseClick();
-            }
-        }
-    };
 
 
 }

@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        showHeadLayout(false);
+        showHeadBar(false);
 
         rvHaydra = (RecyclerView) findViewById(R.id.rv_haydra);
     }

@@ -35,7 +35,7 @@ public class UpdateActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("检查升级");
+        setHeadTitle("检查升级");
         tvUpdate = (TextView) findViewById(R.id.tv_update);
         npbUpdate = (NumberProgressBar) findViewById(R.id.npb_update);
     }

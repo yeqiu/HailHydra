@@ -43,7 +43,7 @@ public class PhoneInfoActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("获取本机信息");
+        setHeadTitle("获取本机信息");
         tvDeviceIsPhone = (TextView) findViewById(R.id.tv_device_is_phone);
         tvDeviceSdkVersion = (TextView) findViewById(R.id.tv_device_sdk_version);
         tvDeviceModel = (TextView) findViewById(R.id.tv_device_model);

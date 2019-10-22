@@ -1,9 +1,10 @@
 package com.yeqiu.hydra.view.activity.demo.sticky;
 
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -31,7 +32,7 @@ public class CoordinatorStickyActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("CoordinatorLayout实现悬浮");
+        setHeadTitle("CoordinatorLayout实现悬浮");
         rvCoordinatorSticky = (RecyclerView) findViewById(R.id.rv_coordinator_sticky);
         rvCoordinatorSticky.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

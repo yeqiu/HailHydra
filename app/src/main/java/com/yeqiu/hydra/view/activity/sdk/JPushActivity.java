@@ -20,7 +20,7 @@ public class JPushActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("极光推送");
+        setHeadTitle("极光推送");
 
     }
 

@@ -40,7 +40,7 @@ public class TextToolActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("TextTool");
+        setHeadTitle("TextTool");
         tvTextUrl = (TextView) findViewById(R.id.tv_text_url);
         tvTextClick = (TextView) findViewById(R.id.tv_text_click);
         tvTextUnderline = (TextView) findViewById(R.id.tv_text_underline);

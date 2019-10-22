@@ -34,7 +34,7 @@ public class ScaleTypeActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("ScaleType属性");
+        setHeadTitle("ScaleType属性");
 
         llScaletypeFitcenter = (LinearLayout) findViewById(R.id.ll_scaletype_fitcenter);
         llScaletypeFitstart = (LinearLayout) findViewById(R.id.ll_scaletype_fitstart);

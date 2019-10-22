@@ -73,7 +73,7 @@ public class StringUtilsActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void initView() {
 
-        setHeaderTitle("StringUtils");
+        setHeadTitle("StringUtils");
 
         mEtStringUtis = (EditText) findViewById(R.id.et_string_utis);
         mTvStringUtilsResult = (TextView) findViewById(R.id.tv_string_utils_result);

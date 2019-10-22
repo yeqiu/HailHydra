@@ -1,13 +1,14 @@
 package com.yeqiu.hydra.view.activity.demo;
 
 import android.graphics.Color;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -45,7 +46,7 @@ public class RecyclerViewActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("RecyclerView");
+        setHeadTitle("RecyclerView");
         rvRecyclerView = (RecyclerView) findViewById(R.id.rv_recycler_view);
         rvRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

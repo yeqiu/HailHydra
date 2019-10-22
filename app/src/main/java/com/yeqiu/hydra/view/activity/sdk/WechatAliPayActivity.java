@@ -20,7 +20,7 @@ public class WechatAliPayActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("集成支付");
+        setHeadTitle("集成支付");
     }
 
     @Override

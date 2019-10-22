@@ -33,7 +33,7 @@ public class BaseExplainActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("base的介绍");
+        setHeadTitle("base的介绍");
         tvBaseExplainActivity = (TextView) findViewById(R.id.tv_base_explain_activity);
         tvBaseExplainFragment = (TextView) findViewById(R.id.tv_base_explain_fragment);
         tvBaseExplainDialog = (TextView) findViewById(R.id.tv_base_explain_dialog);

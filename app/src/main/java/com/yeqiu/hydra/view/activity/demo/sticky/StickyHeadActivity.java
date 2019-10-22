@@ -37,7 +37,7 @@ public class StickyHeadActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("简单实现列表悬浮");
+        setHeadTitle("简单实现列表悬浮");
 
         rvSticky = (RecyclerView) findViewById(R.id.rv_sticky);
         tvSticky = (TextView) findViewById(R.id.tv_sticky);

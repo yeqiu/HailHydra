@@ -20,7 +20,7 @@ public class CornerLayoutActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("自定义的圆角布局");
+        setHeadTitle("自定义的圆角布局");
     }
 
     @Override

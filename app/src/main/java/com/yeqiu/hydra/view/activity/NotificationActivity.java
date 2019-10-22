@@ -10,14 +10,14 @@ import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
+import androidx.core.app.NotificationCompat;
+
 import com.yeqiu.hydra.R;
 import com.yeqiu.hydra.utils.NotificationUtils;
 import com.yeqiu.hydra.view.dialog.CommonDialog;
 import com.yeqiu.hydra.view.dialog.callback.DialogListener;
 
 import java.util.ArrayList;
-
-import androidx.core.app.NotificationCompat;
 
 /**
  * @project：HailHydra
@@ -48,7 +48,7 @@ public class NotificationActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("通知的各种写法");
+        setHeadTitle("通知的各种写法");
         tvNotification1 = (TextView) findViewById(R.id.tv_notification_1);
         tvNotification2 = (TextView) findViewById(R.id.tv_notification_2);
         tvNotification3 = (TextView) findViewById(R.id.tv_notification_3);

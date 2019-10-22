@@ -41,7 +41,7 @@ public class ScreenshotActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("截图");
+        setHeadTitle("截图");
         tvScreenshotWebView = (TextView) findViewById(R.id.tv_screenshot_web_view);
         tvScreenshotScreen = (TextView) findViewById(R.id.tv_screenshot_screen);
         tvScreenshotView = (TextView) findViewById(R.id.tv_screenshot_view);

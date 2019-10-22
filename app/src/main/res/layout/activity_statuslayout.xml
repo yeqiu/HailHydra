@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+
+
 
 
     <com.yeqiu.hydra.widget.statuslayout.StatusLayout
         android:id="@+id/status_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        />
-
+        android:layout_weight="1" />
 
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/color_b9b9b9"/>
+        android:background="@color/color_b9b9b9" />
 
 
     <LinearLayout
@@ -32,12 +32,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="正常布局"/>
+            android:text="正常布局" />
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/color_b9b9b9"/>
+            android:background="@color/color_b9b9b9" />
 
 
         <TextView
@@ -46,13 +46,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="无数据"
-            />
+            android:text="无数据" />
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/color_b9b9b9"/>
+            android:background="@color/color_b9b9b9" />
 
         <TextView
             android:id="@+id/tv_error"
@@ -60,12 +59,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="错误"/>
+            android:text="错误" />
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/color_b9b9b9"/>
+            android:background="@color/color_b9b9b9" />
 
 
         <TextView
@@ -74,8 +73,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="加载中"
-            />
+            android:text="加载中" />
 
 
     </LinearLayout>

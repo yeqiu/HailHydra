@@ -54,7 +54,7 @@ public class ImageUtilsActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        setHeaderTitle("ImageUtils的使用");
+        setHeadTitle("ImageUtils的使用");
 
     }
 

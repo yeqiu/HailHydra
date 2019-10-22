@@ -20,7 +20,7 @@ public class UmBuglyActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setHeaderTitle("友盟和bugly的集成");
+        setHeadTitle("友盟和bugly的集成");
 
     }
 

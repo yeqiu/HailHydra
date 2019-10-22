@@ -37,7 +37,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        showHeadLayout(false);
+        showHeadBar(false);
 
         ivSplash = (ImageView) findViewById(R.id.iv_splash);
     }
@@ -98,10 +98,6 @@ public class SplashActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void addStatusViewWithColor(int colorId) {
-//        super.addStatusViewWithColor(colorId);
-    }
 
     private int getRandomId() {
 
