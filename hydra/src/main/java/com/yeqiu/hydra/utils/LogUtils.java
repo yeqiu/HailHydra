@@ -18,7 +18,8 @@ public class LogUtils {
 
     public static void init() {
 
-        String tag = APPInfoUtil.getAppName();
+//        String tag = APPInfoUtil.getAppName();
+        String tag = "Hailhydra";
 
         PrettyFormatStrategy strategy = PrettyFormatStrategy.newBuilder()
                 .logStrategy(new LogCatStrategy())
@@ -27,7 +28,6 @@ public class LogUtils {
                 .methodOffset(0)
                 .showThreadInfo(false)
                 .build();
-
 
 
         Logger.addLogAdapter(new AndroidLogAdapter(strategy));

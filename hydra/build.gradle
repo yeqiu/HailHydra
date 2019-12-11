@@ -3,16 +3,15 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
 
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
-
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -37,17 +36,16 @@ dependencies {
     api "androidx.recyclerview:recyclerview:$rootProject.recyclerview"
     //lifecycle
     api "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycle"
-
     //log
     api 'com.orhanobut:logger:2.2.0'
     //gson
-    api 'com.google.code.gson:gson:2.8.5'
+    api 'com.google.code.gson:gson:2.8.6'
     //glide
-    api 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-    api 'com.github.bumptech.glide:okhttp3-integration:4.9.0'
+    api 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    api 'com.github.bumptech.glide:okhttp3-integration:4.10.0'
     //解决Glide和androidx兼容
-    annotationProcessor 'androidx.annotation:annotation:1.0.0'
+    annotationProcessor 'androidx.annotation:annotation:1.1.0'
     //immersionbar 沉浸式状态栏
     api 'com.gyf.immersionbar:immersionbar:2.3.2-beta01'
     //侧滑返回
@@ -59,8 +57,8 @@ dependencies {
     //支付宝支付
     api files('libs/alipaySdk-20180601.jar')
     //微信支付
-    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
-
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.5.7'
+    //kotlin
     implementation "androidx.core:core-ktx:$ktx_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
