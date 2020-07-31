@@ -52,7 +52,7 @@ android {
 
     signingConfigs {
         config {
-            storeFile file('../app/key.jks')
+            storeFile file('../key.jks')
             storePassword '1234567a'
             keyAlias = 'HailHydra'
             keyPassword '1234567a'
@@ -117,6 +117,8 @@ dependencies {
     //bugly
     implementation 'com.tencent.bugly:crashreport:3.0.1'
     implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
+
+
 
 
 }
