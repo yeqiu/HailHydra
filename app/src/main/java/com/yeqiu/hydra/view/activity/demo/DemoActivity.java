@@ -39,6 +39,7 @@ public class DemoActivity extends BaseActivity {
         setHeadTitle("一些Demo");
         rvDemo = (RecyclerView) findViewById(R.id.rv_demo);
         rvDemo.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
 
     @Override

@@ -11,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import androidx.core.content.ContextCompat;
-
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.view.dialog.base.HydraBaseDialog;
 import com.yeqiu.hydra.widget.marquee.MarqueeTextView;
@@ -102,7 +100,7 @@ public class TipDialog extends HydraBaseDialog<TipDialog> {
             textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
             textView.setSingleLine();
             textView.setGravity(Gravity.CENTER);
-            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.color_white));
+//            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.color_white));
             textView.setTextSize(14);
             textView.setText(getTipText());
 

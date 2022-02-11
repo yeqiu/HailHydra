@@ -105,7 +105,7 @@ dependencies {
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     implementation project(path: ':docpreview')
     //kotlin
-    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.core:core-ktx:$ktx_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //极光推送

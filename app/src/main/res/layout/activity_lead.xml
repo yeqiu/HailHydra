@@ -37,12 +37,11 @@
         android:background="@drawable/shape_40_ff7852_0_0"
         android:gravity="center"
         android:paddingLeft="60dp"
-        android:paddingTop="10dp"
         android:paddingRight="60dp"
         android:paddingBottom="10dp"
         android:text="立即体验"
         android:textColor="@color/color_ff7852"
-        android:textSize="16dp"/>
+        android:textSize="16dp" />
 
 
 </RelativeLayout>

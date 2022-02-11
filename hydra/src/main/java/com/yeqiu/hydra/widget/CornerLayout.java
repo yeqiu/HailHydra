@@ -15,12 +15,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.yeqiu.hydra.utils.DensityUtils;
 import com.yeqiu.hydra.utils.ResourceUtil;
 import com.yeqiu.hydrautils.R;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 /**
  * @project：HailHydra
@@ -78,8 +78,7 @@ public class CornerLayout extends FrameLayout {
         if (attrs == null) {
             return;
         }
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable
-                .CornerLayout);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CornerLayout);
 
         corners = typedArray.getDimensionPixelSize(R.styleable.CornerLayout_corners, 0);
         if (corners != 0) {

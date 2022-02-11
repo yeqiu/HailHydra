@@ -62,7 +62,6 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.4</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-
     </style>
 
 

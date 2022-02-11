@@ -80,10 +80,7 @@ public class ImageUtils {
      * @return
      */
     private boolean check(Context context, String url, View view) {
-
-
         return (TextUtils.isEmpty(url) || context == null || view == null);
-
     }
 
     /**

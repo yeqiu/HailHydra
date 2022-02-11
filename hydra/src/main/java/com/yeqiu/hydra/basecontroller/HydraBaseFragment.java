@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import com.yeqiu.hydra.utils.net.NetWorkUtils;
 import com.yeqiu.hydra.widget.statuslayout.StatusLayout;
-
-import androidx.annotation.Nullable;
 
 /**
  * @project：HailHydra
@@ -66,7 +66,6 @@ public abstract class HydraBaseFragment extends LifeCycleFragment {
      */
     public View findViewById(int id) {
         return contentView.findViewById(id);
-
     }
 
 
