@@ -2,8 +2,6 @@ package com.yeqiu.hydra.app;
 
 import android.app.Application;
 
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.commonsdk.UMConfigure;
 import com.yeqiu.docpreview.DocPreview;
@@ -24,7 +22,6 @@ import cn.jpush.android.api.JPushInterface;
 public class AppConfig {
 
     private static AppConfig instance;
-    private RefWatcher refWatcher;
 
     private AppConfig() {
     }
@@ -50,7 +47,6 @@ public class AppConfig {
      */
     public void init(Application app) {
         initHydra(app);
-        initLeakCanary(app);
         DocPreview.init(app);
         initJPush(app);
         initUm(app);
@@ -74,14 +70,6 @@ public class AppConfig {
     }
 
 
-    private void initLeakCanary(Application app) {
-        refWatcher = LeakCanary.install(app);
-    }
-
-
-    public RefWatcher getRefWatcher() {
-        return refWatcher;
-    }
 
 
     private void initJPush(Application app) {

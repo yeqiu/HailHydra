@@ -125,7 +125,6 @@ public abstract class BaseWebActivity extends BaseActivity {
             ToastUtils.showToast("加载错误，请退出app后重试");
             finish();
         }
-
     }
 
 
