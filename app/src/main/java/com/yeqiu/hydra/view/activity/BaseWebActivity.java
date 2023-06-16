@@ -51,6 +51,9 @@ public abstract class BaseWebActivity extends BaseActivity {
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
         title = intent.getStringExtra("title");
+
+        url = "http://www.oschina.net/question/54100_34836";
+
         setHeadTitle(title);
         initWebView();
         otherSetting();
@@ -93,9 +96,10 @@ public abstract class BaseWebActivity extends BaseActivity {
         webSettings.setPluginState(WebSettings.PluginState.ON);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
-        webSettings.setSupportZoom(false);
+//        webSettings.setSupportZoom(false);
+        webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
-        webSettings.setDisplayZoomControls(false);
+        webSettings.setDisplayZoomControls(true);
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webSettings.supportMultipleWindows();
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);

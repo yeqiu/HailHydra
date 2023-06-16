@@ -23,14 +23,14 @@ public class WebViewActivity extends BaseWebActivity {
             String hint = "url可通过  intent.putExtra(\"url\", url); ";
             ToastUtils.showToast(hint);
         }
-
-        barLayout.setTextViewOnBarRight("浏览器打开");
     }
 
 
     @Override
     public void onHeadRightClick(boolean isImg) {
         super.onHeadRightClick(isImg);
+
+
         if (!TextUtils.isEmpty(url)) {
             JumpUtil.jumpToBrowserActivity(url);
         }

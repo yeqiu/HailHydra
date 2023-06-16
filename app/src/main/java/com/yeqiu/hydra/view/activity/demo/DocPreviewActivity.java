@@ -38,7 +38,27 @@ public class DocPreviewActivity extends BaseActivity {
     @Override
     protected void initData() {
 
-        String url = "/storage/emulated/0/zhihu/test.pdf";
+
+        if (true){
+
+            File file =new File( getExternalCacheDir(),"screenRecording_2023-04-12 11:10:15.mp4");
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                Uri uri = FileProviderUtils.getUriForFile(file.getAbsolutePath());
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.setDataAndType(uri, "video/*");
+            }
+            startActivity(intent);
+
+            return;
+        }
+
+
+
+        String url = "/storage/emulated/0/Hbag/test.pdf";
 
         boolean canOpen = dpv.openFile(this, url);
 

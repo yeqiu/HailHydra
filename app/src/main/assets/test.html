@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>百朗财经</title>
+		<style type="text/css">
+
+
+.PC .class-container {
+	max-width: 100%;
+}
+
+/* .MOBILE .class-container {
+	max-width: 750px;
+} */
+
+#body{
+	padding-bottom: 80px;
+}
+.class-container {
+	position: relative;
+	margin: 0 auto;
+	padding-bottom: 64px;
+}
+
+.class-container img {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.class-container img:last-child {}
+
+.pay-container {
+	 width: 100%;
+	height:180px;
+	padding: 2.5rem 1rem 2.5rem 1rem; 
+	position: fixed;
+	bottom: 0;
+	background: #fff;
+	
+	
+}
+
+.left-money {
+flex: 1; 
+float: left;
+	
+}
+
+.left-money .cemio {
+	color: #f33733;
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+.left-money b {
+	color: #f33733;
+	font-size: 5rem;
+	font-weight: bolder;
+}
+
+.left-money .origin {
+	color: #999;
+	font-size: 2rem;
+	text-decoration: line-through;
+}
+
+.right-pay {
+	width: 300px;
+	float: right;
+	padding-right: 1.25rem;
+	padding-top:1rem;
+}
+.right-pay span {
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	display: inline-block;
+	border-radius: 3rem;
+	text-align: center;
+	border: none;
+	font-size: 2.6rem;
+	background: #f33733;
+	color: #ffffff;
+}
+
+.model-wrapper {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: none;
+}
+
+.bg-model {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.6;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 991;
+}
+
+.box {
+	position: fixed;
+	min-height: 250px;
+	padding: 2rem;
+	width: 80%;
+	max-width: 500px;
+	background: #fff;
+	border-radius: 1rem;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	z-index: 999;
+	max-width: 600px;
+}
+
+.header {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.header div {
+	text-align: center;
+}
+
+.count p:nth-child(1) {
+	color: #fb3f2d;
+	font-size: 3rem;
+}
+
+.count p:nth-child(1) b {
+	font-size: 4rem;
+}
+
+.count p:nth-child(2) {
+	color: #666;
+	font-size: 2rem;
+}
+
+.time p:nth-child(1) {
+	color: #fb3f2d;
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+.time p:nth-child(2) {
+	color: #666;
+	font-size: 2rem;
+}
+
+.form-wrapper {
+	margin-top: 2rem;
+}
+
+.form-wrapper>.phoneNumber {
+	background: #f5f5f5;
+	margin-bottom: 2rem;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 88px;
+	display: flex;
+	align-items: center;
+}
+
+.form-wrapper>.getCode {
+	background: #f5f5f5;
+	margin-bottom: 2rem;
+	padding-left: 2rem;
+	overflow: hidden;
+	position: relative;
+	width: 95%;
+	height: 88px;
+	display: flex;
+}
+
+.areaCode {
+	display: inline-block;
+	width: 6rem;
+	padding-left: 5px;
+}
+
+select {
+	font-size: 2.6rem;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: url("https://tool.gaodun.com/test/test/arrow.png") no-repeat scroll right center transparent;
+	outline: none;
+	padding-right: 14px;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+.areaCode select {}
+
+.areaCode option {
+	outline: none;
+	border: none;
+	border: 0;
+	background: transparent;
+}
+
+.form-wrapper label,
+input {
+	height: 88px;
+	background: #f5f5f5;
+	line-height: 88px;
+	border: none;
+	outline: none;
+}
+
+label {
+	/* padding-left: 0.8rem; */
+	width: 10rem;
+	font-size: 35px;
+}
+
+#phoneNumber {
+	padding-left: 5px;
+}
+
+.phoneNumber input {
+	flex: 1;
+}
+
+#codeNumber {
+	flex: 1;
+	padding-left: 5px;
+}
+
+input {
+	display: inline-block;
+	width: 70%;
+	font-size: 35px;
+	color: #333;
+	border: none;
+	outline: none;
+	line-height: 35px;
+}
+
+#getCodeBtn {
+	background: none;
+	color: #1dd075;
+	font-size: 2rem;
+	padding: 0 0.4rem;
+	float: right;
+	width: 40%;
+}
+
+.btnWrapper {
+	margin-top: 2rem;
+}
+
+.btnWrapper button {
+	outline: none;
+	display: block;
+	width: 100%;
+	height: 5rem;
+	line-height: 5rem;
+	background: #1dd075;
+	border: none;
+	border-radius: 0.8rem;
+	font-size: 3rem;
+	color: #fff;
+	margin: 0 auto;
+	outline: none;
+	text-align: center;
+}
+
+.form-wrapper .imgCode {
+	position: relative;
+	display: none;
+}
+
+.imgCode img {
+	width: 30%;
+	height: 48px;
+	position: absolute;
+	right: 0;
+}
+
+.msg-content {
+	width: 100%;
+	padding: 0 1.6rem
+}
+
+.msg-item {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2.7rem;
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 2rem;
+}
+
+.imgContent {
+	width: 2.7rem;
+	height: 2.7rem;
+	border-radius: 50%;
+}
+
+.imgContent img {
+	width: 2.7rem;
+	height: 2.7rem;
+	border-radius: 50%;
+}
+
+.msgInfo {
+	margin-left: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.msg-person {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	height: 2.7rem;
+	line-height: 2.7rem;
+}
+
+.nameStar {
+	flex: 1;
+	display: flex;
+}
+
+.nameStar span {
+	font-size: 1.3rem;
+	color: #7a7d8f;
+}
+
+.starContent {
+	display: inline-block;
+	margin-left: 1.1rem;
+}
+
+.starContent img {
+	width: 1.2rem;
+	height: 1.2rem;
+	display: inline-block;
+}
+
+.time {
+	color: #dcdcdc;
+	font-size: 1.3rem;
+}
+
+.info {
+	margin-top: 1rem;
+}
+
+.info p {
+	color: #2a2a2a;
+	line-height: 2rem;
+	font-size: 1.4rem;
+}
+
+.fixedWrapper {
+	position: fixed;
+	right: 1.9rem;
+	bottom: 11.5rem;
+}
+
+.fixedWrapper .swiper-wrapper {
+	width: 15rem;
+	height: 3.7rem;
+	border-radius: 1.7rem;
+	display: flex;
+	align-items: center;
+}
+
+.fixedWrapper .swiper-slide {
+	width: 15rem;
+	height: 3.7rem;
+	border-radius: 1.7rem;
+	background: #918b89;
+	display: flex;
+	align-items: center;
+}
+
+.fixedWrapper img {
+	width: 2.6rem;
+	height: 2.6rem;
+	border-radius: 50%;
+	margin-left: 0.5rem;
+}
+
+.fixedWrapper span {
+	color: #fff;
+	font-size: 1.1rem;
+	margin-left: 0.6rem;
+	flex: 1
+}
+
+
+			
+			* {
+				margin: 0 auto;
+				text-align: center;
+				padding: 0;
+			}
+			#fixed {
+				width: 100%;
+				height: 80px;
+				background-color: white;
+				position: fixed;
+				bottom: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="body" style="font-size: 0;">
+			
+		</div>
+
+		<div class="pay-container" style="width: 100%;height:80px">
+			<div class="left-money">
+				<span class="cemio">￥</span>
+				<b>0.99</b>
+				<span class="origin">299</span>
+			</div>
+			<div class="right-pay" id="buy"><span>立即抢课</span>
+			</div>
+		</div>
+		<!-- 支付弹框 -->
+		<div class="model-wrapper" style="display: none ;">
+			<div class="bg-model" id="close"></div>
+			<div class="box" id="closeBox">
+				<div class="header">
+					<div class="count">
+						<p>仅限<b>500</b>名</p>
+						<p>班级剩余87名</p>
+					</div>
+					<div class="time">
+						<p id="sheng-time">
+							<span id="timer"></span>
+							<span id="warring"></span></p>
+						<p>剩余支付时间</p>
+					</div>
+				</div>
+				<div class="form-wrapper">
+					<div id="isShowCode" isshowcode="0" class="phoneNumber">
+						<label class="" for="phoneNumber">
+							手机号
+						</label>
+						<input id="username" name="username" type="number">
+					</div>
+
+					<div class="getCode">
+						<label class="" for="code">
+							   验证码
+							</label>
+						<input type="text" name="" id="code">
+						<input type="button" id="getCodeBtn" onclick="sendCode()" value="获取验证码">
+					</div>
+				</div>
+				<div class="btnWrapper">
+					<button id="btn" type="submit">提交报名</button>
+				</div>
+			</div>
+		</div>
+        <script>
+			var baseUrl = 'http://api.yxy.51blwx.com' //测试接口
+			// var baseUrl = 'https://api.51blwx.com' //正式接口
+			var ss;
+			var countdown=60;
+
+
+			function sum2Java(number1, number2) {
+    return "js 返回数据："+(number1 + number2);
+}
+
+
+            function sendCode(phone) {
+                var phone = $("#username").val();
+                if(phone == null || phone == undefined || phone==""){
+                    layer.msg("手机号不能为空");
+                }else{
+					$.ajax({
+						url: baseUrl + '/api/more/sendSms',
+						type: 'post',
+						contentType:'application/json',
+						data: JSON.stringify({
+							phone: phone
+						}),
+						success: function (data) {
+							var res = JSON.parse(data)
+							if(res.code == 200){
+								layer.msg('成功!')
+								ss=setInterval(function() {settime()},1000)
+                                 layer.msg(data.message);
+							}else{
+								layer.msg(data.message);
+							}
+						},
+						error: function (error) {
+							console.log(error)
+						}
+					});
+                }
+			}
+
+
+
+		/*提交*/
+			$("#btn").click(function () {
+				var reg = /^(1[3456789])[0-9]{9}$/;
+				var phone = $("#username").val();
+				var code = $("#code").val();
+				if ($("#username").val() == "") {
+					layer.msg('手机号不能为空');
+					return false;
+				}
+				if ($("#code").val() == "") {
+					layer.msg('验证码不能为空');
+					return false;
+				}
+				if (!reg.test(phone)) {
+					layer.msg('手机号格式不正确');
+					setTimeout($("#phone").val(""), 5000);
+					return false;
+				} else {
+					$.ajax({
+						url: baseUrl + '/index/index/live/',
+						type: 'post',
+						contentType:'application/json',
+						data: JSON.stringify({
+							truename: named,
+							phone: num
+						}),
+						success: function (data) {
+							var res = JSON.parse(data)
+							if(res.code == 200){
+								layer.msg('提交成功!')
+								$("#code").val('')
+								$("#username").val('')
+							}
+						},
+						error: function (error) {
+							console.log(error)
+						}
+					});
+				}
+			})
+			function settime() {
+				countdown=countdown-1;
+				document.getElementById("getCodeBtn").value= countdown;
+				if(countdown==0){
+					window.clearInterval(ss);
+					document.getElementById("getCodeBtn").value="获取验证码";
+					countdown = 60;
+
+				}
+			}
+			var maxtime = 15 * 60; 
+			function CountDown() {
+				if (maxtime >= 0) {
+					minutes = Math.floor(maxtime / 60);
+					seconds = Math.floor(maxtime % 60);
+					msg = minutes + ":" + seconds;
+					document.all["timer"].innerHTML = msg;
+					if (maxtime == 5 * 60) alert("距离结束仅剩5分钟");
+				--maxtime;
+				} else {
+					clearInterval(timer);
+				}
+			}
+			timer = setInterval("CountDown()", 1000);
+        </script>
+
+	</body>
+</html>
