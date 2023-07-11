@@ -1,0 +1,62 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+def config = rootProject.ext
+
+android {
+    namespace config.namespace.fastMvvm
+    compileSdk config.android.compileSdk
+
+    defaultConfig {
+        minSdk config.android.minSdk
+        targetSdk config.android.targetSdk
+        versionCode config.android.versionCode
+        versionName config.android.versionName
+
+        testInstrumentationRunner config.android.testInstrumentationRunner
+    }
+    
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility config.javaOptions.sourceCompatibility
+        targetCompatibility config.javaOptions.targetCompatibility
+    }
+
+    kotlinOptions {
+        jvmTarget = config.javaOptions.kotlinOptions
+    }
+
+    dataBinding {
+        enable = true
+    }
+
+}
+
+dependencies {
+
+    implementation config.androidLibrary.androidxAppcompat
+    implementation config.androidLibrary.androidxKtx
+    implementation config.kotlinLibrary.coroutinesCore
+    implementation config.kotlinLibrary.coroutinesAndroid
+    implementation project(path: ':easyAndroid')
+
+    api config.androidLibrary.lifecycleRuntime
+    api config.androidLibrary.lifecycleViewmodel
+
+    api config.library.retrofit
+    api config.library.moshiConverter
+    kapt config.library.moshiKotlinCodegen
+    implementation config.library.okhttpLogginginterceptor
+    implementation config.library.logginginterceptor
+
+}

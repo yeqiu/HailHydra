@@ -1,0 +1,102 @@
+ext {
+
+    android = [
+            compileSdk               : 33,
+            minSdk                   : 24,
+            targetSdk                : 33,
+            versionCode              : 1,
+            versionName              : "1.0.0",
+            testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner",
+    ]
+
+
+    javaOptions = [
+            sourceCompatibility: JavaVersion.VERSION_1_8,
+            targetCompatibility: JavaVersion.VERSION_1_8,
+            jvmTarget          : "1.8",
+    ]
+
+
+    namespace = [
+            sample  : "com.fastmvvm.sample",
+            fastMvvm: "com.yeqiu.fastmvvm",
+            fastHttp: "com.yeqiu.fasthttp",
+            easyAndroid: "com.yeqiu.easyandroid",
+    ]
+
+
+
+    androidLibrary = [
+            "androidxAppcompat"             : 'androidx.appcompat:appcompat:1.4.2',
+            "androidxKtx"                   : 'androidx.core:core-ktx:1.7.0',
+            "activityKtx"                   : 'androidx.activity:activity-ktx:1.6.0',
+            "fragmentKtx"                   : 'androidx.fragment:fragment-ktx:1.6.0',
+            "material"                      : 'com.google.android.material:material:1.4.0',
+            "constraintlayout"              : 'androidx.constraintlayout:constraintlayout:2.0.4',
+            "multidex"                      : 'androidx.multidex:multidex:2.0.1',
+            "splashscreen"                  : 'androidx.core:core-splashscreen:1.0.0-alpha02',
+
+            //lifecycle
+            "lifecycleService"              : "androidx.lifecycle:lifecycle-service:2.5.1",
+            "lifecycleProcess"              : "androidx.lifecycle:lifecycle-process:2.5.1",
+            "lifecycleViewmodel"            : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1",
+            "lifecycleLivedata"             : "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1",
+            "lifecycleRuntime"              : "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1",
+
+            //room
+            "roomRuntime"                   : "androidx.room:room-runtime:2.5.0",
+            "roomcompiler"                  : "androidx.room:room-compiler:2.5.0",
+            //navigation
+            "navigationFragment"            : "androidx.navigation:navigation-fragment-ktx:2.5.3",
+            "navigationUi"                  : "androidx.navigation:navigation-ui-ktx:2.5.3",
+            "navigationSafeArgsGradlePlugin": "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3",
+            //workManager
+            "workRuntimeKtx"                : "androidx.work:work-runtime-ktx:2.8.0",
+    ]
+
+    kotlinLibrary = [
+            "kotlinReflect"    : "org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+            "coroutinesCore"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2",
+            "coroutinesAndroid": "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2",
+    ]
+
+    library = [
+            //moshi
+            "moshiKotlin"       : "com.squareup.moshi:moshi-kotlin:1.13.0",
+            // 使用 kapt
+            "moshiKotlinCodegen": "com.squareup.moshi:moshi-kotlin-codegen:1.15.0",
+            //retrofit
+            "retrofit": "com.squareup.retrofit2:retrofit:2.9.0",
+            "moshiConverter": "com.squareup.retrofit2:converter-moshi:2.9.0",
+            "okhttpLogginginterceptor": "com.squareup.okhttp3:logging-interceptor:4.11.0",
+            "logginginterceptor": "com.github.fengzhizi715:saf-logginginterceptor:v1.6.13",
+
+    ]
+
+
+    todo = [
+            //设置 https://blog.csdn.net/hhbstudy/article/details/128304762
+            "preference"                   : "androidx.preference:preference-ktx:1.2.0",
+
+
+            "mmkv"                         : "com.tencent:mmkv:1.0.22",
+            "BannerViewPager"              : "com.github.zhpanvip:BannerViewPager:3.1.5",
+            "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4",
+            //管理界面状态库
+            "loadsir"                      : "com.kingja.loadsir:loadsir:1.3.8",
+            //指示器库
+            "MagicIndicator"               : "com.github.hackware1993:MagicIndicator:1.7.0",
+            //流式布局
+            "flexbox"                      : "com.google.android:flexbox:2.0.1",
+            //webview
+            "agentweb"                     : "com.just.agentweb:agentweb:4.1.3",
+            "agentwebFilechooser"          : "com.just.agentweb:filechooser:4.1.3",
+            //下载
+            "downloader"                   : "com.download.library:Downloader:4.1.3",
+            "glide"                        : "com.github.bumptech.glide:glide:4.11.0",
+            //防崩溃
+            "customactivityoncrash"        : "cat.ereza:customactivityoncrash:2.3.0",
+
+    ]
+
+}

@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+def config = rootProject.ext
+
+android {
+    namespace config.namespace.sample
+    compileSdk config.android.compileSdk
+
+    defaultConfig {
+        applicationId config.namespace.sample
+        minSdk config.android.minSdk
+        targetSdk config.android.targetSdk
+        versionCode config.android.versionCode
+        versionName config.android.versionName
+        multiDexEnabled true
+        testInstrumentationRunner config.android.testInstrumentationRunner
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility config.javaOptions.sourceCompatibility
+        targetCompatibility config.javaOptions.targetCompatibility
+    }
+    kotlinOptions {
+        jvmTarget = config.javaOptions.kotlinOptions
+    }
+
+
+}
+
+dependencies {
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //不需要
+    implementation config.androidLibrary.material
+    implementation config.androidLibrary.constraintlayout
+    implementation config.androidLibrary.splashscreen
+    implementation project(path: ':fastMvvm')
+    implementation project(path: ':easyAndroid')
+
+
+
+    implementation config.library.moshiKotlin
+    kapt config.library.moshiKotlinCodegen
+
+
+    //侧滑返回
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
+//    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+//    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+//    implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
+//    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.15.0"
+
+
+
+//
+//    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
+
+
+}

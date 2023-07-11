@@ -1,0 +1,7 @@
+
+1.封装网络请求，自动联动到 activity 的loading
+2.处理多个请求loading可能失效的问题
+详情页面
+登录页面
+列表页面
+单activity

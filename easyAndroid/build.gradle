@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+def config = rootProject.ext
+
+android {
+    namespace config.namespace.easyAndroid
+    compileSdk config.android.compileSdk
+
+    defaultConfig {
+        minSdk config.android.minSdk
+        targetSdk config.android.targetSdk
+        versionCode config.android.versionCode
+        versionName config.android.versionName
+
+        testInstrumentationRunner config.android.testInstrumentationRunner
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility config.javaOptions.sourceCompatibility
+        targetCompatibility config.javaOptions.targetCompatibility
+    }
+
+    kotlinOptions {
+        jvmTarget = config.javaOptions.kotlinOptions
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+}
+
+dependencies {
+
+    implementation config.androidLibrary.androidxAppcompat
+    implementation config.androidLibrary.androidxKtx
+    implementation config.kotlinLibrary.coroutinesCore
+    implementation config.kotlinLibrary.coroutinesAndroid
+
+}
