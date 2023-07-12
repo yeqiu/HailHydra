@@ -2,60 +2,82 @@ package com.fastmvvm.sample.view.activity
 
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.fastmvvm.sample.databinding.ActivityMainBinding
-import com.fastmvvm.sample.network.NetworkClient
-import com.fastmvvm.sample.network.User
-import com.yeqiu.easyandroid.showToast
-import com.yeqiu.fastmvvm.ext.me.hgj.jetpackmvvm.sendRequest
+import com.yeqiu.easyandroid.toActivity
 import com.yeqiu.fastmvvm.viewmodel.BaseViewModel
 import kotlinx.coroutines.delay
-
+import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
-
-
     override fun initData(savedInstanceState: Bundle?) {
-        binding.mainViewModel = viewModel
-
+        binding.viewModle = viewModel
     }
 
     override fun addObserve() {
 
-        viewModel.errorMsg.observe(this) {
-           showToast(it)
+        viewModel.detail.observe(this) {
+
+            if (it) {
+                toActivity<DetailActivity>()
+            }
+
+        }
+        viewModel.login.observe(this) {
+            if (it) {
+                toActivity<LoginActivity>()
+            }
+        }
+        viewModel.singleActivity.observe(this) {
+            if (it) {
+                toActivity<BottomNavigationAcitvity>()
+            }
+        }
+        viewModel.netWork.observe(this) {
+
+            if (it) {
+                toActivity<NetworkActivity>()
+            }
+
         }
 
-    }
 
+    }
 
 }
 
 class MainViewModel : BaseViewModel() {
 
-    val user = MutableLiveData<User>()
-    val errorMsg = MutableLiveData<String>()
+    val detail = MutableLiveData<Boolean>(false)
+    val login = MutableLiveData<Boolean>(false)
+    val singleActivity = MutableLiveData<Boolean>(false)
+    val netWork = MutableLiveData<Boolean>(false)
 
-    fun getData() {
 
-        sendRequest(
-            block = { NetworkClient.api.getUser("yeqiu") },
-            success = { user.value = it },
-        )
+    fun clickDetail() {
+        detail.value = true
     }
 
-    fun testError() {
-
-        sendRequest(
-            block = {
-                delay(2000)
-                throw IllegalArgumentException("模拟错误")
-                NetworkClient.api.getUser("yeqiu")
-                    },
-            success = { user.value = it },
-            error = {
-                errorMsg.value = "这是一个模拟错误"
-            }
-        )
+    fun clickLogin() {
+        login.value = true
     }
+
+    fun clickSingleActivity() {
+        singleActivity.value = true
+    }
+
+    fun clickNetwork() {
+        netWork.value = true
+    }
+   fun clickLoading() {
+
+       //三秒后自动关闭
+       viewModelScope.launch {
+           loadingStatus.show.postValue("加载。。。")
+           delay(3000)
+           loadingStatus.dismiss.postValue(true)
+       }
+    }
+
 
 }

@@ -23,9 +23,9 @@ class App : Application(), ViewModelStoreOwner {
         lateinit var appViewModel: AppViewModel
     }
 
-    override fun getViewModelStore(): ViewModelStore {
-        return ViewModelStore()
-    }
+    override val viewModelStore: ViewModelStore
+        get() = ViewModelStore()
+
 
 
     override fun onCreate() {

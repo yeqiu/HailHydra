@@ -68,7 +68,7 @@ abstract class ViewModelDataBindingActivity<VM : BaseViewModel, VB : ViewDataBin
     private fun registerLoading() {
 
         viewModel.loadingStatus.show.observe(this) {
-            showLoading()
+            showLoading(it)
         }
         viewModel.loadingStatus.dismiss.observe(this) {
             dismissLoading()
@@ -83,7 +83,7 @@ abstract class ViewModelDataBindingActivity<VM : BaseViewModel, VB : ViewDataBin
 
     abstract fun addObserve()
 
-    abstract fun showLoading()
+    abstract fun showLoading(message:String)
 
     abstract fun dismissLoading()
 

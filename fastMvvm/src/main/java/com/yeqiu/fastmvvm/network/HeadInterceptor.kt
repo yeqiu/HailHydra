@@ -14,7 +14,7 @@ class HeadInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
 
-        NetConfig.commonHead.forEach{
+        NetworkConfig.commonHead.forEach{
             builder.addHeader(it.key,it.value)
         }
         return chain.proceed(builder.build())

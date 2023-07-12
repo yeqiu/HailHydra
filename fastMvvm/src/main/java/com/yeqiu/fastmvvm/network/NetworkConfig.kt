@@ -1,6 +1,7 @@
 package com.yeqiu.fastmvvm.network
 
 import com.yeqiu.fastmvvm.BuildConfig
+import com.yeqiu.fastmvvm.exception.NetworkException
 
 
 /**
@@ -10,14 +11,13 @@ import com.yeqiu.fastmvvm.BuildConfig
  * @describe：
  * @fix：
  */
-object NetConfig {
+object NetworkConfig {
 
     var enableLog = BuildConfig.DEBUG
-    val commonHead = HashMap<String,String>()
+    val commonHead = HashMap<String, String>()
+    var onNetworkError: (NetworkException) -> Unit = {}
 
-
-    fun addCommonHead(vararg head: Pair<String,String>){
-
+    fun addCommonHead(vararg head: Pair<String, String>) {
         head.forEach {
             commonHead[it.first] = it.second
         }

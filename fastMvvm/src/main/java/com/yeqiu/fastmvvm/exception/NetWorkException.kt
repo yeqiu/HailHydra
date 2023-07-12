@@ -8,8 +8,25 @@ package com.yeqiu.fastmvvm.exception
  * @describe：
  * @fix：
  */
-class NetWorkException : RuntimeException {
-    constructor(message: String?) : super(message)
-    constructor(message: String?, cause: Throwable?) : super(message, cause)
-    constructor(cause: Throwable?) : super(cause)
+
+const val jsonParseErrorCode = -1000
+const val checkResponseErrorCode = -1001
+const val NetworkErrorCode = -1002
+const val unknownErrorCode = -2000
+
+
+class NetworkException : RuntimeException {
+
+    var errorMessage: String = ""
+    var errorCode: Int = 0
+    var throwable: Throwable? = null
+
+
+    @JvmOverloads
+    constructor(errorCode: Int = 0, errorMessage: String = "", throwable: Throwable? = null) {
+        this.errorCode = errorCode
+        this.errorMessage = errorMessage
+        this.throwable = throwable
+    }
+
 }

@@ -18,12 +18,11 @@ ext {
 
 
     namespace = [
-            sample  : "com.fastmvvm.sample",
-            fastMvvm: "com.yeqiu.fastmvvm",
-            fastHttp: "com.yeqiu.fasthttp",
+            sample     : "com.fastmvvm.sample",
+            fastMvvm   : "com.yeqiu.fastmvvm",
+            fastHttp   : "com.yeqiu.fasthttp",
             easyAndroid: "com.yeqiu.easyandroid",
     ]
-
 
 
     androidLibrary = [
@@ -62,14 +61,17 @@ ext {
 
     library = [
             //moshi
-            "moshiKotlin"       : "com.squareup.moshi:moshi-kotlin:1.13.0",
+            "moshiKotlin"             : "com.squareup.moshi:moshi-kotlin:1.13.0",
             // 使用 kapt
-            "moshiKotlinCodegen": "com.squareup.moshi:moshi-kotlin-codegen:1.15.0",
+            "moshiKotlinCodegen"      : "com.squareup.moshi:moshi-kotlin-codegen:1.15.0",
             //retrofit
-            "retrofit": "com.squareup.retrofit2:retrofit:2.9.0",
-            "moshiConverter": "com.squareup.retrofit2:converter-moshi:2.9.0",
+            "retrofit"                : "com.squareup.retrofit2:retrofit:2.9.0",
+            "moshiConverter"          : "com.squareup.retrofit2:converter-moshi:2.9.0",
             "okhttpLogginginterceptor": "com.squareup.okhttp3:logging-interceptor:4.11.0",
-            "logginginterceptor": "com.github.fengzhizi715:saf-logginginterceptor:v1.6.13",
+            "logginginterceptor"      : "com.github.fengzhizi715:saf-logginginterceptor:v1.6.13",
+            //glide
+            "glide"                   : "com.github.bumptech.glide:glide:4.15.1",
+            "gson"                   : "com.google.code.gson:gson:2.9.0",
 
     ]
 
@@ -93,7 +95,7 @@ ext {
             "agentwebFilechooser"          : "com.just.agentweb:filechooser:4.1.3",
             //下载
             "downloader"                   : "com.download.library:Downloader:4.1.3",
-            "glide"                        : "com.github.bumptech.glide:glide:4.11.0",
+
             //防崩溃
             "customactivityoncrash"        : "cat.ereza:customactivityoncrash:2.3.0",
 

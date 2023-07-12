@@ -1,14 +1,11 @@
 package com.fastmvvm.sample.view.activity
 
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.view.Gravity
-import android.view.Window
-import android.view.WindowManager
-import android.widget.ProgressBar
-import androidx.core.content.ContextCompat
+import android.widget.TextView
 import androidx.databinding.ViewDataBinding
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
+import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.fastmvvm.sample.R
 import com.yeqiu.fastmvvm.view.ViewModelDataBindingActivity
 import com.yeqiu.fastmvvm.viewmodel.BaseViewModel
@@ -23,31 +20,21 @@ import com.yeqiu.fastmvvm.viewmodel.BaseViewModel
 abstract class BaseActivity<VM : BaseViewModel, VB : ViewDataBinding> : ViewModelDataBindingActivity<VM,VB>() {
 
 
-    private lateinit var loadingDialog: Dialog
+    private lateinit var loadingDialog: MaterialDialog
 
 
-    override fun showLoading() {
+    override fun showLoading(message:String) {
+
+
         if (!::loadingDialog.isInitialized) {
-            loadingDialog = Dialog(this)
-            loadingDialog.apply {
-                requestWindowFeature(Window.FEATURE_NO_TITLE)
-                setContentView(ProgressBar(context).apply {
-                    isIndeterminate = true
-                    indeterminateDrawable.setColorFilter(
-                        ContextCompat.getColor(context, R.color.purple_200),
-                        android.graphics.PorterDuff.Mode.SRC_IN
-                    )
-                })
-                window?.apply {
-                    setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                    setDimAmount(0.3f)
-                    setGravity(Gravity.CENTER)
-                    setFlags(
-                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                    )
-                }
-                setCancelable(false)
+            loadingDialog = MaterialDialog(this)
+                .cancelable(true)
+                .cancelOnTouchOutside(false)
+                .cornerRadius(12f)
+                .customView(R.layout.dialog_loading)
+                .lifecycleOwner(this)
+            loadingDialog.getCustomView().run {
+                (findViewById<TextView>(R.id.loading_tips)).text =message
             }
         }
 

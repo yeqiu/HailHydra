@@ -58,5 +58,6 @@ dependencies {
     kapt config.library.moshiKotlinCodegen
     implementation config.library.okhttpLogginginterceptor
     implementation config.library.logginginterceptor
+    implementation config.library.moshiKotlin
 
 }

@@ -2,10 +2,13 @@ package com.yeqiu.fastmvvm.network
 
 import cn.netdiscovery.http.interceptor.LoggingInterceptor
 import com.safframework.http.interceptor.AndroidLoggingInterceptor
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 /**
  * @project：FastMvvm
@@ -19,8 +22,9 @@ abstract class BaseNetworkClient {
 
     private val okHttpClient by lazy {
         val builder = OkHttpClient.Builder()
+            .connectTimeout(30,TimeUnit.SECONDS)
             .addInterceptor(HeadInterceptor())
-        if (NetConfig.enableLog) {
+        if (NetworkConfig.enableLog) {
             builder.addInterceptor(getHttpLoggingInterceptor())
             builder.addInterceptor(getLoggingInterceptor())
         }
@@ -31,7 +35,11 @@ abstract class BaseNetworkClient {
     private val retrofit: Retrofit by lazy {
         val build = Retrofit.Builder()
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(
+                Moshi.Builder()
+                    .add(KotlinJsonAdapterFactory())
+                    .build()
+            ))
             .baseUrl(getBaseUrl())
         setRetrofit(build)
         build.build()
